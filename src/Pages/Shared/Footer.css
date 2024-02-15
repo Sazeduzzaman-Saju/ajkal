@@ -1,13 +1,13 @@
 .footer-devider {
   border-top: 3px solid var(--secondary);
-  width: 50px;
+  width: 3.125rem;
 }
 .navbar-nav .footer-links.active,
 .navbar-nav .footer-links.show {
   color: var(--secondary) !important;
 }
 .navbar-nav .footer-links {
-  font-size: 18px;
+  font-size: 1.125rem;
   color: #878787;
   transition: color 0.3s; /* Add a smooth transition for the color change */
 }
@@ -37,4 +37,19 @@
   text-align: center;
   color: var(--secondary);
   transition: 0.5s ease-in;
+}
+
+/* For Small Device */
+@media (max-width: 768px) {
+ .footer-apps-box{
+    text-align: center;
+    margin-bottom: 2.5rem;
+ }
+ .footer-devider{
+    margin: auto;
+ }
+ .footer-apps-box-img{
+    display: flex;
+    justify-content: center;
+ }
 }

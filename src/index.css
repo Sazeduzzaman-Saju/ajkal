@@ -30,8 +30,8 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: #0f298a;
-  outline: 1px solid slategrey;
+  background-color: var(--main);
+  outline: 1px solid var(--main);
 }
 p,
 a,

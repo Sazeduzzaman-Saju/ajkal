@@ -1,14 +1,17 @@
 import React from "react";
 import PageTitle from "../../Comps/PageTitle/PageTitle";
+import Banner from "./Banner/Banner";
 
 const HomePage = () => {
   return (
-    <section>
-      <PageTitle title="Home" description="Text" />
-      <div className="container" style={{height: '100vh'}}>
-        <h1 className="pt-5 mt-5">THis is Home Page</h1>
-      </div>
-    </section>
+    <>
+      <PageTitle title="সাপ্তাহিক আজকাল || Saptahik Ajkal" description="Text" />
+      <section>
+        <div className="container-fluid px-0">
+          <Banner></Banner>
+        </div>
+      </section>
+    </>
   );
 };
 

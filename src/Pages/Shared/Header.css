@@ -53,38 +53,38 @@
   height: 0.625rem;
   width: 1.25rem;
   padding: 0.3125rem 0.4375rem;
-  font-size: 1.25rem;
+  font-size: 0.875rem;
   text-align: center;
   color: var(--main);
   transition: 0.5s ease-in;
 }
 .social a:hover {
-  background-color: white;
+  background-color: var(--secondary);
   margin-left: 0.625rem;
   border-radius: 50%;
   height: 0.625rem;
   width: 1.25rem;
   padding: 0.3125rem 0.4375rem;
-  font-size: 1.25rem;
+  font-size: 0.875rem;
   text-align: center;
-  color: var(--secondary);
+  color: var(--white);
   transition: 0.5s ease-in;
 }
 .navbar-brand img {
-  width: 250px;
-  height: 50px;
+  width: 15.625rem;
+  height: 3.125rem;
 }
 
 /* Search Box */
 .buttonss {
   display: inline-block;
-  margin: 4px 2px;
+  margin: 0.25rem 0.125rem;
   background-color: var(--main);
-  font-size: 14px;
-  padding-left: 32px;
-  padding-right: 32px;
-  height: 50px;
-  line-height: 50px;
+  font-size: 0.875rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  height: 3.125rem;
+  line-height: 3.125rem;
   text-align: center;
   color: white;
   text-decoration: none;
