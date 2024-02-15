@@ -17,17 +17,17 @@
   z-index: 1000;
   background-color: #ffffff; /* Set the background color of the sticky navbar */
 }
-.navbar-light .navbar-nav .nav-link.active,
-.navbar-light .navbar-nav .show > .nav-link {
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link.show {
   color: var(--secondary) !important;
 }
-.navbar-light .navbar-nav .nav-link {
+.navbar-nav .navlinks {
   font-size: 18px;
   color: white;
   transition: color 0.3s; /* Add a smooth transition for the color change */
 }
-
-.navbar-light .navbar-nav .nav-link:hover {
+.navbar-nav .navlinks:hover {
   color: var(--secondary);
 }
 
@@ -171,7 +171,7 @@
 }
 
 @media screen and (max-width: 575.98px) {
-    .top-bar-area {
-        display: none !important;
-    }
+  .top-bar-area {
+    display: none !important;
+  }
 }
