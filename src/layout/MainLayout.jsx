@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "../Pages/Shared/Header";
 import { Outlet } from "react-router-dom";
 import Footer from "../Pages/Shared/Footer";
+import Header from "../Pages/Shared/Header";
 
 const MainLayout = () => {
   return (
     <>
-      <Header />
+    <Header></Header>
       <Outlet />
       <Footer />
     </>

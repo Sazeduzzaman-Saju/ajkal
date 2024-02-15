@@ -2,9 +2,11 @@
 @import url("https://fonts.maateen.me/solaiman-lipi/font.css");
 /* Root Style */
 :root {
-  --primary-background-color: white;
-  --text-color: black;
-  --accent-color: red;
+  --main: #165588;
+  --secondary: #dc2329;
+  --white: white;
+  --black: black;
+  --red: red;
 }
 /* Body Style */
 body {
