@@ -33,6 +33,9 @@ body::-webkit-scrollbar-thumb {
   background-color: var(--main);
   outline: 1px solid var(--main);
 }
+a {
+  text-decoration: none !important;
+}
 p,
 a,
 h1,
@@ -44,4 +47,11 @@ h6 {
   margin: 0;
   padding: 0;
   font-family: "SolaimanLipi", sans-serif;
+}
+
+.secondary-color {
+  color: var(--secondary);
+}
+.main-color {
+  color: var(--main);
 }
