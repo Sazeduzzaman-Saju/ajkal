@@ -1,7 +1,6 @@
-.feature-top-section{
-    position: relative;
-    top: -100px;
-    background-color: transparent;
-    z-index: 5;
-    
+.feature-top-section {
+  position: relative;
+  margin-top: -100px;
+  background-color: transparent;
+  z-index: 5;
 }

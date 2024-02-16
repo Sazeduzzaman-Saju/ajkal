@@ -2,6 +2,10 @@ import React from "react";
 import PageTitle from "../../Comps/PageTitle/PageTitle";
 import Banner from "./Banner/Banner";
 import FeatureNews from "./FeatureNews/FeatureNews";
+import SorboshesKhobor from "./SorboshesKhobor/SorboshesKhobor";
+import Categories from "./Categories/Categories";
+import CategoryWiseNews from "./CategoryWiseNews/CategoryWiseNews";
+import VideoNews from "./VideoNews/VideoNews";
 
 const HomePage = () => {
   return (
@@ -10,15 +14,48 @@ const HomePage = () => {
       <section>
         {/* Banner  Section */}
         <div className="container-fluid px-0">
-          <Banner></Banner>
+          <Banner />
         </div>
         {/* Banner Feature Cards */}
         <div className="container feature-top-section">
-          <div className="col-lg-12">
-            <FeatureNews></FeatureNews>
+          <div className="row">
+            <div className="col-lg-12">
+              <FeatureNews />
+            </div>
           </div>
         </div>
-        
+        {/* Sroboses Khobor Area Start */}
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <SorboshesKhobor />
+            </div>
+          </div>
+        </div>
+        {/* Category Post Show Style One */}
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <CategoryWiseNews />
+            </div>
+          </div>
+        </div>
+        {/* Category Post Show Style One */}
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <VideoNews />
+            </div>
+          </div>
+        </div>
+        {/* Category Links */}
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <Categories />
+            </div>
+          </div>
+        </div>
       </section>
     </>
   );

@@ -1,0 +1,30 @@
+.link-text:hover {
+  color: var(--secondary) !important;
+}
+
+/* Categories.css */
+
+.list-unstyled {
+  list-style: none;
+  padding: 0;
+}
+
+.list-unstyled li {
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+.link-text {
+  text-decoration: none;
+  color: inherit;
+}
+
+.circle-marker {
+  width: 8px;
+  height: 8px;
+  background-color: var(--main);
+  border-radius: 50%;
+  display: inline-block;
+  align-items: center;
+  margin-right: 5px;
+}

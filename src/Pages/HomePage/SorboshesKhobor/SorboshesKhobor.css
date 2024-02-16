@@ -1,0 +1,25 @@
+.card-body-2 {
+  width: 270px;
+  height: 232px;
+  display: none;
+  transition: all 0.5s ease-in;
+}
+.card-body-1 {
+  width: 270px;
+  height: 232px;
+  transition: all 0.5s ease-in;
+}
+
+.card:hover .card-body-1 {
+  display: none;
+  transition: all 0.5s ease-in;
+}
+
+.card:hover .card-body-2 {
+  display: block;
+  transition: all 0.5s ease-in;
+}
+.sorboshes-news-image {
+  width: 270px;
+  height: 232px;
+}

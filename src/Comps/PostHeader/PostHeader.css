@@ -1,0 +1,13 @@
+.post-header-box {
+  border-top: 1px solid var(--main);
+}
+
+.post-header-title {
+  text-align: center;
+  background: white;
+  width: 15%;
+  margin: auto;
+  position: relative;
+  top: -20px;
+  font-size: 25px;
+}
