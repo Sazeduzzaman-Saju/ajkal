@@ -35,7 +35,7 @@ function NavScrollExample() {
               </p>
             </div>
             <div className="col-lg-6">
-              <div className="top-bar p-2 d-flex justify-content-between align-items-center pt-0">
+              <div className="top-bar p-2 d-flex justify-content-between align-items-center pt-1">
                 <ul className="mb-0">
                   <li className="">
                     <Link to="\" className="">
