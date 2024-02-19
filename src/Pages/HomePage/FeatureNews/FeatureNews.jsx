@@ -1,8 +1,10 @@
 import React from "react";
-import './FeatureNews.css'
+import "./FeatureNews.css";
+import { Link } from "react-router-dom";
 
 const featureData = [
   {
+    id: "1",
     country: "যুক্তরাষ্ট্র",
     time: "৬ ঘণ্টা আগে",
     featureTite: "ট্রাম্পকে তিরস্কার ন্যাটো প্রধান ও বাইডেনের",
@@ -11,6 +13,7 @@ const featureData = [
     featureImage: "../../../../public/image/Features/feature1.png",
   },
   {
+    id: "2",
     country: "যুক্তরাষ্ট্র",
     time: "৬ ঘণ্টা আগে",
     featureTite: "ড. ইউনূসের আবেদন খারিজ, দিতে হবে ৫০ কোটি টাকা",
@@ -19,6 +22,7 @@ const featureData = [
     featureImage: "../../../../public/image/Features/feature2.png",
   },
   {
+    id: "3",
     country: "যুক্তরাষ্ট্র",
     time: "৬ ঘণ্টা আগে",
     featureTite: "রোজার আগে পেঁয়াজ-চিনির রপ্তানি বাড়াতে ভারতকে অনুরোধ",
@@ -27,6 +31,7 @@ const featureData = [
     featureImage: "../../../../public/image/Features/feature3.png",
   },
   {
+    id: "4",
     country: "যুক্তরাষ্ট্র",
     time: "৬ ঘণ্টা আগে",
     featureTite: "ড. ইউনূসের আবেদন খারিজ, দিতে হবে ৫০ কোটি টাকা",
@@ -41,7 +46,7 @@ const FeatureNews = () => {
       {featureData.map((data, index) => (
         <div className="col-lg-3" key={index}>
           <div className="card rounded-1 border-0 shadow-sm">
-            <a href="">
+            <Link to={`/news/${data.id}`}>
               <div className="card-body">
                 <div className="d-flex justify-content-between  align-items-center ">
                   <p className="secondary-color">{data.country}</p>
@@ -59,7 +64,7 @@ const FeatureNews = () => {
                 className="card-img-top rounded-0"
                 alt="Card Image"
               />
-            </a>
+            </Link>
           </div>
         </div>
       ))}

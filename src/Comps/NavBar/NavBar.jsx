@@ -33,7 +33,7 @@ const NavBar = () => {
             }`}
           >
             <Link
-              to={link.path}
+              to={`/categories/${link.id}`}
               className="nav-link navlinks"
               onClick={() => handleLinkClick(link.text)}
             >
@@ -49,7 +49,7 @@ const NavBar = () => {
               id="dropdownMenuButton1"
               data-bs-toggle="dropdown"
               aria-expanded="false"
-              style={{ fontSize: "18px", textDecoration: 'none' }}
+              style={{ fontSize: "18px", textDecoration: "none" }}
             >
               আরও +
             </a>

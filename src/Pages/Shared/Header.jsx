@@ -6,6 +6,7 @@ import { FaTwitter } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import NavBar from "../../Comps/NavBar/NavBar";
+import { FaUser } from "react-icons/fa";
 
 function NavScrollExample() {
   return (
@@ -67,6 +68,9 @@ function NavScrollExample() {
                     <a href="#" className="">
                       <AiFillInstagram />
                     </a>
+                    <Link to="/login" className="">
+                      <FaUser />
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -88,9 +92,9 @@ function NavScrollExample() {
             <span className="navbar-toggler-icon" />
           </button>
           <div>
-            <a className="navbar-brand" href="#">
+            <Link className="navbar-brand" to="/">
               <img src="https://i.ibb.co/6D35WjX/logo.png" alt="" />
-            </a>
+            </Link>
           </div>
           <div className="search-container">
             <form action="/search" method="get">

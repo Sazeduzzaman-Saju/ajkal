@@ -3,10 +3,10 @@ import { Outlet } from "react-router-dom";
 import Footer from "../Pages/Shared/Footer";
 import Header from "../Pages/Shared/Header";
 
-const MainLayout = () => {
+const MainLayout = ({ showHeader = true }) => {
   return (
     <>
-    <Header></Header>
+      {showHeader && <Header />}
       <Outlet />
       <Footer />
     </>
