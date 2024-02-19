@@ -23,8 +23,8 @@ const login = () => {
   };
   return (
     <div className="container" showHeader={false}>
-      <div className="row">
-        <div className="col-lg-6 offset-lg-3 mx-auto my-5">
+      <div className="row my-5">
+        <div className="col-lg-6">
           {/* <form noValidate validated={validated} onSubmit={handleSubmit}> */}
           <div className="card border-0 login-form bg-transparent ">
             <div className="card-body py-5 form-area ">
@@ -170,6 +170,11 @@ const login = () => {
             </div>
           </div>
           {/* </form> */}
+        </div>
+        <div className="col-lg-6">
+            <div>
+                <img src="https://i.ibb.co/M5nTmk6/login-concept-illustration-114360-757-removebg-preview.png" alt="" />
+            </div>
         </div>
       </div>
     </div>

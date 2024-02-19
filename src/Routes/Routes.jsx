@@ -8,7 +8,10 @@ import Categories from "../Pages/Categories/Categories";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Login/Register";
 import ForgotPasswords from "../Pages/Login/ForgotPassword";
-// import ForgotPassword from "../Pages/Login/forgotPassword";
+import Policy from "../Pages/Policy/Policy";
+import About from "../Pages/About/About";
+import Terms from "../Pages/Terms/Terms";
+import Advertisement from "../Pages/Advertisement/Advertisement";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +36,14 @@ const router = createBrowserRouter([
         element: <Categories />,
       },
       {
+        path: "/about",
+        element: <About></About>,
+      },
+      {
+        path: "/advertisement",
+        element: <Advertisement></Advertisement>,
+      },
+      {
         path: "/login",
         element: <Login></Login>,
       },
@@ -43,6 +54,14 @@ const router = createBrowserRouter([
       {
         path: "/forgot-password",
         element: <ForgotPasswords></ForgotPasswords>,
+      },
+      {
+        path: "/policy",
+        element: <Policy></Policy>,
+      },
+      {
+        path: "/terms",
+        element: <Terms></Terms>,
       },
     ],
   },

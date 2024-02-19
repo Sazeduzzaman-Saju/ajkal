@@ -138,22 +138,30 @@ const Footer = () => {
                     style={{ display: "flex !important" }}
                   >
                     <li className="nav-item pe-4">
-                      <Link className="nav-link footer-links" to="/">
+                      <Link className="nav-link footer-links" to="/about">
                         আমাদের সম্পর্কে
                       </Link>
                     </li>
                     <li className="nav-item pe-4">
-                      <Link className="nav-link footer-links" to="/">
+                      <Link className="nav-link footer-links" to="/terms">
                         শর্তাবলী
                       </Link>
                     </li>
                     <li className="nav-item pe-4">
-                      <Link className="nav-link footer-links" to="/">
+                      <Link className="nav-link footer-links" to="/policy">
                         গোপনীয়তা নীতি
                       </Link>
                     </li>
                     <li className="nav-item pe-4">
-                      <Link className="nav-link footer-links" to="/">
+                      <Link
+                        className="nav-link footer-links"
+                        to="/advertisement"
+                      >
+                        বিজ্ঞাপন
+                      </Link>
+                    </li>
+                    <li className="nav-item pe-4">
+                      <Link className="nav-link footer-links" to="/contact">
                         যোগাযোগ করুন
                       </Link>
                     </li>

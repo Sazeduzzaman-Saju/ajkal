@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./style.css";
-import { FaFacebookF, FaGoogle, FaUser,FaEye  } from "react-icons/fa";
+import { FaFacebookF, FaGoogle, FaUser, FaEye } from "react-icons/fa";
 import { IoPhonePortrait } from "react-icons/io5";
 import { IoMdMail } from "react-icons/io";
 import { Link } from "react-router-dom";
@@ -23,8 +23,16 @@ const Register = () => {
   };
   return (
     <div className="container" showHeader={false}>
-      <div className="row">
-        <div className="col-lg-6 offset-lg-3 mx-auto my-5">
+      <div className="row my-5 align-items-center ">
+        <div className="col-lg-6">
+          <div>
+            <img
+              src="https://i.ibb.co/M5nTmk6/login-concept-illustration-114360-757-removebg-preview.png"
+              alt=""
+            />
+          </div>
+        </div>
+        <div className="col-lg-6 ">
           {/* <form noValidate validated={validated} onSubmit={handleSubmit}> */}
           <div className="card border-0 login-form bg-transparent ">
             <div className="card-body py-5 form-area ">
@@ -71,7 +79,7 @@ const Register = () => {
                     >
                       <Row className="mb-3">
                         <Form.Group
-                        className="pb-3"
+                          className="pb-3"
                           as={Col}
                           md="6"
                           controlId="validationCustomUsername"
@@ -96,7 +104,7 @@ const Register = () => {
                           </InputGroup>
                         </Form.Group>
                         <Form.Group
-                        className="pb-3"
+                          className="pb-3"
                           as={Col}
                           md="6"
                           controlId="validationCustomUsername"
@@ -117,14 +125,13 @@ const Register = () => {
                           </InputGroup>
                         </Form.Group>
                         <Form.Group
-                        className="pb-3"
+                          className="pb-3"
                           as={Col}
                           md="12"
                           controlId="validationCustomUsername"
                         >
                           <Form.Label className="text-muted mb-0">
-                            ইমেইল দিন।{" "}
-                            <span className="text-danger">*</span>
+                            ইমেইল দিন। <span className="text-danger">*</span>
                           </Form.Label>
                           <InputGroup hasValidation>
                             <InputGroup.Text id="inputGroupPrepend">
@@ -143,17 +150,18 @@ const Register = () => {
                           </InputGroup>
                         </Form.Group>
                         <Form.Group
-                        className="pb-3"
+                          className="pb-3"
                           as={Col}
                           md="6"
                           controlId="validationCustomUsername"
                         >
                           <Form.Label className="text-muted mb-0">
-                            পাসওয়ার্ড দিন। <span className="text-danger">*</span>
+                            পাসওয়ার্ড দিন।{" "}
+                            <span className="text-danger">*</span>
                           </Form.Label>
                           <InputGroup hasValidation>
                             <InputGroup.Text id="inputGroupPrepend">
-                             <FaEye />
+                              <FaEye />
                             </InputGroup.Text>
                             <Form.Control
                               className="rounded-0 bg-light border-0"
@@ -169,7 +177,7 @@ const Register = () => {
                         </Form.Group>
 
                         <Form.Group
-                        className="pb-3"
+                          className="pb-3"
                           as={Col}
                           md="6"
                           controlId="validationCustomUsername"
@@ -180,7 +188,7 @@ const Register = () => {
                           </Form.Label>
                           <InputGroup hasValidation>
                             <InputGroup.Text id="inputGroupPrepend">
-                             <FaEye />
+                              <FaEye />
                             </InputGroup.Text>
                             <Form.Control
                               className="rounded-0 bg-light border-0"
@@ -194,18 +202,19 @@ const Register = () => {
                           </InputGroup>
                         </Form.Group>
                         <Form.Group
-                        className="pb-3"
+                          className="pb-3"
                           as={Col}
                           md="12"
                           controlId="validationCustomUsername"
                         >
                           <Form.Check
-                          className="pt-4"
+                            className="pt-4"
                             inline
                             required
                             label={
                               <>
-                                আমাদের সকল শর্ত আপনি মেনে নিয়েছেন । অথবা শর্ত গুলো পরতে 
+                                আমাদের সকল শর্ত আপনি মেনে নিয়েছেন । অথবা শর্ত
+                                গুলো পরতে
                                 <Link to="/">এখানে ক্লিক করুন।</Link>
                               </>
                             }
@@ -215,7 +224,7 @@ const Register = () => {
                         </Form.Group>
                       </Row>
                       <p className="text-muted text-center">
-                        আপনার আক্যাউন্ট ্তথ্য মনে পরেছেন গিয়েছেন 
+                        আপনার আক্যাউন্ট ্তথ্য মনে পরেছেন গিয়েছেন
                         <Link to={"/login"}> লগিন করুন !</Link>
                       </p>
                       <button
