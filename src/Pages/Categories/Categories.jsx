@@ -2,138 +2,35 @@ import React from "react";
 import PostHeader from "../../Comps/PostHeader/PostHeader";
 import "./Categories.css";
 import { Link } from "react-router-dom";
+import CategoryFeature from "./CategoryFeature/CategoryFeature";
 const Categories = () => {
   return (
     <div className="container">
       <PostHeader title="বিশ্ব" />
       <div className="row">
-        <div className="col-lg-8">
-          <div className="row">
-            <div className="col-sm-8">
-              <div className="card rounded-0 border-0 ">
-                <div className="card-header p-0"></div>
-                <div className="card-body p-0">
-                  <div>
-                    <img
-                      className="img-fluid w-100"
-                      src="https://images.prothomalo.com/prothomalo-bangla%2F2024-01%2Fc19e7e20-e49c-466c-84b0-da8cfcc20495%2Fdeath.jpg?auto=format%2Ccompress&fmt=webp&format=webp&w=640&dpr=1.0"
-                      alt=""
-                    />
-                  </div>
-                  <div className="p-2 category-main-content">
-                    <h2 className="pt-2">
-                      একের পর এক গুন্ডাদের সঙ্গে লড়ছেন। এভাবেই আজ ‘ডার্ক
-                      জাস্টিস’
-                    </h2>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-sm-4">
-              <div className="card rounded-0 border-0 shadow-sm ">
-                <div className="card-header p-0"></div>
-                <div className="card-body p-0">
-                  <div>
-                    <img
-                      className="img-fluid"
-                      src="https://images.prothomalo.com/prothomalo-bangla%2F2024-02%2F90570750-f62e-45f0-bdfd-313544a0734d%2F_MG_8825.JPG?rect=0%2C0%2C1934%2C1289&auto=format%2Ccompress&fmt=webp&format=webp&w=300&dpr=1.0"
-                      alt=""
-                    />
-                  </div>
-                  <div className="p-2">
-                    <h5 className="pt-2">এ অন্য রকম অপূর্ব</h5>
-                    <p className="">
-                      একের পর এক গুন্ডাদের সঙ্গে লড়ছেন। এভাবেই আজ ‘ডার্ক
-                      জাস্টিস’ টেলিছবির ট্রেলারে দেখা দিলেন এই ছোট পর্দার
-                      জনপ্রিয় অভিনেতা।
-                    </p>
-                    <p className="text-info">৫ মিনিট আগে</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <hr />
-          <div className="row mb-5" style={{ marginTop: "-120px" }}>
-            <div className="col-lg-4">
-              <div className="card rounded-0 border-0 shadow-sm ">
-                <div className="card-header p-0"></div>
-                <div className="card-body p-0">
-                  <div>
-                    <img
-                      className="img-fluid"
-                      src="https://images.prothomalo.com/prothomalo-bangla%2F2024-02%2F90570750-f62e-45f0-bdfd-313544a0734d%2F_MG_8825.JPG?rect=0%2C0%2C1934%2C1289&auto=format%2Ccompress&fmt=webp&format=webp&w=300&dpr=1.0"
-                      alt=""
-                    />
-                  </div>
-                  <div className="p-2">
-                    <h5 className="pt-2">এ অন্য রকম অপূর্ব</h5>
-                    <p className="">
-                      একের পর এক গুন্ডাদের সঙ্গে লড়ছেন। এভাবেই আজ ‘ডার্ক
-                      জাস্টিস’ টেলিছবির ট্রেলারে দেখা দিলেন এই ছোট পর্দার
-                      জনপ্রিয় অভিনেতা।
-                    </p>
-                    <p className="text-info">৫ মিনিট আগে</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4">
-              <div className="card rounded-0 border-0 shadow-sm ">
-                <div className="card-header p-0"></div>
-                <div className="card-body p-0">
-                  <div>
-                    <img
-                      className="img-fluid"
-                      src="https://images.prothomalo.com/prothomalo-bangla%2F2024-02%2F90570750-f62e-45f0-bdfd-313544a0734d%2F_MG_8825.JPG?rect=0%2C0%2C1934%2C1289&auto=format%2Ccompress&fmt=webp&format=webp&w=300&dpr=1.0"
-                      alt=""
-                    />
-                  </div>
-                  <div className="p-2">
-                    <h5 className="pt-2">এ অন্য রকম অপূর্ব</h5>
-                    <p className="">
-                      একের পর এক গুন্ডাদের সঙ্গে লড়ছেন। এভাবেই আজ ‘ডার্ক
-                      জাস্টিস’ টেলিছবির ট্রেলারে দেখা দিলেন এই ছোট পর্দার
-                      জনপ্রিয় অভিনেতা।
-                    </p>
-                    <p className="text-info">৫ মিনিট আগে</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4">
-              <div className="card rounded-0 border-0 shadow-sm ">
-                <div className="card-header p-0"></div>
-                <div className="card-body p-0">
-                  <div>
-                    <img
-                      className="img-fluid"
-                      src="https://images.prothomalo.com/prothomalo-bangla%2F2024-02%2F90570750-f62e-45f0-bdfd-313544a0734d%2F_MG_8825.JPG?rect=0%2C0%2C1934%2C1289&auto=format%2Ccompress&fmt=webp&format=webp&w=300&dpr=1.0"
-                      alt=""
-                    />
-                  </div>
-                  <div className="p-2">
-                    <h5 className="pt-2">এ অন্য রকম অপূর্ব</h5>
-                    <p className="">
-                      একের পর এক গুন্ডাদের সঙ্গে লড়ছেন। এভাবেই আজ ‘ডার্ক
-                      জাস্টিস’ টেলিছবির ট্রেলারে দেখা দিলেন এই ছোট পর্দার
-                      জনপ্রিয় অভিনেতা।
-                    </p>
-                    <p className="text-info">৫ মিনিট আগে</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <CategoryFeature></CategoryFeature>
         <div className="col-lg-4">
           <div>
             <div>
               {/* Nav tabs */}
-              <ul className="nav nav-tabs" id="myTab" role="tablist">
+              <ul className="nav custom-nav-tabs" id="myTab" role="tablist">
                 <li className="nav-item" role="presentation">
                   <button
-                    className="nav-link active"
+                    className="nav-link custom-nav-link"
+                    id="new-news-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#new-news"
+                    type="button"
+                    role="tab"
+                    aria-controls="new-news"
+                    aria-selected="false"
+                  >
+                    নতুন সংবাদ
+                  </button>
+                </li>
+                <li className="nav-item" role="presentation">
+                  <button
+                    className="nav-link custom-nav-link active"
                     id="home-tab"
                     data-bs-toggle="tab"
                     data-bs-target="#home"
@@ -142,12 +39,12 @@ const Categories = () => {
                     aria-controls="home"
                     aria-selected="true"
                   >
-                    Home
+                    সর্বশেষ
                   </button>
                 </li>
                 <li className="nav-item" role="presentation">
                   <button
-                    className="nav-link"
+                    className="nav-link custom-nav-link"
                     id="profile-tab"
                     data-bs-toggle="tab"
                     data-bs-target="#profile"
@@ -156,21 +53,7 @@ const Categories = () => {
                     aria-controls="profile"
                     aria-selected="false"
                   >
-                    Profile
-                  </button>
-                </li>
-                <li className="nav-item" role="presentation">
-                  <button
-                    className="nav-link"
-                    id="messages-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#messages"
-                    type="button"
-                    role="tab"
-                    aria-controls="messages"
-                    aria-selected="false"
-                  >
-                    Messages
+                    সর্ববাধিক পঠিত
                   </button>
                 </li>
               </ul>
@@ -182,7 +65,35 @@ const Categories = () => {
                   role="tabpanel"
                   aria-labelledby="home-tab"
                 >
-                  home
+                  <div>
+                    <ul className="list-news">
+                      <li className="p-0">
+                        <img
+                          className="img-fluid"
+                          src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/1072b095700315.5ed7f84e468ba.png"
+                          alt=""
+                        />
+                      </li>
+                      <li>
+                        স্বাস্থ্য অধিদপ্তরের নতুন নির্দেশ, মাস্ক পরার জন্য সকলকে
+                        বাধ্য করা হবে
+                      </li>
+                      <li>
+                        করোনা ভাইরাসে আক্রান্ত হয়েও শিক্ষার্থীরা অনলাইন ক্লাস
+                        করতে পারছে
+                      </li>
+                      <li>
+                        প্রধানমন্ত্রীর প্রস্তাবনা, বাংলাদেশে দ্রুত শীঘ্রই
+                        কোভিড-১৯ টিকা প্রাপ্ত হবে
+                      </li>
+                      <li>
+                        বর্ষা ঋতু শুরু, বৃষ্টির সঙ্গে আবৃষ্টি হতে পারে, সতর্ক
+                        থাকুন
+                      </li>
+                      <li>খোকনে আটকে পড়া গাড়ি ছাড়াল অশোক নগরী</li>
+                      <li>রমজানে কাবায়ে শোক, হাজিরা নেই মুসলিম ধর্মকর্মীদের</li>
+                    </ul>
+                  </div>
                 </div>
                 <div
                   className="tab-pane"
@@ -190,22 +101,89 @@ const Categories = () => {
                   role="tabpanel"
                   aria-labelledby="profile-tab"
                 >
-                  profile
+                  <div>
+                    <ul className="list-news">
+                      <li>
+                        বিশ্ববিদ্যালয়ে অনলাইন ক্লাস শুরু হলো, শিক্ষার্থীরা খুব
+                        উত্সাহিত
+                      </li>
+                      <li>
+                        রমজানে মুসলিম সমাজের উপর নানা ধরনের চ্যালেঞ্জ, দোয়া ও
+                        আমলে মাসের মূল্যায়ন
+                      </li>
+                      <li>
+                        স্বাস্থ্য অধিদপ্তরের আদেশে রেমডেসিভির কম ব্যবহার নেতারা
+                        শান্তিপূর্ণভাবে সহজে জীবন কাটাতে পারছেন
+                      </li>
+                      <li>
+                        রমজানে মুসলিম সমাজের উপর নানা ধরনের চ্যালেঞ্জ, দোয়া ও
+                        আমলে মাসের মূল্যায়ন
+                      </li>
+                      <li>
+                        স্বাস্থ্য অধিদপ্তরের আদেশে রেমডেসিভির কম ব্যবহার নেতারা
+                        শান্তিপূর্ণভাবে সহজে জীবন কাটাতে পারছেন
+                      </li>
+                      <li>
+                        বিশ্ববিদ্যালয়ে অনলাইন ক্লাস শুরু হলো, শিক্ষার্থীরা খুব
+                        উত্সাহিত
+                      </li>
+                    </ul>
+                  </div>
                 </div>
                 <div
                   className="tab-pane"
-                  id="messages"
+                  id="new-news"
                   role="tabpanel"
-                  aria-labelledby="messages-tab"
+                  aria-labelledby="new-news-tab"
                 >
-                  messages
+                  <div>
+                    <ul className="list-news">
+                      <li>
+                        বিশ্ববিদ্যালয়ে অনলাইন ক্লাস শুরু হলো, শিক্ষার্থীরা খুব
+                        উত্সাহিত
+                      </li>
+                      <li>
+                        রমজানে মুসলিম সমাজের উপর নানা ধরনের চ্যালেঞ্জ, দোয়া ও
+                        আমলে মাসের মূল্যায়ন
+                      </li>
+                      <li>
+                        স্বাস্থ্য অধিদপ্তরের আদেশে রেমডেসিভির কম ব্যবহার নেতারা
+                        শান্তিপূর্ণভাবে সহজে জীবন কাটাতে পারছেন
+                      </li>
+                      <li>
+                        রমজানে মুসলিম সমাজের উপর নানা ধরনের চ্যালেঞ্জ, দোয়া ও
+                        আমলে মাসের মূল্যায়ন
+                      </li>
+                      <li>
+                        স্বাস্থ্য অধিদপ্তরের আদেশে রেমডেসিভির কম ব্যবহার নেতারা
+                        শান্তিপূর্ণভাবে সহজে জীবন কাটাতে পারছেন
+                      </li>
+                      <li>
+                        বিশ্ববিদ্যালয়ে অনলাইন ক্লাস শুরু হলো, শিক্ষার্থীরা খুব
+                        উত্সাহিত
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      {/* Addvertisement Box*/}
+      <div className="row align-content-center ">
+        <div className="col-lg-12">
+          <div className="d-flex justify-content-center ">
+            <img
+              src="https://www.adgully.com/banners/ezgif_com_gif_maker__1__183907.gif"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+      {/* Addvertisement Box ENd*/}
       <hr />
+
       <div className="row">
         <div className="col-lg-8 offset-2 mx-auto">
           <div className="row align-items-center py-3">
@@ -268,7 +246,40 @@ const Categories = () => {
               <div>
                 <img
                   className="img-fluid"
+                  src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/40155597907179.5ed03bb5d46d7.gif"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+          <div className="row align-items-center py-3">
+            <div className="col-sm-7">
+              <div>
+                <h4>ফটো ফিচার রাকিতিচ-নেইমারের ‘নতুন ঘর’ আর খাজার ‘ঝামেলা’</h4>
+                <p>
+                  ‘ঝামেলা’ নিয়ে আসছেন উসমান খাজা। জীবনের সফরের জন্য প্রস্তুতি
+                  নিতে বলছেন নাওমি ওসাকা। আর নতুন ঘরে উপভোগের মন্ত্র ইভান
+                  রাকিতিচের। সামাজিক যোগাযোগমাধ্যমে পাওয়া খেলার তারকাদের
+                </p>
+                <p>১৬ মিনিট আগে</p>
+              </div>
+            </div>
+            <div className="col-sm-5">
+              <div>
+                <img
+                  className="img-fluid"
                   src="https://images.prothomalo.com/prothomalo-bangla%2F2024-02%2F1777064e-52c8-4f22-8308-8234df6611cd%2FIvan_Rakitic.jpg?rect=0%2C0%2C1440%2C960&auto=format%2Ccompress&fmt=webp&format=webp&w=300&dpr=1.0"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="d-flex justify-content-center pb-4">
+                <img
+                  className="img-fluid"
+                  src="https://usercontent.one/wp/italbangla.net/wp-content/themes/newsportal/images/ad.gif"
                   alt=""
                 />
               </div>
@@ -312,40 +323,18 @@ const Categories = () => {
               <div>
                 <img
                   className="img-fluid"
-                  src="https://images.prothomalo.com/prothomalo-bangla%2F2024-02%2F1777064e-52c8-4f22-8308-8234df6611cd%2FIvan_Rakitic.jpg?rect=0%2C0%2C1440%2C960&auto=format%2Ccompress&fmt=webp&format=webp&w=300&dpr=1.0"
+                  src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/a3f99499001381.5efa1371aa6f6.gif"
                   alt=""
                 />
               </div>
             </div>
           </div>
-          <div className="row align-items-center py-3">
-            <div className="col-sm-7">
-              <div>
-                <h4>ফটো ফিচার রাকিতিচ-নেইমারের ‘নতুন ঘর’ আর খাজার ‘ঝামেলা’</h4>
-                <p>
-                  ‘ঝামেলা’ নিয়ে আসছেন উসমান খাজা। জীবনের সফরের জন্য প্রস্তুতি
-                  নিতে বলছেন নাওমি ওসাকা। আর নতুন ঘরে উপভোগের মন্ত্র ইভান
-                  রাকিতিচের। সামাজিক যোগাযোগমাধ্যমে পাওয়া খেলার তারকাদের
-                </p>
-                <p>১৬ মিনিট আগে</p>
-              </div>
-            </div>
-            <div className="col-sm-5">
-              <div>
-                <img
-                  className="img-fluid"
-                  src="https://images.prothomalo.com/prothomalo-bangla%2F2024-02%2F1777064e-52c8-4f22-8308-8234df6611cd%2FIvan_Rakitic.jpg?rect=0%2C0%2C1440%2C960&auto=format%2Ccompress&fmt=webp&format=webp&w=300&dpr=1.0"
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>
-          <div className="row pt-5">
-            <div className="col-lg-12 py-5">
-              <div className="d-flex justify-content-center align-items-center ">
+          <div className="row pt-3">
+            <div className="col-lg-12 pt-3 pb-5">
+              <div className="d-flex justify-content-start align-items-center ">
                 <Link className="text-center">
-                  <button className="rounded-pill btn btn-primary px-5">
-                    আরও
+                  <button className="submit-btn-one rounded-pill px-5">
+                    আরও দেখুন
                   </button>
                 </Link>
               </div>

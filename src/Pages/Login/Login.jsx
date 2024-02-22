@@ -23,7 +23,7 @@ const login = () => {
   };
   return (
     <div className="container" showHeader={false}>
-      <div className="row my-5">
+      <div className="row my-5 gx-0">
         <div className="col-lg-6">
           {/* <form noValidate validated={validated} onSubmit={handleSubmit}> */}
           <div className="card border-0 login-form bg-transparent ">
@@ -98,7 +98,7 @@ const login = () => {
                         <Form.Group
                           className="pb-3"
                           as={Col}
-                          md="6"
+                          md="12"
                           controlId="validationCustomUsername"
                         >
                           <Form.Label className="text-muted mb-0">
@@ -121,36 +121,11 @@ const login = () => {
                             </Form.Control.Feedback>
                           </InputGroup>
                         </Form.Group>
-
-                        <Form.Group
-                          className="pb-3"
-                          as={Col}
-                          md="6"
-                          controlId="validationCustomUsername"
-                        >
-                          <Form.Label className="text-muted mb-0">
-                            কনফার্ম পাসওয়ার্ড দিন।{" "}
-                            <span className="text-danger">*</span>
-                          </Form.Label>
-                          <InputGroup hasValidation>
-                            <InputGroup.Text id="inputGroupPrepend">
-                              <FaEye />
-                            </InputGroup.Text>
-                            <Form.Control
-                              className="rounded-0 bg-light border-0"
-                              type="password"
-                              aria-describedby="inputGroupPrepend"
-                              required
-                            />
-                            <Form.Control.Feedback type="invalid">
-                              দয়া করে সঠিক ইমেইল দিন।
-                            </Form.Control.Feedback>
-                          </InputGroup>
-                        </Form.Group>
                       </Row>
                       <p className="text-muted text-center">
-                        পাসওয়ার্ড ভুলে গিয়েছেন একাউন্ট এর 
-                        <Link to={"/forgot-password"}> রিকভার করুন !</Link>
+                        পাসওয়ার্ড ভুলে গিয়েছেন একাউন্ট এর
+                        {/* <Link to={"/forgot-password"}> রিকভার করুন !</Link> */}
+                        <Link to={"/user"}> রিকভার করুন !</Link>
                       </p>
                       <p className="text-muted text-center">
                         আপনি কী ! নতুন আপনার একাউন্ট নেই তাহলে--
@@ -172,9 +147,26 @@ const login = () => {
           {/* </form> */}
         </div>
         <div className="col-lg-6">
-            <div>
-                <img src="https://i.ibb.co/M5nTmk6/login-concept-illustration-114360-757-removebg-preview.png" alt="" />
+          <div className="card border-0 ">
+            <div className="card-body p-0">
+              <div className="sidebar-login">
+                <img
+                  className="login-sidebanner"
+                  src="https://allbanglanewspaper.net/widget/image_slider/images/2.jpg"
+                  alt=""
+                />
+                <div className="image-overlay-login">
+                  <div className="p-5">
+                    <h1 className="text-center">ফিরে আসার জন্য <br /> স্বাগত!</h1>
+                    <p className="text-center pt-3">
+                      যদি আপনার বিজ্ঞাপনের তথ্য প্রয়োজন হয়, তবে আপনার লগইনের পরে
+                      আপনার অ্যাকাউন্টে দেখানো হবে। অথবা <Link to={'/accounts'} className="text-danger bg-white px-2 rounded-1">এখানে ক্লিক করুন</Link> 
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
       </div>
     </div>

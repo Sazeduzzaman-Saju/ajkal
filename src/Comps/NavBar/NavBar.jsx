@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Assuming you are using React Router for navigation
+import { NavLink } from "react-router-dom"; // Assuming you are using React Router for navigation
 
 const NavBar = () => {
   const [activeLink, setActiveLink] = useState("");
@@ -32,18 +32,18 @@ const NavBar = () => {
               activeLink === link.text ? "active" : ""
             }`}
           >
-            <Link
+            <NavLink
               to={`/categories/${link.id}`}
               className="nav-link navlinks"
               onClick={() => handleLinkClick(link.text)}
             >
               {link.text}
-            </Link>
+            </NavLink>
           </li>
         ))}
         <li className="nav-item menu-border pe-3 ps-3 ">
           <div className="dropdown main-menu">
-            <a
+            <NavLink
               className="border-0 bg-transparent pt-2 text-white"
               type="button"
               id="dropdownMenuButton1"
@@ -52,26 +52,41 @@ const NavBar = () => {
               style={{ fontSize: "18px", textDecoration: "none" }}
             >
               আরও +
-            </a>
+            </NavLink>
             <ul
               className="dropdown-menu"
               style={{ borderBottom: "none" }}
               aria-labelledby="dropdownMenuButton1"
             >
               <li>
-                <a className="dropdown-item" href="#">
-                  Action
-                </a>
+                <NavLink className="dropdown-item" to={"/news/1"}>
+                  সর্বশেষ
+                </NavLink>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
-                  Another action
-                </a>
+                <NavLink className="dropdown-item" to={"/news/2"}>
+                  রাজনীতি
+                </NavLink>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
-                  Something else here
-                </a>
+                <NavLink className="dropdown-item" to={"/news/3"}>
+                  বাংলাদেশ
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className="dropdown-item" to={"/news/4"}>
+                  অপরাধ
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className="dropdown-item" to={"/news/5"}>
+                  বিশ্ব
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className="dropdown-item" to={"/news/6"}>
+                  বাণিজ্য
+                </NavLink>
               </li>
             </ul>
           </div>

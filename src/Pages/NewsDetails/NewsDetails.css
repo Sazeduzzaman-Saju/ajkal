@@ -4,7 +4,7 @@
   border-radius: 50%;
   height: 0.625rem;
   width: 1.25rem;
-  padding: 5px 10px 10px;
+    padding: 10px 13px 10px;
   font-size: 18px;
   text-align: center;
   color: var(--white);
@@ -17,7 +17,7 @@
   border-radius: 50%;
   height: 0.625rem;
   width: 1.25rem;
-  padding: 5px 10px 10px;
+    padding: 10px 13px 10px;
   font-size: 18px;
   text-align: center;
   color: var(--secondary);

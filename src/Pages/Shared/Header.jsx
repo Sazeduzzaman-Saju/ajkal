@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
 import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
@@ -7,8 +7,9 @@ import { FaYoutube } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import NavBar from "../../Comps/NavBar/NavBar";
 import { FaUser } from "react-icons/fa";
+import SearchBoxHeader from "../../Comps/SearchBoxHeader/SearchBoxHeader";
 
-function NavScrollExample() {
+function Header() {
   return (
     <>
       <div className="container-fluid">
@@ -39,38 +40,38 @@ function NavScrollExample() {
               <div className="top-bar p-2 d-flex justify-content-between align-items-center pt-1">
                 <ul className="mb-0">
                   <li className="">
-                    <Link to="\" className="">
-                      বাংলাদেশ
-                    </Link>
+                    <NavLink to="/video-news" className="">
+                      ভিডিও
+                    </NavLink>
                   </li>
                   <li className="">
-                    <Link to="\" className="">
+                    <NavLink to="/categories/2" className="">
                       শেষের পাতা
-                    </Link>
+                    </NavLink>
                   </li>
                   <li className="">
-                    <Link to="\" className="">
+                    <NavLink to="/categories/3" className="">
                       ই-পেপার
-                    </Link>
+                    </NavLink>
                   </li>
                 </ul>
                 <div>
                   <div className="social">
-                    <a href="#" className="">
+                    <NavLink href="#" className="">
                       <FaFacebookF />
-                    </a>
-                    <a href="#" className="">
+                    </NavLink>
+                    <NavLink href="#" className="">
                       <FaTwitter />
-                    </a>
-                    <a href="#" className="">
+                    </NavLink>
+                    <NavLink href="#" className="">
                       <FaYoutube />
-                    </a>
-                    <a href="#" className="">
+                    </NavLink>
+                    <NavLink href="#" className="">
                       <AiFillInstagram />
-                    </a>
-                    <Link to="/login" className="">
+                    </NavLink>
+                    <NavLink to="/login" className="">
                       <FaUser />
-                    </Link>
+                    </NavLink>
                   </div>
                 </div>
               </div>
@@ -96,7 +97,8 @@ function NavScrollExample() {
               <img src="https://i.ibb.co/6D35WjX/logo.png" alt="" />
             </Link>
           </div>
-          <div className="search-container">
+          {/* Search Box Start */}
+          {/* <div className="search-container">
             <form action="/search" method="get">
               <input
                 className="search expandright"
@@ -109,7 +111,11 @@ function NavScrollExample() {
                 <span className="mglass">&#9906;</span>
               </label>
             </form>
+          </div> */}
+          <div className="search-container">
+            <SearchBoxHeader />
           </div>
+          {/* Search Box End */}
         </div>
         <div className="container-fluid main-menu">
           <div className="container px-0 main-menu">
@@ -121,4 +127,4 @@ function NavScrollExample() {
   );
 }
 
-export default NavScrollExample;
+export default Header;

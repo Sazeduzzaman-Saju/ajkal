@@ -27,7 +27,8 @@ const Register = () => {
         <div className="col-lg-6">
           <div>
             <img
-              src="https://i.ibb.co/M5nTmk6/login-concept-illustration-114360-757-removebg-preview.png"
+              className="img-fluid"
+              src="https://i.ibb.co/QbMgZSm/Sign-up-rafiki.png"
               alt=""
             />
           </div>
@@ -110,7 +111,7 @@ const Register = () => {
                           controlId="validationCustomUsername"
                         >
                           <Form.Label className="text-muted mb-0">
-                            আপনার ফোন নাম্বার দিন।
+                            আপনার ফোন নাম্বার।
                           </Form.Label>
                           <InputGroup hasValidation>
                             <InputGroup.Text id="inputGroupPrepend">
@@ -119,6 +120,7 @@ const Register = () => {
                             <Form.Control
                               className="rounded-0 bg-light border-0"
                               type="number"
+                              required
                               placeholder="015*****"
                               aria-describedby="inputGroupPrepend"
                             />
@@ -224,7 +226,7 @@ const Register = () => {
                         </Form.Group>
                       </Row>
                       <p className="text-muted text-center">
-                        আপনার আক্যাউন্ট ্তথ্য মনে পরেছেন গিয়েছেন
+                        আপনার আক্যাউন্ট আগে থেকেই করা আছে ? তাহলে
                         <Link to={"/login"}> লগিন করুন !</Link>
                       </p>
                       <button

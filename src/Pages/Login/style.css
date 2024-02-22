@@ -133,3 +133,25 @@
   color: var(--white);
   border-radius: 0;
 }
+.login-sidebanner{
+  width: 650px;
+  height: 622px;
+}
+.image-overlay-login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #165588c7;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  height: 570px;
+  width: 600px;
+  border-radius: 5px;
+  color: white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  transform: translate(-50%, -104%);
+}
+.sidebar-login{
+  height: 0;
+}

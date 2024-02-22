@@ -44,9 +44,9 @@ const FeatureNews = () => {
   return (
     <div className="row">
       {featureData.map((data, index) => (
-        <div className="col-lg-3" key={index}>
-          <div className="card rounded-1 border-0 shadow-sm">
-            <Link to={`/news/${data.id}`}>
+        <div className="col-lg-3 " key={index}>
+          <Link to={`/news/${data.id}`}>
+            <div className="card rounded-1 border-0 shadow-sm">
               <div className="card-body">
                 <div className="d-flex justify-content-between  align-items-center ">
                   <p className="secondary-color">{data.country}</p>
@@ -64,8 +64,8 @@ const FeatureNews = () => {
                 className="card-img-top rounded-0"
                 alt="Card Image"
               />
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
       ))}
     </div>

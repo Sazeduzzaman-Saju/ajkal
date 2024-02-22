@@ -1,0 +1,41 @@
+.user-nav .nav-link.active,
+.user-nav .nav-link.show {
+  color: var(--white) !important;
+  background: var(--main);
+  padding-left: 25px;
+  color: var(--white);
+}
+.user-nav .nav-link,
+.user-nav .nav-link.show {
+  padding-left: 25px;
+}
+.icon-container {
+  background-color: var(--main);
+  color: var(--white);
+  text-align: center;
+  padding: 5px;
+  margin: 0;
+  width: 50px;
+  font-size: 28px;
+  border-radius: 3px;
+}
+.icon-container-amount {
+  color: var(--main);
+  text-align: center;
+  padding: 5px;
+  margin: 0;
+  width: 50px;
+  font-size: 28px;
+  border-radius: 3px;
+}
+
+.user-images {
+  width: 100%;
+  height: 450px;
+}
+.user-contact-icons {
+    background-color: var(--main);
+    border-radius: 50%;
+    padding: 5px 6px;
+    color: white;
+}

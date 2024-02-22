@@ -1,50 +1,44 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
+import "react-loading-skeleton/dist/skeleton.css";
+import Skeleton from "react-loading-skeleton";
 import "./Banner.css";
 import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 
-const bannerData = [
-  {
-    imageSrc: "../../../../public/image/banner1.jpg",
-    title: "বাংলা অক্ষরে লেখা জার্সি",
-    subtitle: '"পড়ে খেলবে বসুন্ধরা কিংস"',
-    content:
-      "‘পুলিশ ও ভোক্তা অধিদপ্তর দিয়ে বাজার নিয়ন্ত্রণ সম্ভব নয় । দেশে ‘জমিদারতন্ত্র’ কায়েম করেছে সরকার : রিজভী দেশে ‘জমিদারতন্ত্র’ কায়েম করেছে সরকার : রিজভী",
-  },
-  {
-    imageSrc: "../../../../public/image/banner2.jpg",
-    title: "উন্নয়নমূলক কাজ করতে গেলে ",
-    subtitle: '"দুর্নীতি হবেই : তাজুল ইসলাম"',
-    content:
-      "‘কারাগারে রাশিয়ার বিরোধী নেতা নাভালনির মৃত্য গত এক দশকে রাশিয়ার সবচেয়ে উল্লেখযোগ্য বিরোধী নেতা আলেক্সাই নাভালনি আর্কটিক সার্কেলের ভেতরে কারাগার",
-  },
-  {
-    imageSrc: "../../../../public/image/banner3.jpg",
-    title: "মেডিক্যালে চান্স পেলেও দুশ্চিন্তার ভাজ বাবার কপালে",
-    subtitle: '"ছেলে মেডিক্যালে চান্স পেলেও আনন্দের বদলে দুশ্চিন্তার ভাজ"',
-    content:
-      "‘মৌলভীবাজারে সিএনজির মুখোমুখি সংঘর্ষ, নিহত বড় জয়ে শেষ চারের লড়াই জমিয়ে তুলেছে খুলনা",
-  },
-  {
-    imageSrc: "../../../../public/image/banner4.jpg",
-    title: "মিয়ানমার থেকে কুমিল্লায় পাসপোর্ট করতে এসে",
-    subtitle: '"অচিরে দেশে গণতন্ত্র ও ভোটাধিকার পুনঃপ্রতিষ্ঠিত হবে"',
-    content:
-      "‘৫ উইকেটে ৩২৬ রানে দ্বিতীয় দিন শুরু করা ভারত ১১৯ রান যোগ করে পরের ৫ উইকেট হারায়। স্বাগতিকদের ৪৪৫ রানে ‘ডলার সংকটে বিকল্প বিনিময় ব্যবস্থা গড়ে তুলতে হবে’",
-  },
-];
-
 export default function Banner() {
+  const [bannerData, setBannerData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const progressCircle = useRef(null);
   const progressContent = useRef(null);
+
   const onAutoplayTimeLeft = (s, time, progress) => {
     progressCircle.current.style.setProperty("--progress", 1 - progress);
     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "../../../../public/Database/bannarData.json"
+        );
+        const data = response.data;
+        setBannerData(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <Swiper
@@ -58,25 +52,39 @@ export default function Banner() {
           clickable: true,
         }}
         navigation={false}
-        effect="fade" // Set the fade effect
+        effect="fade"
         modules={[Autoplay, Pagination, EffectFade]}
         onAutoplayTimeLeft={onAutoplayTimeLeft}
         className="mySwiper"
       >
-        {bannerData.map((slide, index) => (
-          <SwiperSlide key={index}>
-            <div className="showcase">
-              <img className="fixed-img" src={slide.imageSrc} alt="Picture" />
-              <div className="overlay">
-                <div className="container">
-                  <h2 className="mb-0 fw-bold ">{slide.title}</h2>
-                  <h1 className="mb-0 secondary-title">{slide.subtitle}</h1>
-                  <p className="w-50 pt-5">{slide.content}</p>
+        {loading ? (
+          // Render skeleton loader only when data is loading
+          <SwiperSlide>
+            <Skeleton height={385} />
+          </SwiperSlide>
+        ) : (
+          // Render actual data once it's loaded
+          bannerData.map((slide, index) => (
+            <SwiperSlide key={index}>
+              <div className="showcase">
+                <img
+                  className="fixed-img"
+                  src={slide.imageSrc || <Skeleton />}
+                  alt="Picture"
+                />
+                <div className="overlay">
+                  <div className="container">
+                    <h2 className="mb-0 fw-bold ">{slide.title || <Skeleton />}</h2>
+                    <h1 className="mb-0 secondary-title">
+                      {slide.subtitle || <Skeleton />}
+                    </h1>
+                    <p className="w-50 pt-5">{slide.content || <Skeleton />}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
+            </SwiperSlide>
+          ))
+        )}
 
         <div className="autoplay-progress text-white" slot="container-end">
           <svg viewBox="0 0 48 48" ref={progressCircle} stroke="#ffffff">
