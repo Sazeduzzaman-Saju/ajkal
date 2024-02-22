@@ -22,6 +22,7 @@ import UserDasboard from "../Pages/UserAccounts/UserDashboard/UserDasboard";
 import UserPost from "../Pages/UserAccounts/UserPost/UserPost";
 import UserPostStatus from "../Pages/UserAccounts/UserPostStatus/UserPostStatus";
 import NewsVideos from "../Pages/NewsVideos/NewsVideos";
+import EPaper from "../Pages/EPaper/EPaper";
 
 const router = createBrowserRouter([
   {
@@ -80,6 +81,10 @@ const router = createBrowserRouter([
       {
         path: "/search",
         element: <Search />,
+      },
+      {
+        path: "/epaper",
+        element: <EPaper />,
       },
     ],
   },

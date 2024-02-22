@@ -50,7 +50,7 @@ function Header() {
                     </NavLink>
                   </li>
                   <li className="">
-                    <NavLink to="/categories/3" className="">
+                    <NavLink to="/epaper" className="">
                       ই-পেপার
                     </NavLink>
                   </li>
