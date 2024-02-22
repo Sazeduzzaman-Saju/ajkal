@@ -36,10 +36,10 @@ const NewsSectionOne = () => {
             <a href="#" className="text-muted" key={index}>
               <div className="card border-0 shadow-sm mb-2">
                 <div className="card-body p-0">
-                  <div className="d-flex align-items-center">
+                  <div className="d-flex align-items-center image-container">
                     <div>
                       <img
-                        className="img-fluid rouned-2 news-ft-section-imge"
+                        className="img-fluid rouned-2 news-ft-section-imge zoom-image"
                         src={data.imageLink}
                         alt=""
                       />
@@ -58,10 +58,10 @@ const NewsSectionOne = () => {
             <a href="#" className="text-muted" key={index}>
               <div className="card border-0 shadow-sm mb-2">
                 <div className="card-body p-0">
-                  <div className="d-flex align-items-center">
+                  <div className="d-flex align-items-center image-container">
                     <div>
                       <img
-                        className="img-fluid rouned-2 news-ft-section-imge"
+                        className="img-fluid rouned-2 news-ft-section-imge zoom-image"
                         src={data.imageLink}
                         width={150}
                         height={80}
@@ -79,9 +79,9 @@ const NewsSectionOne = () => {
         </div>
         <div className="col-lg-6">
           <div className="card border-0">
-            <div className="card-body p-0">
+            <div className="card-body p-0 image-container">
               <img
-                className="w-100 rounded-2"
+                className="w-100 rounded-2 zoom-image"
                 src="../../../../public/image/Features/feature3.png"
                 alt=""
               />

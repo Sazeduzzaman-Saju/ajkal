@@ -48,9 +48,9 @@ const NewsSectionThree = () => {
         <div className="col-lg-6">
           <a href="">
             <div className="card border-0">
-              <div className="card-body p-0">
+              <div className="card-body p-0 image-container">
                 <img
-                  className="w-100 rounded-2"
+                  className="w-100 rounded-2 zoom-image"
                   src="../../../../public/image/Features/feature3.png"
                   alt=""
                 />

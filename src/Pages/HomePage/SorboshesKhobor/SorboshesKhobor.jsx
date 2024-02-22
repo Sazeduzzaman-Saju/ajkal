@@ -138,9 +138,9 @@ const SorboshesKhobor = () => {
               <a href="">
                 <div className="card mb-1 border-0 shadow-sm ">
                   <div className="card-body p-0 d-flex align-items-center">
-                    <div className="pothito-img w-25 h-100">
+                    <div className="pothito-img w-25 h-100 ">
                       <img
-                        className="img-fluid rounded-1"
+                        className="img-fluid rounded-1 "
                         src={data.postImage}
                         alt=""
                       />
