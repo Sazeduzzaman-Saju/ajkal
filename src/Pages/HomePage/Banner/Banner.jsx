@@ -69,16 +69,16 @@ export default function Banner() {
               <div className="showcase">
                 <img
                   className="fixed-img"
-                  src={slide.imageSrc || <Skeleton />}
+                  src={slide.imageSrc}
                   alt="Picture"
                 />
                 <div className="overlay">
                   <div className="container">
-                    <h2 className="mb-0 fw-bold ">{slide.title || <Skeleton />}</h2>
-                    <h1 className="mb-0 secondary-title">
-                      {slide.subtitle || <Skeleton />}
+                    <h1 className="mb-0 fw-bold ">
+                      {slide.title}
                     </h1>
-                    <p className="w-50 pt-5">{slide.content || <Skeleton />}</p>
+                    <h2 className="mb-0">{slide.subtitle}</h2>
+                    <p className="w-50 pt-5">{slide.content}</p>
                   </div>
                 </div>
               </div>
@@ -87,7 +87,7 @@ export default function Banner() {
         )}
 
         <div className="autoplay-progress text-white" slot="container-end">
-          <svg viewBox="0 0 48 48" ref={progressCircle} stroke="#ffffff">
+          <svg viewBox="0 0 60 60" ref={progressCircle} stroke="#ffffff">
             <circle cx="24" cy="24" r="30"></circle>
           </svg>
           <span ref={progressContent}></span>

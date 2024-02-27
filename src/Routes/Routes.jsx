@@ -88,6 +88,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+  // User Route
   {
     path: "/user",
     element: <UserLaout />,
@@ -95,35 +96,35 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/user",
-        element: <UserDasboard/>
+        element: <UserDasboard />,
       },
       {
         path: "/user/dahboard",
-        element: <UserDasboard/>
+        element: <UserDasboard />,
       },
       {
         path: "/user/my-profile",
-        element: <UserAccounts/>
+        element: <UserAccounts />,
       },
       {
         path: "/user/my-comments",
-        element: <UserComments/>
+        element: <UserComments />,
       },
       {
         path: "/user/my-post",
-        element: <UserPost/>
+        element: <UserPost />,
       },
       {
         path: "/user/my-advertisement",
-        element: <UserAdvertisement/>
+        element: <UserAdvertisement />,
       },
       {
         path: "/user/my-save-post",
-        element: <UserSavePost/>
+        element: <UserSavePost />,
       },
       {
         path: "/user/post-status",
-        element: <UserPostStatus/>
+        element: <UserPostStatus />,
       },
     ],
   },

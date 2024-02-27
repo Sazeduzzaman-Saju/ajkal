@@ -21,7 +21,7 @@
     object-fit: cover;
   }
 
-  .overlay {
+  .overlay-recents {
     position: absolute;
     bottom: -100%;
     left: 0;
@@ -36,16 +36,16 @@
     transition: bottom 0.3s;
   }
 
-  .card-news:hover .overlay {
+  .card-news:hover .overlay-recents {
     bottom: 0;
   }
 
-  .overlay h2 {
+  .overlay-recents h2 {
     margin: 0;
     font-size: 1.5rem;
   }
 
-  .overlay p {
+  .overlay-recents p {
     margin: 8px 0 0;
     font-size: 1rem;
   }

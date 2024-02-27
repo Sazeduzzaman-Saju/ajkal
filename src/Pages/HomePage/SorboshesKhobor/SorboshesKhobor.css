@@ -2,6 +2,8 @@
   width: 270px;
   height: 232px;
   display: none;
+  visibility: hidden;
+  opacity: 0;
   transition: all 0.5s ease-in;
 }
 .card-body-1 {
@@ -17,9 +19,15 @@
 
 .card:hover .card-body-2 {
   display: block;
-  transition: all 0.5s ease-in;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease-in, visibility 0.5s ease-in;
 }
 .sorboshes-news-image {
   width: 270px;
   height: 232px;
+  border-radius: 5px;
+}
+.hover-card-box{
+  /* height: 238px; */
 }

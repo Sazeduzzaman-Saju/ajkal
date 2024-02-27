@@ -16,20 +16,6 @@ const Categories = () => {
               <ul className="nav custom-nav-tabs" id="myTab" role="tablist">
                 <li className="nav-item" role="presentation">
                   <button
-                    className="nav-link custom-nav-link"
-                    id="new-news-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#new-news"
-                    type="button"
-                    role="tab"
-                    aria-controls="new-news"
-                    aria-selected="false"
-                  >
-                    নতুন সংবাদ
-                  </button>
-                </li>
-                <li className="nav-item" role="presentation">
-                  <button
                     className="nav-link custom-nav-link active"
                     id="home-tab"
                     data-bs-toggle="tab"
@@ -162,53 +148,7 @@ const Categories = () => {
                     </ul>
                   </div>
                 </div>
-                <div
-                  className="tab-pane"
-                  id="new-news"
-                  role="tabpanel"
-                  aria-labelledby="new-news-tab"
-                >
-                  <div>
-                  <ul className="list-news">
-                      <li>
-                        <Link to={"/news/2"} className="fs-5 text-muted">
-                          বিশ্ববিদ্যালয়ে অনলাইন ক্লাস শুরু হলো, শিক্ষার্থীরা
-                          খুব উত্সাহিত
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={"/news/2"} className="fs-5 text-muted">
-                          রমজানে মুসলিম সমাজের উপর নানা ধরনের চ্যালেঞ্জ, দোয়া ও
-                          আমলে মাসের মূল্যায়ন
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={"/news/2"} className="fs-5 text-muted">
-                          স্বাস্থ্য অধিদপ্তরের আদেশে রেমডেসিভির কম ব্যবহার
-                          নেতারা শান্তিপূর্ণভাবে সহজে জীবন কাটাতে পারছেন
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={"/news/2"} className="fs-5 text-muted">
-                          রমজানে মুসলিম সমাজের উপর নানা ধরনের চ্যালেঞ্জ, দোয়া ও
-                          আমলে মাসের মূল্যায়ন
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={"/news/2"} className="fs-5 text-muted">
-                          স্বাস্থ্য অধিদপ্তরের আদেশে রেমডেসিভির কম ব্যবহার
-                          নেতারা শান্তিপূর্ণভাবে সহজে জীবন কাটাতে পারছেন
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={"/news/2"} className="fs-5 text-muted">
-                          বিশ্ববিদ্যালয়ে অনলাইন ক্লাস শুরু হলো, শিক্ষার্থীরা
-                          খুব উত্সাহিত
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+               
               </div>
             </div>
           </div>

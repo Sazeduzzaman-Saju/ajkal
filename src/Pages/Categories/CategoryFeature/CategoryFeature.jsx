@@ -6,7 +6,7 @@ const CategoryFeature = () => {
     <div className="col-lg-8">
       <div className="row">
         <div className="col-sm-8">
-          <CategoryNewsSlider />
+          <CategoryNewsSlider/>
         </div>
         <div className="col-sm-4">
           <div className="card rounded-0 border-0 shadow-sm ">
@@ -30,9 +30,6 @@ const CategoryFeature = () => {
             </div>
           </div>
         </div>
-      </div>
-      <hr />
-      <div className="row mb-5">
         <div className="col-lg-4">
           <div className="card rounded-0 border-0 shadow-sm ">
             <div className="card-header p-0"></div>

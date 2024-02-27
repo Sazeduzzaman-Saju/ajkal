@@ -58,10 +58,12 @@
   letter-spacing: 0;
   font-variant: initial;
   line-height: 1;
-  background: white;
-  font-size: 18px;
-  padding: 10px 15px;
+  color: white;
+  background: #165588;
+  font-size: 16px;
+  padding: 10px 15px 10px;
   border-radius: 50%;
+  text-align: center;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .custom-nav-link {

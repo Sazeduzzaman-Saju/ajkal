@@ -36,20 +36,12 @@ const VideoNews = () => {
   return (
     <div>
       <PostHeader title="ভিডিও সংবাদ" />
-      <div className="row">
+      <div className="row gx-0">
         <div className="col-lg-6">
           <a href="">
             <div className="card border-0">
               <div className="card-body p-0">
-                <iframe
-                  className="mb-0 pb-0 rounded-1 shadow-sm "
-                  width="100%"
-                  height="358"
-                  src="https://www.youtube.com/embed/FnO61gV6O_g?si=s1-YrwJfn5b1R9xb&autoplay=1&mute=1"
-                  title="YouTube Video"
-                  frameBorder="0"
-                  allowFullScreen
-                ></iframe>
+                <img className="img-fluid" src="https://www.niemanlab.org/images/harlandaily.png" alt="" />
               </div>
             </div>
           </a>
@@ -60,15 +52,7 @@ const VideoNews = () => {
               <a href="" key={index} className="text-muted">
                 <div className="d-flex align-items-center mb-3">
                   <div>
-                    <iframe
-                      className="mb-0 pb-0 rounded-1 shadow-sm"
-                      width="128"
-                      height="72"
-                      src={videoLink}
-                      title="YouTube Video"
-                      frameBorder="0"
-                      allowFullScreen
-                    ></iframe>
+                  <img className="img-fluid" width={230} src="https://s7d2.scene7.com/is/image/TWCNews/post-star-newspaper_09282022" alt="" />
                   </div>
                   <div className="ps-3">
                     <h5 className="mb-1 main-color">{videTitle}</h5>

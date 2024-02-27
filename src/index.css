@@ -83,16 +83,3 @@ h6 {
   outline: 0 !important;
   box-shadow: none !important;
 }
-
-.image-container {
-  position: relative;
-  overflow: hidden;
-}
-
-.zoom-image {
-  transition: transform 0.3s ease;
-}
-
-.image-container:hover .zoom-image {
-  transform: scale(1.1);
-}

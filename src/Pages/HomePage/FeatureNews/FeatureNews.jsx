@@ -1,6 +1,7 @@
 import React from "react";
 import "./FeatureNews.css";
 import { Link } from "react-router-dom";
+import Skeleton from "react-loading-skeleton";
 
 const featureData = [
   {
@@ -49,14 +50,14 @@ const FeatureNews = () => {
             <div className="card rounded-1 border-0 shadow-sm">
               <div className="card-body">
                 <div className="d-flex justify-content-between  align-items-center ">
-                  <p className="secondary-color">{data.country}</p>
-                  <p className="badge bg-light text-black">{data.time}</p>
+                  <p className="secondary-color">{data.country || <Skeleton></Skeleton>}</p>
+                  <p className="badge bg-light text-black">{data.time || <Skeleton></Skeleton>}</p>
                 </div>
-                <h5 className="main-color">{data.featureTite}</h5>
+                <h5 className="main-color">{data.featureTite || <Skeleton></Skeleton>}</h5>
                 <p className="card-text text-muted">
                   {data?.shortDescrioption?.length > 83
                     ? `${data.shortDescrioption.slice(0, 83)}...`
-                    : data?.shortDescrioption}
+                    : data?.shortDescrioption || <Skeleton></Skeleton>}
                 </p>
               </div>
               <img
