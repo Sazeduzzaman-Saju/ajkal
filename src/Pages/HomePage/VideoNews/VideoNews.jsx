@@ -41,7 +41,7 @@ const VideoNews = () => {
           <a href="">
             <div className="card border-0">
               <div className="card-body p-0">
-                <img className="img-fluid" src="https://www.niemanlab.org/images/harlandaily.png" alt="" />
+                <img className="img-fluid rounded-2" src="https://www.niemanlab.org/images/harlandaily.png" alt="" />
               </div>
             </div>
           </a>
@@ -51,8 +51,8 @@ const VideoNews = () => {
             ({ videoLink, videTitle, VideoDescription }, index) => (
               <a href="" key={index} className="text-muted">
                 <div className="d-flex align-items-center mb-3">
-                  <div>
-                  <img className="img-fluid" width={230} src="https://s7d2.scene7.com/is/image/TWCNews/post-star-newspaper_09282022" alt="" />
+                  <div className="rounded-1">
+                  <img className="img-fluid rounded-2" width={230} src="https://s7d2.scene7.com/is/image/TWCNews/post-star-newspaper_09282022" alt="" />
                   </div>
                   <div className="ps-3">
                     <h5 className="mb-1 main-color">{videTitle}</h5>

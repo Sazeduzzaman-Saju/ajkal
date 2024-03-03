@@ -1,25 +1,30 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+// NewsCategory.jsx
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const NewsCategory = ({ categories }) => {
+  console.log(categories);
+
+  if (!categories || !categories.length) {
+    return <div>Loading...</div>; // or render an appropriate loading state
+  }
+
   return (
     <div>
-      {categories.length > 0 && (
-        <ul className="list-unstyled d-flex flex-wrap justify-content-center mt-1">
-          {categories.map((category) => (
-            <li key={category.userId}>
-              <Link
-                to={`/categories/${category.id}`}
-                type="button"
-                className="btn btn-outline-primary border-white me-2 mb-2 rounded-0 text-white footer-ct-btn"
-              >
-                {category.text}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul className="list-unstyled d-flex flex-wrap justify-content-center mt-1">
+        {categories.map((category) => (
+          <li key={category.id}>
+            <Link
+              to={`/categories/${category.id}`}
+              type="button"
+              className="btn btn-outline-primary border-white me-2 mb-2 rounded-0 text-white footer-ct-btn"
+            >
+              {category.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
@@ -27,8 +32,8 @@ const NewsCategory = ({ categories }) => {
 NewsCategory.propTypes = {
   categories: PropTypes.arrayOf(
     PropTypes.shape({
-      userId: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
       // Add more prop validations if needed
     })
   ).isRequired,

@@ -9,21 +9,22 @@ import NewsCategory from "../../Comps/NewsCategory/NewsCategory";
 import axios from "axios";
 
 const Footer = () => {
-  const [categories, setCategories] = useState([]);
+  const [categoriesData, setCategoriesData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/Database/categoryData.json");
-        setCategories(response.data.slice(0, 10));
+        const response = await axios.get('https://news.goexpressus.com/news-category');
+        setCategoriesData(response.data);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
       }
     };
 
     fetchData();
   }, []);
 
+  // console.log(categoriesData.data)
   return (
     <div className="container-fluid p-0">
       <div className="container-fluid main_footer py-5">
@@ -31,7 +32,7 @@ const Footer = () => {
           <div className="row ">
             <div className="col-lg-12 ">
               {/* Footer Category */}
-              <NewsCategory categories={categories} key={categories.userId} />
+              <NewsCategory categories={categoriesData.data} />
             </div>
           </div>
           <div className="row footer-brand d-flex align-items-center">
@@ -69,30 +70,32 @@ const Footer = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="text-center py-4">
+                <p className="fs-3 text-white mb-0">
+                  {" "}
+                  <strong>সম্পাদক ও প্রকাশক : </strong>{" "}
+                  <span className="">শাহ্‌ নেওয়াজ</span>
+                </p>
                 <p className="fs-3 text-white ">
                   {" "}
-                  <strong>সম্পাদক : </strong>{" "}
-                  <span className="">জুয়েল মাজহার।</span>
+                  <strong>প্রধান সম্পাদক : </strong>{" "}
+                  <span className="">মনজুর আহমেদ</span>
                 </p>
                 <p className="text-white">
-                  ফোন: <span>+৮৮০ ২ ৮৪৩ ২১৮১, +৮৮০ ২ ৮৪৩ ২১৮২</span> আই.পি. ফোন:{" "}
-                  <span>+৮৮০ ৯৬১ ২১২</span>
+                  ফোন: <span>+1646 267-7751</span> ফ্যাক্স:
+                  <span>718-865-9130</span>
                   <br />
-                  <span> ৩১৩১</span> নিউজ রুম মোবাইল:{" "}
-                  <span>+৮৮০ ১৭২ ৯০৭ ৬৯৯৬</span>, <span>+৮৮০ ১৭২ ৯০৭ ৬৯৯৯</span>
-                  ফ্যাক্স: <span>+৮৮০ ২ ৮৪৩ ২৩৪৬</span>
+                  <span> 71-16 35th Ave, Jackson Heights,NY 11372, USA.</span>
                 </p>
                 <p className="text-white mb-0">
-                  ইমেইল: <span>news@banglanews24.com</span> সম্পাদক ইমেইল:{" "}
-                  <span>editor@banglanews24.com</span>
+                  ইমেইল: <span>ajkalnews@gmail.com</span> সম্পাদক ইমেইল:{" "}
+                  <span>editor@ajkalusa.com</span>
                 </p>
                 <p className="text-white mb-0">
-                  Marketing Department: +880 961 212 3131 Extension: 3039
-                  E-mail: marketing@banglanews24.com
+                  Marketing Department: +880 961 212 3131 ।।
+                  E-mail: marketing@ajkalusa.com
                 </p>
                 <p className="text-white">
-                  কপিরাইট © 2006-2024 banglanews24.com | একটি ইস্ট-ওয়েস্ট মিডিয়া
-                  গ্রুপের (ইডব্লিউএমজিএল) প্রতিষ্ঠান
+                  কপিরাইট © ২০২৪ সাপ্তাহিক আজকাল কর্তৃক সর্বসত্ব ® সংরক্ষিত
                 </p>
               </div>
               <div>
