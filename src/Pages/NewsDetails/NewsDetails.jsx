@@ -32,7 +32,7 @@ const NewsDetails = () => {
             জড়িত থাকতে পারেন বলে সন্দেহ করা হচ্ছে।
           </p>
           <div>
-            <img src="../../../public/image/SingleNews/news1.png" alt="" />
+            <img src="http://ajkalusa.nawazgroup.us/img/SingleNews/news1.png" alt="" />
             <p className="pt-2">
               পণ্য না কিনেও প্রায় কোটি টাকার বিল পরিশোধ করেছে রেলওয়ে। ফাইল ছবি
             </p>
@@ -97,14 +97,22 @@ const NewsDetails = () => {
           </div>
         </div>
         <div className="col-lg-4">
+          
           <div style={{ borderBottom: "2px solid var(--secondary)" }}>
             <h5 className="text-muted main-color">সর্বাধিক পঠিত</h5>
+          </div>
+          <div className="d-flex justify-content-center align-items-center pt-4 ">
+            <img
+              src="https://i.ibb.co/j39LZmN/Give-Advertisement.jpg"
+              alt=""
+              className="img-fluid"
+            />
           </div>
           <div>
             <div className="d-flex align-items-center py-3">
               <div>
                 <Link to="/">
-                  <img src="../../../public/image/Short/1.png" alt="" />
+                  <img src="http://ajkalusa.nawazgroup.us/img/Short/1.png" alt="" />
                 </Link>
               </div>
               <div className="ps-3">
@@ -115,7 +123,7 @@ const NewsDetails = () => {
             <div className="d-flex align-items-center py-3">
               <div>
                 <Link to="/">
-                  <img src="../../../public/image/Short/1.png" alt="" />
+                  <img src="http://ajkalusa.nawazgroup.us/img/Short/1.png" alt="" />
                 </Link>
               </div>
               <div className="ps-3">
@@ -126,7 +134,7 @@ const NewsDetails = () => {
             <div className="d-flex align-items-center py-3">
               <div>
                 <Link to="/">
-                  <img src="../../../public/image/Short/1.png" alt="" />
+                  <img src="http://ajkalusa.nawazgroup.us/img/Short/1.png" alt="" />
                 </Link>
               </div>
               <div className="ps-3">
@@ -137,7 +145,7 @@ const NewsDetails = () => {
             <div className="d-flex align-items-center py-3">
               <div>
                 <Link to="/">
-                  <img src="../../../public/image/Short/1.png" alt="" />
+                  <img src="http://ajkalusa.nawazgroup.us/img/Short/1.png" alt="" />
                 </Link>
               </div>
               <div className="ps-3">
@@ -148,7 +156,7 @@ const NewsDetails = () => {
             <div className="d-flex align-items-center py-3">
               <div>
                 <Link to="/">
-                  <img src="../../../public/image/Short/1.png" alt="" />
+                  <img src="http://ajkalusa.nawazgroup.us/img/Short/1.png" alt="" />
                 </Link>
               </div>
               <div className="ps-3">
@@ -159,7 +167,7 @@ const NewsDetails = () => {
             <div className="d-flex align-items-center py-3">
               <div>
                 <Link to="/">
-                  <img src="../../../public/image/Short/1.png" alt="" />
+                  <img src="http://ajkalusa.nawazgroup.us/img/Short/1.png" alt="" />
                 </Link>
               </div>
               <div className="ps-3">
@@ -168,12 +176,14 @@ const NewsDetails = () => {
               </div>
             </div>
           </div>
-          <div className="d-flex justify-content-center align-items-center pt-4">
+          <div className="d-flex justify-content-center align-items-center pt-4 ">
             <img
-              src="https://i.ibb.co/Br4gfHq/6875079381696287571.png"
+              src="https://i.ibb.co/CHz52fX/goldenagehome.jpg"
               alt=""
+              className="img-fluid"
             />
           </div>
+          
         </div>
       </div>
       <div className="pt-5">

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./Footer.css";
 import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
@@ -6,25 +6,24 @@ import { FaYoutube } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import NewsCategory from "../../Comps/NewsCategory/NewsCategory";
-import axios from "axios";
 
 const Footer = () => {
-  const [categoriesData, setCategoriesData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('https://news.goexpressus.com/news-category');
-        setCategoriesData(response.data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
+  const categoriesData = [
+    { id: 1, name: "যুক্তরাষ্ট্র", link: "/" },
+    { id: 2, name: "বাংলাদেশ", link: "/" },
+    { id: 1, name: "নিউইয়র্ক", link: "/" },
+    { id: 2, name: "সারাবিশ্ব", link: "/" },
+    { id: 1, name: "প্রবাস", link: "/" },
+    { id: 2, name: "বিনোদন", link: "/" },
+    { id: 1, name: "খেলার মাঠ", link: "/" },
+    { id: 2, name: "স্বাস্থ্য", link: "/" },
+    { id: 1, name: "ধর্ম", link: "/" },
+    { id: 2, name: "সংকলন", link: "/" }
+    // Add more categories as needed
+  ];
 
-    fetchData();
-  }, []);
-
-  // console.log(categoriesData.data)
+  console.log(categoriesData)
   return (
     <div className="container-fluid p-0">
       <div className="container-fluid main_footer py-5">
@@ -32,18 +31,16 @@ const Footer = () => {
           <div className="row ">
             <div className="col-lg-12 ">
               {/* Footer Category */}
-              <NewsCategory categories={categoriesData.data} />
+              <NewsCategory categories={categoriesData} />
             </div>
           </div>
           <div className="row footer-brand d-flex align-items-center">
             <div className="col-lg-4 p-3 text-lg-start text-center">
               <div>
-                <Link className="navbar-brand" to="/">
-                  <img src="https://i.ibb.co/6D35WjX/logo.png" alt="" />
+                <Link className="" to="/">
+                  <img src="https://i.ibb.co/LJtVLvQ/logo-white.png" className="img-fluid" alt="" width={250} />
                 </Link>
-                <p className="pb-0 pt-3 mb-0 text-white">
-                  সাপ্তাহিক পত্রিকা ইউএসএ।
-                </p>
+                
               </div>
             </div>
             <div className="col-lg-4 p-3"></div>
@@ -67,10 +64,10 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="row">
-            <div className="col-lg-12">
-              <div className="text-center py-4">
-                <p className="fs-3 text-white mb-0">
+          <div className="row mt-5">
+            <div className="col-lg-6">
+              <div>
+              <p className="fs-3 text-white mb-0">
                   {" "}
                   <strong>সম্পাদক ও প্রকাশক : </strong>{" "}
                   <span className="">শাহ্‌ নেওয়াজ</span>
@@ -80,7 +77,12 @@ const Footer = () => {
                   <strong>প্রধান সম্পাদক : </strong>{" "}
                   <span className="">মনজুর আহমেদ</span>
                 </p>
-                <p className="text-white">
+              </div>
+            </div>
+            <div className="col-lg-6">
+            <div className="text-end py-4">
+                
+                <p className="text-white mb-0 ">
                   ফোন: <span>+1646 267-7751</span> ফ্যাক্স:
                   <span>718-865-9130</span>
                   <br />
@@ -90,15 +92,12 @@ const Footer = () => {
                   ইমেইল: <span>ajkalnews@gmail.com</span> সম্পাদক ইমেইল:{" "}
                   <span>editor@ajkalusa.com</span>
                 </p>
-                <p className="text-white mb-0">
-                  Marketing Department: +880 961 212 3131 ।।
-                  E-mail: marketing@ajkalusa.com
-                </p>
-                <p className="text-white">
-                  কপিরাইট © ২০২৪ সাপ্তাহিক আজকাল কর্তৃক সর্বসত্ব ® সংরক্ষিত
-                </p>
+                
               </div>
-              <div>
+            </div>
+            <div className="col-lg-12">
+              
+              <div className="pt-4">
                 <ul
                   className="navbar-nav flex-lg-row  flex-column d-flex justify-content-center  align-items-center"
                   style={{ display: "flex !important" }}
@@ -129,6 +128,9 @@ const Footer = () => {
                     </Link>
                   </li>
                 </ul>
+                <p className="text-white pt-2 text-center ">
+                  কপিরাইট © ২০২৪ সাপ্তাহিক আজকাল কর্তৃক সর্বসত্ব ® সংরক্ষিত
+                </p>
               </div>
             </div>
           </div>

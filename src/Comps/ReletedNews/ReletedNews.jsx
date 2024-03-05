@@ -34,7 +34,7 @@ const RelatedNews = () => {
       description:
         "একটি পৃষ্ঠভূমি শহর, যা শান্তিময় আলো এবং জীবনের উজ্জ্বল জীবনে পূর্ণ।",
       timestamp: "10 মিনিট আগে",
-      imageUrl: "https://example.com/another-city-lights.jpeg",
+      imageUrl: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/photo-1429043794791-eb8f26f44081.jpeg",
     },
     {
       id: 3,
@@ -44,7 +44,7 @@ const RelatedNews = () => {
       description:
         "একটি পৃষ্ঠভূমি শহর, যা শান্তিময় আলো এবং জীবনের উজ্জ্বল জীবনে পূর্ণ।",
       timestamp: "10 মিনিট আগে",
-      imageUrl: "https://example.com/another-city-lights.jpeg",
+      imageUrl: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/photo-1429043794791-eb8f26f44081.jpeg",
     },
     {
       id: 4,
@@ -54,7 +54,7 @@ const RelatedNews = () => {
       description:
         "একটি পৃষ্ঠভূমি শহর, যা শান্তিময় আলো এবং জীবনের উজ্জ্বল জীবনে পূর্ণ।",
       timestamp: "10 মিনিট আগে",
-      imageUrl: "https://example.com/another-city-lights.jpeg",
+      imageUrl: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/photo-1429043794791-eb8f26f44081.jpeg",
     },
   ];
 

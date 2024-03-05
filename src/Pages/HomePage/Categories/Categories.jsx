@@ -3,33 +3,16 @@ import "./Categories.css";
 import { Link } from "react-router-dom";
 
 const categoriesData = [
-  { id: 1, name: "পাকিস্তানের", link: "/" },
-  { id: 2, name: "ভারতের", link: "/" },
-  { id: 1, name: "পাকিস্তানের", link: "/" },
-  { id: 2, name: "ভারতের", link: "/" },
-  { id: 1, name: "পাকিস্তানের", link: "/" },
-  { id: 2, name: "ভারতের", link: "/" },
-  { id: 1, name: "পাকিস্তানের", link: "/" },
-  { id: 2, name: "ভারতের", link: "/" },
-  { id: 1, name: "পাকিস্তানের", link: "/" },
-  { id: 2, name: "ভারতের", link: "/" },
-  { id: 1, name: "পাকিস্তানের", link: "/" },
-  { id: 2, name: "ভারতের", link: "/" },
-  { id: 1, name: "পাকিস্তানের", link: "/" },
-  { id: 2, name: "ভারতের", link: "/" },
-  { id: 1, name: "পাকিস্তানের", link: "/" },
-  { id: 2, name: "ভারতের", link: "/" },
-  { id: 1, name: "পাকিস্তানের", link: "/" },
-  { id: 2, name: "ভারতের", link: "/" },
-  { id: 1, name: "পাকিস্তানের", link: "/" },
-  { id: 2, name: "ভারতের", link: "/" },
-  { id: 1, name: "পাকিস্তানের", link: "/" },
-  { id: 2, name: "ভারতের", link: "/" },
-  { id: 1, name: "পাকিস্তানের", link: "/" },
-  { id: 2, name: "ভারতের", link: "/" },
-  { id: 1, name: "পাকিস্তানের", link: "/" },
-  { id: 2, name: "ভারতের", link: "/" },
-  { id: 3, name: "অমেরিকার", link: "/" },
+  { id: 1, name: "যুক্তরাষ্ট্র", link: "/" },
+  { id: 2, name: "বাংলাদেশ", link: "/" },
+  { id: 1, name: "নিউইয়র্ক", link: "/" },
+  { id: 2, name: "সারাবিশ্ব", link: "/" },
+  { id: 1, name: "প্রবাস", link: "/" },
+  { id: 2, name: "বিনোদন", link: "/" },
+  { id: 1, name: "খেলার মাঠ", link: "/" },
+  { id: 2, name: "স্বাস্থ্য", link: "/" },
+  { id: 1, name: "ধর্ম", link: "/" },
+  { id: 2, name: "সংকলন", link: "/" }
   // Add more categories as needed
 ];
 

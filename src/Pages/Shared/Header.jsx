@@ -40,13 +40,13 @@ function Header() {
               <div className="top-bar p-2 d-flex justify-content-between align-items-center pt-1">
                 <ul className="mb-0">
                   <li className="">
-                    <NavLink to="/video-news" className="">
-                      ভিডিও
+                    <NavLink to="/login" className="">
+                      বিজ্ঞাপন দিন
                     </NavLink>
                   </li>
                   <li className="">
                     <NavLink to="/categories/2" className="">
-                      শেষের পাতা
+                      বিজ্ঞাপনের মুল্য তালিকা
                     </NavLink>
                   </li>
                   <li className="">

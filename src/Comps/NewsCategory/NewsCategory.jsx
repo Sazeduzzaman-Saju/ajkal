@@ -1,14 +1,9 @@
-// NewsCategory.jsx
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const NewsCategory = ({ categories }) => {
   console.log(categories);
-
-  if (!categories || !categories.length) {
-    return <div>Loading...</div>; // or render an appropriate loading state
-  }
 
   return (
     <div>

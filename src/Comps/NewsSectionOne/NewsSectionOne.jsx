@@ -2,27 +2,27 @@ import React from "react";
 import './NewsSectionOne.css'
 const smalLeftData = [
   {
-    imageLink: "../../../../public/image/Features/feature3.png",
+    imageLink: "http://ajkalusa.nawazgroup.us/img/Features/feature3.png",
     titles: "কারাগারে রাশিয়ার বিরোধী নেতা নাভালনির মৃত্যু.",
   },
   {
-    imageLink: "../../../../public/image/Features/feature3.png",
+    imageLink: "http://ajkalusa.nawazgroup.us/img/Features/feature3.png",
     titles: "কারাগারে রাশিয়ার বিরোধী নেতা নাভালনির মৃত্যু.",
   },
   {
-    imageLink: "../../../../public/image/Features/feature3.png",
+    imageLink: "http://ajkalusa.nawazgroup.us/img/Features/feature3.png",
     titles: "কারাগারে রাশিয়ার বিরোধী নেতা নাভালনির মৃত্যু.",
   },
   {
-    imageLink: "../../../../public/image/Features/feature3.png",
+    imageLink: "http://ajkalusa.nawazgroup.us/img/Features/feature3.png",
     titles: "কারাগারে রাশিয়ার বিরোধী নেতা নাভালনির মৃত্যু.",
   },
   {
-    imageLink: "../../../../public/image/Features/feature3.png",
+    imageLink: "http://ajkalusa.nawazgroup.us/img/Features/feature3.png",
     titles: "কারাগারে রাশিয়ার বিরোধী নেতা নাভালনির মৃত্যু.",
   },
   {
-    imageLink: "../../../../public/image/Features/feature3.png",
+    imageLink: "http://ajkalusa.nawazgroup.us/img/Features/feature3.png",
     titles: "কারাগারে রাশিয়ার বিরোধী নেতা নাভালনির মৃত্যু.",
   },
 ];
@@ -82,7 +82,7 @@ const NewsSectionOne = () => {
             <div className="card-body p-0 image-container">
               <img
                 className="w-100 rounded-2 zoom-image"
-                src="../../../../public/image/Features/feature3.png"
+                src="http://ajkalusa.nawazgroup.us/img/Features/feature3.png"
                 alt=""
               />
               <h5 className=" p-0 pt-3 main-color">কারাগারে রাশিয়ার বিরোধী নেতা নাভালনির মৃত্যু.</h5>

@@ -11,7 +11,7 @@ const featureData = [
     featureTite: "ট্রাম্পকে তিরস্কার ন্যাটো প্রধান ও বাইডেনের",
     shortDescrioption:
       "সাবেক মার্কিন প্রেসিডেন্ট ডোনাল্ড ট্রাম্পের মন্তব্যের তীব্র নিন্দা জানিয়েছেন মন্তব্যেরমন্তব্যেরমন্তব্যেরমন্তব্যের",
-    featureImage: "../../../../public/image/Features/feature1.png",
+    featureImage: "http://ajkalusa.nawazgroup.us/img/Features/feature1.png",
   },
   {
     id: "2",
@@ -20,7 +20,7 @@ const featureData = [
     featureTite: "ড. ইউনূসের আবেদন খারিজ, দিতে হবে ৫০ কোটি টাকা",
     shortDescrioption:
       "শান্তিতে নোবেলজয়ী ড. মুহাম্মদ ইউনূসের গ্রামীন টেলিকম ট্রাস্টকে ৫০ মন্তব্যের মন্তব্যের মন্তব্যের মন্তব্যের মন্তব্যের",
-    featureImage: "../../../../public/image/Features/feature2.png",
+    featureImage: "http://ajkalusa.nawazgroup.us/img/Features/feature2.png",
   },
   {
     id: "3",
@@ -29,7 +29,7 @@ const featureData = [
     featureTite: "রোজার আগে পেঁয়াজ-চিনির রপ্তানি বাড়াতে ভারতকে অনুরোধ",
     shortDescrioption:
       "প্রধান জেনস স্টোলেনবার্গ। রোববার এক বিবৃতিতে ট্রাম্পের মন্তব্যের তীব্র নিন্দা মন্তব্যের",
-    featureImage: "../../../../public/image/Features/feature3.png",
+    featureImage: "http://ajkalusa.nawazgroup.us/img/Features/feature3.png",
   },
   {
     id: "4",
@@ -38,7 +38,7 @@ const featureData = [
     featureTite: "ড. ইউনূসের আবেদন খারিজ, দিতে হবে ৫০ কোটি টাকা",
     shortDescrioption:
       "শান্তিতে নোবেলজয়ী ড. মুহাম্মদ ইউনূসের গ্রামীন টেলিকম ট্রাস্টকে ৫০ মন্তব্যের মন্তব্যের মন্তব্যের মন্তব্যের",
-    featureImage: "../../../../public/image/Features/feature2.png",
+    featureImage: "http://ajkalusa.nawazgroup.us/img/Features/feature2.png",
   },
 ];
 const FeatureNews = () => {

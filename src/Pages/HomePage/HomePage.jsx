@@ -38,9 +38,9 @@ const HomePage = () => {
             <div className="col-lg-12">
               <div className="image-container">
                 <img
-                  className="w-100 zoom-image"
-                  height={300}
-                  src="https://i.ibb.co/MCZhJmn/roma-post-01.jpg"
+                  className="w-100 zoom-image img-fluid "
+                  
+                  src="https://i.ibb.co/YB3fYnL/main-Ad-Mid.jpg"
                   alt=""
                 />
               </div>
@@ -67,7 +67,7 @@ const HomePage = () => {
         </div>
         {/* Category Post Show Style One */}
         <div className="container">
-          <div className="row">
+          <div className="row mb-5">
             <div className="col-lg-12">
               <VideoNews />
             </div>
@@ -77,7 +77,7 @@ const HomePage = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <Categories />
+              {/* <Categories /> */}
             </div>
           </div>
         </div>
