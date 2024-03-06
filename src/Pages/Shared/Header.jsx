@@ -8,33 +8,18 @@ import { AiFillInstagram } from "react-icons/ai";
 import NavBar from "../../Comps/NavBar/NavBar";
 import { FaUser } from "react-icons/fa";
 import SearchBoxHeader from "../../Comps/SearchBoxHeader/SearchBoxHeader";
+import DynamicDateTime from "../../Comps/DynamicDateTime/DynamicDateTime";
 
 function Header() {
   return (
     <>
-      <div className="container-fluid">
-        {/* Advertisement Banner */}
-        <div className="container">
-          <div className="row top-bar-area">
-            <div className="col-lg-12 px-0">
-              <img
-                className="img-fluid top-add"
-                src="https://i.ibb.co/PNnmqXT/3614798860483355171.gif"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
-      </div>
       <div className="container-fluid main-menu">
         <div className="container">
           {/* Top Bar Area */}
           <div className="row top-bar-area align-items-center top-bar-area">
             <div className="col-lg-6">
-              <p className="m-0 p-0">
-                ঢাকা, বৃহস্পতিবার ১৫ ফেব্রুয়ারি ২০২৪, ২ ফাল্গুন ১৪৩০, ০৪ শাবান
-                ১৪৪৫
-              </p>
+              {/* ঢাকা, বৃহস্পতিবার ১৫ ফেব্রুয়ারি ২০২৪, ২ ফাল্গুন ১৪৩০, ০৪ শাবান ১৪৪৫ */}
+              <DynamicDateTime/>
             </div>
             <div className="col-lg-6">
               <div className="top-bar p-2 d-flex justify-content-between align-items-center pt-1">
@@ -80,7 +65,7 @@ function Header() {
         </div>
       </div>
       <nav className="navbar navbar-expand-lg bg-white sticky-top flex-column main-menu pt-0 pb-0">
-        <div className="container px-0 pb-1 pt-1">
+        <div className="container px-0 pb-2 pt-2">
           <button
             className="navbar-toggler"
             type="button"
@@ -97,6 +82,20 @@ function Header() {
               <img src="https://i.ibb.co/6D35WjX/logo.png" alt="" />
             </Link>
           </div>
+          <div className="container-fluid">
+        {/* Advertisement Banner */}
+        <div className="container">
+          <div className="row top-bar-area">
+            <div className="col-lg-12 px-0">
+              <img
+                className="img-fluid top-add"
+                src="https://i.ibb.co/PNnmqXT/3614798860483355171.gif"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
           {/* Search Box Start */}
           {/* <div className="search-container">
             <form action="/search" method="get">

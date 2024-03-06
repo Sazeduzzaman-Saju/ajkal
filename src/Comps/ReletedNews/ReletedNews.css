@@ -28,7 +28,7 @@
     height: 56px;
     width: 56px;
     border-radius: 100%;
-    background: #e74c3c;
+    background: var(--main);
     color: #fff;
     text-align: center;
     padding: 12px 0;

@@ -8,6 +8,7 @@ import "swiper/css/effect-fade";
 import "react-loading-skeleton/dist/skeleton.css";
 import "./Banner.css";
 import { Autoplay, Pagination, EffectFade } from "swiper/modules";
+import { Link } from "react-router-dom";
 
 export default function Banner() {
   const progressCircle = useRef(null);
@@ -80,11 +81,13 @@ export default function Banner() {
             <div className="showcase">
               <img className="fixed-img" src={slide.imageSrc} alt="Picture" />
               <div className="overlay">
-                <div className="container">
-                  <h1 className="mb-0 fw-bold ">{slide.title}</h1>
-                  <h2 className="mb-0">{slide.subtitle}</h2>
-                  <p className="w-50 pt-5">{slide.content}</p>
-                </div>
+                <Link to={`/news/${slide.id}`} className="text-white">
+                  <div className="container">
+                    <h1 className="mb-0 fw-bold ">{slide.title}</h1>
+                    <h2 className="mb-0">{slide.subtitle}</h2>
+                    <p className="w-50 pt-5">{slide.content}</p>
+                  </div>
+                </Link>
               </div>
             </div>
           </SwiperSlide>

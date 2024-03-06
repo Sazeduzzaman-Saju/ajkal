@@ -18,23 +18,23 @@ const RelatedNews = () => {
     {
       id: 1,
       category: "বিনোদন",
-      title: "নিউ ইয়র্কে শহরের আলো",
-      sub_title: "যে শহরটি কখনও ঘুমায় না।",
+      title: "মার্কিন যুক্তরাষ্ট্রের সবচেয়ে",
+      sub_title: "২১৭ বার করোনার টিকা নিয়েও সুস্থ।",
       description:
         "নিউ ইয়র্ক, মার্কিন যুক্তরাষ্ট্রের সবচেয়ে বড় শহর, এটি একটি স্থাপত্যমান অবিস্মরণীয় শিল্পকলা সহ অনেকগুলি ঐতিহাসিক স্মৃতিস্তম্ভ, শান্তির ভবন এবং অসংখ্য চমকময় উচ্চতর দিয়ে দেখা যায়।",
       timestamp: "6 মিনিট আগে",
       imageUrl:
-        "https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/photo-1429043794791-eb8f26f44081.jpeg",
+        "https://d2u0ktu8omkpf6.cloudfront.net/85064e62f8af714d9d65a63884bd250f82d2664ed47d154c.jpg",
     },
     {
       id: 2,
       category: "বিনোদন",
-      title: "অন্যান্য শহরের আলো",
-      sub_title: "যে শহরটি সব সময় আলোয় প্রকাশ করে।",
+      title: "বিজ্ঞান ও প্রযুক্তি ফিরে এলো ",
+      sub_title: "বিজ্ঞান ও প্রযুক্তি ফিরে এলো ফেসবুক।",
       description:
         "একটি পৃষ্ঠভূমি শহর, যা শান্তিময় আলো এবং জীবনের উজ্জ্বল জীবনে পূর্ণ।",
       timestamp: "10 মিনিট আগে",
-      imageUrl: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/photo-1429043794791-eb8f26f44081.jpeg",
+      imageUrl: "https://d2u0ktu8omkpf6.cloudfront.net/c7699c834b7f49cd19a309dfe630cffa19fe32495dcf8a7e.jpg",
     },
     {
       id: 3,
@@ -44,17 +44,17 @@ const RelatedNews = () => {
       description:
         "একটি পৃষ্ঠভূমি শহর, যা শান্তিময় আলো এবং জীবনের উজ্জ্বল জীবনে পূর্ণ।",
       timestamp: "10 মিনিট আগে",
-      imageUrl: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/photo-1429043794791-eb8f26f44081.jpeg",
+      imageUrl: "https://d2u0ktu8omkpf6.cloudfront.net/ab2471fa90219e40abed803250058f7c9d41c377d455145f.jpg",
     },
     {
       id: 4,
       category: "বিনোদন",
-      title: "অন্যান্য শহরের আলো",
-      sub_title: "যে শহরটি সব সময় আলোয় প্রকাশ করে।",
+      title: "একটি পৃষ্ঠভূমি শহর",
+      sub_title: "শান্তিময় আলো এবং জীবনের একটি পৃষ্ঠভূমি শহর।",
       description:
         "একটি পৃষ্ঠভূমি শহর, যা শান্তিময় আলো এবং জীবনের উজ্জ্বল জীবনে পূর্ণ।",
       timestamp: "10 মিনিট আগে",
-      imageUrl: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/photo-1429043794791-eb8f26f44081.jpeg",
+      imageUrl: "https://d2u0ktu8omkpf6.cloudfront.net/a21dec5cd8809040a91bf574d8c0501b30fcb42ea83c1afe.jpg",
     },
   ];
 

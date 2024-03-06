@@ -19,7 +19,7 @@ const CategoryWiseNews = () => {
       </div>
       {/* Third Style */}
       <div className="pt-4">
-        <PostHeader title="বিজ্ঞান সংবাদ" />
+        <PostHeader title="খেলার সংবাদ" />
         <NewsSectionThree />
       </div>
     </div>

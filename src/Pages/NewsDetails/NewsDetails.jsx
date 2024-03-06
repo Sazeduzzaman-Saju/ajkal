@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import ReletedNews from "../../Comps/ReletedNews/ReletedNews";
 import { FaRegShareFromSquare } from "react-icons/fa6";
 import { IoMdPrint } from "react-icons/io";
+import NewsSidebar from "../../Comps/NewsSidebar/NewsSidebar";
 
 const NewsDetails = () => {
   return (
@@ -32,14 +33,14 @@ const NewsDetails = () => {
             জড়িত থাকতে পারেন বলে সন্দেহ করা হচ্ছে।
           </p>
           <div>
-            <img src="http://ajkalusa.nawazgroup.us/img/SingleNews/news1.png" alt="" />
+            <img src="http://ajkalusa.nawazgroup.us/img/SingleNews/news1.png" className="rounded-2" alt="" />
             <p className="pt-2">
               পণ্য না কিনেও প্রায় কোটি টাকার বিল পরিশোধ করেছে রেলওয়ে। ফাইল ছবি
             </p>
             {/* Author */}
             <div className="d-flex justify-content-between  align-items-center py-5">
               <div>
-                <h4>নাজমুস সালেহী</h4>
+                <h4 className="main-color">নাজমুস সালেহী</h4>
                 <p>২৩ মিনিট আগে</p>
               </div>
               <div>
@@ -101,7 +102,7 @@ const NewsDetails = () => {
           <div style={{ borderBottom: "2px solid var(--secondary)" }}>
             <h5 className="text-muted main-color">সর্বাধিক পঠিত</h5>
           </div>
-          <div className="d-flex justify-content-center align-items-center pt-4 ">
+          <div className="d-flex justify-content-center align-items-center pt-4 pb-3 ">
             <img
               src="https://i.ibb.co/j39LZmN/Give-Advertisement.jpg"
               alt=""
@@ -109,74 +110,10 @@ const NewsDetails = () => {
             />
           </div>
           <div>
-            <div className="d-flex align-items-center py-3">
-              <div>
-                <Link to="/">
-                  <img src="http://ajkalusa.nawazgroup.us/img/Short/1.png" alt="" />
-                </Link>
-              </div>
-              <div className="ps-3">
-                <h6>বিনোদন</h6>
-                <p className="m-0">দীঘির টাকা নিল প্রতারক, ফেরত দিল ডিবি</p>
-              </div>
-            </div>
-            <div className="d-flex align-items-center py-3">
-              <div>
-                <Link to="/">
-                  <img src="http://ajkalusa.nawazgroup.us/img/Short/1.png" alt="" />
-                </Link>
-              </div>
-              <div className="ps-3">
-                <h6>বিনোদন</h6>
-                <p className="m-0">দীঘির টাকা নিল প্রতারক, ফেরত দিল ডিবি</p>
-              </div>
-            </div>
-            <div className="d-flex align-items-center py-3">
-              <div>
-                <Link to="/">
-                  <img src="http://ajkalusa.nawazgroup.us/img/Short/1.png" alt="" />
-                </Link>
-              </div>
-              <div className="ps-3">
-                <h6>বিনোদন</h6>
-                <p className="m-0">দীঘির টাকা নিল প্রতারক, ফেরত দিল ডিবি</p>
-              </div>
-            </div>
-            <div className="d-flex align-items-center py-3">
-              <div>
-                <Link to="/">
-                  <img src="http://ajkalusa.nawazgroup.us/img/Short/1.png" alt="" />
-                </Link>
-              </div>
-              <div className="ps-3">
-                <h6>বিনোদন</h6>
-                <p className="m-0">দীঘির টাকা নিল প্রতারক, ফেরত দিল ডিবি</p>
-              </div>
-            </div>
-            <div className="d-flex align-items-center py-3">
-              <div>
-                <Link to="/">
-                  <img src="http://ajkalusa.nawazgroup.us/img/Short/1.png" alt="" />
-                </Link>
-              </div>
-              <div className="ps-3">
-                <h6>বিনোদন</h6>
-                <p className="m-0">দীঘির টাকা নিল প্রতারক, ফেরত দিল ডিবি</p>
-              </div>
-            </div>
-            <div className="d-flex align-items-center py-3">
-              <div>
-                <Link to="/">
-                  <img src="http://ajkalusa.nawazgroup.us/img/Short/1.png" alt="" />
-                </Link>
-              </div>
-              <div className="ps-3">
-                <h6>বিনোদন</h6>
-                <p className="m-0">দীঘির টাকা নিল প্রতারক, ফেরত দিল ডিবি</p>
-              </div>
-            </div>
+            {/* News Sidebar */}
+            <NewsSidebar></NewsSidebar>
           </div>
-          <div className="d-flex justify-content-center align-items-center pt-4 ">
+          <div className="d-flex justify-content-center align-items-center pt-3 ">
             <img
               src="https://i.ibb.co/CHz52fX/goldenagehome.jpg"
               alt=""

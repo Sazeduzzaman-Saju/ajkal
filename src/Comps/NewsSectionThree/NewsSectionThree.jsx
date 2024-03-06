@@ -1,25 +1,35 @@
 import React from "react";
 import "./style.css";
+import { Link } from "react-router-dom";
 
 const smalLeftData = [
   {
-    imageLink: "https://www.hindustantimes.com/ht-img/img/2024/02/23/550x309/CRICKET-TEST-IND-ENG--93_1708657586432_1708657626179.JPG",
+    id: "1",
+    imageLink:
+      "https://www.hindustantimes.com/ht-img/img/2024/02/23/550x309/CRICKET-TEST-IND-ENG--93_1708657586432_1708657626179.JPG",
     titles: "কারাগারে রাশিয়ার বিরোধী নেতা নাভালনির মৃত্যু.",
   },
   {
+    id: "2",
     imageLink: "../../../../public/image/Features/feature3.png",
     titles: "কারাগারে রাশিয়ার বিরোধী নেতা নাভালনির মৃত্যু.",
   },
   {
-    imageLink: "https://img.cricketworld.com/images/d-133824/georgia-atkinson-.jpg",
+    id: "3",
+    imageLink:
+      "https://img.cricketworld.com/images/d-133824/georgia-atkinson-.jpg",
     titles: "কারাগারে রাশিয়ার বিরোধী নেতা নাভালনির মৃত্যু.",
   },
   {
-    imageLink: "https://www.espncricinfo.com/db/PICTURES/CMS/363900/363973.6.jpg",
+    id: "4",
+    imageLink:
+      "https://www.espncricinfo.com/db/PICTURES/CMS/363900/363973.6.jpg",
     titles: "কারাগারে রাশিয়ার বিরোধী নেতা নাভালনির মৃত্যু.",
   },
   {
-    imageLink: "https://www.hindustantimes.com/ht-img/img/2023/12/28/550x309/PTI12-26-2023-000394A-0_1703741487467_1703741520568.jpg",
+    id: "5",
+    imageLink:
+      "https://www.hindustantimes.com/ht-img/img/2023/12/28/550x309/PTI12-26-2023-000394A-0_1703741487467_1703741520568.jpg",
     titles: "কারাগারে রাশিয়ার বিরোধী নেতা নাভালনির মৃত্যু.",
   },
 ];
@@ -29,7 +39,7 @@ const NewsSectionThree = () => {
       <div className="row mb-5 align-items-center ">
         <div className="col-lg-3">
           {smalLeftData.map((data, index) => (
-            <a href="#" className="text-muted" key={index}>
+            <Link to={`/news/${data.id}`} className="text-muted" key={index}>
               <div className="d-flex align-items-center mb-3">
                 <div className="w-30">
                   <img
@@ -39,14 +49,16 @@ const NewsSectionThree = () => {
                   />
                 </div>
                 <div className="ps-2">
-                  <h6 className="mb-0 text-muted fw-semibold ">{data.titles}</h6>
+                  <h6 className="mb-0 text-muted fw-semibold ">
+                    {data.titles}
+                  </h6>
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
         <div className="col-lg-6">
-          <a href="">
+          <a to={`/news/1`}>
             <div className="card border-0">
               <div className="card-body p-0">
                 <img
@@ -63,7 +75,7 @@ const NewsSectionThree = () => {
         </div>
         <div className="col-lg-3">
           {smalLeftData.map((data, index) => (
-            <a href="#" className="text-muted" key={index}>
+            <Link to={`/news/${data.id}`} className="text-muted" key={index}>
               <div className="d-flex align-items-center mb-3">
                 <div className="w-30">
                   <img
@@ -73,10 +85,12 @@ const NewsSectionThree = () => {
                   />
                 </div>
                 <div className="ps-2">
-                  <h6 className="mb-0 text-muted fw-semibold ">{data.titles}</h6>
+                  <h6 className="mb-0 text-muted fw-semibold ">
+                    {data.titles}
+                  </h6>
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

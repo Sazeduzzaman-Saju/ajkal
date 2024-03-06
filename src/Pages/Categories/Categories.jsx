@@ -3,6 +3,7 @@ import PostHeader from "../../Comps/PostHeader/PostHeader";
 import "./Categories.css";
 import { Link } from "react-router-dom";
 import CategoryFeature from "./CategoryFeature/CategoryFeature";
+import NewsSidebar from "../../Comps/NewsSidebar/NewsSidebar";
 const Categories = () => {
   return (
     <div className="container">
@@ -10,147 +11,20 @@ const Categories = () => {
       <div className="row">
         <CategoryFeature></CategoryFeature>
         <div className="col-lg-4">
-          <div>
-            <div>
-              {/* Nav tabs */}
-              <ul className="nav custom-nav-tabs" id="myTab" role="tablist">
-                <li className="nav-item" role="presentation">
-                  <button
-                    className="nav-link custom-nav-link active"
-                    id="home-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#home"
-                    type="button"
-                    role="tab"
-                    aria-controls="home"
-                    aria-selected="true"
-                  >
-                    সর্বশেষ
-                  </button>
-                </li>
-                <li className="nav-item" role="presentation">
-                  <button
-                    className="nav-link custom-nav-link"
-                    id="profile-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#profile"
-                    type="button"
-                    role="tab"
-                    aria-controls="profile"
-                    aria-selected="false"
-                  >
-                    সর্ববাধিক পঠিত
-                  </button>
-                </li>
-              </ul>
-              {/* Tab panes */}
-              <div className="tab-content">
-                <div
-                  className="tab-pane active"
-                  id="home"
-                  role="tabpanel"
-                  aria-labelledby="home-tab"
-                >
-                  <div>
-                  <ul className="list-news">
-                      <li>
-                        <Link to={"/news/2"} className="fs-5 text-muted">
-                        <img
-                          className="img-fluid"
-                          src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/1072b095700315.5ed7f84e468ba.png"
-                          alt=""
-                        />
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={"/news/2"} className="fs-5 text-muted">
-                          বিশ্ববিদ্যালয়ে অনলাইন ক্লাস শুরু হলো, শিক্ষার্থীরা
-                          খুব উত্সাহিত
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={"/news/2"} className="fs-5 text-muted">
-                          রমজানে মুসলিম সমাজের উপর নানা ধরনের চ্যালেঞ্জ, দোয়া ও
-                          আমলে মাসের মূল্যায়ন
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={"/news/2"} className="fs-5 text-muted">
-                          স্বাস্থ্য অধিদপ্তরের আদেশে রেমডেসিভির কম ব্যবহার
-                          নেতারা শান্তিপূর্ণভাবে সহজে জীবন কাটাতে পারছেন
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={"/news/2"} className="fs-5 text-muted">
-                          রমজানে মুসলিম সমাজের উপর নানা ধরনের চ্যালেঞ্জ, দোয়া ও
-                          আমলে মাসের মূল্যায়ন
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={"/news/2"} className="fs-5 text-muted">
-                          স্বাস্থ্য অধিদপ্তরের আদেশে রেমডেসিভির কম ব্যবহার
-                          নেতারা শান্তিপূর্ণভাবে সহজে জীবন কাটাতে পারছেন
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={"/news/2"} className="fs-5 text-muted">
-                          বিশ্ববিদ্যালয়ে অনলাইন ক্লাস শুরু হলো, শিক্ষার্থীরা
-                          খুব উত্সাহিত
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div
-                  className="tab-pane"
-                  id="profile"
-                  role="tabpanel"
-                  aria-labelledby="profile-tab"
-                >
-                  <div>
-                    <ul className="list-news">
-                      <li>
-                        <Link to={"/news/2"} className="fs-5 text-muted">
-                          বিশ্ববিদ্যালয়ে অনলাইন ক্লাস শুরু হলো, শিক্ষার্থীরা
-                          খুব উত্সাহিত
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={"/news/2"} className="fs-5 text-muted">
-                          রমজানে মুসলিম সমাজের উপর নানা ধরনের চ্যালেঞ্জ, দোয়া ও
-                          আমলে মাসের মূল্যায়ন
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={"/news/2"} className="fs-5 text-muted">
-                          স্বাস্থ্য অধিদপ্তরের আদেশে রেমডেসিভির কম ব্যবহার
-                          নেতারা শান্তিপূর্ণভাবে সহজে জীবন কাটাতে পারছেন
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={"/news/2"} className="fs-5 text-muted">
-                          রমজানে মুসলিম সমাজের উপর নানা ধরনের চ্যালেঞ্জ, দোয়া ও
-                          আমলে মাসের মূল্যায়ন
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={"/news/2"} className="fs-5 text-muted">
-                          স্বাস্থ্য অধিদপ্তরের আদেশে রেমডেসিভির কম ব্যবহার
-                          নেতারা শান্তিপূর্ণভাবে সহজে জীবন কাটাতে পারছেন
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={"/news/2"} className="fs-5 text-muted">
-                          বিশ্ববিদ্যালয়ে অনলাইন ক্লাস শুরু হলো, শিক্ষার্থীরা
-                          খুব উত্সাহিত
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-               
-              </div>
-            </div>
+          <div className="d-flex justify-content-center align-items-center ">
+            <img
+              src="https://i.ibb.co/j39LZmN/Give-Advertisement.jpg"
+              alt=""
+              className="img-fluid"
+            />
+          </div>
+          <NewsSidebar></NewsSidebar>
+          <div className="d-flex justify-content-center align-items-center pt-3 ">
+            <img
+              src="https://i.ibb.co/CHz52fX/goldenagehome.jpg"
+              className="img-fluid"
+              alt=""
+            />
           </div>
         </div>
       </div>

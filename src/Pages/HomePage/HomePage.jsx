@@ -39,7 +39,6 @@ const HomePage = () => {
               <div className="image-container">
                 <img
                   className="w-100 zoom-image img-fluid "
-                  
                   src="https://i.ibb.co/YB3fYnL/main-Ad-Mid.jpg"
                   alt=""
                 />
