@@ -60,14 +60,6 @@ const UserLayout = () => {
                     Save Articales
                   </NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink
-                    to={"/user/post-status"}
-                    className="user-dashboard-nav nav-link"
-                  >
-                    Check Status
-                  </NavLink>
-                </li>
               </ul>
             </div>
           </div>

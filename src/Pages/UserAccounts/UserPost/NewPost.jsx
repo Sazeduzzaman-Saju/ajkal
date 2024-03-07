@@ -12,9 +12,9 @@ export default function NewPost() {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="row">
         <div className="col-lg-12">
-          <p className="m-0">টাইটেল</p>
           <input
             className="w-100 form-control"
+            placeholder="টাইটেল দিন"
             type="text"
             {...register("search_word", { required: true })}
             aria-invalid={errors.search_word ? "true" : "false"}
@@ -28,12 +28,11 @@ export default function NewPost() {
       </div>
       <div className="row pt-4">
         <div className="col-lg-3">
-          <p className="m-0">ক্যটেগরি বেছে নিন।</p>
           <select
             className="form-select"
             {...register("category", { required: true })}
           >
-            <option value="">সিলেক্ট করুন...</option>
+            <option value="">ক্যটেগরি বেছে নিন।...</option>
             <option value="A">Option A</option>
             <option value="B">Option B</option>
           </select>
@@ -44,10 +43,10 @@ export default function NewPost() {
           )}
         </div>
         <div className="col-lg-3">
-          <p className="m-0">তারিখ</p>
           <input
             className="w-100 form-control"
             type="date"
+            placeholder="তারিখ"
             {...register("newDate", { required: true })}
             aria-invalid={errors.newDate ? "true" : "false"}
           />
@@ -58,11 +57,11 @@ export default function NewPost() {
           )}
         </div>
         <div className="col-lg-3">
-          <p className="m-0">লেখক </p>
+          <p className="m-0"></p>
           <input
             className="w-100 form-control"
             type="text"
-            placeholder="সাজু"
+            placeholder="লেখক"
             {...register("writer", { required: true })}
             aria-invalid={errors.writer ? "true" : "false"}
           />
@@ -166,10 +165,10 @@ export default function NewPost() {
           )}
         </div>
       </div>
-      <div className="row pt-4 pb-4">
+      <div className="row pt-5 pb-0">
         <div className="col-lg-12">
           <button type="submit" className="submit-btn-one w-100 mx-0">
-           পোস্ট করুন এখনি।
+            পোস্ট করুন এখনি।
           </button>
         </div>
       </div>

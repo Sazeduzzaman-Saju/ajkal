@@ -34,8 +34,77 @@
   height: 450px;
 }
 .user-contact-icons {
-    background-color: var(--main);
-    border-radius: 50%;
-    padding: 5px 6px;
-    color: white;
+  background-color: var(--main);
+  border-radius: 50%;
+  padding: 5px 6px;
+  color: white;
+}
+
+.user-nav .nav-item {
+  margin-bottom: 2px;
+  transition: all 0.5s;
+}
+.user-nav .nav-item:hover {
+  transition: all 0.5s;
+  background-color: var(--main);
+  color: white;
+  margin-bottom: 2px;
+}
+
+/* YourComponent.css */
+
+.custom-file-input {
+  position: relative;
+  overflow: hidden;
+}
+
+.custom-file-input input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px; /* Adjust the font size as needed */
+  cursor: pointer;
+  opacity: 0;
+}
+
+.custom-file-input::before {
+  content: "বিজ্ঞাপনের ছবি দিন"; /* Your custom text */
+  display: inline-block;
+  background: var(--main); /* Optional: Add styling for the pseudo-element */
+  color: #fff; /* Optional: Add styling for the pseudo-element */
+  padding: 2px 15px; /* Optional: Add styling for the pseudo-element */
+  border-radius: 5px; /* Optional: Add styling for the pseudo-element */
+  cursor: pointer;
+}
+
+.custom-file-input:hover::before {
+  background: var(--main); /* Optional: Add styling for the pseudo-element on hover */
+}
+
+.user-add .nav-link {
+  border: 0;
+}
+.user-add .nav-link:focus {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+}
+.user-add .nav-link:focus-visible {
+  box-shadow: none;
+  outline: none;
+}
+.user-add .nav-link{
+  border: none;
+  color: var(--secondary);
+}
+.user-add .nav-link.active {
+  border-bottom: 1px solid var(--main) !important;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+  color: var(--main) !important;
 }

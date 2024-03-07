@@ -1,11 +1,5 @@
 import React from "react";
 import PageTitle from "../../Comps/PageTitle/PageTitle";
-import { FaLocationDot, FaMessage } from "react-icons/fa6";
-import { HiCheckBadge } from "react-icons/hi2";
-import { MdOutlineReportProblem } from "react-icons/md";
-import { FaCheck } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
-import { IoCallSharp } from "react-icons/io5";
 import "./UserAccounts.css";
 
 const UserAccounts = () => {
@@ -15,77 +9,221 @@ const UserAccounts = () => {
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
-            <h3 className="text-center pt-5">আমার প্রফাইল।</h3>
+            <h3 className="text-center pt-5 main-color">আমার প্রফাইল।</h3>
           </div>
         </div>
-        <div className="card border-0 shadow-sm my-5">
-            <div className="card-body pb-0">
+      </div>
+      <div className="row">
+        <div className="col-lg-12">
+          <div className="container rounded bg-white mt-5 mb-5">
             <div className="row">
-          <div className="col-lg-4 px-0">
-            <div>
-              <img
-                className="user-images"
-                src="https://images.pexels.com/photos/8124212/pexels-photo-8124212.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                alt=""
-              />
+              <div className="col-md-3 border-right">
+                <div className="card">
+                  <div
+                    className="card-header p-2 border-0"
+                    style={{ backgroundColor: "var(--main)" }}
+                  >
+                    <div className="d-flex justify-content-center align-items-center">
+                      <h4 className="text-center mb-0 pb-0 text-white">
+                        Profile Image
+                      </h4>
+                    </div>
+                  </div>
+                  <div className="card-body">
+                    <div className="d-flex flex-column align-items-center text-center p-3 py-2">
+                      <img
+                        className="rounded-circle mt-1"
+                        width="150px"
+                        src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+                      />
+                      <span className="font-weight-bold">Edogaru</span>
+                      <span className="text-black-50">edogaru@mail.com.my</span>
+                      <span> </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-5 border-right">
+                <div className="card">
+                  <div
+                    className="card-header p-2 border-0"
+                    style={{ backgroundColor: "var(--main)" }}
+                  >
+                    <div className="d-flex justify-content-center align-items-center">
+                      <h4 className="text-center mb-0 pb-0 text-white">
+                        Profile Settings
+                      </h4>
+                    </div>
+                  </div>
+                  <div className="card-body">
+                    <div className="p-3 py-2">
+                      <div className="row mt-2">
+                        <div className="col-md-6">
+                          <label className="labels">Name</label>
+                          <input
+                            type="text"
+                            className="form-control form-control-sm "
+                            placeholder="first name"
+                            defaultValue={"Sazeduzzaman"}
+                          />
+                        </div>
+                        <div className="col-md-6">
+                          <label className="labels">Surname</label>
+                          <input
+                            type="text"
+                            className="form-control form-control-sm "
+                            defaultValue={"Saju"}
+                            placeholder="surname"
+                          />
+                        </div>
+                      </div>
+                      <div className="row mt-3">
+                        <div className="col-md-12">
+                          <label className="labels">Mobile Number</label>
+                          <input
+                            type="text"
+                            className="form-control form-control-sm "
+                            defaultValue={"+8801576614451"}
+                            placeholder="enter phone number"
+                          />
+                        </div>
+                        <div className="col-md-12">
+                          <label className="labels">Address Line 1</label>
+                          <input
+                            type="text"
+                            className="form-control form-control-sm "
+                            placeholder="Enter address line 1"
+                            defaultValue={"Dhaka, Mirpur, Bangladesh"}
+                          />
+                        </div>
+                        <div className="col-md-12">
+                          <label className="labels">Address Line 2</label>
+                          <input
+                            type="text"
+                            className="form-control form-control-sm "
+                            placeholder="enter address line 2"
+                            defaultValue={"Dhaka, Mirpur, Bangladesh"}
+                          />
+                        </div>
+                        <div className="col-md-12">
+                          <label className="labels">Postcode</label>
+                          <input
+                            type="text"
+                            className="form-control form-control-sm "
+                            placeholder="enter address line 2"
+                            defaultValue={"1216"}
+                          />
+                        </div>
+                        <div className="col-md-12">
+                          <label className="labels">State</label>
+                          <input
+                            type="text"
+                            className="form-control form-control-sm "
+                            placeholder="enter address line 2"
+                            defaultValue={"Dhaka"}
+                          />
+                        </div>
+                        <div className="col-md-12">
+                          <label className="labels">Area</label>
+                          <input
+                            type="text"
+                            className="form-control form-control-sm "
+                            placeholder="enter address line 2"
+                            defaultValue={"Mirpur"}
+                          />
+                        </div>
+                        <div className="col-md-12">
+                          <label className="labels">Email ID</label>
+                          <input
+                            type="text"
+                            className="form-control form-control-sm "
+                            placeholder="enter email id"
+                            defaultValue={"szamansaju@gmail.com"}
+                          />
+                        </div>
+                        <div className="col-md-12">
+                          <label className="labels">Education</label>
+                          <input
+                            type="text"
+                            className="form-control form-control-sm "
+                            placeholder="education"
+                            defaultValue={"BSC"}
+                          />
+                        </div>
+                      </div>
+                      <div className="row mt-3">
+                        <div className="col-md-6">
+                          <label className="labels">Country</label>
+                          <input
+                            type="text"
+                            className="form-control form-control-sm "
+                            placeholder="country"
+                            defaultValue={"Bangladesh"}
+                          />
+                        </div>
+                        <div className="col-md-6">
+                          <label className="labels">State/Region</label>
+                          <input
+                            type="text"
+                            className="form-control form-control-sm "
+                            defaultValue={"Islam"}
+                          />
+                        </div>
+                      </div>
+                      <div className="mt-5 text-center">
+                        <button
+                          className="submit-btn-one w-100"
+                          type="button"
+                        >
+                          Save Profile
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-4">
+                <div className="card">
+                  <div
+                    className="card-header p-2 border-0"
+                    style={{ backgroundColor: "var(--main)" }}
+                  >
+                    <div className="d-flex justify-content-center align-items-center">
+                      <h4 className="text-center mb-0 pb-0 text-white">
+                        Edit Experience
+                      </h4>
+                    </div>
+                  </div>
+                  <div className="card-body">
+                    <div className="p-3 py-2">
+                      <br />
+                      <div className="col-md-12">
+                        <label className="labels">
+                          Experience in Designing
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control form-control-sm "
+                          placeholder="experience"
+                          defaultValue
+                        />
+                      </div>{" "}
+                      <br />
+                      <div className="col-md-12">
+                        <label className="labels">Additional Details</label>
+                        <input
+                          type="text"
+                          className="form-control form-control-sm "
+                          placeholder="additional details"
+                          defaultValue
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="col-lg-8 px-0">
-            <div className="ps-4">
-              <h3 className="main-color">Sazeduzzaman Saju</h3>
-              <p className="text-muted m-0 pb-2">
-                <span className="user-contact-icons">
-                  <FaLocationDot className="" />
-                </span>{" "}
-                Dhaka, Bangladesh
-              </p>
-              <p className="text-muted m-0 pb-2 ">
-                <span className="user-contact-icons">
-                  {" "}
-                  <IoCallSharp className="" />
-                </span>{" "}
-                sazeduzzaman@gmail.com
-              </p>
-              <p className="text-muted m-0 pb-2">
-                <span className="user-contact-icons">
-                  <IoCallSharp className="" />
-                </span>{" "}
-                015 7661 4451
-              </p>
-              <p className="text-muted">
-               Verified: 
-                <span className="ps-2 fw-bold ">
-                User
-                  <HiCheckBadge
-                    style={{ marginTop: "-10px" }}
-                    className="text-primary"
-                  />
-                </span>
-              </p>
-              <p className="pt-3 m-0 fw-bold ">Tags</p>
-              <div className="d-flex align-items-center">
-                <span className="pe-2 text-muted">#Story Writer,</span>
-                <span className="pe-2 text-muted">#Crime Reporter,</span>
-                <span className="text-muted pe-2">#Entertainment Reporter</span>
-              </div>
-              <div className="d-flex align-items-center pt-3">
-                <button className="btn-outline-primary btn rounded-0 me-2">
-                  <MdOutlineReportProblem className="text-danger pe-2 fs-3" />
-                  Report
-                </button>
-                <button className="btn-outline-primary btn rounded-0 me-2 main-color">
-                  <FaCheck className="main-color pe-2 fs-3" />
-                  Message
-                </button>
-                <button className="btn-outline-primary btn rounded-0 me-2 main-color">
-                  <FaMessage className="main-color pe-2 fs-3" />
-                  Contacts
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-            </div>
         </div>
       </div>
     </div>

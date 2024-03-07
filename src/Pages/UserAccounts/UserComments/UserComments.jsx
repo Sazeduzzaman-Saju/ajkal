@@ -5,7 +5,7 @@ const UserComments = () => {
     <div className="container">
       <div className="row">
         <div className="col-lg-12">
-          <h3 className="text-center pt-5">আমার কমেন্টস ।</h3>
+          <h3 className="text-center pt-5 main-color">আমার কমেন্টস ।</h3>
         </div>
       </div>
       <div className="row">
