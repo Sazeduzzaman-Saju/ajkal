@@ -10,8 +10,8 @@ export default function NewPost() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="row">
-        <div className="col-lg-12">
+      <div className="row pt-4">
+        <div className="col-lg-6">
           <input
             className="w-100 form-control"
             placeholder="টাইটেল দিন"
@@ -25,9 +25,7 @@ export default function NewPost() {
             </p>
           )}
         </div>
-      </div>
-      <div className="row pt-4">
-        <div className="col-lg-3">
+        <div className="col-lg-6">
           <select
             className="form-select"
             {...register("category", { required: true })}
@@ -42,53 +40,9 @@ export default function NewPost() {
             </p>
           )}
         </div>
-        <div className="col-lg-3">
-          <input
-            className="w-100 form-control"
-            type="date"
-            placeholder="তারিখ"
-            {...register("newDate", { required: true })}
-            aria-invalid={errors.newDate ? "true" : "false"}
-          />
-          {errors.newDate?.type === "required" && (
-            <p role="alert" className="text-danger">
-              তারিখ নির্বাচন করেননি ।
-            </p>
-          )}
-        </div>
-        <div className="col-lg-3">
-          <p className="m-0"></p>
-          <input
-            className="w-100 form-control"
-            type="text"
-            placeholder="লেখক"
-            {...register("writer", { required: true })}
-            aria-invalid={errors.writer ? "true" : "false"}
-          />
-          {errors.writer?.type === "required" && (
-            <p role="alert" className="text-danger">
-              লেখক নির্বাচন করেননি ।
-            </p>
-          )}
-        </div>
-        <div className="col-lg-3">
-          <p className="m-0">ধরন</p>
-          <input
-            className="w-100 form-control"
-            type="text"
-            placeholder="ভিডিও/ নিউজ"
-            {...register("firstName", { required: true })}
-            aria-invalid={errors.firstName ? "true" : "false"}
-          />
-          {errors.firstName?.type === "required" && (
-            <p role="alert" className="text-danger">
-              ধরন নির্বাচন করেননি ।
-            </p>
-          )}
-        </div>
       </div>
-      <div className="row pt-4">
-        <div className="col-lg-4">
+      <div className="row pt-6">
+        <div className="col-lg-6">
           <p className="m-0">থাম্বনেইল দিন</p>
           <input
             className="w-100 form-control"
@@ -98,7 +52,7 @@ export default function NewPost() {
             aria-invalid={errors.thumbnail ? "true" : "false"}
           />
         </div>
-        <div className="col-lg-4">
+        <div className="col-lg-6">
           <p className="m-0">মুল ছবি দিন</p>
           <input
             className="w-100 form-control"
@@ -113,38 +67,11 @@ export default function NewPost() {
             </p>
           )}
         </div>
-        <div className="col-lg-4">
-          <p className="m-0">বিজ্ঞাপন</p>
-          <div className="d-flex justify-content-between align-items-center pt-2">
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="flexRadioDefault"
-                id="flexRadioDefault1"
-              />
-              <label className="form-check-label" htmlFor="flexRadioDefault1">
-                বিজ্ঞাপন দিব।
-              </label>
-            </div>
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="flexRadioDefault"
-                id="flexRadioDefault2"
-                defaultChecked
-              />
-              <label className="form-check-label" htmlFor="flexRadioDefault2">
-                বিজ্ঞাপন দিব না।
-              </label>
-            </div>
-          </div>
+        <div className="col-lg-12  pt-5">
+          Texteditor Is Cokking Now
         </div>
-      </div>
-      <div className="row pt-4">
         <div className="col-lg-12">
-          <div className="form-check">
+          <div className="form-check pt-5">
             <input
               className="form-check-input"
               type="checkbox"

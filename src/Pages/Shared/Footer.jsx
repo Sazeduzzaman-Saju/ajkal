@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import NewsCategory from "../../Comps/NewsCategory/NewsCategory";
 
 const Footer = () => {
-
   const categoriesData = [
     { id: 1, name: "যুক্তরাষ্ট্র", link: "/" },
     { id: 2, name: "বাংলাদেশ", link: "/" },
@@ -19,11 +18,11 @@ const Footer = () => {
     { id: 1, name: "খেলার মাঠ", link: "/" },
     { id: 2, name: "স্বাস্থ্য", link: "/" },
     { id: 1, name: "ধর্ম", link: "/" },
-    { id: 2, name: "সংকলন", link: "/" }
+    { id: 2, name: "সংকলন", link: "/" },
     // Add more categories as needed
   ];
 
-  console.log(categoriesData)
+  console.log(categoriesData);
   return (
     <div className="container-fluid p-0">
       <div className="container-fluid main_footer py-5">
@@ -38,9 +37,13 @@ const Footer = () => {
             <div className="col-lg-4 p-3 text-lg-start text-center">
               <div>
                 <Link className="" to="/">
-                  <img src="https://i.ibb.co/LJtVLvQ/logo-white.png" className="img-fluid" alt="" width={250} />
+                  <img
+                    src="https://i.ibb.co/LJtVLvQ/logo-white.png"
+                    className="img-fluid"
+                    alt=""
+                    width={250}
+                  />
                 </Link>
-                
               </div>
             </div>
             <div className="col-lg-4 p-3"></div>
@@ -67,7 +70,7 @@ const Footer = () => {
           <div className="row mt-5">
             <div className="col-lg-6">
               <div>
-              <p className="fs-3 text-white mb-0">
+                <p className="fs-3 text-white mb-0">
                   {" "}
                   <strong>সম্পাদক ও প্রকাশক : </strong>{" "}
                   <span className="">শাহ্‌ নেওয়াজ</span>
@@ -80,8 +83,7 @@ const Footer = () => {
               </div>
             </div>
             <div className="col-lg-6">
-            <div className="text-end py-4">
-                
+              <div className="text-end py-4">
                 <p className="text-white mb-0 ">
                   ফোন: <span>+1646 267-7751</span> ফ্যাক্স:
                   <span>718-865-9130</span>
@@ -92,11 +94,27 @@ const Footer = () => {
                   ইমেইল: <span>ajkalnews@gmail.com</span> সম্পাদক ইমেইল:{" "}
                   <span>editor@ajkalusa.com</span>
                 </p>
-                
               </div>
             </div>
-            <div className="col-lg-12">
-              
+            <div className="col-lg-12 mt-4">
+              <div className="d-flex justify-content-center pt-5">
+                <div className="d-flex">
+                  <Link to={"#"}>
+                    <img
+                      width={180}
+                      src="https://i.ibb.co/mvChxhk/play.png"
+                      alt=""
+                    />
+                  </Link>
+                  <Link to={"#"}>
+                    <img
+                      width={180}
+                      src="https://i.ibb.co/WKqnRZW/applestore.png"
+                      alt=""
+                    />
+                  </Link>
+                </div>
+              </div>
               <div className="pt-4">
                 <ul
                   className="navbar-nav flex-lg-row  flex-column d-flex justify-content-center  align-items-center"

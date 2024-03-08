@@ -1,26 +1,41 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom"; // Assuming you are using React Router for navigation
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
   const [activeLink, setActiveLink] = useState("");
+  const [navLinks, setNavLinks] = useState([]);
 
   const handleLinkClick = (link) => {
     setActiveLink(link);
   };
 
-  const navLinks = [
-    { id: 1, text: "যুক্তরাষ্ট্র", path: "#" },
-    { id: 2, text: "বাংলাদেশ", path: "#" },
-    { id: 3, text: "নিউইয়র্ক", path: "#" },
-    { id: 4, text: "সারাবিশ্ব", path: "#" },
-    { id: 5, text: "প্রবাস", path: "#" },
-    { id: 6, text: "বিনোদন", path: "#" },
-    { id: 7, text: "খেলার মাট", path: "#" },
-    { id: 8, text: "স্বাস্থ্য", path: "#" },
-    { id: 9, text: "ধর্ম", path: "#" },
-    { id: 10, text: "সংকলন", path: "#" },
-    { id: 11, text: "আর্কাইভ", path: "#" },
-  ];
+  const url = "https://news.goexpressus.com/news-category";
+  useEffect(() => {
+    axios
+      .get(url)
+      .then((response) => {
+        // Check if the response contains an array
+        if (Array.isArray(response.data)) {
+          // Slice the array to get the first 10 items
+          setNavLinks(response.data.slice(0, 10));
+        } else if (Array.isArray(response.data.data)) {
+          // Check if the response has a property "data" containing an array
+          // Slice the array to get the first 12 items
+          setNavLinks(response.data.data.slice(0, 12));
+        } else {
+          console.error(
+            "Invalid data structure in API response:",
+            response.data
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
+  const currentActiveLink = activeLink || "";
 
   return (
     <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
@@ -29,7 +44,7 @@ const NavBar = () => {
           <li
             key={link.id}
             className={`nav-item menu-border pe-3 ps-3 ${
-              activeLink === link.text ? "active" : ""
+              currentActiveLink === link.text ? "active" : ""
             }`}
           >
             <NavLink
@@ -37,7 +52,7 @@ const NavBar = () => {
               className="nav-link navlinks"
               onClick={() => handleLinkClick(link.text)}
             >
-              {link.text}
+              {link.name}
             </NavLink>
           </li>
         ))}

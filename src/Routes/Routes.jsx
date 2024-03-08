@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 
 import { createBrowserRouter, useLocation } from 'react-router-dom';
 import ErrorPage from '../Pages/ErrorPage/ErrorPage';

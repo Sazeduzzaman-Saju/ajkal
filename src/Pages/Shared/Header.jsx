@@ -21,7 +21,7 @@ function Header() {
               {/* ঢাকা, বৃহস্পতিবার ১৫ ফেব্রুয়ারি ২০২৪, ২ ফাল্গুন ১৪৩০, ০৪ শাবান ১৪৪৫ */}
               <DynamicDateTime/>
             </div>
-            <div className="col-lg-6">
+            <div className="col-lg-6 pe-0">
               <div className="top-bar p-2 d-flex justify-content-between align-items-center pt-1">
                 <ul className="mb-0">
                   <li className="">
@@ -65,7 +65,7 @@ function Header() {
         </div>
       </div>
       <nav className="navbar navbar-expand-lg bg-white sticky-top flex-column main-menu pt-0 pb-0">
-        <div className="container px-0 pb-2 pt-2">
+        <div className="container px-0 pb-3 pt-3">
           <button
             className="navbar-toggler"
             type="button"

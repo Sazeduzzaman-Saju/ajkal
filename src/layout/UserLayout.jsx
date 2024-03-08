@@ -9,9 +9,18 @@ const UserLayout = () => {
       <Header />
       <div className="container">
         <div className="row">
-          <div className="col-lg-2 px-0" style={{ backgroundColor: "#eee" }}>
+          <div
+            className="col-lg-2 px-0 shadow-sm "
+            style={{
+              backgroundImage:
+                "url('https://img.freepik.com/free-vector/paper-style-smooth-background_52683-64676.jpg')",
+              height: "auto",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
             <div className="user-accounts-sidebar">
-              <ul className="user-nav navbar-nav">
+              <ul className="user-nav navbar-nav pt-3">
                 <li className="nav-item">
                   <NavLink
                     to={"/user/dahboard"}

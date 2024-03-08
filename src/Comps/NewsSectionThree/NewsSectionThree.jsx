@@ -58,7 +58,7 @@ const NewsSectionThree = () => {
           ))}
         </div>
         <div className="col-lg-6">
-          <a to={`/news/1`}>
+          <Link to={`/news/1`}>
             <div className="card border-0">
               <div className="card-body p-0">
                 <img
@@ -71,7 +71,7 @@ const NewsSectionThree = () => {
                 </h5>
               </div>
             </div>
-          </a>
+          </Link>
         </div>
         <div className="col-lg-3">
           {smalLeftData.map((data, index) => (
