@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./SorboshesKhobor.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const sorboshesData = [
   {
@@ -65,59 +66,30 @@ const sorboshesData = [
   },
 ];
 
-const sorboshesPothitoData = [
-  {
-    id: "1",
-    category: "সারা বিশ্ব",
-    postTitle: "নওয়াজের দলে যোগ দিলেন ৬ স্বতন্ত্র প্রার্থী",
-    postImage:
-      "https://d2u0ktu8omkpf6.cloudfront.net/a93130a6dd1285a7ac6adc2776eef5ca9315e4fb855d1d66.jpg",
-  },
-  {
-    id: "2",
-    category: "সারা বিশ্ব",
-    postTitle: "নওয়াজের দলে যোগ দিলেন ৬ স্বতন্ত্র প্রার্থী",
-    postImage:
-      "https://d2u0ktu8omkpf6.cloudfront.net/666cd631392472bcfb84a978006a12caadaf0aecc54a6487.jpg",
-  },
-  {
-    id: "3",
-    category: "সারা বিশ্ব",
-    postTitle: "নওয়াজের দলে যোগ দিলেন ৬ স্বতন্ত্র প্রার্থী",
-    postImage:
-      "https://d2u0ktu8omkpf6.cloudfront.net/7fbf7d175b47f9fa3f5a399eef6b748e5253a668949a31da.jpg",
-  },
-  {
-    id: "4",
-    category: "সারা বিশ্ব",
-    postTitle: "নওয়াজের দলে যোগ দিলেন ৬ স্বতন্ত্র প্রার্থী",
-    postImage:
-      "https://d2u0ktu8omkpf6.cloudfront.net/7fe12d6e2d3c4e2e661b52fe006b22298f8b7fa7fa2934d2.jpg",
-  },
-  {
-    id: "5",
-    category: "সারা বিশ্ব",
-    postTitle: "নওয়াজের দলে যোগ দিলেন ৬ স্বতন্ত্র প্রার্থী",
-    postImage:
-      "https://d2u0ktu8omkpf6.cloudfront.net/23acb2b717e5907b288e75947d3256dc36882510b5009177.jpg",
-  },
-  {
-    id: "6",
-    category: "সারা বিশ্ব",
-    postTitle: "নওয়াজের দলে যোগ দিলেন ৬ স্বতন্ত্র প্রার্থী",
-    postImage:
-      "https://d2u0ktu8omkpf6.cloudfront.net/e3ccd551402f995d19f48261f40a93ef075aec3c98134232.jpg",
-  },
-  {
-    id: "7",
-    category: "সারা বিশ্ব",
-    postTitle: "নওয়াজের দলে যোগ দিলেন ৬ স্বতন্ত্র প্রার্থী",
-    postImage:
-      "https://d2u0ktu8omkpf6.cloudfront.net/666cd631392472bcfb84a978006a12caadaf0aecc54a6487.jpg",
-  },
-];
-
 const SorboshesKhobor = () => {
+  const [sorboshesPothitoData, setSorboshesPothitoData] = useState([]);
+  const url = "https://news.goexpressus.com/viewed-news";
+  useEffect(() => {
+    axios
+      .get(url)
+      .then((response) => {
+        // Check if the response contains an array
+        if (Array.isArray(response.data)) {
+          setSorboshesPothitoData(response.data);
+        } else if (Array.isArray(response.data.data)) {
+          setSorboshesPothitoData(response.data.data);
+        } else {
+          console.error(
+            "Invalid data structure in API response:",
+            response.data
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+    console.log(sorboshesPothitoData);
+  }, []);
   return (
     <div className="row mb-5 mt-5">
       <div className="col-lg-8">
@@ -162,15 +134,21 @@ const SorboshesKhobor = () => {
                   <div className="card-body p-0 d-flex align-items-center">
                     <div className="pothito-img w-25 h-100 ">
                       <img
-                        className="img-fluid rounded-1 "
-                        src={data.postImage}
+                        className="img-fluid rounded-1"
+                        width={105}
+                        height={60}
+                        src={
+                          data.thumbnail_img
+                            ? data.thumbnail_img
+                            : "https://i.ibb.co/jRBh5pr/canva-news-update-opening-video-c-E-6jfu-Ir-PA.jpg"
+                        }
                         alt=""
                       />
                     </div>
                     <div className="pothito-content w-75 ps-4">
                       <div>
                         <h5 className="main-color">{data.category}</h5>
-                        <p className="m-0 text-muted">{data.postTitle}...</p>
+                        <p className="m-0 text-muted">{data.news_title}...</p>
                       </div>
                     </div>
                   </div>

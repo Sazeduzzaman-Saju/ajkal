@@ -63,6 +63,8 @@ const router = createBrowserRouter([
       {
         path: '/categories/:id',
         element: <Categories />,
+        loader: ({ params }) => fetch(`https://news.goexpressus.com/category-news/${params.id}`)
+        // loader: ({ params }) => fetch(`https://news.goexpressus.com/news-detail/${params.id}`)
       },
       {
         path: '/about',

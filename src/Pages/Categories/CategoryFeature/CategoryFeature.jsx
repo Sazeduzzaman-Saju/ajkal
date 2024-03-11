@@ -2,6 +2,7 @@ import React from "react";
 import CategoryNewsSlider from "./CategoryNewsSlider";
 
 const CategoryFeature = () => {
+ 
   return (
     <div className="col-lg-8">
       <div className="row">

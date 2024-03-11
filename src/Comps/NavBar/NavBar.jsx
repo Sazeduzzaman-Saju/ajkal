@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 const NavBar = () => {
   const [activeLink, setActiveLink] = useState("");
   const [navLinks, setNavLinks] = useState([]);
+  const [extraNav, setExtraNav] = useState([]);
 
   const handleLinkClick = (link) => {
     setActiveLink(link);
@@ -19,10 +20,14 @@ const NavBar = () => {
         if (Array.isArray(response.data)) {
           // Slice the array to get the first 10 items
           setNavLinks(response.data.slice(0, 10));
+          // Remove the second argument to get items from 10 to the end
+          setExtraNav(response.data.slice(10));
         } else if (Array.isArray(response.data.data)) {
           // Check if the response has a property "data" containing an array
           // Slice the array to get the first 12 items
           setNavLinks(response.data.data.slice(0, 12));
+          // Remove the second argument to get items from 12 to the end
+          setExtraNav(response.data.data.slice(12));
         } else {
           console.error(
             "Invalid data structure in API response:",
@@ -43,7 +48,7 @@ const NavBar = () => {
         {navLinks.map((link) => (
           <li
             key={link.id}
-            className={`nav-item menu-border pe-3 ps-3 ${
+            className={`nav-item menu-border menu-specing ${
               currentActiveLink === link.text ? "active" : ""
             }`}
           >
@@ -56,7 +61,7 @@ const NavBar = () => {
             </NavLink>
           </li>
         ))}
-        <li className="nav-item menu-border pe-3 ps-3 ">
+        <li className="nav-item menu-specing ">
           <div className="dropdown main-menu">
             <NavLink
               className="border-0 bg-transparent pt-2 text-white"
@@ -73,36 +78,18 @@ const NavBar = () => {
               style={{ borderBottom: "none" }}
               aria-labelledby="dropdownMenuButton1"
             >
-              <li>
-                <NavLink className="dropdown-item" to={"/news/1"}>
-                  সর্বশেষ
-                </NavLink>
-              </li>
-              <li>
-                <NavLink className="dropdown-item" to={"/news/2"}>
-                  রাজনীতি
-                </NavLink>
-              </li>
-              <li>
-                <NavLink className="dropdown-item" to={"/news/3"}>
-                  বাংলাদেশ
-                </NavLink>
-              </li>
-              <li>
-                <NavLink className="dropdown-item" to={"/news/4"}>
-                  অপরাধ
-                </NavLink>
-              </li>
-              <li>
-                <NavLink className="dropdown-item" to={"/news/5"}>
-                  বিশ্ব
-                </NavLink>
-              </li>
-              <li>
-                <NavLink className="dropdown-item" to={"/news/6"}>
-                  বাণিজ্য
-                </NavLink>
-              </li>
+              {extraNav.map((item, index) => (
+                <li key={index}>
+                  <NavLink
+                    className="dropdown-item"
+                    to={`/categories/${item.id}`}
+                    activeClassName="active"
+                    onClick={() => handleLinkClick(item.name)}
+                  >
+                    {item.name}
+                  </NavLink>
+                </li>
+              ))}
             </ul>
           </div>
         </li>

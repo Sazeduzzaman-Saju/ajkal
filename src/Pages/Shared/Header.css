@@ -75,6 +75,10 @@
   height: 3.125rem;
 }
 
+.menu-specing{
+  padding-right: 18px;
+  padding-left: 18px;
+}
 /* Search Box */
 .buttonss {
   display: inline-block;
