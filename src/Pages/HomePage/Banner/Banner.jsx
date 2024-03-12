@@ -11,6 +11,7 @@ import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 import { Link } from "react-router-dom";
 
 export default function Banner() {
+  const [bannerData, setBannerData] = useState([]);
   const progressCircle = useRef(null);
   const progressContent = useRef(null);
 
@@ -19,45 +20,28 @@ export default function Banner() {
     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
   };
 
-  const bannerData = [
-    {
-      id: "01",
-      category: "বাংলাদেশ",
-      imageSrc: "http://ajkalusa.nawazgroup.us/img/banner1.jpg",
-      title: "বাংলা অক্ষরে লেখা জার্সি",
-      subtitle: "পড়ে খেলবে বসুন্ধরা কিংস",
-      content:
-        "‘পুলিশ ও ভোক্তা অধিদপ্তর দিয়ে বাজার নিয়ন্ত্রণ সম্ভব নয় । দেশে ‘জমিদারতন্ত্র’ কায়েম করেছে সরকার : রিজভী দেশে ‘জমিদারতন্ত্র’ কায়েম করেছে সরকার : রিজভী",
-    },
-    {
-      id: "02",
-      category: "বাংলাদেশ",
-      imageSrc: "http://ajkalusa.nawazgroup.us/img/banner2.jpg",
-      title: "উন্নয়নমূলক কাজ করতে গেলে",
-      subtitle: "দুর্নীতি হবেই : তাজুল ইসলাম",
-      content:
-        "‘কারাগারে রাশিয়ার বিরোধী নেতা নাভালনির মৃত্য গত এক দশকে রাশিয়ার সবচেয়ে উল্লেখযোগ্য বিরোধী নেতা আলেক্সাই নাভালনি আর্কটিক সার্কেলের ভেতরে কারাগার",
-    },
-    {
-      id: "03",
-      category: "বাংলাদেশ",
-      imageSrc: "http://ajkalusa.nawazgroup.us/img/banner3.jpg",
-      title: "মেডিক্যালে চান্স পেলেও দুশ্চিন্তার ভাজ বাবার কপালে",
-      subtitle: "ছেলে মেডিক্যালে চান্স পেলেও আনন্দের বদলে দুশ্চিন্তার ভাজ",
-      content:
-        "‘মৌলভীবাজারে সিএনজির মুখোমুখি সংঘর্ষ, নিহত বড় জয়ে শেষ চারের লড়াই জমিয়ে তুলেছে খুলনা",
-    },
-    {
-      id: "04",
-      category: "বাংলাদেশ",
-      imageSrc: "http://ajkalusa.nawazgroup.us/img/banner4.jpg",
-      title: "মিয়ানমার থেকে কুমিল্লায় পাসপোর্ট করতে এসে",
-      subtitle: "অচিরে দেশে গণতন্ত্র ও ভোটাধিকার পুনঃপ্রতিষ্ঠিত হবে",
-      content:
-        "‘৫ উইকেটে ৩২৬ রানে দ্বিতীয় দিন শুরু করা ভারত ১১৯ রান যোগ করে পরের ৫ উইকেট হারায়। স্বাগতিকদের ৪৪৫ রানে ‘ডলার সংকটে বিকল্প বিনিময় ব্যবস্থা গড়ে তুলতে হবে’",
-    },
-  ];
 
+  const url = "https://news.goexpressus.com/breaking-news";
+  useEffect(() => {
+    axios
+      .get(url)
+      .then((response) => {
+        if (Array.isArray(response.data)) {
+          setBannerData(response.data.slice(0, 10));
+        } else if (Array.isArray(response.data.data)) {
+          setBannerData(response.data.data.slice(0, 12));
+        } else {
+          console.error(
+            "Invalid data structure in API response:",
+            response.data
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+console.log(bannerData)
   return (
     <>
       <Swiper
@@ -79,13 +63,13 @@ export default function Banner() {
         {bannerData.map((slide, index) => (
           <SwiperSlide key={index}>
             <div className="showcase">
-              <img className="fixed-img" src={slide.imageSrc} alt="Picture" />
+              <img className="fixed-img" src={slide.title_img} alt="Picture" />
               <div className="overlay">
                 <Link to={`/news/${slide.id}`} className="text-white">
                   <div className="container">
-                    <h1 className="mb-0 fw-bold ">{slide.title}</h1>
-                    <h2 className="mb-0">{slide.subtitle}</h2>
-                    <p className="w-50 pt-5">{slide.content}</p>
+                    <h1 className="mb-0 fw-bold ">{slide.news_title}</h1>
+                    <h2 className="mb-0 pt-2">{slide.news_short_brief.slice(0,100)}</h2>
+                    <p className="w-50 pt-5">{slide.news_detail.slice(0, 150)}</p>
                   </div>
                 </Link>
               </div>
