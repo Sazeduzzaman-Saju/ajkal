@@ -20,7 +20,6 @@ export default function Banner() {
     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
   };
 
-
   const url = "https://news.goexpressus.com/breaking-news";
   useEffect(() => {
     axios
@@ -41,7 +40,6 @@ export default function Banner() {
         console.error("Error fetching data:", error);
       });
   }, []);
-console.log(bannerData)
   return (
     <>
       <Swiper
@@ -63,13 +61,18 @@ console.log(bannerData)
         {bannerData.map((slide, index) => (
           <SwiperSlide key={index}>
             <div className="showcase">
-              <img className="fixed-img" src={slide.title_img} alt="Picture" />
+              {/* <img className="fixed-img" src={slide.title_img} alt="Picture" /> */}
+              <img className="fixed-img" src={`https://ajkal.goexpressus.com/images/${slide.title_img}`} alt={slide.news_title} />
               <div className="overlay">
                 <Link to={`/news/${slide.id}`} className="text-white">
                   <div className="container">
-                    <h1 className="mb-0 fw-bold ">{slide.news_title}</h1>
-                    <h2 className="mb-0 pt-2">{slide.news_short_brief.slice(0,100)}</h2>
-                    <p className="w-50 pt-5">{slide.news_detail.slice(0, 150)}</p>
+                    <h1 className="mb-0 fw-bold ">{slide.news_title.slice(0,33)}</h1>
+                    <h2 className="mb-0 pt-2">
+                      {slide.news_short_brief.slice(0, 97)}
+                    </h2>
+                    <p className="w-50 pt-5">
+                      {slide.news_detail.slice(3, 150)}
+                    </p>
                   </div>
                 </Link>
               </div>

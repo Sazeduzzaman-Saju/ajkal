@@ -2,55 +2,26 @@ import React from "react";
 import "./style.css";
 import { Link } from "react-router-dom";
 
-const smalLeftData = [
-  {
-    id: "1",
-    imageLink:
-      "https://www.hindustantimes.com/ht-img/img/2024/02/23/550x309/CRICKET-TEST-IND-ENG--93_1708657586432_1708657626179.JPG",
-    titles: "কারাগারে রাশিয়ার বিরোধী নেতা নাভালনির মৃত্যু.",
-  },
-  {
-    id: "2",
-    imageLink: "../../../../public/image/Features/feature3.png",
-    titles: "কারাগারে রাশিয়ার বিরোধী নেতা নাভালনির মৃত্যু.",
-  },
-  {
-    id: "3",
-    imageLink:
-      "https://img.cricketworld.com/images/d-133824/georgia-atkinson-.jpg",
-    titles: "কারাগারে রাশিয়ার বিরোধী নেতা নাভালনির মৃত্যু.",
-  },
-  {
-    id: "4",
-    imageLink:
-      "https://www.espncricinfo.com/db/PICTURES/CMS/363900/363973.6.jpg",
-    titles: "কারাগারে রাশিয়ার বিরোধী নেতা নাভালনির মৃত্যু.",
-  },
-  {
-    id: "5",
-    imageLink:
-      "https://www.hindustantimes.com/ht-img/img/2023/12/28/550x309/PTI12-26-2023-000394A-0_1703741487467_1703741520568.jpg",
-    titles: "কারাগারে রাশিয়ার বিরোধী নেতা নাভালনির মৃত্যু.",
-  },
-];
-const NewsSectionThree = () => {
+const NewsSectionThree = ({ khelarNews }) => {
+  console.log(khelarNews);
   return (
     <div>
       <div className="row mb-5 align-items-center ">
         <div className="col-lg-3">
-          {smalLeftData.map((data, index) => (
-            <Link to={`/news/${data.id}`} className="text-muted" key={index}>
-              <div className="d-flex align-items-center mb-3">
-                <div className="w-30">
+          {khelarNews.map((data) => (
+            <Link to={`/news/${data.id}`} className="text-muted" key={data.id}>
+              <div className="d-flex align-items-center mb-3 row">
+                <div className="col-lg-4">
                   <img
-                    className="img-fluid rouned-1 post-boxs-small"
-                    src={data.imageLink}
+                    className="rounded-1"
+                    width={100}
+                    src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
                     alt=""
                   />
                 </div>
-                <div className="ps-2">
+                <div className="col-lg-8">
                   <h6 className="mb-0 text-muted fw-semibold ">
-                    {data.titles}
+                    {data.news_title}
                   </h6>
                 </div>
               </div>
@@ -58,35 +29,42 @@ const NewsSectionThree = () => {
           ))}
         </div>
         <div className="col-lg-6">
-          <Link to={`/news/1`}>
-            <div className="card border-0">
-              <div className="card-body p-0">
-                <img
-                  className="w-100 rounded-2 img-fluid"
-                  src="https://images.prothomalo.com/prothomalo-bangla%2F2024-02%2F9530ee3c-0cbe-417c-80fa-407938d5a0e8%2F527509_01_02.jpg?rect=0%2C0%2C6428%2C4285&auto=format%2Ccompress&fmt=webp&dpr=1.0&format=webp&w=480"
-                  alt=""
-                />
-                <h5 className="m-0 p-0 pt-2 text-center text-muted ">
-                  কারাগারে রাশিয়ার বিরোধী নেতা নাভালনির মৃত্যু.
-                </h5>
-              </div>
-            </div>
-          </Link>
+          {khelarNews.map((data) =>
+            // Check if data "is_featured" is equal to "1"
+            data.is_featured === "1" ? (
+              <Link to={`/news/${data.id}`} key={data.id}>
+                <div className="card border-0">
+                  <div className="card-body p-0">
+                    <img
+                      className="w-100 rounded-2 img-fluid"
+                      src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                      alt=""
+                    />
+                    <h5 className="m-0 p-0 pt-2 text-center text-muted ">
+                      {data.news_title}
+                    </h5>
+                  </div>
+                </div>
+              </Link>
+            ) : // If not featured, render other content or nothing
+            null
+          )}
         </div>
         <div className="col-lg-3">
-          {smalLeftData.map((data, index) => (
-            <Link to={`/news/${data.id}`} className="text-muted" key={index}>
-              <div className="d-flex align-items-center mb-3">
-                <div className="w-30">
+          {khelarNews.map((data) => (
+            <Link to={`/news/${data.id}`} className="text-muted" key={data.id}>
+              <div className="d-flex align-items-center mb-3 row">
+                <div className="col-lg-4">
                   <img
-                    className="img-fluid rouned-1 post-boxs-small"
-                    src={data.imageLink}
+                    className="rounded-1"
+                    width={100}
+                    src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
                     alt=""
                   />
                 </div>
-                <div className="ps-2">
+                <div className="col-lg-8">
                   <h6 className="mb-0 text-muted fw-semibold ">
-                    {data.titles}
+                    {data.news_title}
                   </h6>
                 </div>
               </div>

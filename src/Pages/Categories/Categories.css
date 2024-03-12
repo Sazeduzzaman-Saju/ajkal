@@ -76,3 +76,9 @@
 .custom-nav-tabs .nav-link.active{
   color: #fff !important;
 }
+.main_color{
+  color: var(--main);
+}
+.sec_color{
+  color: var(--secondary);
+}

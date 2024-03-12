@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import "./style.css";
@@ -12,8 +12,31 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function CategoryNewsSlider() {
+  const [categoryNews, setCategoryNews] = useState([]);
+  const url = "https://news.goexpressus.com/breaking-news";
+  useEffect(() => {
+    axios
+      .get(url)
+      .then((response) => {
+        if (Array.isArray(response.data)) {
+          setCategoryNews(response.data.slice(0, 10));
+        } else if (Array.isArray(response.data.data)) {
+          setCategoryNews(response.data.data.slice(0, 12));
+        } else {
+          console.error(
+            "Invalid data structure in API response:",
+            response.data
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
   return (
     <>
       <Swiper
@@ -30,112 +53,33 @@ export default function CategoryNewsSlider() {
         navigation={true}
         modules={[Navigation]}
         className="mySwiper"
+        style={{borderRadius: '10px'}}
       >
-        <SwiperSlide style={{ padding: " 0px 4px" }} className="pb-4">
-          <Link to={"/"} className="shadow-sm">
-            <div className="card rounded-0 border-0 ">
-              <div className="card-header p-0"></div>
-              <div className="card-body p-0">
-                <div>
-                  <img
-                    className="img-fluid w-100 category-slider-img"
-                    src="https://images.prothomalo.com/prothomalo-bangla%2F2024-01%2Fc19e7e20-e49c-466c-84b0-da8cfcc20495%2Fdeath.jpg?auto=format%2Ccompress&fmt=webp&format=webp&w=640&dpr=1.0"
-                    alt=""
-                  />
-                </div>
-                <div className="p-2 feature-text-area">
-                  <h4 className="pt-2">
-                    একের পর এক গুন্ডাদের সঙ্গে লড়ছেন। এভাবেই আজ ‘ডার্ক জাস্টিস’
-                  </h4>
-                </div>
-              </div>
-            </div>
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link to={"/"} className="shadow-sm">
-            <div className="card rounded-0 border-0 shadow-sm ">
-              <div className="card-header p-0"></div>
-              <div className="card-body p-0">
-                <div>
-                  <img
-                    className="img-fluid w-100 category-slider-img"
-                    src="https://images.prothomalo.com/prothomalo-bangla%2F2024-01%2Fc19e7e20-e49c-466c-84b0-da8cfcc20495%2Fdeath.jpg?auto=format%2Ccompress&fmt=webp&format=webp&w=640&dpr=1.0"
-                    alt=""
-                  />
-                </div>
-                <div className="p-2 ">
-                  <h4 className="pt-2">
-                    একের পর এক গুন্ডাদের সঙ্গে লড়ছেন। এভাবেই আজ ‘ডার্ক জাস্টিস’
-                  </h4>
+        {categoryNews.map((data) => (
+          <SwiperSlide
+            style={{ padding: " 0px 4px" }}
+            className="pb-0"
+            key={data.id}
+          >
+            <Link to={`/news/${data.id}`} className="shadow-sm">
+              <div className="card rounded-0 border-0 ">
+                <div className="card-header p-0"></div>
+                <div className="card-body p-0">
+                  <div>
+                    <img
+                      className="img-fluid w-100 category-slider-img"
+                      src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                      alt=""
+                    />
+                  </div>
+                  <div className="p-2 feature-text-area">
+                    <h4 className="pt-2">{data.news_title.slice(0, 50)}</h4>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link to={"/"} className="shadow-sm">
-            <div className="card rounded-0 border-0">
-              <div className="card-header p-0"></div>
-              <div className="card-body p-0">
-                <div>
-                  <img
-                    className="img-fluid w-100 category-slider-img"
-                    src="https://images.prothomalo.com/prothomalo-bangla%2F2024-01%2Fc19e7e20-e49c-466c-84b0-da8cfcc20495%2Fdeath.jpg?auto=format%2Ccompress&fmt=webp&format=webp&w=640&dpr=1.0"
-                    alt=""
-                  />
-                </div>
-                <div className="p-2 ">
-                  <h4 className="pt-2">
-                    একের পর এক গুন্ডাদের সঙ্গে লড়ছেন। এভাবেই আজ ‘ডার্ক জাস্টিস’
-                  </h4>
-                </div>
-              </div>
-            </div>
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link to={"/"} className="shadow-sm">
-            <div className="card rounded-0 border-0 shadow-sm ">
-              <div className="card-header p-0"></div>
-              <div className="card-body p-0">
-                <div>
-                  <img
-                    className="img-fluid w-100 category-slider-img"
-                    src="https://images.prothomalo.com/prothomalo-bangla%2F2024-01%2Fc19e7e20-e49c-466c-84b0-da8cfcc20495%2Fdeath.jpg?auto=format%2Ccompress&fmt=webp&format=webp&w=640&dpr=1.0"
-                    alt=""
-                  />
-                </div>
-                <div className="p-2 ">
-                  <h4 className="pt-2">
-                    একের পর এক গুন্ডাদের সঙ্গে লড়ছেন। এভাবেই আজ ‘ডার্ক জাস্টিস’
-                  </h4>
-                </div>
-              </div>
-            </div>
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link to={"/"} className="shadow-sm">
-            <div className="card rounded-0 border-0 shadow-sm ">
-              <div className="card-header p-0"></div>
-              <div className="card-body p-0">
-                <div>
-                  <img
-                    className="img-fluid w-100 category-slider-img"
-                    src="https://images.prothomalo.com/prothomalo-bangla%2F2024-01%2Fc19e7e20-e49c-466c-84b0-da8cfcc20495%2Fdeath.jpg?auto=format%2Ccompress&fmt=webp&format=webp&w=640&dpr=1.0"
-                    alt=""
-                  />
-                </div>
-                <div className="p-2 ">
-                  <h4 className="pt-2">
-                    একের পর এক গুন্ডাদের সঙ্গে লড়ছেন। এভাবেই আজ ‘ডার্ক জাস্টিস’
-                  </h4>
-                </div>
-              </div>
-            </div>
-          </Link>
-        </SwiperSlide>
+            </Link>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </>
   );

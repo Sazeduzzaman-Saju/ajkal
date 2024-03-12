@@ -8,7 +8,7 @@ const UserLayout = () => {
     <>
       <Header />
       <div className="container">
-        <div className="row">
+      <div className="row">
           <div
             className="col-lg-2 px-0 shadow-sm "
             style={{

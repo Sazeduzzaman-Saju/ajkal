@@ -1,10 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const NewsCategory = ({ categories }) => {
-  console.log(categories);
-
   return (
     <div>
       <ul className="list-unstyled d-flex flex-wrap justify-content-center mt-1">

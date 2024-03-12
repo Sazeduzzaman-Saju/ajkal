@@ -27,7 +27,6 @@ const FeatureNews = () => {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-      console.log(spotlightNews)
   }, []);
   return (
     <div className="row">
@@ -38,23 +37,23 @@ const FeatureNews = () => {
               <div className="card-body">
                 <div className="d-flex justify-content-between  align-items-center ">
                   <p className="secondary-color">
-                    {data.country || <Skeleton></Skeleton>}
+                    {data.category_name_bangla || <Skeleton></Skeleton>}
                   </p>
                   <p className="badge bg-light text-black">
-                    {data.time || <Skeleton></Skeleton>}
+                    {data.news_time.slice(10) || <Skeleton></Skeleton>}
                   </p>
                 </div>
                 <h5 className="main-color">
-                  {data.featureTite || <Skeleton></Skeleton>}
+                  {data.news_title.slice(0, 28) || <Skeleton></Skeleton>}..
                 </h5>
                 <p className="card-text text-muted">
-                  {data?.shortDescrioption?.length > 83
-                    ? `${data.shortDescrioption.slice(0, 83)}...`
-                    : data?.shortDescrioption || <Skeleton></Skeleton>}
+                  {data?.news_short_brief?.length > 70
+                    ? `${data.news_short_brief.slice(0, 70)}...`
+                    : data?.news_short_brief || <Skeleton></Skeleton>}
                 </p>
               </div>
               <img
-                src={data.featureImage} // Replace with the actual image source
+                src={`https://ajkal.goexpressus.com/images/${data.title_img}`} // Replace with the actual image source
                 className="card-img-top rounded-0"
                 alt="Card Image"
               />

@@ -19,7 +19,7 @@
   }
   
   .thumbnail img {
-    width: 120%;
+    width: auto;
     transition: 0.3s;
   }
   

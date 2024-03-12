@@ -44,7 +44,7 @@ const NavBar = () => {
 
   return (
     <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
-      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
         {navLinks.map((link) => (
           <li
             key={link.id}
@@ -57,7 +57,7 @@ const NavBar = () => {
               className="nav-link navlinks"
               onClick={() => handleLinkClick(link.text)}
             >
-              {link.name}
+              {link.name_bangla}
             </NavLink>
           </li>
         ))}
@@ -86,7 +86,7 @@ const NavBar = () => {
                     activeClassName="active"
                     onClick={() => handleLinkClick(item.name)}
                   >
-                    {item.name}
+                    {item.name_bangla}
                   </NavLink>
                 </li>
               ))}

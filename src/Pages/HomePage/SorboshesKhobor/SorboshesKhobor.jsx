@@ -6,9 +6,12 @@ const SorboshesKhobor = () => {
   const [sorboshesPothitoData, setSorboshesPothitoData] = useState([]);
   const [sorboshesData, setSorboshesData] = useState([]);
 
+  // সর্বাধিক পঠিত Api
   const url = "https://news.goexpressus.com/viewed-news";
+  // সর্বশেষ আজকাল Api
   const urlsorboshes = "https://news.goexpressus.com/latest-news";
 
+  // সর্বাধিক পঠিত
   useEffect(() => {
     axios
       .get(urlsorboshes)
@@ -30,6 +33,7 @@ const SorboshesKhobor = () => {
       });
   }, []);
 
+  // সর্বশেষ আজকাল
   useEffect(() => {
     axios
       .get(url)
@@ -50,7 +54,6 @@ const SorboshesKhobor = () => {
         console.error("Error fetching data:", error);
       });
   }, []);
-
   return (
     <div className="row mb-5 mt-5">
       <div className="col-lg-8">
@@ -67,16 +70,23 @@ const SorboshesKhobor = () => {
                   <div className="card rounded-1 border-0 shadow-sm">
                     <div className="card-body card-body-1">
                       <div>
-                        <p className="secondary-color">{data.category}</p>
-                        <p className="text-muted">{data.postTime}</p>
-                        <h5 className="main-color">{data.postTitle}</h5>
-                        <p>{data.postDescription}</p>
+                        <p className="secondary-color">
+                          {data.category_name_bangla}
+                        </p>
+                        <p className="text-muted">{data.news_time.slice(10)}</p>
+                        <h5 className="main-color">
+                          {data.news_title.slice(0, 24)}..
+                        </h5>
+                        <p>
+                          {data.news_short_brief.slice(0, 110)}
+                          <span className="text-primary">...</span>
+                        </p>
                       </div>
                     </div>
                     <div className="card-body p-0 card-body-2">
                       <img
                         className="sorboshes-news-image"
-                        src={data.postImage}
+                        src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
                         alt=""
                       />
                     </div>
@@ -100,20 +110,20 @@ const SorboshesKhobor = () => {
                     <div className="pothito-img w-25 h-100 ">
                       <img
                         className="img-fluid rounded-1"
-                        width={105}
-                        height={60}
-                        src={
-                          data.thumbnail_img
-                            ? data.thumbnail_img
-                            : "https://i.ibb.co/jRBh5pr/canva-news-update-opening-video-c-E-6jfu-Ir-PA.jpg"
-                        }
+                        style={{ height: "70px", objectFit: "cover" }}
+                        src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
                         alt=""
                       />
                     </div>
                     <div className="pothito-content w-75 ps-4">
                       <div>
-                        <h5 className="main-color">{data.category}</h5>
-                        <p className="m-0 text-muted">{data.news_title}...</p>
+                        <h5 className="main-color">
+                          {data.category_name_bangla}
+                        </h5>
+                        <p className="m-0 text-muted">
+                          {data.news_title.slice(0, 38)}
+                          <span className="text-primary">...</span>
+                        </p>
                       </div>
                     </div>
                   </div>

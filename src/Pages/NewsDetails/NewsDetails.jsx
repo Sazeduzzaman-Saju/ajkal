@@ -2,46 +2,47 @@ import React from "react";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
 import "./NewsDetails.css";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import ReletedNews from "../../Comps/ReletedNews/ReletedNews";
 import { FaRegShareFromSquare } from "react-icons/fa6";
-import { IoMdPrint } from "react-icons/io";
 import NewsSidebar from "../../Comps/NewsSidebar/NewsSidebar";
 
 const NewsDetails = () => {
+  const singleNews = useLoaderData();
+  const singleNewsDetails = singleNews.data[0];
+  console.log(singleNewsDetails.category_name_bangla);
   return (
     <div className="container">
       <div className="row py-4">
         <div className="col-lg-12">
-          <div style={{ borderBottom: "2px solid var(--secondary)" }}>
-            <h5 className="text-muted">বিস্তারিত নিউজ</h5>
+          <div style={{ borderBottom: "1px solid var(--main)" }}>
+            <h5 className="text-muted">
+              বিস্তারিত নিউজ {singleNews.data.lenght}
+            </h5>
           </div>
           <div className="d-flex justify-content-between  align-items-center pt-3">
-            <h5>বাংলাদেশ</h5>
-            <h5>২৩ টা ৫ মিনিট, ১২ ফেব্রুয়ারি ২০২৪</h5>
+            <h5>{singleNewsDetails.category_name_bangla}</h5>
+            <h5>{singleNewsDetails.news_time.slice(10)} {singleNewsDetails.news_time.slice(0,10)}</h5>
           </div>
         </div>
       </div>
       <div className="row">
         <div className="col-lg-8">
-          <h1>রেলের কেনাকাটা: ভুয়া বিলে কোটি টাকা পরিশোধ!</h1>
+          <h1>{singleNewsDetails.news_title}</h1>
 
-          <p>
-            কোনো পণ্য বা সেবা না নিয়েও প্রায় ৯৭ লাখ টাকা পরিশোধ করতে হয়েছে
-            রেলওয়েকে। প্রতারক চক্র ভুয়া বিল ও ভাউচারের মাধ্যমে এ টাকা আত্মসাৎ
-            করেছে। আর এ কাজে রেলের হিসাব বিভাগ থেকে শুরু করে ব্যাংকের কর্মীরাও
-            জড়িত থাকতে পারেন বলে সন্দেহ করা হচ্ছে।
-          </p>
+          <p>{singleNewsDetails.news_short_brief}</p>
           <div>
-            <img src="http://ajkalusa.nawazgroup.us/img/SingleNews/news1.png" className="rounded-2" alt="" />
-            <p className="pt-2">
-              পণ্য না কিনেও প্রায় কোটি টাকার বিল পরিশোধ করেছে রেলওয়ে। ফাইল ছবি
-            </p>
+            <img
+              src={`https://ajkal.goexpressus.com/images/${singleNewsDetails.title_img}`}
+              className="rounded-2 img-fluid "
+              alt=""
+            />
+            <p className="pt-2">{singleNewsDetails.news_title} | ফাইল ছবি</p>
             {/* Author */}
             <div className="d-flex justify-content-between  align-items-center py-5">
               <div>
-                <h4 className="main-color">নাজমুস সালেহী</h4>
-                <p>২৩ মিনিট আগে</p>
+                <h4 className="main-color">{singleNewsDetails.news_author}</h4>
+                <p>{singleNewsDetails.news_time.slice(10)}</p>
               </div>
               <div>
                 <div className="social-author">
@@ -64,16 +65,7 @@ const NewsDetails = () => {
               </div>
             </div>
             {/* News Details */}
-            <p>
-              এ ঘটনায় পূর্বাঞ্চল রেলওয়ের প্রধান হিসাব কর্মকর্তার দফতর ৭ কর্মীকে
-              সাময়িক বরখাস্ত করেছে। পাশাপাশি রোববার (১১ ফেব্রুয়ারি) গঠন করা
-              হয়েছে তদন্ত কমিটি। কমিটির প্রতিবেদনের পর কঠোর পদক্ষেপ নেয়া হবে বলে
-              জানা গেছে। রেলের সরঞ্জাম নিয়ন্ত্রকের দফতর জানায়, গত অর্থ বছরে
-              ঠিকাদার প্রতিষ্ঠান কসমোপলিটনের থেকে বেশ কিছু চুক্তির মাধ্যমে
-              মালামাল ক্রয় করা হয়। এরমধ্যে চারটি কাজের বিল বাবদ ৩ কোটি ৬২ লাখ
-              টাকা কসমোপলিটনকে পরিশোধ করতে হিসাব দফতরকে চিঠি দেন প্রধান সরঞ্জাম
-              নিয়ন্ত্রক ফরিদ উদ্দীন। সেই টাকা উত্তোলনও করে নেয় প্রতিষ্ঠানটি।
-            </p>
+            <p>{singleNewsDetails.news_detail.slice(0, 250)}</p>
             <div className="pb-4 py-3">
               <img
                 className="img-fluid"
@@ -81,27 +73,14 @@ const NewsDetails = () => {
                 alt=""
               />
             </div>
-            <p>
-              তবে বিপত্তি বাধে যখন দেখা যায়, ৩ কোটি ৬২ লাখের বাইরে আরও ৯৭ লাখ
-              টাকা বিল নিয়েছে কসমোপলিটন। সোহাগ নামে এক ব্যক্তি সীমান্ত ব্যাংকের
-              চট্টগ্রাম আগ্রাবাদ শাখা থেকে পুরো টাকা উত্তোলন করেছেন। তবে এ বিষয়ে
-              কিছু জানে না কসমোপলিটনের স্বত্বাধিকারী নাবিল আহসান। তিনি সময়
-              সংবাদকে বলেন, ‘প্রধান সরঞ্জাম নিয়ন্ত্রকের বরাদ্দ করা ৩ কোটি ৬২ লাখ
-              টাকা উত্তোলন করেছি। তবে আর কোনো টাকার বিষয়ে আমার জানা নেই।’ আরও
-              পড়ুন: কাদের জন্য ৩০০ কোটি টাকার ‘কৃষিকোচ’ চালাচ্ছে রেলওয়ে? তিনি
-              অভিযোগ করেন, রেলের হিসাব শাখার সংশ্লিষ্ট দফতরের কর্মকর্তাদের
-              সহায়তায় তার প্রতিষ্ঠানের নাম ব্যবহার করে ৯৭ লাখ টাকা উত্তোলন করা
-              হয়ে থাকতে পারে। নাবিল আহসান বলেন, ‘সীমান্ত ব্যাংকের আগ্রাবাদ শাখা
-              থেকে ৯৭ লাখ টাকা উত্তোলন হয়েছে। তবে ওই ব্যাংকে আমার প্রতিষ্ঠানের
-              কোনো অ্যাকাউন্ট নেই। এমনকি সোহাগ নামের কাউকেও আমি চিনি না।’
-            </p>
+            <p>{singleNewsDetails.news_detail.slice(250)}</p>
           </div>
         </div>
         <div className="col-lg-4">
-          
-          <div style={{ borderBottom: "2px solid var(--secondary)" }}>
+          <div style={{ borderBottom: "1px solid var(--main)" }}>
             <h5 className="text-muted main-color">সর্বাধিক পঠিত</h5>
           </div>
+          {/* Advertisement */}
           <div className="d-flex justify-content-center align-items-center pt-4 pb-3 ">
             <img
               src="https://i.ibb.co/j39LZmN/Give-Advertisement.jpg"
@@ -109,6 +88,7 @@ const NewsDetails = () => {
               className="img-fluid"
             />
           </div>
+          {/* Advertisement End*/}
           <div>
             {/* News Sidebar */}
             <NewsSidebar></NewsSidebar>
@@ -120,16 +100,25 @@ const NewsDetails = () => {
               className="img-fluid"
             />
           </div>
-          
         </div>
       </div>
       <div className="pt-5">
-        <div style={{ borderBottom: "2px solid var(--secondary)" }}>
+        <div style={{ borderBottom: "1px solid var(--main)" }}>
           <h5 className="text-muted">
-            <Link to={'/'} className="text-muted">পার্বত্য চট্টগ্রাম নিয়ে আরও পড়ুন</Link>
+            <Link
+              to={`/categories/${singleNewsDetails.category_id}`}
+              className="text-muted"
+            >
+              <span className="fw-bold">
+                {singleNewsDetails.category_name_bangla}
+              </span>{" "}
+              নিয়ে আরও পড়ুন
+            </Link>
           </h5>
         </div>
-        <ReletedNews></ReletedNews>
+        <ReletedNews
+          singleNewsDetails={singleNewsDetails.category_id}
+        ></ReletedNews>
       </div>
     </div>
   );

@@ -11,18 +11,17 @@ const Footer = () => {
   const categoriesData = [
     { id: 1, name: "যুক্তরাষ্ট্র", link: "/" },
     { id: 2, name: "বাংলাদেশ", link: "/" },
-    { id: 1, name: "নিউইয়র্ক", link: "/" },
-    { id: 2, name: "সারাবিশ্ব", link: "/" },
-    { id: 1, name: "প্রবাস", link: "/" },
-    { id: 2, name: "বিনোদন", link: "/" },
-    { id: 1, name: "খেলার মাঠ", link: "/" },
-    { id: 2, name: "স্বাস্থ্য", link: "/" },
-    { id: 1, name: "ধর্ম", link: "/" },
-    { id: 2, name: "সংকলন", link: "/" },
+    { id: 3, name: "নিউইয়র্ক", link: "/" },
+    { id: 4, name: "সারাবিশ্ব", link: "/" },
+    { id: 5, name: "প্রবাস", link: "/" },
+    { id: 6, name: "বিনোদন", link: "/" },
+    { id: 7, name: "খেলার মাঠ", link: "/" },
+    { id: 8, name: "স্বাস্থ্য", link: "/" },
+    { id: 9, name: "ধর্ম", link: "/" },
+    { id: 10, name: "সংকলন", link: "/" },
     // Add more categories as needed
   ];
 
-  console.log(categoriesData);
   return (
     <div className="container-fluid p-0">
       <div className="container-fluid main_footer py-5">

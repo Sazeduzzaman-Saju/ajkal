@@ -7,7 +7,7 @@ const MostRecent = () => {
     <div>
       <div className="row gx-2">
         <div className="col-lg-3">
-          <Link to={'/news/2'} className="card card-news p-0">
+          <Link to={'/categories/2'} className="card card-news p-0">
             <img
             className=""
             height={'150px !important'}
@@ -21,7 +21,7 @@ const MostRecent = () => {
           </Link>
         </div>
         <div className="col-lg-3">
-          <Link to={'/news/2'} className="card card-news p-0">
+          <Link to={'/categories/4'} className="card card-news p-0">
             <img
             className=""
             height={'150px !important'}
@@ -35,7 +35,7 @@ const MostRecent = () => {
           </Link>
         </div>
         <div className="col-lg-3">
-          <Link to={'/news/2'} className="card card-news p-0">
+          <Link to={'/categories/6'} className="card card-news p-0">
             <img
               src="https://www.jugantor.com/assets/news_photos/2020/03/16/image-289736-1584330085.jpg"
               alt="Card Background"
@@ -47,7 +47,7 @@ const MostRecent = () => {
           </Link>
         </div>
         <div className="col-lg-3">
-          <Link to={'/news/2'} className="card card-news p-0">
+          <Link to={'/categories/5'} className="card card-news p-0">
             <img
               src="https://static.kent.ac.uk/nexus/ems/63.jpg"
               alt="Card Background"
