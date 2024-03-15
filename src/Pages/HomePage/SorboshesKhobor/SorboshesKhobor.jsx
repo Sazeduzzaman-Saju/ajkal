@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./SorboshesKhobor.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import BanglaTimeAgo from "../../../Comps/BanglaTime/BanglaTimeDiffrence";
 const SorboshesKhobor = () => {
   const [sorboshesPothitoData, setSorboshesPothitoData] = useState([]);
   const [sorboshesData, setSorboshesData] = useState([]);
@@ -73,7 +74,11 @@ const SorboshesKhobor = () => {
                         <p className="secondary-color">
                           {data.category_name_bangla}
                         </p>
-                        <p className="text-muted">{data.news_time.slice(10)}</p>
+                        <p className="text-muted">
+                          {/* {data.news_time.slice(10)}{" "} */}
+                          <BanglaTimeAgo postTime={data.news_time} />
+                        </p>
+                        <p className="text-muted"></p>
                         <h5 className="main-color">
                           {data.news_title.slice(0, 24)}..
                         </h5>

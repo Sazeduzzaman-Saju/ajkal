@@ -1,16 +1,15 @@
 import React from "react";
-import { AiFillInstagram } from "react-icons/ai";
-import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
 import "./NewsDetails.css";
 import { Link, useLoaderData } from "react-router-dom";
 import ReletedNews from "../../Comps/ReletedNews/ReletedNews";
-import { FaRegShareFromSquare } from "react-icons/fa6";
 import NewsSidebar from "../../Comps/NewsSidebar/NewsSidebar";
+import BanglaDateTime from "../../Comps/BanglaTime/BanglaTime";
+import BanglaTime from "../../Comps/BanglaTime/BanglaDynamicTIme";
+import SocialShareButtons from "../../Comps/SocialShareButtons/SocialShareButtons";
 
 const NewsDetails = () => {
   const singleNews = useLoaderData();
   const singleNewsDetails = singleNews.data[0];
-  console.log(singleNewsDetails.category_name_bangla);
   return (
     <div className="container">
       <div className="row py-4">
@@ -21,15 +20,17 @@ const NewsDetails = () => {
             </h5>
           </div>
           <div className="d-flex justify-content-between  align-items-center pt-3">
-            <h5>{singleNewsDetails.category_name_bangla}</h5>
-            <h5>{singleNewsDetails.news_time.slice(10)} {singleNewsDetails.news_time.slice(0,10)}</h5>
+            <h5 className="fw-bold" style={{ color: "#ee2026" }}>
+              {singleNewsDetails.category_name_bangla}
+            </h5>
+            {/* <h5>{singleNewsDetails.news_time}</h5> */}
+            <BanglaDateTime dateTime={singleNewsDetails.news_time} />
           </div>
         </div>
       </div>
       <div className="row">
         <div className="col-lg-8">
           <h1>{singleNewsDetails.news_title}</h1>
-
           <p>{singleNewsDetails.news_short_brief}</p>
           <div>
             <img
@@ -42,30 +43,25 @@ const NewsDetails = () => {
             <div className="d-flex justify-content-between  align-items-center py-5">
               <div>
                 <h4 className="main-color">{singleNewsDetails.news_author}</h4>
-                <p>{singleNewsDetails.news_time.slice(10)}</p>
+                <p>
+                  <BanglaTime
+                    time={singleNewsDetails.news_time.slice(10)}
+                  ></BanglaTime>
+                </p>
               </div>
               <div>
                 <div className="social-author">
-                  <a href="#" className="">
-                    <FaFacebook />
-                  </a>
-                  <a href="#" className="">
-                    <FaTwitter />
-                  </a>
-                  <a href="#" className="">
-                    <FaYoutube />
-                  </a>
-                  <a href="#" className="">
-                    <AiFillInstagram />
-                  </a>
-                  <a href="#" className="">
-                    <FaRegShareFromSquare />
-                  </a>
+                  <SocialShareButtons url={`/news/${singleNewsDetails.id}`} />
                 </div>
               </div>
             </div>
             {/* News Details */}
-            <p>{singleNewsDetails.news_detail.slice(0, 250)}</p>
+            {/* <p>{singleNewsDetails.news_detail.slice(0, 250)}</p> */}
+            <p
+              dangerouslySetInnerHTML={{
+                __html: singleNewsDetails.news_detail.slice(250),
+              }}
+            />
             <div className="pb-4 py-3">
               <img
                 className="img-fluid"
@@ -73,7 +69,11 @@ const NewsDetails = () => {
                 alt=""
               />
             </div>
-            <p>{singleNewsDetails.news_detail.slice(250)}</p>
+            <p
+              dangerouslySetInnerHTML={{
+                __html: singleNewsDetails.news_detail.slice(250),
+              }}
+            />
           </div>
         </div>
         <div className="col-lg-4">

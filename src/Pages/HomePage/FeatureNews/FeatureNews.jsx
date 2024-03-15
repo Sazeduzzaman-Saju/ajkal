@@ -3,6 +3,7 @@ import axios from "axios";
 import "./FeatureNews.css";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
+import BanglaTimeAgo from "../../../Comps/BanglaTime/BanglaTimeDiffrence";
 
 const FeatureNews = () => {
   const [spotlightNews, setSpotlightNews] = useState([]);
@@ -40,7 +41,8 @@ const FeatureNews = () => {
                     {data.category_name_bangla || <Skeleton></Skeleton>}
                   </p>
                   <p className="badge bg-light text-black">
-                    {data.news_time.slice(10) || <Skeleton></Skeleton>}
+                    {/* {data.news_time.slice(10) || <Skeleton></Skeleton>} */}
+                    <BanglaTimeAgo postTime={data.news_time}></BanglaTimeAgo>
                   </p>
                 </div>
                 <h5 className="main-color">
