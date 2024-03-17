@@ -28,3 +28,9 @@
   transform: scale(1.05); /* Adjust the scale value for a smaller zoom effect */
   transition: transform 0.5s ease-in-out;
 }
+@media print {
+  /* Add margins */
+  #printThis {
+    margin: 30px; /* Adjust the margin size as needed */
+  }
+}

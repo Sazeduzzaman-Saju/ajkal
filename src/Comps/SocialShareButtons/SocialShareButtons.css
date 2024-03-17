@@ -1,0 +1,44 @@
+.social-share-buttons button {
+  background-color: var(--main) !important;
+  margin-right: 5px;
+  padding: 0px 10px 5px !important;
+  margin-left: 6px;
+  border-radius: 50%;
+  height: 40px;
+  color: white !important;
+  font-size: 21px !important;
+}
+.social-share-buttons button:hover {
+  background-color: var(--secondary) !important;
+  margin-right: 5px;
+  padding: 0px 10px 5px !important;
+  margin-left: 6px;
+  border-radius: 50%;
+  height: 40px;
+  color: white !important;
+  font-size: 21px !important;
+}
+.share-btn {
+  background-color: var(--white) !important;
+  margin-right: 5px;
+  padding: 0px 10px 5px !important;
+  margin-left: 6px;
+  border-radius: 50%;
+  height: 40px;
+  color: white !important;
+  font-size: 21px !important;
+  border: 0;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.share-btn:hover {
+  background-color: var(--secondary) !important;
+  margin-right: 5px;
+  padding: 0px 10px 5px !important;
+  margin-left: 6px;
+  border-radius: 50%;
+  height: 40px;
+  color: white !important;
+  font-size: 21px !important;
+  border: 0;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}

@@ -1,9 +1,9 @@
 import React from "react";
-import PostHeader from "../../Comps/PostHeader/PostHeader";
 import "./Categories.css";
 import { Link, useLoaderData } from "react-router-dom";
 import CategoryFeature from "./CategoryFeature/CategoryFeature";
 import NewsSidebar from "../../Comps/NewsSidebar/NewsSidebar";
+import PageHelmet from "../../Comps/PageHelmet/PageHelmet";
 
 const Categories = () => {
   const singleNews = useLoaderData();
@@ -12,11 +12,18 @@ const Categories = () => {
       ? singleNews.data[0].category_name_bangla
       : "";
 
-  console.log(categoryBanglaName);
+  console.log(singleNews);
 
   return singleNews && singleNews.data.length > 0 ? (
     <div className="container">
-      <PostHeader title={categoryBanglaName} />
+      <PageHelmet
+        title={categoryBanglaName}
+        type="article"
+        image="https://i.ibb.co/6D35WjX/logo.png" // Replace with actual image URL
+        url={window.location.href} // Replace with actual page URL
+        card="https://i.ibb.co/6D35WjX/logo.png"
+        description={singleNews.news_detail} // Replace with appropriate description field from singleNewsDetails
+      />
       <div className="row">
         <CategoryFeature singleNews={singleNews.data.slice(0, 4)} />
         <div className="col-lg-4">
