@@ -30,13 +30,13 @@ const VideoNews = () => {
   }, []);
   return (
     <div>
-      <PostHeader title="ভিডিও সংবাদ" />
+      <PostHeader title={'ভিডিও'} />
       <div className="row gx-3 align-items-center">
         <div className="col-lg-6">
-          {videoNews.map((data) =>
+          {videoNews.map((data, index) =>
             // Check if data "is_featured" is equal to "1"
             data.is_featured === "1" ? (
-              <Link to={`/news/${data.id}`} key={data.id}>
+              <Link to={`/news/${data.id}`} key={index}>
                 <div className="card border-0">
                   <div className="card-body p-0">
                     <div className="is_video_icon">

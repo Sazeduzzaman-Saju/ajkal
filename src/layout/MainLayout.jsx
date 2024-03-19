@@ -11,7 +11,7 @@ const MainLayout = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 3600);
+    }, 1000);
   }, []);
   return (
     <>
@@ -23,10 +23,10 @@ const MainLayout = () => {
           >
             {/* <PuffLoader color={"#4568dc"} loading={loading} size={150} /> */}
             <Triangle
-              height="80"
-              width="80"
-              color="#4fa94d"
-              ariaLabel="circles-loading"
+              height={80}
+              width={80}
+              color={"#4fa94d"}
+              ariaLabel={"circles-loading"}
               wrapperStyle={{}}
               wrapperClass=""
               visible={true}

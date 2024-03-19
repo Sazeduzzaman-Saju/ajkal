@@ -7,6 +7,8 @@ import Categories from "./Categories/Categories";
 import CategoryWiseNews from "./CategoryWiseNews/CategoryWiseNews";
 import VideoNews from "./VideoNews/VideoNews";
 import MostRecent from "./MostRecent/MostRecent";
+import CategoryNewsOne from "./CategoryNewsOne/CategoryNewsOne";
+import CategoryNewsTwo from "./CategoryNewsTwo/CategoryNewsTwo";
 
 const HomePage = () => {
   return (
@@ -73,11 +75,27 @@ const HomePage = () => {
             </div>
           </div>
         </div>
+        {/* Category Post Show Style One */}
+        <div className="container">
+          <div className="row mb-5">
+            <div className="col-lg-12">
+              <CategoryNewsOne></CategoryNewsOne>
+            </div>
+          </div>
+        </div>
+        {/* Category Post Show Style One */}
+        <div className="container">
+          <div className="row mb-5">
+            <div className="col-lg-12">
+              <CategoryNewsTwo></CategoryNewsTwo>
+            </div>
+          </div>
+        </div>
         {/* Category Links */}
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              {/* <Categories /> */}
+              <Categories />
             </div>
           </div>
         </div>

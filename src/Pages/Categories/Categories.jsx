@@ -4,7 +4,6 @@ import { Link, useLoaderData } from "react-router-dom";
 import CategoryFeature from "./CategoryFeature/CategoryFeature";
 import NewsSidebar from "../../Comps/NewsSidebar/NewsSidebar";
 import PageHelmet from "../../Comps/PageHelmet/PageHelmet";
-import { Triangle } from "react-loader-spinner";
 import NoData from "../../Comps/NoData/NoData";
 import CommonLoader from "../../Comps/CommonLoader/CommonLoader";
 
