@@ -9,6 +9,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import "./Banner.css";
 import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 import { Link } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function Banner() {
   const [bannerData, setBannerData] = useState([]);
@@ -22,23 +23,34 @@ export default function Banner() {
 
   const url = "https://news.goexpressus.com/breaking-news";
   useEffect(() => {
-    axios
-      .get(url)
-      .then((response) => {
-        if (Array.isArray(response.data)) {
-          setBannerData(response.data.slice(0, 10));
-        } else if (Array.isArray(response.data.data)) {
-          setBannerData(response.data.data.slice(0, 12));
-        } else {
-          console.error(
-            "Invalid data structure in API response:",
-            response.data
-          );
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+    const fetchData = () => {
+      axios
+        .get(url)
+        .then((response) => {
+          if (Array.isArray(response.data)) {
+            setBannerData(response.data.slice(0, 10));
+          } else if (Array.isArray(response.data.data)) {
+            setBannerData(response.data.data.slice(0, 12));
+          } else {
+            console.error(
+              "Invalid data structure in API response:",
+              response.data
+            );
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    };
+
+    // Fetch data after a delay of 2000 milliseconds (2 seconds)
+    const delay = 2000;
+    const timer = setTimeout(() => {
+      fetchData();
+    }, delay);
+
+    // Clean up the timer to avoid memory leaks
+    return () => clearTimeout(timer);
   }, []);
   return (
     <>
@@ -62,15 +74,22 @@ export default function Banner() {
           <SwiperSlide key={index}>
             <div className="showcase">
               {/* <img className="fixed-img" src={slide.title_img} alt="Picture" /> */}
-              <img className="fixed-img" src={`https://ajkal.goexpressus.com/images/${slide.title_img}`} alt={slide.news_title} />
+              {/* <img
+                className="fixed-img"
+                src={`https://ajkal.goexpressus.com/images/${slide.title_img}`}
+                alt={slide.news_title}
+              /> */}
+              <LazyLoadImage alt={slide.news_title} effect="blur" src={`https://ajkal.goexpressus.com/images/${slide.title_img}`} />
               <div className="overlay">
                 <Link to={`/news/${slide.id}`} className="text-white">
                   <div className="container">
-                    <h1 className="mb-0 fw-bold ">{slide.news_title.slice(0,33)}</h1>
+                    <h1 className="mb-0 fw-bold banner_title">
+                      {slide.news_title.slice(0, 33)}
+                    </h1>
                     <h2 className="mb-0 pt-2">
                       {slide.news_short_brief.slice(0, 97)}
                     </h2>
-                    <p className="w-50 pt-5">
+                    <p className="w-50 pt-5 bannger-description">
                       {slide.news_detail.slice(3, 150)}
                     </p>
                   </div>

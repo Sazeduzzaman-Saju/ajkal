@@ -9,11 +9,11 @@ const CategoryWiseNews = () => {
   const [bangladeshNews, setBangladeshNews] = useState([]);
   const [probashNews, setProbashNews] = useState([]);
   const [khelarNews, setKhelarNews] = useState([]);
-  console.log(khelarNews)
 
   const url = "https://news.goexpressus.com/category-news/2";
   const urlProbas = "https://news.goexpressus.com/category-news/5";
   const urlKhela = "https://news.goexpressus.com/category-news/11";
+
   useEffect(() => {
     axios
       .get(url)
@@ -33,6 +33,7 @@ const CategoryWiseNews = () => {
         console.error("Error fetching data:", error);
       });
   }, []);
+
   useEffect(() => {
     axios
       .get(urlProbas)
@@ -52,6 +53,7 @@ const CategoryWiseNews = () => {
         console.error("Error fetching data:", error);
       });
   }, []);
+
   useEffect(() => {
     axios
       .get(urlKhela)
@@ -77,7 +79,9 @@ const CategoryWiseNews = () => {
       {/* First Style */}
       <div>
         <PostHeader title="বাংলাদেশ" />
-        <NewsSectionOne bangladeshNews={bangladeshNews} />
+        {bangladeshNews.length > 0 && bangladeshNews[0].imageLink && (
+          <NewsSectionOne bangladeshNews={bangladeshNews} />
+        )}
       </div>
       {/* Second Style */}
       <div className="pt-2">
@@ -87,7 +91,7 @@ const CategoryWiseNews = () => {
       {/* Third Style */}
       <div className="pt-4">
         <PostHeader title="খেলার সংবাদ" />
-        <NewsSectionThree khelarNews={khelarNews}/>
+        <NewsSectionThree khelarNews={khelarNews} />
       </div>
     </div>
   );

@@ -6,14 +6,14 @@ const NewsCategory = ({ categories }) => {
   return (
     <div>
       <ul className="list-unstyled d-flex flex-wrap justify-content-center mt-1">
-        {categories.map((category) => (
-          <li key={category.id}>
+        {categories.map((data) => (
+          <li key={data.id}>
             <Link
-              to={`/categories/${category.id}`}
+              to={`/categories/${data.id}`}
               type="button"
               className="btn btn-outline-primary border-white me-2 mb-2 rounded-0 text-white footer-ct-btn"
             >
-              {category.name}
+              {data.name_bangla}
             </Link>
           </li>
         ))}

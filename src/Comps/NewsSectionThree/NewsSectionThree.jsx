@@ -3,6 +3,9 @@ import "./style.css";
 import { Link } from "react-router-dom";
 
 const NewsSectionThree = ({ khelarNews }) => {
+  if (!khelarNews) {
+    return <div>Loading...</div>; // Display a loading indicator if khelarNews is not available yet
+  }
   return (
     <div>
       <div className="row mb-5 align-items-center ">

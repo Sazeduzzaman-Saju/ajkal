@@ -1,16 +1,45 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
 import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
-import NavBar from "../../Comps/NavBar/NavBar";
+import { BiMenuAltLeft } from "react-icons/bi";
+import { MdClose } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
+import NavBar from "../../Comps/NavBar/NavBar";
 import SearchBoxHeader from "../../Comps/SearchBoxHeader/SearchBoxHeader";
 import DynamicDateTime from "../../Comps/DynamicDateTime/DynamicDateTime";
+import axios from "axios";
+import { Watch } from "react-loader-spinner";
 
 function Header() {
+  const [isHovered, setIsHovered] = useState(false);
+  const [navLinks, setNavLinks] = useState([]);
+  const url = "https://news.goexpressus.com/news-category";
+  useEffect(() => {
+    axios
+      .get(url)
+      .then((response) => {
+        // Check if the response contains an array
+        if (Array.isArray(response.data)) {
+          // Slice the array to get the first 10 items
+          setNavLinks(response.data);
+        } else if (Array.isArray(response.data.data)) {
+          // Slice the array to get the first 12 items
+          setNavLinks(response.data.data);
+        } else {
+          console.error(
+            "Invalid data structure in API response:",
+            response.data
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
   return (
     <>
       <div className="container-fluid main-menu">
@@ -19,24 +48,29 @@ function Header() {
           <div className="row top-bar-area align-items-center top-bar-area">
             <div className="col-lg-6">
               {/* ঢাকা, বৃহস্পতিবার ১৫ ফেব্রুয়ারি ২০২৪, ২ ফাল্গুন ১৪৩০, ০৪ শাবান ১৪৪৫ */}
-              <DynamicDateTime/>
+              <DynamicDateTime />
             </div>
             <div className="col-lg-6 pe-0">
               <div className="top-bar p-2 d-flex justify-content-between align-items-center pt-1">
                 <ul className="mb-0">
                   <li className="">
                     <NavLink to="/login" className="">
-                      বিজ্ঞাপন দিন
+                      যোগাযোগ
                     </NavLink>
                   </li>
                   <li className="">
                     <NavLink to="/categories/2" className="">
-                      বিজ্ঞাপনের মুল্য তালিকা
+                      বিজ্ঞাপনের মুল্য
                     </NavLink>
                   </li>
                   <li className="">
                     <NavLink to="/epaper" className="">
                       ই-পেপার
+                    </NavLink>
+                  </li>
+                  <li className="">
+                    <NavLink to="/search" className="">
+                      আর্কাইভ
                     </NavLink>
                   </li>
                 </ul>
@@ -67,50 +101,41 @@ function Header() {
       <nav className="navbar navbar-expand-lg bg-white sticky-top flex-column main-menu pt-0 pb-0">
         <div className="container px-0 pb-3 pt-3">
           <button
-            className="navbar-toggler"
+            className="navbar-toggler mobile-menu"
             type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarTogglerDemo03"
-            aria-controls="navbarTogglerDemo03"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#mobile-Menu"
+            aria-controls="mobile-Menu"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
           >
-            <span className="navbar-toggler-icon" />
+            {isHovered ? (
+              <MdClose className="icon close-icon" />
+            ) : (
+              <BiMenuAltLeft className="icon menu-icon" />
+            )}
           </button>
+
           <div>
             <Link className="navbar-brand" to="/">
               <img src="https://i.ibb.co/6D35WjX/logo.png" alt="" />
             </Link>
           </div>
           <div className="container-fluid">
-        {/* Advertisement Banner */}
-        <div className="container">
-          <div className="row top-bar-area">
-            <div className="col-lg-12 px-0">
-              <img
-                className="img-fluid top-add"
-                src="https://i.ibb.co/PNnmqXT/3614798860483355171.gif"
-                alt=""
-              />
+            {/* Advertisement Banner */}
+            <div className="container">
+              <div className="row top-bar-area">
+                <div className="col-lg-12 px-0">
+                  <img
+                    className="img-fluid top-add"
+                    src="https://i.ibb.co/PNnmqXT/3614798860483355171.gif"
+                    alt=""
+                  />
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
           {/* Search Box Start */}
-          {/* <div className="search-container">
-            <form action="/search" method="get">
-              <input
-                className="search expandright"
-                id="searchright"
-                type="search"
-                name="q"
-                placeholder="Search"
-              />
-              <label className="buttonss searchbutton" for="searchright">
-                <span className="mglass">&#9906;</span>
-              </label>
-            </form>
-          </div> */}
           <div className="search-container">
             <SearchBoxHeader />
           </div>
@@ -122,6 +147,40 @@ function Header() {
           </div>
         </div>
       </nav>
+      {/* Mobile Menu */}
+      <div>
+        <div
+          className="offcanvas offcanvas-start w-100 border-0"
+          data-bs-backdrop="static"
+          tabIndex={-1}
+          id="mobile-Menu"
+          aria-labelledby="staticBackdropLabel"
+        >
+          <div className="offcanvas-header">
+            <h5 className="offcanvas-title fw-bold" id="staticBackdropLabel">
+              নিউজ ক্যাটেগরিস
+            </h5>
+            <button
+              type="button"
+              className="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            />
+          </div>
+          <div className="offcanvas-body">
+            {navLinks.map((data) => (
+              <div key={data.id} className="row">
+                <Link
+                  to={`/categories/${data.id}`}
+                  className="submit-btn-one w-75 mx-auto"
+                >
+                  {data.name_bangla}
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </>
   );
 }

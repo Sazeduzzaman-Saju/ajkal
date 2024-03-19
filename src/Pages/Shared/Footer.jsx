@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Footer.css";
 import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
@@ -6,22 +6,40 @@ import { FaYoutube } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import NewsCategory from "../../Comps/NewsCategory/NewsCategory";
+import axios from "axios";
 
 const Footer = () => {
-  const categoriesData = [
-    { id: 1, name: "যুক্তরাষ্ট্র", link: "/" },
-    { id: 2, name: "বাংলাদেশ", link: "/" },
-    { id: 3, name: "নিউইয়র্ক", link: "/" },
-    { id: 4, name: "সারাবিশ্ব", link: "/" },
-    { id: 5, name: "প্রবাস", link: "/" },
-    { id: 6, name: "বিনোদন", link: "/" },
-    { id: 7, name: "খেলার মাঠ", link: "/" },
-    { id: 8, name: "স্বাস্থ্য", link: "/" },
-    { id: 9, name: "ধর্ম", link: "/" },
-    { id: 10, name: "সংকলন", link: "/" },
-    // Add more categories as needed
-  ];
+  const [categoriesData, setCategoriesData] = useState([]);
+  const url = "https://news.goexpressus.com/news-category";
 
+  useEffect(() => {
+    axios
+      .get(url)
+      .then((response) => {
+        // Check if response status is successful
+        if (
+          response.data.status === "200" &&
+          response.data.message === "success"
+        ) {
+          // Extract data array from the response
+          const data = response.data.data;
+
+          // Ensure that 'id' is converted to a number
+          const formattedData = data.map((category) => ({
+            ...category,
+            id: parseInt(category.id),
+          }));
+
+          // Update state with formatted data
+          setCategoriesData(formattedData);
+        } else {
+          console.error("API request failed with status:", response.status);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
   return (
     <div className="container-fluid p-0">
       <div className="container-fluid main_footer py-5">
@@ -68,21 +86,19 @@ const Footer = () => {
           </div>
           <div className="row mt-5">
             <div className="col-lg-6">
-              <div>
+              <div className="main_author">
                 <p className="fs-3 text-white mb-0">
-                  {" "}
-                  <strong>সম্পাদক ও প্রকাশক : </strong>{" "}
+                  <strong>সম্পাদক ও প্রকাশক : </strong>
                   <span className="">শাহ্‌ নেওয়াজ</span>
                 </p>
                 <p className="fs-3 text-white ">
-                  {" "}
-                  <strong>প্রধান সম্পাদক : </strong>{" "}
+                  <strong>প্রধান সম্পাদক : </strong>
                   <span className="">মনজুর আহমেদ</span>
                 </p>
               </div>
             </div>
             <div className="col-lg-6">
-              <div className="text-end py-4">
+              <div className="tex-lg-end text-center  py-4 main_author">
                 <p className="text-white mb-0 ">
                   ফোন: <span>+1646 267-7751</span> ফ্যাক্স:
                   <span>718-865-9130</span>
@@ -90,7 +106,7 @@ const Footer = () => {
                   <span> 71-16 35th Ave, Jackson Heights,NY 11372, USA.</span>
                 </p>
                 <p className="text-white mb-0">
-                  ইমেইল: <span>ajkalnews@gmail.com</span> সম্পাদক ইমেইল:{" "}
+                  ইমেইল: <span>ajkalnews@gmail.com</span> সম্পাদক ইমেইল:
                   <span>editor@ajkalusa.com</span>
                 </p>
               </div>

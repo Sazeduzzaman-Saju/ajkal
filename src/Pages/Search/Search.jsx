@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PageTitle from "../../Comps/PageTitle/PageTitle";
 import SearchForm from "./SearchForm";
 import { useForm } from "react-hook-form";
 import SearchData from "./SearchData";
+import axios from "axios";
 
 const Search = () => {
   const {
@@ -11,6 +12,33 @@ const Search = () => {
     handleSubmit,
   } = useForm();
   const onSubmit = (data) => console.log(data);
+
+  const [categoriesData, setCategoriesData] = useState([]);
+  const url = "https://news.goexpressus.com/news-category";
+  useEffect(() => {
+    axios
+      .get(url)
+      .then((response) => {
+        // Check if the response contains an array
+        if (Array.isArray(response.data)) {
+          // Slice the array to get the first 10 items
+          setCategoriesData(response.data.slice(0, 10));
+        } else if (Array.isArray(response.data.data)) {
+          // Check if the response has a property "data" containing an array
+          // Slice the array to get the first 12 items
+          setCategoriesData(response.data.data.slice(0, 12));
+        } else {
+          console.error(
+            "Invalid data structure in API response:",
+            response.data
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
   return (
     <>
       <PageTitle title="অনুসন্ধান করুন" description="Text" />
@@ -21,7 +49,7 @@ const Search = () => {
               className=""
               style={{ borderBottom: "2px solid var(--secondary)" }}
             >
-              <h5 className="text-muted fw-bold">অনুসন্ধান করুন ।</h5>
+              <h5 className="text-muted fw-bold">অনুসন্ধান করুন আর্কাইভ এ।</h5>
             </div>
           </div>
         </div>
@@ -57,8 +85,11 @@ const Search = () => {
                         {...register("category", { required: true })}
                       >
                         <option value="">সিলেক্ট করুন...</option>
-                        <option value="A">Option A</option>
-                        <option value="B">Option B</option>
+                        {categoriesData.map((data) => (
+                          <option value={data.name} key={data.id}>
+                            {data.name}
+                          </option>
+                        ))}
                       </select>
                     </div>
                   </div>

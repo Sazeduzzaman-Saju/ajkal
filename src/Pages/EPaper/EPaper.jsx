@@ -1,15 +1,14 @@
 import React from "react";
+import ComingSoon from "../../Comps/ComingSoon/ComingSoon";
 
 const EPaper = () => {
+  const title = "সাপ্তাহিক আজকাল";
+  const textOne = '"ইপেপার" খুব শীঘ্রই চলে আসবে ';
+  const textTwo = '"অপেক্ষা করুন ';
   return (
-    <div className="container">
-      <div className="row" style={{ height: '550px'}}>
-        <div className="d-flex justify-content-center flex-column  align-items-center">
-          <h1>সাপ্তাহিক আজকাল</h1>
-          <h5 className="text-center">"ইপেপার" খুব শীঘ্রই চলে আসবে । <br /> অপেক্ষা করুন।</h5>
-        </div>
-      </div>
-    </div>
+    <>
+      <ComingSoon title={title} textOne={textOne} textTwo={textTwo} />
+    </>
   );
 };
 

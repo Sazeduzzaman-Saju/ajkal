@@ -2,7 +2,6 @@ import React from "react";
 import { Helmet } from "react-helmet";
 
 const PageHelmet = ({ title, type, image, url, card, description }) => {
-  console.log('this is from helmet', title, type, image, url, card, description )
   return (
     <Helmet>
       <title>{title}</title>

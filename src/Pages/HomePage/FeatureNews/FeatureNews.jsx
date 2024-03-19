@@ -34,7 +34,7 @@ const FeatureNews = () => {
       {spotlightNews.map((data, index) => (
         <div className="col-lg-3 " key={index}>
           <Link to={`/news/${data.id}`}>
-            <div className="card rounded-1 border-0 shadow-sm">
+            <div className="card rounded-1 border-0 shadow-sm feature-cards">
               <div className="card-body">
                 <div className="d-flex justify-content-between  align-items-center ">
                   <p className="secondary-color">
@@ -58,6 +58,7 @@ const FeatureNews = () => {
                 src={`https://ajkal.goexpressus.com/images/${data.title_img}`} // Replace with the actual image source
                 className="card-img-top rounded-0"
                 alt="Card Image"
+                loading="lazy"
               />
             </div>
           </Link>

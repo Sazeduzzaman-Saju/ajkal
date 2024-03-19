@@ -10,10 +10,6 @@ const SearchBoxHeader = () => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-
-    // Perform the search or any other action with the query
-    console.log("Search query:", query);
-
     // Clear the search input after submission
     setQuery("");
   };
@@ -32,7 +28,7 @@ const SearchBoxHeader = () => {
         <Link to={'/search'}>
         <label
           type="submit"
-          className="buttonss searchbutton"
+          className="buttonss searchbutton d-lg-block d-none"
           htmlFor="searchright"
           onChange={handleInputChange}
         >

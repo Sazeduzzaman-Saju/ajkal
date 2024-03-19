@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import "./style.css";
+import BanglaTime from "../../Comps/BanglaTime/BanglaDynamicTIme";
+import BanglaDateTime from "../../Comps/BanglaTime/BanglaTime";
 
 const SearchData = () => {
   const searchFakeData = [
@@ -64,9 +66,9 @@ const SearchData = () => {
       <div className="row">
         <div className="col-lg-12">
           {searchFakeData.map((data, index) => (
-            <div className="card border-0 shadow-sm mb-2" key={index}>
+            <div className="card border-0 mb-2" key={index}>
               <Link to={"/news/:1"}>
-                <div className="card-body p-0">
+                <div className="card-body p-0 mt-3">
                   <div className="row align-items-center ">
                     <div className="col-lg-8 p-0">
                       <div className="p-5 py-2">
@@ -75,16 +77,7 @@ const SearchData = () => {
                         {/* Description */}
                         <p className="text-muted">{data.newsDescription}</p>
                         {/* posting time */}
-                        <small className=" text-muted ">{data.date}</small>,
-                        <small className=" text-info ps-1">{data.time}</small>,
-                        <small className="text-muted ps-1">
-                          <img
-                            className="img-fluid news-author"
-                            src={data.img}
-                            alt=""
-                          />
-                          {data.writer}
-                        </small>
+                        <small className=" secondary-text secondary-color">{data.date}</small>
                       </div>
                     </div>
                     <div className="col-lg-4">

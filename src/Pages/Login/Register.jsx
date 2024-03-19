@@ -1,28 +1,45 @@
-import React, { useState } from "react";
+import React from "react";
 import "./style.css";
-import { FaFacebookF, FaGoogle, FaUser, FaEye } from "react-icons/fa";
-import { IoPhonePortrait } from "react-icons/io5";
-import { IoMdMail } from "react-icons/io";
+import { FaFacebookF, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
-import Row from "react-bootstrap/Row";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 const Register = () => {
-  const [validated, setValidated] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const handleSubmit = (event) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
+  const handleSignUp = async (data) => {
+    try {
+      console.log("User Data:", data);
+
+      const response = await fetch(
+        // "https://resell-autocar-server.vercel.app/users",
+        "https://news.goexpressus.com/user-registration",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
+      if (!response.ok) {
+        throw new toast.error("Failed to create user");
+      }
+      toast.success("User created successfully");
+    } catch (error) {
+      toast.error("Failed to create user:", error.message);
+      // Handle error here
     }
-
-    setValidated(true);
   };
+
   return (
-    <div className="container" showHeader={false}>
+    <div className="container">
       <div className="row my-5 align-items-center ">
         <div className="col-lg-6">
           <div>
@@ -38,14 +55,6 @@ const Register = () => {
           <div className="card border-0 login-form bg-transparent ">
             <div className="card-body py-5 form-area ">
               <div>
-                {/* <div className="d-flex justify-content-center  align-items-center ">
-                    <img
-                      className="img-fluid login-logo"
-                      width={200}
-                      src="https://i.ibb.co/6D35WjX/logo.png"
-                      alt=""
-                    />
-                  </div> */}
                 <div className="text-center py-2">
                   <h3 className="text-muted mb-0">রেজিস্টার করুন !</h3>
                   <p className="text-muted mb-0">
@@ -73,169 +82,180 @@ const Register = () => {
                 <div className="row">
                   <div className="col-lg-10 offset-1 mx-auto">
                     {/* Form Start */}
-                    <Form
-                      noValidate
-                      validated={validated}
-                      onSubmit={handleSubmit}
+                    <form
+                      onSubmit={handleSubmit(handleSignUp)}
+                      className="pb-5 "
                     >
-                      <Row className="mb-3">
-                        <Form.Group
-                          className="pb-3"
-                          as={Col}
-                          md="6"
-                          controlId="validationCustomUsername"
-                        >
-                          <Form.Label className="text-muted mb-0">
-                            আপনার নাম । <span className="text-danger">*</span>
-                          </Form.Label>
-                          <InputGroup hasValidation>
-                            <InputGroup.Text id="inputGroupPrepend">
-                              <FaUser></FaUser>
-                            </InputGroup.Text>
-                            <Form.Control
-                              className="rounded-0 bg-light border-0"
-                              type="text"
-                              placeholder="Your Name"
-                              aria-describedby="inputGroupPrepend"
-                              required
-                            />
-                            <Form.Control.Feedback type="invalid">
-                              দয়া করে সঠিক ইমেইল দিন।
-                            </Form.Control.Feedback>
-                          </InputGroup>
-                        </Form.Group>
-                        <Form.Group
-                          className="pb-3"
-                          as={Col}
-                          md="6"
-                          controlId="validationCustomUsername"
-                        >
-                          <Form.Label className="text-muted mb-0">
-                            আপনার ফোন নাম্বার।
-                          </Form.Label>
-                          <InputGroup hasValidation>
-                            <InputGroup.Text id="inputGroupPrepend">
-                              <IoPhonePortrait></IoPhonePortrait>
-                            </InputGroup.Text>
-                            <Form.Control
-                              className="rounded-0 bg-light border-0"
-                              type="number"
-                              required
-                              placeholder="015*****"
-                              aria-describedby="inputGroupPrepend"
-                            />
-                          </InputGroup>
-                        </Form.Group>
-                        <Form.Group
-                          className="pb-3"
-                          as={Col}
-                          md="12"
-                          controlId="validationCustomUsername"
-                        >
-                          <Form.Label className="text-muted mb-0">
-                            ইমেইল দিন। <span className="text-danger">*</span>
-                          </Form.Label>
-                          <InputGroup hasValidation>
-                            <InputGroup.Text id="inputGroupPrepend">
-                              <IoMdMail></IoMdMail>
-                            </InputGroup.Text>
-                            <Form.Control
-                              className="rounded-0 bg-light border-0"
-                              type="email"
-                              placeholder="youremail@gmail.com"
-                              aria-describedby="inputGroupPrepend"
-                              required
-                            />
-                            <Form.Control.Feedback type="invalid">
-                              দয়া করে সঠিক ইমেইল দিন।
-                            </Form.Control.Feedback>
-                          </InputGroup>
-                        </Form.Group>
-                        <Form.Group
-                          className="pb-3"
-                          as={Col}
-                          md="6"
-                          controlId="validationCustomUsername"
-                        >
-                          <Form.Label className="text-muted mb-0">
-                            পাসওয়ার্ড দিন।{" "}
-                            <span className="text-danger">*</span>
-                          </Form.Label>
-                          <InputGroup hasValidation>
-                            <InputGroup.Text id="inputGroupPrepend">
-                              <FaEye />
-                            </InputGroup.Text>
-                            <Form.Control
-                              className="rounded-0 bg-light border-0"
-                              type="password"
-                              placeholder="Username"
-                              aria-describedby="inputGroupPrepend"
-                              required
-                            />
-                            <Form.Control.Feedback type="invalid">
-                              দয়া করে সঠিক ইমেইল দিন।
-                            </Form.Control.Feedback>
-                          </InputGroup>
-                        </Form.Group>
-
-                        <Form.Group
-                          className="pb-3"
-                          as={Col}
-                          md="6"
-                          controlId="validationCustomUsername"
-                        >
-                          <Form.Label className="text-muted mb-0">
-                            কনফার্ম পাসওয়ার্ড দিন।{" "}
-                            <span className="text-danger">*</span>
-                          </Form.Label>
-                          <InputGroup hasValidation>
-                            <InputGroup.Text id="inputGroupPrepend">
-                              <FaEye />
-                            </InputGroup.Text>
-                            <Form.Control
-                              className="rounded-0 bg-light border-0"
-                              type="password"
-                              aria-describedby="inputGroupPrepend"
-                              required
-                            />
-                            <Form.Control.Feedback type="invalid">
-                              দয়া করে সঠিক ইমেইল দিন।
-                            </Form.Control.Feedback>
-                          </InputGroup>
-                        </Form.Group>
-                        <Form.Group
-                          className="pb-3"
-                          as={Col}
-                          md="12"
-                          controlId="validationCustomUsername"
-                        >
-                          <Form.Check
-                            className="pt-4"
-                            inline
-                            required
-                            label={
-                              <>
-                                আমাদের সকল শর্ত আপনি মেনে নিয়েছেন । অথবা শর্ত
-                                গুলো পরতে
-                                <Link to="/">এখানে ক্লিক করুন।</Link>
-                              </>
-                            }
-                            name="group1"
-                            type="checkbox"
+                      <div className="row">
+                        <div className="col-lg-6">
+                          <label htmlFor="">
+                            আপনার নাম <span className="text-danger">*</span>
+                          </label>
+                          <input
+                            {...register("name", {
+                              required: "Name",
+                            })}
+                            placeholder="আপনার নাম"
+                            className="form-style mb-2 form-control"
                           />
-                        </Form.Group>
-                      </Row>
-                      <p className="text-muted text-center">
+                          {errors.name && (
+                            <p className="text-danger ">
+                              {errors.name?.message}
+                            </p>
+                          )}
+                        </div>
+                        <div className="col-lg-6">
+                          <label htmlFor="">
+                            আপনার ফোন নাম্বার।{" "}
+                            <span className="text-danger">*</span>
+                          </label>
+                          <input
+                            type="number"
+                            {...register("phone", {
+                              required: "Photo URL Required",
+                            })}
+                            placeholder="15******"
+                            className="form-style form-control mb-2"
+                          />
+                          {errors.phone && (
+                            <p className="text-danger ">
+                              {errors.phone?.message}
+                            </p>
+                          )}
+                        </div>
+                        <div className="col-lg-6">
+                          <label htmlFor="">
+                            ইমেইল দিন <span className="text-danger">*</span>
+                          </label>
+                          <input
+                            {...register("email", {
+                              required: "Email Address Required",
+                            })}
+                            placeholder="ইমেইল"
+                            className="form-style mb-2 form-control"
+                          />
+                          {errors.email && (
+                            <p className="text-danger ">
+                              {errors.email?.message}
+                            </p>
+                          )}
+                        </div>
+                        <div className="col-lg-6">
+                          <label htmlFor="">
+                            জেন্ডার <span className="text-danger">*</span>
+                          </label>
+                          <select
+                            {...register("gender", {
+                              required: "gender Required",
+                            })}
+                            className=" form-style mb-2 form-control"
+                            aria-label="Default select example"
+                          >
+                            <option selected value="1">
+                              পুরুষ
+                            </option>
+                            <option value="2">মহিলা</option>
+                          </select>
+                          {errors.gender && (
+                            <p className="text-danger ">
+                              {errors.gender?.message}
+                            </p>
+                          )}
+                        </div>
+                        <div className="col-lg-6">
+                          <label htmlFor="">
+                            পাসওয়ার্ড দিন{" "}
+                            <span className="text-danger">*</span>
+                          </label>
+                          <input
+                            type="password"
+                            {...register("password", {
+                              required: "Password Required",
+                            })}
+                            placeholder="*****"
+                            className=" form-style form-control"
+                          />
+                          {errors.password && (
+                            <p className="text-danger ">
+                              {errors.password?.message}
+                            </p>
+                          )}
+                        </div>
+                        <div className="col-lg-6">
+                          <label htmlFor="">
+                            ইউজার নেম
+                            <span className="text-danger">*</span>
+                          </label>
+                          <input
+                            type="text"
+                            {...register("username", {
+                              required: "Password Required",
+                            })}
+                            placeholder="ইউজার"
+                            className=" form-style form-control mb-2"
+                          />
+                          {errors.username && (
+                            <p className="text-danger ">
+                              {errors.username?.message}
+                            </p>
+                          )}
+                        </div>
+                        <div className="col-lg-12">
+                          <label htmlFor="">
+                            ঠিকানা
+                            <span className="text-danger">*</span>
+                          </label>
+                          <input
+                            type="text"
+                            {...register("address", {
+                              required: "Password Required",
+                            })}
+                            placeholder="ঠিকানা দিন"
+                            className=" form-style form-control"
+                          />
+                          {errors.address && (
+                            <p className="text-danger ">
+                              {errors.address?.message}
+                            </p>
+                          )}
+                        </div>
+                        <div className="col-lg-12">
+                          <div className="form-check pt-5">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              {...register("policy", {
+                                required: "Password Required",
+                              })}
+                              id="flexCheckChecked"
+                              defaultChecked
+                            />
+                            <label
+                              className="form-check-label"
+                              htmlFor="flexCheckChecked"
+                            >
+                              আমাদের সকল শর্ত আপনি মেনে নিয়েছেন । অথবা শর্ত গুলো
+                              পরতে<a href="/">এখানে ক্লিক করুন।</a>
+                            </label>
+                          </div>
+
+                          {errors.policy && (
+                            <p className="text-danger ">
+                              {errors.policy?.message}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                      <p className="text-muted text-center pt-5">
                         আপনার আক্যাউন্ট আগে থেকেই করা আছে ? তাহলে
-                        <Link to={"/login"}> লগিন করুন !</Link>
+                        <a href="/login"> লগিন করুন !</a>
                       </p>
-                      <button
+                      <input
+                        type="submit"
+                        value="Sign Up"
                         className="submit-btn-one w-100 mx-0"
-                        role="button"
-                      >
-                        Sign In
-                      </button>
-                    </Form>
+                      />
+                    </form>
                     {/* Form End */}
                   </div>
                 </div>

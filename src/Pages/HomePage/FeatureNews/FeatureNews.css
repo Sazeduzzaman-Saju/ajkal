@@ -9,3 +9,14 @@
   height: 200px; /* Set a fixed height */
   object-fit: cover; /* Maintain aspect ratio and cover the container */
 }
+@media screen and (max-width: 575.98px) {
+  .feature-cards {
+    margin: 0px 35px;
+    margin-bottom: 15px;
+  }
+  .sorboshes-news-image {
+    width: 390px !important;
+    height: 100% !important;
+    border-radius: 5px;
+}
+}

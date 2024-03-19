@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./ReletedNews.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { PiAirplayFill } from "react-icons/pi";
+import BanglaTimeAgo from "../BanglaTime/BanglaTimeDiffrence";
 
 const RelatedNews = ({ singleNewsDetails }) => {
   const [reletedNews, setReletedNews] = useState([]);
@@ -25,7 +27,7 @@ const RelatedNews = ({ singleNewsDetails }) => {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, []);
+  }, [url]);
 
   const [hoveredCard, setHoveredCard] = useState(null);
 
@@ -50,9 +52,18 @@ const RelatedNews = ({ singleNewsDetails }) => {
               onMouseLeave={() => handleLeave()}
             >
               <div className="thumbnail shadow-sm">
-                <div className="date">
-                  <div className="day">{news.news_time.slice(8, 10)}</div>
-                  <div className="month">{news.news_time.slice(5, 7)}</div>
+                <div>
+                  {/* {news.video_url} */}
+                  <div className="date">
+                    <BanglaTimeAgo postTime={news.news_time} />
+                  </div>
+                  {news.video_url ? (
+                    <div className="dates">
+                      <PiAirplayFill />
+                    </div>
+                  ) : (
+                    ""
+                  )}
                 </div>
                 <img
                   src={`https://ajkal.goexpressus.com/images/${news.title_img}`}
@@ -64,7 +75,8 @@ const RelatedNews = ({ singleNewsDetails }) => {
                 <div className="category">{news.category_name_bangla}</div>
                 <h1 className="title">{news.news_title.slice(0, 22)}</h1>
                 <h2 className="sub-title mb-0 pb-0">
-                  {news.news_short_brief.slice(0, 40)} <span className="text-primary"></span>
+                  {news.news_short_brief.slice(0, 40)}{" "}
+                  <span className="text-primary"></span>
                 </h2>
                 <p
                   className={`description ${

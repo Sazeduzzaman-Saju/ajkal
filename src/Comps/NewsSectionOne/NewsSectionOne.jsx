@@ -55,7 +55,7 @@ const NewsSectionOne = ({ bangladeshNews }) => {
                     />
                     <div className="ps-2 p-2">
                       <h5 className="mb-0 main-color py-3">{data.news_title}</h5>
-                      <p>{data.news_short_brief} <span className="text-primary">আরও পড়ুন...</span></p>
+                      <p>{data.news_short_brief} <span className="text-danger">আরও পড়ুন...</span></p>
                     </div>
                   </div>
                 </div>

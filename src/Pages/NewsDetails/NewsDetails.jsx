@@ -10,7 +10,9 @@ import PageHelmet from "../../Comps/PageHelmet/PageHelmet";
 
 const NewsDetails = () => {
   const singleNews = useLoaderData();
-  const singleNewsDetails = singleNews.data[0];
+  const singleNewsDetails = singleNews.data;
+  // console.log('console',singleNews.data.category_name_bangla) 
+  // console.log('console2',singleNews) 
 
   const [fontSize, setFontSize] = useState(16); // Initial font size
 
@@ -58,11 +60,25 @@ const NewsDetails = () => {
             <h1>{singleNewsDetails.news_title}</h1>
             <p>{singleNewsDetails.news_short_brief}</p>
             <div>
-              <img
-                src={`https://ajkal.goexpressus.com/images/${singleNewsDetails.title_img}`}
-                className="rounded-2 img-fluid "
-                alt=""
-              />
+              {/* Condition to check if singleNewsDetails.video_url is empty */}
+              {singleNewsDetails.video_url ? (
+                <iframe
+                  width="100%"
+                  height="500"
+                  style={{ borderRadius: "5px" }}
+                  src={`https://www.youtube.com/embed/${singleNewsDetails.video_url}`}
+                  title="YouTube video player"
+                  frameBorder={0}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+              ) : (
+                <img
+                  src={`https://ajkal.goexpressus.com/images/${singleNewsDetails.title_img}`}
+                  className="rounded-2 img-fluid"
+                  alt=""
+                />
+              )}
               <p className="pt-2">{singleNewsDetails.news_title} | ফাইল ছবি</p>
               {/* Author */}
               <div className="d-flex justify-content-between  align-items-center py-5">
@@ -82,7 +98,7 @@ const NewsDetails = () => {
                       title={singleNewsDetails.news_title}
                       type="article"
                       image={`https://ajkal.goexpressus.com/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
-                      url={window.location.href} // Replace with actual page URL
+                      url={`https://ajkalusa.nawazgroup.us/news/${singleNewsDetails.id}`} // Replace with actual page URL
                       card={`https://ajkal.goexpressus.com/images/${singleNewsDetails.title_img}`}
                       description={singleNewsDetails.news_detail}
                       increaseFontSize={increaseFontSize}
@@ -105,6 +121,7 @@ const NewsDetails = () => {
                   className="img-fluid"
                   src="https://i.ibb.co/myN58Z7/Whats-App-Image-2024-02-18-at-22-16-04-10030316.jpg"
                   alt=""
+                  loading="lazy"
                 />
               </div>
               <p
@@ -151,7 +168,7 @@ const NewsDetails = () => {
                 <span className="fw-bold">
                   {singleNewsDetails.category_name_bangla}
                 </span>{" "}
-                নিয়ে আরও পড়ুন
+                {singleNewsDetails.video_url ? "পরবর্তী +" : "নিয়ে আরও পড়ুন"}
               </Link>
             </h5>
           </div>
