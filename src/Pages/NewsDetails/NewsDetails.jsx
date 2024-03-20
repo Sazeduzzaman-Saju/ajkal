@@ -75,7 +75,7 @@ const NewsDetails = () => {
               ) : (
                 <img
                   src={`https://ajkal.goexpressus.com/images/${singleNewsDetails.title_img}`}
-                  className="rounded-2 img-fluid"
+                  className="rounded-2 img-fluid w-100"
                   alt=""
                 />
               )}

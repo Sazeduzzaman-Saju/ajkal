@@ -1,101 +1,75 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./CategoryNewsTwo.css";
 import PostHeader from "../../../Comps/PostHeader/PostHeader";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import Skeleton from "react-loading-skeleton";
 
 const CategoryNewsTwo = () => {
+  // Define dynamic data within the component
+  const [videoNews, setVideoNews] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const url = "https://news.goexpressus.com/category-news/2";
+
+  useEffect(() => {
+    axios
+      .get(url)
+      .then((response) => {
+        if (Array.isArray(response.data)) {
+          setVideoNews(response.data);
+        } else if (Array.isArray(response.data.data)) {
+          setVideoNews(response.data.data.slice(0, 8));
+        } else {
+          console.error(
+            "Invalid data structure in API response:",
+            response.data
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
   return (
     <div>
       <PostHeader title={"বিনোদন"} />
       <div className="row">
-        <div className="col-lg-3">
-          <Link to={'#'}>
-            <div className="card border-0 shadow-sm">
-              <div className="card-body p-0">
-                <div>
-                  <img
-                    className="img-fluid"
-                    src="https://static.vecteezy.com/system/resources/thumbnails/004/216/831/original/3d-world-news-background-loop-free-video.jpg"
-                    alt=""
-                  />
-                </div>
+        {loading ? (
+          // Render skeleton loader while data is loading
+          Array.from({ length: 8 }, (_, index) => (
+            <div className="col-lg-3" key={index}>
+              <div className="card border-0 shadow-sm mb-4" style={{ height: "22rem" }}>
+                <Skeleton height={200} />
                 <div className="px-2 py-3">
-                  <h4 className="mb-0">Title</h4>
-                  <p className="mb-0">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Deleniti ipsa, beatae aliquam sit eum culpa.
-                  </p>
+                  <Skeleton count={2} />
                 </div>
               </div>
             </div>
-          </Link>
-        </div>
-        <div className="col-lg-3">
-          <Link to={'#'}>
-            <div className="card border-0 shadow-sm">
-              <div className="card-body p-0">
-                <div>
-                  <img
-                    className="img-fluid"
-                    src="https://static.vecteezy.com/system/resources/thumbnails/004/216/831/original/3d-world-news-background-loop-free-video.jpg"
-                    alt=""
-                  />
+          ))
+        ) : (
+          // Render actual news cards once data is loaded
+          videoNews.map((news, index) => (
+            <div className="col-lg-3" key={index}>
+              <Link to={news.link}>
+                <div className="card border-0 shadow-sm mb-4" style={{ height: "22rem" }}>
+                  <div className="card-body p-0">
+                    <div>
+                      <img className="img-fluid rounded-1 border-0" src={`https://ajkal.goexpressus.com/images/${news.title_img}`} alt="" />
+                    </div>
+                    <div className="px-2 py-3">
+                      <h5 className="">{news.news_title}</h5>
+                      <p className="mb-0">{news.news_short_brief.slice(0, 125)}...</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="px-2 py-3">
-                  <h4 className="mb-0">Title</h4>
-                  <p className="mb-0">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Deleniti ipsa, beatae aliquam sit eum culpa.
-                  </p>
-                </div>
-              </div>
+              </Link>
             </div>
-          </Link>
-        </div>
-        <div className="col-lg-3">
-          <Link to={'#'}>
-            <div className="card border-0 shadow-sm">
-              <div className="card-body p-0">
-                <div>
-                  <img
-                    className="img-fluid"
-                    src="https://static.vecteezy.com/system/resources/thumbnails/004/216/831/original/3d-world-news-background-loop-free-video.jpg"
-                    alt=""
-                  />
-                </div>
-                <div className="px-2 py-3">
-                  <h4 className="mb-0">Title</h4>
-                  <p className="mb-0">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Deleniti ipsa, beatae aliquam sit eum culpa.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Link>
-        </div>
-        <div className="col-lg-3">
-          <Link to={'#'}>
-            <div className="card border-0 shadow-sm">
-              <div className="card-body p-0">
-                <div>
-                  <img
-                    className="img-fluid"
-                    src="https://static.vecteezy.com/system/resources/thumbnails/004/216/831/original/3d-world-news-background-loop-free-video.jpg"
-                    alt=""
-                  />
-                </div>
-                <div className="px-2 py-3">
-                  <h4 className="mb-0">Title</h4>
-                  <p className="mb-0">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Deleniti ipsa, beatae aliquam sit eum culpa.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Link>
-        </div>
+          ))
+        )}
       </div>
     </div>
   );

@@ -95,7 +95,7 @@ const HomePage = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <Categories />
+              {/* <Categories /> */}
             </div>
           </div>
         </div>

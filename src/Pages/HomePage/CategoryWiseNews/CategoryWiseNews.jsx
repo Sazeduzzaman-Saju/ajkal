@@ -12,7 +12,7 @@ const CategoryWiseNews = () => {
 
   const url = "https://news.goexpressus.com/category-news/2";
   const urlProbas = "https://news.goexpressus.com/category-news/5";
-  const urlKhela = "https://news.goexpressus.com/category-news/11";
+  const urlKhela = "https://news.goexpressus.com/category-news/4";
 
   useEffect(() => {
     axios
@@ -79,9 +79,7 @@ const CategoryWiseNews = () => {
       {/* First Style */}
       <div>
         <PostHeader title="বাংলাদেশ" />
-        {bangladeshNews.length > 0 && bangladeshNews[0].imageLink && (
-          <NewsSectionOne bangladeshNews={bangladeshNews} />
-        )}
+        <NewsSectionOne bangladeshNews={bangladeshNews} />
       </div>
       {/* Second Style */}
       <div className="pt-2">
@@ -90,7 +88,7 @@ const CategoryWiseNews = () => {
       </div>
       {/* Third Style */}
       <div className="pt-4">
-        <PostHeader title="খেলার সংবাদ" />
+        <PostHeader title="সারা বিশ্ব"/>
         <NewsSectionThree khelarNews={khelarNews} />
       </div>
     </div>

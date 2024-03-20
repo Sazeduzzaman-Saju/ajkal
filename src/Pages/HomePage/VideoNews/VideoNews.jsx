@@ -3,12 +3,15 @@ import PostHeader from "../../../Comps/PostHeader/PostHeader";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { PiAirplayFill } from "react-icons/pi";
-import "./VideoNews.css";
 import { MdPlayCircleFilled } from "react-icons/md";
+import Skeleton from "react-loading-skeleton";
+import "./VideoNews.css";
 
 const VideoNews = () => {
   const [videoNews, setVideoNews] = useState([]);
+  const [loading, setLoading] = useState(true);
   const url = "https://news.goexpressus.com/category-news/18";
+
   useEffect(() => {
     axios
       .get(url)
@@ -26,58 +29,89 @@ const VideoNews = () => {
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, []);
+
   return (
     <div>
-      <PostHeader title={'ভিডিও'} />
+      <PostHeader title={"ভিডিও"} />
       <div className="row gx-3 align-items-center">
         <div className="col-lg-6">
-          {videoNews.map((data, index) =>
-            // Check if data "is_featured" is equal to "1"
-            data.is_featured === "1" ? (
-              <Link to={`/news/${data.id}`} key={index}>
-                <div className="card border-0">
-                  <div className="card-body p-0">
-                    <div className="is_video_icon">
-                      <PiAirplayFill />
+          {loading ? (
+            // Skeleton loader for featured videos
+            <div>
+              <Skeleton height={200} />
+              <Skeleton height={30} width={200} />
+            </div>
+          ) : (
+            // Render featured videos
+            videoNews
+              .filter((data) => data.is_featured === "1")
+              .map((data, index) => (
+                <Link to={`/news/${data.id}`} key={index}>
+                  <div className="card border-0">
+                    <div className="card-body p-0">
+                      <div className="is_video_icon">
+                        <PiAirplayFill />
+                      </div>
+                      <img
+                        className="img-fluid rounded-2"
+                        src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                        alt=""
+                      />
+                      <h5 className="mb-1 main-color pt-3">
+                        {data.news_title.slice(0, 50)}
+                      </h5>
                     </div>
-                    <img
-                      className="img-fluid rounded-2"
-                      src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
-                      alt=""
-                    />
-                    <h5 className="mb-1 main-color pt-3">
-                      {data.news_title.slice(0, 50)}
-                    </h5>
                   </div>
-                </div>
-              </Link>
-            ) : // If not featured, render other content or nothing
-            null
+                </Link>
+              ))
           )}
         </div>
         <div className="col-lg-6">
-          {videoNews.map((data) => (
-            <Link to={`/news/${data.id}`} key={data.id} className="text-muted">
-              <div className="d-flex align-items-center mb-1">
-                <div className="video-side">
-                  <MdPlayCircleFilled />
-                </div>
-                <div className="rounded-1">
-                  <img
-                    className="rounded-2"
-                    width={150}
-                    src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
-                    alt=""
-                  />
-                </div>
-                <div className="ps-3">
-                  <h5 className="mb-1 main-color">{data.news_title}</h5>
+          {loading ? (
+            // Skeleton loader for other videos
+            Array.from({ length: 5 }).map((_, index) => (
+              <div className="text-muted" key={index}>
+                <div className="d-flex align-items-center mb-1">
+                  <div className="video-side">
+                    <MdPlayCircleFilled />
+                  </div>
+                  <div className="rounded-1">
+                    <Skeleton height={100} width={150} />
+                  </div>
+                  <div className="ps-3">
+                    <Skeleton height={30} width={200} />
+                  </div>
                 </div>
               </div>
-            </Link>
-          ))}
+            ))
+          ) : (
+            // Render other videos
+            videoNews.map((data) => (
+              <Link to={`/news/${data.id}`} key={data.id} className="text-muted">
+                <div className="d-flex align-items-center mb-1">
+                  <div className="video-side">
+                    <MdPlayCircleFilled />
+                  </div>
+                  <div className="rounded-1">
+                    <img
+                      className="rounded-2"
+                      width={150}
+                      src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                      alt=""
+                    />
+                  </div>
+                  <div className="ps-3">
+                    <h5 className="mb-1 main-color">{data.news_title}</h5>
+                  </div>
+                </div>
+              </Link>
+            ))
+          )}
         </div>
       </div>
     </div>

@@ -10,9 +10,11 @@ import "./Banner.css";
 import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 import { Link } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import Skeleton from "react-loading-skeleton";
 
 export default function Banner() {
   const [bannerData, setBannerData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const progressCircle = useRef(null);
   const progressContent = useRef(null);
 
@@ -37,9 +39,11 @@ export default function Banner() {
               response.data
             );
           }
+          setLoading(false); // Set loading to false when data is fetched
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
+          setLoading(false); // Set loading to false on error
         });
     };
 
@@ -52,59 +56,67 @@ export default function Banner() {
     // Clean up the timer to avoid memory leaks
     return () => clearTimeout(timer);
   }, []);
+
   return (
     <>
-      <Swiper
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 6000,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={false}
-        effect="fade"
-        modules={[Autoplay, Pagination, EffectFade]}
-        onAutoplayTimeLeft={onAutoplayTimeLeft}
-        className="mySwiper"
-      >
-        {bannerData.map((slide, index) => (
-          <SwiperSlide key={index}>
-            <div className="showcase">
-              {/* <img className="fixed-img" src={slide.title_img} alt="Picture" /> */}
-              {/* <img
-                className="fixed-img"
-                src={`https://ajkal.goexpressus.com/images/${slide.title_img}`}
-                alt={slide.news_title}
-              /> */}
-              <LazyLoadImage alt={slide.news_title} effect="blur" src={`https://ajkal.goexpressus.com/images/${slide.title_img}`} />
-              <div className="overlay">
-                <Link to={`/news/${slide.id}`} className="text-white">
-                  <div className="container">
-                    <h1 className="mb-0 fw-bold banner_title">
-                      {slide.news_title.slice(0, 33)}
-                    </h1>
-                    <h2 className="mb-0 pt-2">
-                      {slide.news_short_brief.slice(0, 97)}
-                    </h2>
-                    <p className="w-50 pt-5 bannger-description">
-                      {slide.news_detail.slice(3, 150)}
-                    </p>
-                  </div>
-                </Link>
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
-        <div className="autoplay-progress text-white" slot="container-end">
-          <svg viewBox="0 0 60 60" ref={progressCircle} stroke="#ffffff">
-            <circle cx="24" cy="24" r="30"></circle>
-          </svg>
-          <span ref={progressContent}></span>
+      {loading ? ( // Show skeleton while loading
+        <div className="skeleton-wrapper">
+          <Skeleton height={500} />
         </div>
-      </Swiper>
+      ) : (
+        <Swiper
+          spaceBetween={30}
+          centeredSlides={true}
+          autoplay={{
+            delay: 6000,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={false}
+          effect="fade"
+          modules={[Autoplay, Pagination, EffectFade]}
+          onAutoplayTimeLeft={onAutoplayTimeLeft}
+          className="mySwiper"
+        >
+          {bannerData.map((slide, index) => (
+            <SwiperSlide key={index}>
+              <div className="showcase">
+                <LazyLoadImage
+                  alt={slide.news_title}
+                  effect="blur"
+                  loading="lazy"
+                  src={`https://ajkal.goexpressus.com/images/${slide.title_img}`}
+                />
+                <div className="overlay">
+                  <Link to={`/news/${slide.id}`} className="text-white">
+                    <div className="container">
+                      <h1 className="mb-0 fw-bold banner_title w-75">
+                        {slide.news_title || (
+                          <Skeleton count={3} />
+                        )}
+                      </h1>
+                      <h2 className="mb-0 pt-2">
+                        {slide.news_short_brief.slice(0, 97)}
+                      </h2>
+                      <p className="w-50 pt-5 bannger-description">
+                        {slide.news_detail.slice(3, 150)}
+                      </p>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+          <div className="autoplay-progress text-white" slot="container-end">
+            <svg viewBox="0 0 60 60" ref={progressCircle} stroke="#ffffff">
+              <circle cx="24" cy="24" r="30"></circle>
+            </svg>
+            <span ref={progressContent}></span>
+          </div>
+        </Swiper>
+      )}
     </>
   );
 }

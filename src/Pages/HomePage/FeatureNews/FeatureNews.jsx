@@ -7,8 +7,10 @@ import BanglaTimeAgo from "../../../Comps/BanglaTime/BanglaTimeDiffrence";
 
 const FeatureNews = () => {
   const [spotlightNews, setSpotlightNews] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const url = "https://news.goexpressus.com/spotlight-news";
+
   useEffect(() => {
     axios
       .get(url)
@@ -27,43 +29,61 @@ const FeatureNews = () => {
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, []);
+
   return (
     <div className="row">
-      {spotlightNews.map((data, index) => (
-        <div className="col-lg-3 " key={index}>
-          <Link to={`/news/${data.id}`}>
+      {loading ? (
+        Array.from({ length: 4 }).map((_, index) => (
+          <div className="col-lg-3" key={index}>
             <div className="card rounded-1 border-0 shadow-sm feature-cards">
               <div className="card-body">
-                <div className="d-flex justify-content-between  align-items-center ">
-                  <p className="secondary-color">
-                    {data.category_name_bangla || <Skeleton></Skeleton>}
-                  </p>
-                  <p className="badge bg-light text-black">
-                    {/* {data.news_time.slice(10) || <Skeleton></Skeleton>} */}
-                    <BanglaTimeAgo postTime={data.news_time}></BanglaTimeAgo>
+                <Skeleton height={20} />
+                <Skeleton height={30} count={2} />
+              </div>
+              <Skeleton height={200} />
+            </div>
+          </div>
+        ))
+      ) : (
+        spotlightNews.map((data, index) => (
+          <div className="col-lg-3" key={index}>
+            <Link to={`/news/${data.id}`}>
+              <div className="card rounded-1 border-0 shadow-sm feature-cards">
+                <div className="card-body">
+                  <div className="d-flex justify-content-between align-items-center">
+                    <p className="secondary-color">
+                      {data.category_name_bangla}
+                    </p>
+                    <p className="badge bg-light text-black">
+                      <BanglaTimeAgo postTime={data.news_time} />
+                    </p>
+                  </div>
+                  <h5 className="main-color">
+                    {data.news_title.slice(0, 28)}
+                  </h5>
+                  <p className="card-text text-muted">
+                    {data?.news_short_brief?.length > 70
+                      ? `${data.news_short_brief.slice(0, 70)}...`
+                      : data?.news_short_brief}
                   </p>
                 </div>
-                <h5 className="main-color">
-                  {data.news_title.slice(0, 28) || <Skeleton></Skeleton>}..
-                </h5>
-                <p className="card-text text-muted">
-                  {data?.news_short_brief?.length > 70
-                    ? `${data.news_short_brief.slice(0, 70)}...`
-                    : data?.news_short_brief || <Skeleton></Skeleton>}
-                </p>
+                <img
+                  src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                  className="card-img-top rounded-0"
+                  alt="Card Image"
+                  loading="lazy"
+                  style={{ height: "200px" }}
+                />
               </div>
-              <img
-                src={`https://ajkal.goexpressus.com/images/${data.title_img}`} // Replace with the actual image source
-                className="card-img-top rounded-0"
-                alt="Card Image"
-                loading="lazy"
-              />
-            </div>
-          </Link>
-        </div>
-      ))}
+            </Link>
+          </div>
+        ))
+      )}
     </div>
   );
 };

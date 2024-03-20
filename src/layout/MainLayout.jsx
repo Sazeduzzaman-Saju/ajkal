@@ -21,7 +21,6 @@ const MainLayout = () => {
             className="d-flex justify-content-center align-items-center"
             style={{ height: "100vh" }}
           >
-            {/* <PuffLoader color={"#4568dc"} loading={loading} size={150} /> */}
             <Triangle
               height={80}
               width={80}

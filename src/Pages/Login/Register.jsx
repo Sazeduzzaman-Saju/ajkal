@@ -92,15 +92,15 @@ const Register = () => {
                             আপনার নাম <span className="text-danger">*</span>
                           </label>
                           <input
-                            {...register("name", {
+                            {...register("full_name", {
                               required: "Name",
                             })}
                             placeholder="আপনার নাম"
                             className="form-style mb-2 form-control"
                           />
-                          {errors.name && (
+                          {errors.full_name && (
                             <p className="text-danger ">
-                              {errors.name?.message}
+                              {errors.full_name?.message}
                             </p>
                           )}
                         </div>
