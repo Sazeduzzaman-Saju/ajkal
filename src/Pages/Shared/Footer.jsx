@@ -98,7 +98,7 @@ const Footer = () => {
               </div>
             </div>
             <div className="col-lg-6">
-              <div className="tex-lg-end text-center  py-4 main_author">
+              <div className="text-lg-end text-center py-4 main_author">
                 <p className="text-white mb-0 ">
                   ফোন: <span>+1646 267-7751</span> ফ্যাক্স:
                   <span>718-865-9130</span>

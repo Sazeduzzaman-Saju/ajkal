@@ -72,33 +72,26 @@ const SorboshesKhobor = () => {
             </div>
             <div className="row mt-4">
               {sorboshesData.map((data, index) => (
-                <div className="col-lg-4 mb-3" key={index}>
+                <div className="col-lg-4" key={index}>
                   <Link to={`/news/${data.id}`}>
-                    <div className="card rounded-1 border-0 shadow-sm">
+                    <div className="card rounded-1 border-0 shadow-sm mb-4" style={{height: '18rem'}}>
+                    <div className="card-body p-0 card-body-2">
+                        <img
+                          className="img-fluid"
+                          src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                          alt=""
+                        />
+                      </div>
                       <div className="card-body card-body-1 w-lg-auto w-100">
                         <div>
                           <p className="secondary-color">
                             {data.category_name_bangla}
                           </p>
-                          <p className="text-muted">
-                            <BanglaTimeAgo postTime={data.news_time} />
-                          </p>
                           <p className="text-muted"></p>
-                          <h5 className="main-color">
-                            {data.news_title.slice(0, 24)}..
-                          </h5>
-                          <p>
-                            {data.news_short_brief.slice(0, 110)}
-                            <span className="text-primary">...</span>
-                          </p>
+                          <h6 className="main-color">
+                            {data.news_title}
+                          </h6>
                         </div>
-                      </div>
-                      <div className="card-body p-0 card-body-2">
-                        <img
-                          className="sorboshes-news-image"
-                          src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
-                          alt=""
-                        />
                       </div>
                     </div>
                   </Link>

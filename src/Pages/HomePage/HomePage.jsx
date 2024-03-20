@@ -9,6 +9,7 @@ import VideoNews from "./VideoNews/VideoNews";
 import MostRecent from "./MostRecent/MostRecent";
 import CategoryNewsOne from "./CategoryNewsOne/CategoryNewsOne";
 import CategoryNewsTwo from "./CategoryNewsTwo/CategoryNewsTwo";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
@@ -52,8 +53,60 @@ const HomePage = () => {
         {/* Category Post Show Style One */}
         <div className="container">
           <div className="row">
-            <div className="col-lg-12">
+            <div className="col-lg-8">
               <CategoryWiseNews />
+            </div>
+            <div className="col-lg-4">
+              <div className="mt-5">
+                <Link to={"#"}>
+                  <button className="submit-btn-one w-100 mx-0 rounded-0 p-1">
+                    বিজ্ঞাপন কর্নার
+                  </button>
+                </Link>
+              </div>
+              {/* Add Banner Start */}
+              <div className="mb-2">
+                <img
+                  className="img-fluid"
+                  src="https://i.ibb.co/xSV6xdY/Image-5.jpg"
+                  alt=""
+                />
+              </div>
+              <div className="mb-2">
+                <img
+                  className="img-fluid"
+                  src="https://i.ibb.co/LPgDTs6/Image-6.jpg"
+                  alt=""
+                />
+              </div>
+              <div className="mb-2">
+                <img
+                  className="img-fluid"
+                  src="https://i.ibb.co/GJvNFh6/Image-8.jpg"
+                  alt=""
+                />
+              </div>
+              <div className="mb-2">
+                <img
+                  className="img-fluid"
+                  src="https://i.ibb.co/jMKbN8P/Image-9.jpg"
+                  alt=""
+                />
+              </div>
+              <div className="mb-2">
+                <img
+                  className="img-fluid"
+                  src="https://i.ibb.co/fGH148g/Image-10.jpg"
+                  alt=""
+                />
+              </div>
+              {/* Add Banner End */}
+              <div
+                className="d-flex justify-content-center  align-items-center "
+                style={{ height: "7rem", border: "2px dashed var(--main)" }}
+              >
+                <p className="mb-0">Facebook Like Box</p>
+              </div>
             </div>
           </div>
         </div>
@@ -75,11 +128,19 @@ const HomePage = () => {
             </div>
           </div>
         </div>
+
         {/* Category Post Show Style One */}
         <div className="container">
-          <div className="row mb-5">
+          <div className="row mb-2">
             <div className="col-lg-12">
               <CategoryNewsOne></CategoryNewsOne>
+              <div>
+                <img
+                  className="img-fluid w-100 mt-4"
+                  src="https://i.ibb.co/JdGPxKn/Image-11.jpg"
+                  alt=""
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -95,7 +156,7 @@ const HomePage = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              {/* <Categories /> */}
+              {/* aasd */}
             </div>
           </div>
         </div>

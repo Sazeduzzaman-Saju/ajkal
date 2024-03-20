@@ -11,8 +11,8 @@ import PageHelmet from "../../Comps/PageHelmet/PageHelmet";
 const NewsDetails = () => {
   const singleNews = useLoaderData();
   const singleNewsDetails = singleNews.data;
-  // console.log('console',singleNews.data.category_name_bangla) 
-  // console.log('console2',singleNews) 
+  // console.log('console',singleNews.data.category_name_bangla)
+  // console.log('console2',singleNews)
 
   const [fontSize, setFontSize] = useState(16); // Initial font size
 
@@ -57,9 +57,9 @@ const NewsDetails = () => {
         </div>
         <div className="row">
           <div className="col-lg-8" id="printThis">
-            <h1>{singleNewsDetails.news_title}</h1>
+            <h1 className="main_color">{singleNewsDetails.news_title}</h1>
             <p>{singleNewsDetails.news_short_brief}</p>
-            <div>
+            <div className="mt-4">
               {/* Condition to check if singleNewsDetails.video_url is empty */}
               {singleNewsDetails.video_url ? (
                 <iframe
@@ -111,7 +111,7 @@ const NewsDetails = () => {
               {/* News Details */}
               {/* <p>{singleNewsDetails.news_detail.slice(0, 250)}</p> */}
               <p
-                style={{ fontSize: `${fontSize}px` }}
+                style={{ fontSize: `${fontSize}px`, textAlign: "justify" }}
                 dangerouslySetInnerHTML={{
                   __html: singleNewsDetails.news_detail.slice(250),
                 }}
@@ -125,7 +125,7 @@ const NewsDetails = () => {
                 />
               </div>
               <p
-                style={{ fontSize: `${fontSize}px` }}
+                style={{ fontSize: `${fontSize}px`, textAlign: "justify" }}
                 dangerouslySetInnerHTML={{
                   __html: singleNewsDetails.news_detail.slice(250),
                 }}

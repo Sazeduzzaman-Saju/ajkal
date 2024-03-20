@@ -4,8 +4,11 @@ import { FaFacebookF, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+  const navigate = useNavigate();
+  
   const {
     register,
     handleSubmit,
@@ -15,10 +18,10 @@ const Register = () => {
   const handleSignUp = async (data) => {
     try {
       console.log("User Data:", data);
-
+  
       const response = await fetch(
         // "https://resell-autocar-server.vercel.app/users",
-        "https://news.goexpressus.com/user-registration",
+        "https://news.goexpressus.com/auth/registration",
         {
           method: "POST",
           headers: {
@@ -27,11 +30,12 @@ const Register = () => {
           body: JSON.stringify(data),
         }
       );
-
+  
       if (!response.ok) {
-        throw new toast.error("Failed to create user");
+        throw new Error("Failed to create user");
       }
       toast.success("User created successfully");
+      navigate("/login"); // Use Navigate function to navigate
     } catch (error) {
       toast.error("Failed to create user:", error.message);
       // Handle error here
@@ -151,7 +155,7 @@ const Register = () => {
                             className=" form-style mb-2 form-control"
                             aria-label="Default select example"
                           >
-                            <option selected value="1">
+                            <option value="1">
                               পুরুষ
                             </option>
                             <option value="2">মহিলা</option>

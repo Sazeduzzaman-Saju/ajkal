@@ -5,7 +5,11 @@ import "./PostHeader.css";
 const PostHeader = ({ title }) => {
   return (
     <div className="post-header-box mt-5">
-      <p className="post-header-title main-color">{title}</p>
+      <p className="post-header-title main-color" style={{
+        background: 'var(--main)',
+        color: 'white',
+        borderRadius: '55px'
+      }}>{title}</p>
     </div>
   );
 };

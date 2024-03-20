@@ -17,26 +17,31 @@ const NewsSectionTwo = ({ probashNews }) => {
       <div className="row">
         {loading ? (
           // Render skeleton loading placeholders
-          <>
-            <Skeleton height={200} width={150} count={3} />
-            <Skeleton height={20} width={200} count={3} />
-          </>
+          Array.from({ length: 3 }).map((_, index) => (
+            <div className="col-lg-3" key={index}>
+              <div className="card border-0 shadow-sm mb-4">
+                <Skeleton height={200} />
+                <div className="card-body">
+                  <Skeleton height={20} width={150} />
+                  <Skeleton height={60} />
+                </div>
+              </div>
+            </div>
+          ))
         ) : (
           // Render actual content when data is loaded
           probashNews.map(({ title_img, news_title, postDescription, id }) => (
-            <div className="col-lg-4" key={id}>
-              <Link to={`/news/${id}`} className="text-muted" key={id}>
-                <div className="d-flex align-items-center mb-3">
-                  <div>
-                    <img
-                      width={150}
-                      src={`https://ajkal.goexpressus.com/images/${title_img}`}
-                      className="rounded-1"
-                      alt=""
-                    />
-                  </div>
-                  <div className="ps-3">
-                    <h5 className="mb-1 main-color">{news_title}</h5>
+            <div className="col-lg-3" key={id}>
+              <Link to={`/news/${id}`} className="text-muted">
+                <div className="card border-0 shadow-sm mb-4" style={{height: '17.2rem'}}>
+                  <img
+                    width={100}
+                    src={`https://ajkal.goexpressus.com/images/${title_img}`}
+                    className="card-img-top rounded-1"
+                    alt=""
+                  />
+                  <div className="card-body">
+                    <h6 className="mb-1 main-color">{news_title}।</h6>
                     <p className="m-0">{postDescription}</p>
                   </div>
                 </div>

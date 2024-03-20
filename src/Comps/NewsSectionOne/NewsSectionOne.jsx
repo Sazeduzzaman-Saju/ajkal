@@ -16,7 +16,7 @@ const NewsSectionOne = ({ bangladeshNews }) => {
   return (
     <div>
       <div className="row mb-5 align-items-center">
-        <div className="col-lg-6">
+        <div className="col-lg-8">
           <div className="row">
             {loading ? (
               <>
@@ -52,7 +52,7 @@ const NewsSectionOne = ({ bangladeshNews }) => {
             )}
           </div>
         </div>
-        <div className="col-lg-6">
+        <div className="col-lg-4">
           {loading ? (
             <>
               <Skeleton height={200} />
@@ -80,8 +80,8 @@ const NewsSectionOne = ({ bangladeshNews }) => {
                           {data.news_title}
                         </h5>
                         <p>
-                          {data.news_short_brief}{" "}
-                          <span className="text-danger">আরও পড়ুন...</span>
+                          {data.news_short_brief.slice(0,140)}
+                          <span className="text-danger"> আরও পড়ুন...</span>
                         </p>
                       </div>
                     </div>

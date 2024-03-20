@@ -81,6 +81,10 @@ const CategoryWiseNews = () => {
         <PostHeader title="বাংলাদেশ" />
         <NewsSectionOne bangladeshNews={bangladeshNews} />
       </div>
+      {/* add */}
+      <div>
+          <img className="img-fluid" src="https://i.ibb.co/JdGPxKn/Image-11.jpg" alt="" />
+      </div>
       {/* Second Style */}
       <div className="pt-2">
         <PostHeader title="প্রবাস" />
