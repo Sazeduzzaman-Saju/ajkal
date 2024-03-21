@@ -28,7 +28,6 @@ const CategoryNewsOne = () => {
       })
       .finally(() => setLoadingBangladesh(false));
   }, []);
-  console.log(bangladeshNews);
 
   return (
     <div>

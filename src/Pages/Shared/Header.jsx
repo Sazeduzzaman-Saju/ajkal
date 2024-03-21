@@ -15,6 +15,8 @@ import axios from "axios";
 import { Watch } from "react-loader-spinner";
 
 function Header() {
+  // Retrieve access token from localStorage
+  const accessToken = localStorage.getItem("accessToken");
   const [isHovered, setIsHovered] = useState(false);
   const [navLinks, setNavLinks] = useState([]);
   const url = "https://news.goexpressus.com/news-category";
@@ -88,9 +90,15 @@ function Header() {
                     <NavLink href="#" className="">
                       <AiFillInstagram />
                     </NavLink>
-                    <NavLink to="/login" className="">
-                      <FaUser />
-                    </NavLink>
+                    {accessToken ? (
+                      <NavLink to="/user" className="">
+                        <FaUser />
+                      </NavLink>
+                    ) : (
+                      <NavLink to="/login" className="">
+                        <FaUser />
+                      </NavLink>
+                    )}
                   </div>
                 </div>
               </div>

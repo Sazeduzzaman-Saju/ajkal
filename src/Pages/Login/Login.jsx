@@ -16,8 +16,6 @@ const Login = () => {
 
   const handleSignUp = async (data) => {
     try {
-      console.log("User Data:", data);
-
       const response = await fetch("https://news.goexpressus.com/auth/login", {
         method: "POST",
         headers: {
@@ -25,24 +23,46 @@ const Login = () => {
         },
         body: JSON.stringify(data),
       });
-
+  
       if (!response.ok) {
         throw new Error("Failed to login user");
       }
-
+  
       const responseData = await response.json();
-      const token = responseData.token; // Assuming the token is provided in the response
-
-      // Save token to localStorage
-      localStorage.setItem("token", token);
-
+      const accessToken = responseData.access_token;
+      console.log(accessToken)
+  
+      if (!accessToken) {
+        throw new Error("Access token not provided in response");
+      }
+  
+      // Store access token in localStorage
+      localStorage.setItem("accessToken", accessToken);
+  
+      // Now use the access token as a bearer token to send requests
+      const userResponse = await fetch(`https://news.goexpressus.com/auth/login/${accessToken}`, {
+        method: "GET",
+        headers: {
+          "Authorization": `Bearer ${accessToken}`,
+        },
+      });
+  
+      if (!userResponse.ok) {
+        throw new Error("Failed to fetch user data");
+      }
+  
+      const userData = await userResponse.json();
+  
+      // Do something with the user data, such as storing it in localStorage or displaying it
+  
       toast.success("User login successful");
-      navigate("/user"); // Use Navigate function to navigate
+      navigate("/user");
     } catch (error) {
       toast.error("Failed to login user:", error.message);
       // Handle error here
     }
   };
+  
   return (
     <div className="container">
       <div className="row my-5 gx-0">
