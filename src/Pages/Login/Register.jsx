@@ -20,7 +20,6 @@ const Register = () => {
       console.log("User Data:", data);
   
       const response = await fetch(
-        // "https://resell-autocar-server.vercel.app/users",
         "https://news.goexpressus.com/auth/registration",
         {
           method: "POST",

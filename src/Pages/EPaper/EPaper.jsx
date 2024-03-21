@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-import { Gallery } from "react-grid-gallery";
-import Lightbox from "react-image-lightbox";
-import "react-image-lightbox/style.css";
+import { Modal } from "react-bootstrap";
 
 const EPaper = () => {
-  const [index, setIndex] = useState(-1);
-
-  const images = [
+  const [images, setImages] = useState([
     {
+      id: "1",
       src: "https://c2.staticflickr.com/9/8817/28973449265_07e3aa5d2e_b.jpg",
       original:
         "https://c2.staticflickr.com/9/8817/28973449265_07e3aa5d2e_b.jpg",
@@ -20,6 +17,7 @@ const EPaper = () => {
       caption: "After Rain (Jeshu John - designerspics.com)",
     },
     {
+      id: "2",
       src: "https://c2.staticflickr.com/9/8356/28897120681_3b2c0f43e0_b.jpg",
       original:
         "https://c2.staticflickr.com/9/8356/28897120681_3b2c0f43e0_b.jpg",
@@ -28,6 +26,7 @@ const EPaper = () => {
       caption: "Boats (Jeshu John - designerspics.com)",
     },
     {
+      id: "3",
       src: "https://c4.staticflickr.com/9/8887/28897124891_98c4fdd82b_b.jpg",
       original:
         "https://c4.staticflickr.com/9/8887/28897124891_98c4fdd82b_b.jpg",
@@ -36,6 +35,7 @@ const EPaper = () => {
       caption: "Color Pencils (Jeshu John - designerspics.com)",
     },
     {
+      id: "4",
       src: "https://c7.staticflickr.com/9/8546/28354329294_bb45ba31fa_b.jpg",
       original:
         "https://c7.staticflickr.com/9/8546/28354329294_bb45ba31fa_b.jpg",
@@ -44,6 +44,7 @@ const EPaper = () => {
       caption: "Red Apples with other Red Fruit (foodiesfeed.com)",
     },
     {
+      id: "5",
       src: "https://c6.staticflickr.com/9/8890/28897154101_a8f55be225_b.jpg",
       original:
         "https://c6.staticflickr.com/9/8890/28897154101_a8f55be225_b.jpg",
@@ -52,6 +53,7 @@ const EPaper = () => {
       caption: "37H (gratispgraphy.com)",
     },
     {
+      id: "6",
       src: "https://c5.staticflickr.com/9/8768/28941110956_b05ab588c1_b.jpg",
       original:
         "https://c5.staticflickr.com/9/8768/28941110956_b05ab588c1_b.jpg",
@@ -61,6 +63,7 @@ const EPaper = () => {
       caption: "8H (gratisography.com)",
     },
     {
+      id: "7",
       src: "https://c3.staticflickr.com/9/8583/28354353794_9f2d08d8c0_b.jpg",
       original:
         "https://c3.staticflickr.com/9/8583/28354353794_9f2d08d8c0_b.jpg",
@@ -69,6 +72,7 @@ const EPaper = () => {
       caption: "286H (gratisography.com)",
     },
     {
+      id: "8",
       src: "https://c7.staticflickr.com/9/8569/28941134686_d57273d933_b.jpg",
       original:
         "https://c7.staticflickr.com/9/8569/28941134686_d57273d933_b.jpg",
@@ -78,6 +82,7 @@ const EPaper = () => {
       caption: "315H (gratisography.com)",
     },
     {
+      id: "9",
       src: "https://c6.staticflickr.com/9/8342/28897193381_800db6419e_b.jpg",
       original:
         "https://c6.staticflickr.com/9/8342/28897193381_800db6419e_b.jpg",
@@ -86,6 +91,7 @@ const EPaper = () => {
       caption: "201H (gratisography.com)",
     },
     {
+      id: "10",
       src: "https://c2.staticflickr.com/9/8239/28897202241_1497bec71a_b.jpg",
       original:
         "https://c2.staticflickr.com/9/8239/28897202241_1497bec71a_b.jpg",
@@ -95,6 +101,7 @@ const EPaper = () => {
       caption: "Big Ben (Tom Eversley - isorepublic.com)",
     },
     {
+      id: "11",
       src: "https://c7.staticflickr.com/9/8785/28687743710_3580fcb5f0_b.jpg",
       original:
         "https://c7.staticflickr.com/9/8785/28687743710_3580fcb5f0_b.jpg",
@@ -105,6 +112,7 @@ const EPaper = () => {
       caption: "Red Zone - Paris (Tom Eversley - isorepublic.com)",
     },
     {
+      id: "12",
       src: "https://c6.staticflickr.com/9/8520/28357073053_cafcb3da6f_b.jpg",
       original:
         "https://c6.staticflickr.com/9/8520/28357073053_cafcb3da6f_b.jpg",
@@ -114,6 +122,7 @@ const EPaper = () => {
       caption: "Wood Glass (Tom Eversley - isorepublic.com)",
     },
     {
+      id: "13",
       src: "https://c8.staticflickr.com/9/8104/28973555735_ae7c208970_b.jpg",
       original:
         "https://c8.staticflickr.com/9/8104/28973555735_ae7c208970_b.jpg",
@@ -122,6 +131,7 @@ const EPaper = () => {
       caption: "Flower Interior Macro (Tom Eversley - isorepublic.com)",
     },
     {
+      id: "14",
       src: "https://c4.staticflickr.com/9/8562/28897228731_ff4447ef5f_b.jpg",
       original:
         "https://c4.staticflickr.com/9/8562/28897228731_ff4447ef5f_b.jpg",
@@ -130,6 +140,7 @@ const EPaper = () => {
       caption: "Old Barn (Tom Eversley - isorepublic.com)",
     },
     {
+      id: "15",
       src: "https://c2.staticflickr.com/8/7577/28973580825_d8f541ba3f_b.jpg",
       original:
         "https://c2.staticflickr.com/8/7577/28973580825_d8f541ba3f_b.jpg",
@@ -139,6 +150,7 @@ const EPaper = () => {
       caption: "Cosmos Flower Macro (Tom Eversley - isorepublic.com)",
     },
     {
+      id: "16",
       src: "https://c7.staticflickr.com/9/8106/28941228886_86d1450016_b.jpg",
       original:
         "https://c7.staticflickr.com/9/8106/28941228886_86d1450016_b.jpg",
@@ -147,6 +159,7 @@ const EPaper = () => {
       caption: "Orange Macro (Tom Eversley - isorepublic.com)",
     },
     {
+      id: "17",
       src: "https://c1.staticflickr.com/9/8330/28941240416_71d2a7af8e_b.jpg",
       original:
         "https://c1.staticflickr.com/9/8330/28941240416_71d2a7af8e_b.jpg",
@@ -159,6 +172,7 @@ const EPaper = () => {
       caption: "Surfer Sunset (Tom Eversley - isorepublic.com)",
     },
     {
+      id: "18",
       src: "https://c1.staticflickr.com/9/8707/28868704912_cba5c6600e_b.jpg",
       original:
         "https://c1.staticflickr.com/9/8707/28868704912_cba5c6600e_b.jpg",
@@ -171,6 +185,7 @@ const EPaper = () => {
       caption: "Man on BMX (Tom Eversley - isorepublic.com)",
     },
     {
+      id: "19",
       src: "https://c4.staticflickr.com/9/8578/28357117603_97a8233cf5_b.jpg",
       original:
         "https://c4.staticflickr.com/9/8578/28357117603_97a8233cf5_b.jpg",
@@ -179,6 +194,7 @@ const EPaper = () => {
       caption: "Ropeman - Thailand (Tom Eversley - isorepublic.com)",
     },
     {
+      id: "20",
       src: "https://c4.staticflickr.com/8/7476/28973628875_069e938525_b.jpg",
       original:
         "https://c4.staticflickr.com/8/7476/28973628875_069e938525_b.jpg",
@@ -187,6 +203,7 @@ const EPaper = () => {
       caption: "Time to Think (Tom Eversley - isorepublic.com)",
     },
     {
+      id: "21",
       src: "https://c6.staticflickr.com/9/8593/28357129133_f04c73bf1e_b.jpg",
       original:
         "https://c6.staticflickr.com/9/8593/28357129133_f04c73bf1e_b.jpg",
@@ -199,6 +216,7 @@ const EPaper = () => {
       caption: "Untitled (Jan Vasek - jeshoots.com)",
     },
     {
+      id: "22",
       src: "https://c6.staticflickr.com/9/8893/28897116141_641b88e342_b.jpg",
       original:
         "https://c6.staticflickr.com/9/8893/28897116141_641b88e342_b.jpg",
@@ -208,6 +226,7 @@ const EPaper = () => {
       caption: "Untitled (moveast.me)",
     },
     {
+      id: "23",
       src: "https://c1.staticflickr.com/9/8056/28354485944_148d6a5fc1_b.jpg",
       original:
         "https://c1.staticflickr.com/9/8056/28354485944_148d6a5fc1_b.jpg",
@@ -216,6 +235,7 @@ const EPaper = () => {
       caption: "A photo by 贝莉儿 NG. (unsplash.com)",
     },
     {
+      id: "24",
       src: "https://c7.staticflickr.com/9/8824/28868764222_19f3b30773_b.jpg",
       original:
         "https://c7.staticflickr.com/9/8824/28868764222_19f3b30773_b.jpg",
@@ -223,54 +243,74 @@ const EPaper = () => {
       height: 320,
       caption: "A photo by Matthew Wiebe. (unsplash.com)",
     },
-  ];
+  ]);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
-  console.log(images)
-
-  const currentImage = images[index];
-  const nextIndex = (index + 1) % images.length;
-  const nextImage = images[nextIndex];
-  const prevIndex = (index + images.length - 1) % images.length;
-  const prevImage = images[prevIndex];
-
-  const handleClick = (index) => {
-    setIndex(index);
+  const handleImageClick = (item) => {
+    setSelectedItem(item);
+    setShowModal(true);
   };
 
-  const handleClose = () => {
-    setIndex(-1);
-  };
-
-  const handleMovePrev = () => {
-    setIndex(prevIndex);
-  };
-
-  const handleMoveNext = () => {
-    setIndex(nextIndex);
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
 
   return (
     <div className="container">
       <div className="row">
-        <div className="col-lg-12">
-          <Gallery
-            images={images}
-            onClick={handleClick}
-            enableImageSelection={false}
-          />
-          {index !== -1 && (
-            <Lightbox
-              mainSrc={currentImage.src}
-              nextSrc={nextImage.src}
-              prevSrc={prevImage.src}
-              onCloseRequest={handleClose}
-              onMovePrevRequest={handleMovePrev}
-              onMoveNextRequest={handleMoveNext}
-              imageTitle={currentImage.caption}
-            />
-          )}
+        <div className="col-lg-2"></div>
+        <div className="col-lg-8">
+          <div className="row gx-0">
+            {images.map((item) => (
+              <div key={item.id} className="image-item col-lg-3">
+                <div className="card border-0">
+                  <div className="card-body p-0">
+                    <img
+                      src={item.src}
+                      alt={item.caption}
+                      onClick={() => handleImageClick(item)}
+                      className="img-fluid"
+                    />
+                    {/* <button
+                      type="button"
+                      className="bg-none border-0 p-0"
+                      onClick={() => handleImageClick(item)}
+                    >
+                      <img
+                        src={item.src}
+                        alt={item.caption}
+                        className="img-fluid"
+                      />
+                    </button> */}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
+        <div className="col-lg-2"></div>
       </div>
+
+      <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>{selectedItem?.caption}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <img
+            src={selectedItem?.original}
+            alt={selectedItem?.caption}
+            className="img-fluid"
+          />
+          {/* Add other modal content here */}
+        </Modal.Body>
+        <Modal.Footer>
+          <button className="btn btn-secondary" onClick={handleCloseModal}>
+            Close
+          </button>
+          {/* Add other modal buttons if needed */}
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

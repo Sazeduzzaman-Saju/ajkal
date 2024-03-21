@@ -1,14 +1,46 @@
-import React from "react";
-import { LuView } from "react-icons/lu";
-import { TbEdit } from "react-icons/tb";
-import { RiAdvertisementFill } from "react-icons/ri";
-import { MdInsertComment } from "react-icons/md";
-import { TiUpload } from "react-icons/ti";
-import { MdDelete } from "react-icons/md";
-import "./UserDashboard.css";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
+import "./UserDashboard.css";
+import { MdDelete, MdOutlineInsertComment } from "react-icons/md";
+import { TbEdit, TbFileUpload } from "react-icons/tb";
+import { BiRightArrow } from "react-icons/bi";
+import { LuView } from "react-icons/lu";
 
-const UserDasboard = () => {
+const UserDashboard = () => {
+  const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const accessToken = localStorage.getItem("accessToken");
+        const response = await axios.post(
+          "https://news.goexpressus.com/auth/profile",
+          null,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        );
+        setUserData(response.data);
+        setLoading(false);
+      } catch (error) {
+        setError(error);
+        setLoading(false);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+  console.log(userData)
+
+  // Assuming you want to render userData if it's available
+  // const userPosts = userData?.posts || []; // Assuming userData has a posts array
+  // You can map over userPosts and render them
   const fakeData = [
     {
       id: 1,
@@ -47,6 +79,7 @@ const UserDasboard = () => {
     },
   ];
 
+
   return (
     <div className="container">
       <div className="row">
@@ -60,7 +93,7 @@ const UserDasboard = () => {
             <div className="card-body info-cards d-flex justify-content-between  align-items-center ">
               <div>
                 <p className="icon-container">
-                  <TiUpload></TiUpload>
+                  <TbFileUpload></TbFileUpload>
                 </p>
                 <h4 className="pt-3">সংবাদ পোস্ট।</h4>
               </div>
@@ -73,7 +106,7 @@ const UserDasboard = () => {
             <div className="card-body info-cards d-flex justify-content-between  align-items-center ">
               <div>
                 <p className="icon-container">
-                  <RiAdvertisementFill></RiAdvertisementFill>
+                  <BiRightArrow></BiRightArrow>
                 </p>
                 <h4 className="pt-3">মোট বিজ্ঞাপন পোস্ট।</h4>
               </div>
@@ -86,7 +119,7 @@ const UserDasboard = () => {
             <div className="card-body info-cards d-flex justify-content-between  align-items-center ">
               <div>
                 <p className="icon-container">
-                  <MdInsertComment></MdInsertComment>
+                  <MdOutlineInsertComment></MdOutlineInsertComment>
                 </p>
                 <h4 className="pt-3">মোট মন্তব্য।</h4>
               </div>
@@ -120,7 +153,11 @@ const UserDasboard = () => {
                           <td>{item.advertisement}</td>
                           <td>{item.category}</td>
                           <td>{item.postDate}</td>
-                          <td><span className="badge bg-dark">{item.postStatus}</span></td>
+                          <td>
+                            <span className="badge bg-dark">
+                              {item.postStatus}
+                            </span>
+                          </td>
                           <td>
                             <div className="d-flex justify-content-center  align-items-center ">
                               <Link to={"#"} className="me-2 user-dash-icons">
@@ -148,4 +185,4 @@ const UserDasboard = () => {
   );
 };
 
-export default UserDasboard;
+export default UserDashboard;

@@ -39,6 +39,29 @@ const Search = () => {
       });
   }, []);
 
+  const [archive, setArchive] = useState([]);
+  const urlArchive = "https://news.goexpressus.com/archive-news";
+
+  useEffect(() => {
+    axios
+      .get(urlArchive)
+      .then((response) => {
+        if (Array.isArray(response.data)) {
+          setArchive(response.data);
+        } else if (Array.isArray(response.data.data)) {
+          setArchive(response.data.data);
+        } else {
+          console.error(
+            "Invalid data structure in API response:",
+            response.data
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
   return (
     <>
       <PageTitle title="অনুসন্ধান করুন" description="Text" />
@@ -76,7 +99,7 @@ const Search = () => {
                   <div className="d-flex justify-content-between  align-items-center ">
                     <div>
                       <p className="m-0">
-                        ফলাফল: <span className="text-danger">১২২২৪৩৫</span>
+                        ফলাফল: <span className="text-danger">{archive.length}</span>
                       </p>
                     </div>
                     <div>

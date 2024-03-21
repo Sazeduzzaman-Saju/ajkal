@@ -1,90 +1,66 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { FaUserCircle } from "react-icons/fa";
 import "./style.css";
-import BanglaTime from "../../Comps/BanglaTime/BanglaDynamicTIme";
-import BanglaDateTime from "../../Comps/BanglaTime/BanglaTime";
+import axios from "axios";
 
 const SearchData = () => {
-  const searchFakeData = [
-    {
-      id: "01",
-      newsTitle:
-        "চ্যাম্পিয়নস লিগ আর্সেনালকে হারাল পোর্তো, বার্সেলোনার জয় আটকাল নাপোলি",
-      newsDescription:
-        "আজেন্টাইন কিংবদন্তি ডিয়েগো ম্যারাডোনার দুই সাবেক ক্লাব বার্সেলোনা ও নাপোলি মুখোমুখি হয়েছিল তাঁরই নামের স্টেডিয়ামে। তবে দুই ক্লাবের কেউই জেতেনি।",
-      writer: "sazeduzzaman",
-      date: "২৫ ফেব্রুয়ারি ২০২৪",
-      time: "10:52",
-      thumb:
-        "https://online.maryville.edu/wp-content/uploads/sites/97/2020/08/author-at-work.jpg",
-      img: "https://online.maryville.edu/wp-content/uploads/sites/97/2020/08/author-at-work.jpg",
-    },
-    {
-      id: "01",
-      newsTitle:
-        "চ্যাম্পিয়নস লিগ আর্সেনালকে হারাল পোর্তো, বার্সেলোনার জয় আটকাল নাপোলি",
-      newsDescription:
-        "আজেন্টাইন কিংবদন্তি ডিয়েগো ম্যারাডোনার দুই সাবেক ক্লাব বার্সেলোনা ও নাপোলি মুখোমুখি হয়েছিল তাঁরই নামের স্টেডিয়ামে। তবে দুই ক্লাবের কেউই জেতেনি।",
-      writer: "sazeduzzaman",
-      date: "২৫ ফেব্রুয়ারি ২০২৪",
-      time: "10:52",
-      thumb:
-        "https://online.maryville.edu/wp-content/uploads/sites/97/2020/08/author-at-work.jpg",
-      img: "https://online.maryville.edu/wp-content/uploads/sites/97/2020/08/author-at-work.jpg",
-    },
-    {
-      id: "01",
-      newsTitle:
-        "চ্যাম্পিয়নস লিগ আর্সেনালকে হারাল পোর্তো, বার্সেলোনার জয় আটকাল নাপোলি",
-      newsDescription:
-        "আজেন্টাইন কিংবদন্তি ডিয়েগো ম্যারাডোনার দুই সাবেক ক্লাব বার্সেলোনা ও নাপোলি মুখোমুখি হয়েছিল তাঁরই নামের স্টেডিয়ামে। তবে দুই ক্লাবের কেউই জেতেনি।",
-      writer: "sazeduzzaman",
-      date: "২৫ ফেব্রুয়ারি ২০২৪",
-      time: "10:52",
-      thumb:
-        "https://online.maryville.edu/wp-content/uploads/sites/97/2020/08/author-at-work.jpg",
-      img: "https://online.maryville.edu/wp-content/uploads/sites/97/2020/08/author-at-work.jpg",
-    },
-    {
-      id: "01",
-      newsTitle:
-        "চ্যাম্পিয়নস লিগ আর্সেনালকে হারাল পোর্তো, বার্সেলোনার জয় আটকাল নাপোলি",
-      newsDescription:
-        "আজেন্টাইন কিংবদন্তি ডিয়েগো ম্যারাডোনার দুই সাবেক ক্লাব বার্সেলোনা ও নাপোলি মুখোমুখি হয়েছিল তাঁরই নামের স্টেডিয়ামে। তবে দুই ক্লাবের কেউই জেতেনি।",
-      writer: "sazeduzzaman",
-      date: "২৫ ফেব্রুয়ারি ২০২৪",
-      time: "10:52",
-      thumb:
-        "https://online.maryville.edu/wp-content/uploads/sites/97/2020/08/author-at-work.jpg",
-      img: "https://online.maryville.edu/wp-content/uploads/sites/97/2020/08/author-at-work.jpg",
-    },
-  ];
+  const [archive, setArchive] = useState([]);
+  const [visibleItems, setVisibleItems] = useState(8); // State to track the number of visible items
+  const url = "https://news.goexpressus.com/archive-news";
+
+  useEffect(() => {
+    axios
+      .get(url)
+      .then((response) => {
+        if (Array.isArray(response.data)) {
+          setArchive(response.data);
+        } else if (Array.isArray(response.data.data)) {
+          setArchive(response.data.data);
+        } else {
+          console.error(
+            "Invalid data structure in API response:",
+            response.data
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
+  // Function to handle "Load More" button click
+  const handleLoadMore = () => {
+    setVisibleItems((prevCount) => prevCount + 8); // Increment visible items count by 10
+  };
+
   return (
-    <div className="contaioner">
+    <div className="container">
       <hr />
       <div className="row">
         <div className="col-lg-12">
-          {searchFakeData.map((data, index) => (
+          {/* Display only the specified number of items */}
+          {archive.slice(0, visibleItems).map((data, index) => (
             <div className="card border-0 mb-2" key={index}>
-              <Link to={"/news/:1"}>
+              <Link to={`/news/${data.id}`}>
                 <div className="card-body p-0 mt-3">
                   <div className="row align-items-center ">
                     <div className="col-lg-8 p-0">
-                      <div className="p-5 py-2">
+                      <div className="p-5 py-2 ps-0">
                         {/* Title */}
-                        <h4 className="main-color">{data.newsTitle}</h4>
+                        <h4 className="main-color">{data.news_title}</h4>
                         {/* Description */}
-                        <p className="text-muted">{data.newsDescription}</p>
+                        <p className="text-muted">{data.news_short_brief}</p>
                         {/* posting time */}
-                        <small className=" secondary-text secondary-color">{data.date}</small>
+                        <small className="secondary-text secondary-color">
+                          {data.news_time}
+                        </small>
                       </div>
                     </div>
                     <div className="col-lg-4">
                       <div>
                         <img
                           className="img-fluid w-100 rounded"
-                          src="https://images.prothomalo.com/prothomalo-bangla%2F2024-02%2F12f807c2-0bc7-4da2-8feb-0dfa47224327%2FGG5EsMDWgAAtHyJ.jpg?rect=0%2C0%2C1604%2C1069&auto=format%2Ccompress&fmt=webp&format=webp&w=300&dpr=1.0"
+                          src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
                           alt=""
                         />
                       </div>
@@ -98,7 +74,11 @@ const SearchData = () => {
       </div>
       <div className="row py-5">
         <div className="col-lg-12">
-          <button className="submit-btn-one rounded-pill px-5 shadow-sm">
+          {/* Button to load more items */}
+          <button
+            className="submit-btn-one rounded-pill px-5 shadow-sm"
+            onClick={handleLoadMore}
+          >
             আরও দেখুন।
           </button>
         </div>

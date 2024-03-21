@@ -7,12 +7,11 @@ import { FaYoutube } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import { BiMenuAltLeft } from "react-icons/bi";
 import { MdClose } from "react-icons/md";
-import { FaUser } from "react-icons/fa";
+import { FaUser, FaHome } from "react-icons/fa";
 import NavBar from "../../Comps/NavBar/NavBar";
 import SearchBoxHeader from "../../Comps/SearchBoxHeader/SearchBoxHeader";
 import DynamicDateTime from "../../Comps/DynamicDateTime/DynamicDateTime";
 import axios from "axios";
-import { Watch } from "react-loader-spinner";
 
 function Header() {
   // Retrieve access token from localStorage
@@ -42,6 +41,8 @@ function Header() {
         console.error("Error fetching data:", error);
       });
   }, []);
+
+
   return (
     <>
       <div className="container-fluid main-menu">
@@ -92,7 +93,7 @@ function Header() {
                     </NavLink>
                     {accessToken ? (
                       <NavLink to="/user" className="">
-                        <FaUser />
+                        <FaHome />
                       </NavLink>
                     ) : (
                       <NavLink to="/login" className="">

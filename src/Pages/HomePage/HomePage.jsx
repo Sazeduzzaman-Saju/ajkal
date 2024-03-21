@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PageTitle from "../../Comps/PageTitle/PageTitle";
 import Banner from "./Banner/Banner";
 import FeatureNews from "./FeatureNews/FeatureNews";
@@ -10,8 +10,25 @@ import MostRecent from "./MostRecent/MostRecent";
 import CategoryNewsOne from "./CategoryNewsOne/CategoryNewsOne";
 import CategoryNewsTwo from "./CategoryNewsTwo/CategoryNewsTwo";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const HomePage = () => {
+  const [advertisement, setAdvertisement] = useState([]);
+
+  useEffect(() => {
+    const url = "https://news.goexpressus.com/ad/all";
+
+    axios
+      .get(url)
+      .then((response) => {
+        setAdvertisement(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
+  console.log(advertisement);
   return (
     <>
       <PageTitle title="সাপ্তাহিক আজকাল || Saptahik Ajkal" description="Text" />

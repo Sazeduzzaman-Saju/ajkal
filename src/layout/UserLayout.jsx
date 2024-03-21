@@ -3,12 +3,38 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import Footer from "../Pages/Shared/Footer";
 import Header from "../Pages/Shared/Header";
 import "./UserLayout.css";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+
 const UserLayout = () => {
+  const navigate = useNavigate();
+  // Logout function
+  const handleLogout = () => {
+    const accessToken = localStorage.getItem("accessToken");
+    // Assuming logout API URL is "https://news.goexpressus.com/auth/logout"
+    fetch("https://news.goexpressus.com/auth/logout", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+      .then((response) => {
+        // If logout is successful, remove access token from localStorage
+        localStorage.removeItem("accessToken");
+        // Redirect to login page or any other page as needed
+        toast.success("User Logout successfully");
+        navigate("/login"); // Use Navigate function to navigate
+      })
+      .catch((error) => {
+        console.error("Error logging out:", error);
+      });
+  };
+
   return (
     <>
       <Header />
       <div className="container">
-      <div className="row">
+        <div className="row">
           <div
             className="col-lg-2 px-0 shadow-sm "
             style={{
@@ -39,14 +65,6 @@ const UserLayout = () => {
                 </li>
                 <li className="nav-item">
                   <NavLink
-                    to={"/user/my-comments"}
-                    className="user-dashboard-nav nav-link"
-                  >
-                    My Comments
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink
                     to={"/user/my-post"}
                     className="user-dashboard-nav nav-link"
                   >
@@ -62,12 +80,13 @@ const UserLayout = () => {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink
-                    to={"/user/my-save-post"}
+                  {/* Call handleLogout function when Logout link is clicked */}
+                  <Link
                     className="user-dashboard-nav nav-link"
+                    onClick={handleLogout}
                   >
-                    Save Articales
-                  </NavLink>
+                    Logout
+                  </Link>
                 </li>
               </ul>
             </div>

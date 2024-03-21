@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./style.css";
 import { FaFacebookF, FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
@@ -40,8 +40,8 @@ const Login = () => {
       localStorage.setItem("accessToken", accessToken);
   
       // Now use the access token as a bearer token to send requests
-      const userResponse = await fetch(`https://news.goexpressus.com/auth/login/${accessToken}`, {
-        method: "GET",
+      const userResponse = await fetch(`https://news.goexpressus.com/auth/profile`, {
+        method: "POST",
         headers: {
           "Authorization": `Bearer ${accessToken}`,
         },
@@ -52,7 +52,7 @@ const Login = () => {
       }
   
       const userData = await userResponse.json();
-  
+      console.log(userData)
       // Do something with the user data, such as storing it in localStorage or displaying it
   
       toast.success("User login successful");
