@@ -3,32 +3,39 @@ import PageTitle from "../../Comps/PageTitle/PageTitle";
 import Banner from "./Banner/Banner";
 import FeatureNews from "./FeatureNews/FeatureNews";
 import SorboshesKhobor from "./SorboshesKhobor/SorboshesKhobor";
-import Categories from "./Categories/Categories";
 import CategoryWiseNews from "./CategoryWiseNews/CategoryWiseNews";
 import VideoNews from "./VideoNews/VideoNews";
-import MostRecent from "./MostRecent/MostRecent";
 import CategoryNewsOne from "./CategoryNewsOne/CategoryNewsOne";
 import CategoryNewsTwo from "./CategoryNewsTwo/CategoryNewsTwo";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import PostHeader from "../../Comps/PostHeader/PostHeader";
+import { FacebookEmbed, YouTubeEmbed } from "react-social-media-embed";
 
 const HomePage = () => {
-  const [advertisement, setAdvertisement] = useState([]);
-
+  const [addvertisement, setAddvertisement] = useState([]);
+  const addUrl = "https://news.goexpressus.com/ad/all";
   useEffect(() => {
-    const url = "https://news.goexpressus.com/ad/all";
-
     axios
-      .get(url)
+      .get(addUrl)
       .then((response) => {
-        setAdvertisement(response.data);
+        // Check if the response contains an array
+        if (Array.isArray(response.data)) {
+          setAddvertisement(response.data);
+        } else if (Array.isArray(response.data.data)) {
+          setAddvertisement(response.data.data);
+        } else {
+          console.error(
+            "Invalid data structure in API response:",
+            response.data
+          );
+        }
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
   }, []);
 
-  console.log(advertisement);
   return (
     <>
       <PageTitle title="সাপ্তাহিক আজকাল || Saptahik Ajkal" description="Text" />
@@ -57,12 +64,18 @@ const HomePage = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="image-container">
-                <img
-                  className="w-100 zoom-image img-fluid "
-                  src="https://i.ibb.co/YB3fYnL/main-Ad-Mid.jpg"
-                  alt=""
-                  loading="lazy"
-                />
+                {addvertisement.map((data) =>
+                  // Check if data "ad_category_id" is equal to "2" and status is equal to "1"
+                  data.ad_category_id === "4" && data.status === "1" ? (
+                    <img
+                      key={data.id}
+                      className="w-100 zoom-image img-fluid "
+                      src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}
+                      alt={"advertisement"}
+                      loading="lazy"
+                    />
+                  ) : null
+                )}
               </div>
             </div>
           </div>
@@ -75,64 +88,62 @@ const HomePage = () => {
             </div>
             <div className="col-lg-4">
               <div className="mt-5">
-                <Link to={"#"}>
-                  <button className="submit-btn-one w-100 mx-0 rounded-0 p-1">
-                    বিজ্ঞাপন কর্নার
-                  </button>
-                </Link>
+                <PostHeader title="বিজ্ঞাপন কর্নার" />
               </div>
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                  <FacebookEmbed
+                    url="https://www.facebook.com/photo/?fbid=979852766901979"
+                    width={418}
+                  />
+                </div>
+                <div className="pt-3" style={{ display: "flex", justifyContent: "center" }}>
+                  <YouTubeEmbed
+                    url="https://www.youtube.com/watch?v=JQkevGu41D4"
+                    width={418}
+                    height={365}
+                  />
+                </div>
               {/* Add Banner Start */}
-              <div className="mb-2">
-                <img
-                  className="img-fluid"
-                  src="https://i.ibb.co/xSV6xdY/Image-5.jpg"
-                  alt=""
-                />
-              </div>
-              <div className="mb-2">
-                <img
-                  className="img-fluid"
-                  src="https://i.ibb.co/LPgDTs6/Image-6.jpg"
-                  alt=""
-                />
-              </div>
-              <div className="mb-2">
-                <img
-                  className="img-fluid"
-                  src="https://i.ibb.co/GJvNFh6/Image-8.jpg"
-                  alt=""
-                />
-              </div>
-              <div className="mb-2">
-                <img
-                  className="img-fluid"
-                  src="https://i.ibb.co/jMKbN8P/Image-9.jpg"
-                  alt=""
-                />
-              </div>
-              <div className="mb-2">
-                <img
-                  className="img-fluid"
-                  src="https://i.ibb.co/fGH148g/Image-10.jpg"
-                  alt=""
-                />
-              </div>
+              {addvertisement.map((data) =>
+                // Check if data "ad_category_id" is equal to "2" and status is equal to "1"
+                data.ad_category_id === "3" && data.status === "1" ? (
+                  <div className="mb-2" key={data.id}>
+                    <Link to={data.ad_link}>
+                      <img
+                        className="img-fluid side-add"
+                        src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}
+                        alt=""
+                      />
+                    </Link>
+                  </div>
+                ) : null
+              )}
+
               {/* Add Banner End */}
-              <div
-                className="d-flex justify-content-center  align-items-center "
-                style={{ height: "7rem", border: "2px dashed var(--main)" }}
-              >
-                <p className="mb-0">Facebook Like Box</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* Category Post Show Style One */}
-        <div className="container-fluid" style={{ backgroundColor: "#fff3e0" }}>
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12">
-                <MostRecent></MostRecent>
+              <div className="">
+                <div>
+                  <div id="fb-root" />
+                  <div
+                    className="fb-page"
+                    data-href="https://www.facebook.com/weeklyajkal/"
+                    data-tabs="timeline"
+                    data-width
+                    data-height={400}
+                    data-small-header="false"
+                    data-adapt-container-width="true"
+                    data-hide-cover="false"
+                    data-show-facepile="true"
+                  >
+                    <blockquote
+                      cite="https://www.facebook.com/weeklyajkal/"
+                      className="fb-xfbml-parse-ignore"
+                    >
+                      <a href="https://www.facebook.com/weeklyajkal/">
+                        Weekly Ajkal
+                      </a>
+                    </blockquote>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -145,18 +156,26 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-
         {/* Category Post Show Style One */}
         <div className="container">
           <div className="row mb-2">
             <div className="col-lg-12">
               <CategoryNewsOne></CategoryNewsOne>
               <div>
-                <img
-                  className="img-fluid w-100 mt-4"
-                  src="https://i.ibb.co/JdGPxKn/Image-11.jpg"
-                  alt=""
-                />
+                {addvertisement.map((data) =>
+                  // Check if data "ad_category_id" is equal to "2" and status is equal to "1"
+                  data.ad_category_id === "5" && data.status === "1" ? (
+                    <div className="mb-2" key={data.id}>
+                      <Link to={data.ad_link}>
+                        <img
+                          className="img-fluid w-100 mt-4"
+                          src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}
+                          alt=""
+                        />
+                      </Link>
+                    </div>
+                  ) : null
+                )}
               </div>
             </div>
           </div>
@@ -172,9 +191,7 @@ const HomePage = () => {
         {/* Category Links */}
         <div className="container">
           <div className="row">
-            <div className="col-lg-12">
-              {/* aasd */}
-            </div>
+            <div className="col-lg-12">{/* aasd */}</div>
           </div>
         </div>
       </section>

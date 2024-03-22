@@ -1,9 +1,9 @@
 import React from "react";
-import NewPost from "../UserPost/NewPost";
 import { Link } from "react-router-dom";
 import { LuView } from "react-icons/lu";
 import { TbEdit } from "react-icons/tb";
 import { MdDelete } from "react-icons/md";
+import UserAddPost from "../../../Comps/UserNewsPost/UserAddPost";
 
 const UserAdvertisement = () => {
   const fakeData = [
@@ -112,146 +112,7 @@ const UserAdvertisement = () => {
                     </div>
                     <div className="row">
                       <div className="col-lg-12">
-                        <form action="" method="post">
-                          <div className="card shadow-sm mb-5" style={{border: "1px solid #eee"}}>
-                            <div className="card-body">
-                              <div className="row">
-                                <div className="col-lg-4 mb-3">
-                                  <div>
-                                    <select
-                                      className="form-select form-select-sm"
-                                      aria-label="Default select example"
-                                      aria-placeholder="কোথায় বিজ্ঞাপন দেখতে চান"
-                                    >
-                                      <option selected>
-                                        কোথায় বিজ্ঞাপন দেখতে চান
-                                      </option>
-                                      <option value="ইপেপার">ইপেপার</option>
-                                      <option value="অনলাইন পোর্টাল">
-                                        অনলাইন পোর্টাল
-                                      </option>
-                                    </select>
-                                  </div>
-                                </div>
-                                <div className="col-lg-4 mb-3">
-                                  <div>
-                                    <select
-                                      className="form-select form-select-sm"
-                                      aria-label="বিজ্ঞাপনের স্থান নির্বাচন করুন"
-                                    >
-                                      <option selected>
-                                        বিজ্ঞাপনের স্থান নির্বাচন করুন।
-                                      </option>
-                                      <option value="ইপেপার">
-                                        প্রধান বিজ্ঞাপন
-                                      </option>
-                                      <option value="অনলাইন পোর্টাল">
-                                        প্রথম পেজ
-                                      </option>
-                                      <option value="অনলাইন পোর্টাল">
-                                        দ্বিতীয় পেজ
-                                      </option>
-                                      <option value="অনলাইন পোর্টাল">
-                                        তৃতীয় পেজে
-                                      </option>
-                                      <option value="অনলাইন পোর্টাল">
-                                        হোমপেজের
-                                      </option>
-                                      <option value="অনলাইন পোর্টাল">
-                                        সাইডবারে
-                                      </option>
-                                      <option value="অনলাইন পোর্টাল">
-                                        বিস্তারিত নিউজে
-                                      </option>
-                                    </select>
-                                  </div>
-                                </div>
-                                <div className="col-lg-4 mb-3">
-                                  <div>
-                                    <input
-                                      type="file"
-                                      name=""
-                                      id=""
-                                      accept="image/*"
-                                      placeholder="বিজ্ঞাপনের ছবি আপলোড করুন"
-                                      className="form-control form-control-sm  custom-file-input"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="col-lg-4 mb-3">
-                                  <div>
-                                    <input
-                                      type="text"
-                                      name=""
-                                      id=""
-                                      placeholder=" বিজ্ঞাপনের সময়কাল"
-                                      className="form-control form-control-sm "
-                                    />
-                                  </div>
-                                </div>
-                                <div className="col-lg-4 mb-3">
-                                  <div>
-                                    <select
-                                      className="form-select form-select-sm"
-                                      aria-label="বিজ্ঞাপনের সময়কাল"
-                                    >
-                                      <option selected>
-                                        বিজ্ঞাপনের সময়কাল
-                                      </option>
-                                      <option value="অনলাইন পোর্টাল">
-                                        ১ সাপ্তাহ
-                                      </option>
-                                      <option value="অনলাইন পোর্টাল">
-                                        {" "}
-                                        ২ সাপ্তাহ
-                                      </option>
-                                      <option value="অনলাইন পোর্টাল">
-                                        {" "}
-                                        ৩ সাপ্তাহ
-                                      </option>
-                                      <option value="অনলাইন পোর্টাল">
-                                        {" "}
-                                        ৪ সাপ্তাহ
-                                      </option>
-                                    </select>
-                                  </div>
-                                </div>
-                                <div className="col-lg-4 mb-3">
-                                  <div>
-                                    <input
-                                      type="text"
-                                      name=""
-                                      id=""
-                                      className="form-control form-control-sm "
-                                      placeholder="মোট বিল"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="col-lg-12 mb-3">
-                                  <div>
-                                    <input
-                                      type="text"
-                                      name=""
-                                      id=""
-                                      className="form-control form-control-sm "
-                                      placeholder="এখন কত পরিশোধ করতে চান"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="col-lg-12">
-                                  <div className="d-flex justify-content-end ">
-                                    <button
-                                      type="submit"
-                                      className="submit-btn-one"
-                                    >
-                                      Submit
-                                    </button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </form>
+                        <UserAddPost></UserAddPost>
                       </div>
                     </div>
                   </div>

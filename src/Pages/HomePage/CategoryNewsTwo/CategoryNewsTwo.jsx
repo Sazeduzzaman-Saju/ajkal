@@ -61,7 +61,7 @@ const CategoryNewsTwo = () => {
                       <img className="img-fluid rounded-1 border-0" src={`https://ajkal.goexpressus.com/images/${news.title_img}`} alt="" />
                     </div>
                     <div className="px-2 py-3">
-                      <h5 className="">{news.news_title}</h5>
+                      <h5 className="main_color fw-bold ">{news.news_title}</h5>
                       <p className="mb-0">{news.news_short_brief.slice(0, 125)}...</p>
                     </div>
                   </div>

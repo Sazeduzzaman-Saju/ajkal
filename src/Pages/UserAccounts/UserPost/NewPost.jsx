@@ -67,7 +67,6 @@ export default function NewPost() {
 
   const handleSignUp = async (data) => {
     try {
-      console.log("User Data:", data);
       const accessToken = localStorage.getItem("accessToken");
       const response = await fetch(
         "https://news.goexpressus.com/post/add-news",
@@ -75,12 +74,12 @@ export default function NewPost() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            'Authorization': `Bearer ${accessToken}`,
+            Authorization: `Bearer ${accessToken}`,
           },
           body: JSON.stringify(data),
         }
       );
-  
+
       if (!response.ok) {
         throw new Error("Failed to create user");
       }

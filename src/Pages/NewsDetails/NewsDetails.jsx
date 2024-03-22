@@ -7,12 +7,13 @@ import BanglaDateTime from "../../Comps/BanglaTime/BanglaTime";
 import BanglaTime from "../../Comps/BanglaTime/BanglaDynamicTIme";
 import SocialShareButtons from "../../Comps/SocialShareButtons/SocialShareButtons";
 import PageHelmet from "../../Comps/PageHelmet/PageHelmet";
+import axios from "axios";
+import PostHeader from "../../Comps/PostHeader/PostHeader";
+import { FacebookEmbed, YouTubeEmbed } from "react-social-media-embed";
 
 const NewsDetails = () => {
   const singleNews = useLoaderData();
   const singleNewsDetails = singleNews.data;
-  // console.log('console',singleNews.data.category_name_bangla)
-  // console.log('console2',singleNews)
 
   const [fontSize, setFontSize] = useState(16); // Initial font size
 
@@ -27,6 +28,39 @@ const NewsDetails = () => {
   const resetFontSize = () => {
     setFontSize(16); // Reset font size to initial value
   };
+
+  const [addvertisement, setAddvertisement] = useState([]);
+  const addUrl = "https://news.goexpressus.com/ad/all";
+  useEffect(() => {
+    axios
+      .get(addUrl)
+      .then((response) => {
+        // Check if the response contains an array
+        if (Array.isArray(response.data)) {
+          setAddvertisement(response.data);
+        } else if (Array.isArray(response.data.data)) {
+          setAddvertisement(response.data.data);
+        } else {
+          console.error(
+            "Invalid data structure in API response:",
+            response.data
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
+  const slicedText = singleNewsDetails.news_detail
+    .split(/\s+/)
+    .slice(0, 200)
+    .join(" "); // Split by whitespace, slice the array, then join it back into a string
+
+  const slicedText2 = singleNewsDetails.news_detail
+    .split(/\s+/)
+    .slice(200)
+    .join(" "); // Split by whitespace, slice the array, then join it back into a string
 
   return (
     <>
@@ -113,49 +147,99 @@ const NewsDetails = () => {
               <p
                 style={{ fontSize: `${fontSize}px`, textAlign: "justify" }}
                 dangerouslySetInnerHTML={{
-                  __html: singleNewsDetails.news_detail.slice(250),
+                  __html: slicedText,
                 }}
               />
               <div className="pb-4 py-3">
-                <img
-                  className="img-fluid"
-                  src="https://i.ibb.co/myN58Z7/Whats-App-Image-2024-02-18-at-22-16-04-10030316.jpg"
-                  alt=""
-                  loading="lazy"
-                />
+                {addvertisement.map((data) =>
+                  // Check if data "ad_category_id" is equal to "2" and status is equal to "1"
+                  data.ad_category_id === "4" && data.status === "1" ? (
+                    <Link to={data.ad_link} key={data.id}>
+                      <img
+                        className="img-fluid"
+                        src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}
+                        alt=""
+                      />
+                    </Link>
+                  ) : null
+                )}
               </div>
               <p
                 style={{ fontSize: `${fontSize}px`, textAlign: "justify" }}
                 dangerouslySetInnerHTML={{
-                  __html: singleNewsDetails.news_detail.slice(250),
+                  __html: slicedText2,
                 }}
               />
             </div>
           </div>
           <div className="col-lg-4">
-            <div style={{ borderBottom: "1px solid var(--main)" }}>
-              <h5 className="text-muted main-color">সর্বাধিক পঠিত</h5>
-            </div>
-            {/* Advertisement */}
-            <div className="d-flex justify-content-center align-items-center pt-4 pb-3 ">
-              <img
-                src="https://i.ibb.co/j39LZmN/Give-Advertisement.jpg"
-                alt=""
-                className="img-fluid"
-              />
-            </div>
-            {/* Advertisement End*/}
             <div>
               {/* News Sidebar */}
               <NewsSidebar></NewsSidebar>
             </div>
-            <div className="d-flex justify-content-center align-items-center pt-3 ">
-              <img
-                src="https://i.ibb.co/CHz52fX/goldenagehome.jpg"
-                alt=""
-                className="img-fluid"
+            {/* Addvertisement Area Start */}
+            <div className="mt-5">
+              <PostHeader title="বিজ্ঞাপন কর্নার" />
+            </div>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <FacebookEmbed
+                url="https://www.facebook.com/photo/?fbid=979852766901979"
+                width={418}
               />
             </div>
+            <div
+              className="pt-3"
+              style={{ display: "flex", justifyContent: "center" }}
+            >
+              <YouTubeEmbed
+                url="https://www.youtube.com/watch?v=JQkevGu41D4"
+                width={418}
+                height={365}
+              />
+            </div>
+            {/* Add Banner Start */}
+            {addvertisement.map((data) =>
+              // Check if data "ad_category_id" is equal to "2" and status is equal to "1"
+              data.ad_category_id === "3" && data.status === "1" ? (
+                <div className="mb-2" key={data.id}>
+                  <Link to={data.ad_link}>
+                    <img
+                      className="img-fluid side-add"
+                      src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}
+                      alt=""
+                    />
+                  </Link>
+                </div>
+              ) : null
+            )}
+
+            {/* Add Banner End */}
+            <div className="">
+              <div>
+                <div id="fb-root" />
+                <div
+                  className="fb-page"
+                  data-href="https://www.facebook.com/weeklyajkal/"
+                  data-tabs="timeline"
+                  data-width
+                  data-height={400}
+                  data-small-header="false"
+                  data-adapt-container-width="true"
+                  data-hide-cover="false"
+                  data-show-facepile="true"
+                >
+                  <blockquote
+                    cite="https://www.facebook.com/weeklyajkal/"
+                    className="fb-xfbml-parse-ignore"
+                  >
+                    <a href="https://www.facebook.com/weeklyajkal/">
+                      Weekly Ajkal
+                    </a>
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+            {/* Addvertisement Area End */}
           </div>
         </div>
         <div className="pt-5">

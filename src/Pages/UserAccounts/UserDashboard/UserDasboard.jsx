@@ -36,11 +36,6 @@ const UserDashboard = () => {
     fetchUserData();
   }, []);
 
-  console.log(userData)
-
-  // Assuming you want to render userData if it's available
-  // const userPosts = userData?.posts || []; // Assuming userData has a posts array
-  // You can map over userPosts and render them
   const fakeData = [
     {
       id: 1,
@@ -78,7 +73,6 @@ const UserDashboard = () => {
       postStatus: "পাবলিশ হয় নি।",
     },
   ];
-
 
   return (
     <div className="container">

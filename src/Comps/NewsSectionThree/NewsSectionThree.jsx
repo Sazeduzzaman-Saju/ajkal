@@ -6,8 +6,8 @@ import Skeleton from "react-loading-skeleton";
 const NewsSectionThree = ({ khelarNews, loading }) => {
   return (
     <div>
-      <div className="row mb-5 align-items-center ">
-        <div className="col-lg-4">
+      <div className="row align-items-center ">
+        <div className="col-lg-6">
           {loading ? (
             // Render skeleton loading placeholders
             <>
@@ -22,15 +22,15 @@ const NewsSectionThree = ({ khelarNews, loading }) => {
                 key={data.id}
               >
                 <div className="d-flex align-items-center mb-3 row">
-                  <div className="col-lg-4">
+                  <div className="col-lg-3">
                     <img
-                      className="rounded-1"
+                      className="img-fluid"
                       width={90}
                       src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
                       alt=""
                     />
                   </div>
-                  <div className="col-lg-8">
+                  <div className="col-lg-9">
                     <h6 className="mb-0 text-muted fw-semibold ">
                       {data.news_title}
                     </h6>
@@ -40,7 +40,7 @@ const NewsSectionThree = ({ khelarNews, loading }) => {
             ))
           )}
         </div>
-        <div className="col-lg-4">
+        <div className="col-lg-6">
           {loading ? (
             // Render skeleton loading placeholders
             <>
@@ -54,14 +54,14 @@ const NewsSectionThree = ({ khelarNews, loading }) => {
                   <div className="card border-0">
                     <div className="card-body p-0">
                       <img
-                        className="w-100 rounded-0"
-                        height={200}
+                        className="img-fluid"
+                        height={235}
                         style={{ objectFit: "cover" }}
                         src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
                         alt=""
                       />
                       <h5
-                        className="m-0 p-0 pt-2 text-center text-white "
+                        className="m-0 p-0 py-3 text-center text-white"
                         style={{ backgroundColor: "var(--main)" }}
                       >
                         {data.news_title}
@@ -71,39 +71,6 @@ const NewsSectionThree = ({ khelarNews, loading }) => {
                 </Link>
               ) : null
             )
-          )}
-        </div>
-        <div className="col-lg-4">
-          {loading ? (
-            // Render skeleton loading placeholders
-            <>
-              <Skeleton height={100} width={100} count={3} />
-            </>
-          ) : (
-            // Render actual data
-            khelarNews.slice(0, 4).map((data) => (
-              <Link
-                to={`/news/${data.id}`}
-                className="text-muted"
-                key={data.id}
-              >
-                <div className="d-flex align-items-center mb-3 row">
-                  <div className="col-lg-4">
-                    <img
-                      className="rounded-1"
-                      width={90}
-                      src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
-                      alt=""
-                    />
-                  </div>
-                  <div className="col-lg-8">
-                    <h6 className="mb-0 text-muted fw-semibold ">
-                      {data.news_title}
-                    </h6>
-                  </div>
-                </div>
-              </Link>
-            ))
           )}
         </div>
       </div>

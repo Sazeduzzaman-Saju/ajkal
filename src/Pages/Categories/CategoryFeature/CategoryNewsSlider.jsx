@@ -1,67 +1,23 @@
-import React, { useEffect, useState } from "react";
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-import "./style.css";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-
-// import required modules
-import { Navigation } from "swiper/modules";
-
+import React from "react";
+import Skeleton from "react-loading-skeleton";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
-export default function CategoryNewsSlider() {
-  const [categoryNews, setCategoryNews] = useState([]);
-  const url = "https://news.goexpressus.com/breaking-news";
-  useEffect(() => {
-    axios
-      .get(url)
-      .then((response) => {
-        if (Array.isArray(response.data)) {
-          setCategoryNews(response.data.slice(0, 10));
-        } else if (Array.isArray(response.data.data)) {
-          setCategoryNews(response.data.data.slice(0, 12));
-        } else {
-          console.error(
-            "Invalid data structure in API response:",
-            response.data
-          );
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
+const CategoryNewsSlider = ({ singleNews, loading }) => {
 
   return (
-    <>
-      <Swiper
-        slidesPerView={1}
-        spaceBetween={30}
-        loop={true}
-        autoplay={{
-          delay: 500,
-          disableOnInteraction: false,
-        }}
-        // pagination={{
-        //   clickable: true,
-        // }}
-        navigation={true}
-        modules={[Navigation]}
-        className="mySwiper"
-        style={{borderRadius: '10px'}}
-      >
-        {categoryNews.map((data) => (
-          <SwiperSlide
-            style={{ padding: " 0px 4px" }}
-            className="pb-0"
-            key={data.id}
-          >
-            <Link to={`/news/${data.id}`} className="shadow-sm">
+    <div>
+      {loading ? (
+        // Render skeleton loading placeholders
+        <Skeleton height={200} count={3} />
+      ) : (
+        // Render actual data
+        singleNews.map((data) =>
+          data.is_featured === "1" ? (
+            <Link
+              to={`/news/${data.id}`}
+              className="shadow-sm"
+              key={data.id}
+            >
               <div className="card rounded-0 border-0 ">
                 <div className="card-header p-0"></div>
                 <div className="card-body p-0">
@@ -72,15 +28,22 @@ export default function CategoryNewsSlider() {
                       alt=""
                     />
                   </div>
-                  <div className="p-2 feature-text-area">
-                    <h4 className="pt-2">{data.news_title.slice(0, 50)}</h4>
+                  <div
+                    className="p-2 feature-text-area"
+                    style={{ backgroundColor: "var(--main)" }}
+                  >
+                    <h4 className="pt-1 mb-1 text-white">
+                      {data.news_title.slice(0, 50)}
+                    </h4>
                   </div>
                 </div>
               </div>
             </Link>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </>
+          ) : null
+        )
+      )}
+    </div>
   );
-}
+};
+
+export default CategoryNewsSlider;

@@ -6,7 +6,7 @@ import Skeleton from "react-loading-skeleton";
 const CategoryNewsOneData = () => {
   const [bangladeshNews, setBangladeshNews] = useState([]);
   const [loadingBangladesh, setLoadingBangladesh] = useState(true);
-  const url = "https://news.goexpressus.com/category-news/2";
+  const url = "https://news.goexpressus.com/category-news/7";
 
   useEffect(() => {
     axios
@@ -56,6 +56,8 @@ const CategoryNewsOneData = () => {
                   <div className="card-body p-0">
                     <img
                       className="img-fluid"
+                      height={310}
+                      style={{objectFit: 'fit'}}
                       src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
                       alt=""
                     />
@@ -66,9 +68,9 @@ const CategoryNewsOneData = () => {
                         <p className="mb-0 text-white">
                           {data.category_name_bangla}
                         </p>
-                        <h3 className="mb-0 text-white">
+                        <h5 className="mb-0 text-white">
                           {data.news_title.slice(0, 28)}
-                        </h3>
+                        </h5>
                       </Link>
                     </div>
                   </div>

@@ -17,7 +17,6 @@ const Register = () => {
 
   const handleSignUp = async (data) => {
     try {
-      console.log("User Data:", data);
   
       const response = await fetch(
         "https://news.goexpressus.com/auth/registration",

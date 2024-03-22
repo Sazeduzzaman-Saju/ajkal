@@ -1,5 +1,13 @@
 /* Font Style Linked */
 @import url("https://fonts.maateen.me/solaiman-lipi/font.css");
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
+.policy-text {
+  font-family: "Jost", sans-serif;
+}
+.english-font {
+  font-family: "Jost", sans-serif !important;
+}
+
 /* Root Style */
 :root {
   --main: #165588;

@@ -28,8 +28,6 @@ const UserAccounts = () => {
     fetchUserData();
   }, []);
 
-  const fullName = userData?.full_name;
-  const email = userData?.email;
 
   return (
     <div>

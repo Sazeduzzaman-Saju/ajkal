@@ -30,7 +30,6 @@ const Login = () => {
   
       const responseData = await response.json();
       const accessToken = responseData.access_token;
-      console.log(accessToken)
   
       if (!accessToken) {
         throw new Error("Access token not provided in response");

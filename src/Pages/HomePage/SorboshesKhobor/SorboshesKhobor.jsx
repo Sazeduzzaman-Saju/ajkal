@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
 import BanglaTimeAgo from "../../../Comps/BanglaTime/BanglaTimeDiffrence";
+import PostHeader from "../../../Comps/PostHeader/PostHeader";
 
 const SorboshesKhobor = () => {
   const [sorboshesPothitoData, setSorboshesPothitoData] = useState([]);
@@ -58,7 +59,7 @@ const SorboshesKhobor = () => {
   }, []);
 
   return (
-    <div className="row mb-5 mt-5">
+    <div className="row mb-2 mt-1">
       {loading ? (
         // Show skeleton while loading
         <div className="skeleton-wrapper">
@@ -67,30 +68,32 @@ const SorboshesKhobor = () => {
       ) : (
         <>
           <div className="col-lg-8">
-            <div style={{ borderBottom: "2px solid var(--secondary)" }}>
-              <h5 className="text-muted">সর্বশেষ আজকাল</h5>
-            </div>
-            <div className="row mt-4">
+            <PostHeader title="সর্বশেষ আজকাল"></PostHeader>
+            {/* <div style={{ borderBottom: "2px solid var(--secondary)" }}>
+              <h5 className="text-muted"></h5>
+            </div> */}
+            <div className="row mt-1">
               {sorboshesData.map((data, index) => (
                 <div className="col-lg-4" key={index}>
                   <Link to={`/news/${data.id}`}>
-                    <div className="card rounded-1 border-0 shadow-sm mb-4" style={{height: '18rem'}}>
-                    <div className="card-body p-0 card-body-2">
+                    <div
+                      className="card rounded-1 border-0 shadow-sm mb-4"
+                      style={{ height: "18rem" }}
+                    >
+                      <div className="card-body p-0 card-body-2">
                         <img
-                          className="img-fluid"
+                          className="img-fluid rounded-1"
                           src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
                           alt=""
                         />
                       </div>
                       <div className="card-body card-body-1 w-lg-auto w-100">
                         <div>
-                          <p className="secondary-color">
+                          <p className="secondary-color fw-bold mb-0">
                             {data.category_name_bangla}
                           </p>
-                          <p className="text-muted"></p>
-                          <h6 className="main-color">
-                            {data.news_title}
-                          </h6>
+                          <p className="text-muted mb-1"></p>
+                          <h5 className="main-color">{data.news_title}</h5>
                         </div>
                       </div>
                     </div>
@@ -100,6 +103,7 @@ const SorboshesKhobor = () => {
             </div>
           </div>
           <div className="col-lg-4">
+            <PostHeader title="সর্বাধিক পঠিত"></PostHeader>
             <div style={{ borderBottom: "2px solid var(--secondary)" }}>
               <h5 className="text-muted">সর্বাধিক পঠিত</h5>
             </div>

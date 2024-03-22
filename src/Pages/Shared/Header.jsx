@@ -42,6 +42,28 @@ function Header() {
       });
   }, []);
 
+  const [addvertisement, setAddvertisement] = useState([]);
+  const addUrl = "https://news.goexpressus.com/ad/all";
+  useEffect(() => {
+    axios
+      .get(addUrl)
+      .then((response) => {
+        // Check if the response contains an array
+        if (Array.isArray(response.data)) {
+          setAddvertisement(response.data);
+        } else if (Array.isArray(response.data.data)) {
+          setAddvertisement(response.data.data);
+        } else {
+          console.error(
+            "Invalid data structure in API response:",
+            response.data
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
 
   return (
     <>
@@ -49,21 +71,16 @@ function Header() {
         <div className="container">
           {/* Top Bar Area */}
           <div className="row top-bar-area align-items-center top-bar-area">
-            <div className="col-lg-6">
+            <div className="col-lg-4">
               {/* ঢাকা, বৃহস্পতিবার ১৫ ফেব্রুয়ারি ২০২৪, ২ ফাল্গুন ১৪৩০, ০৪ শাবান ১৪৪৫ */}
               <DynamicDateTime />
             </div>
-            <div className="col-lg-6 pe-0">
-              <div className="top-bar p-2 d-flex justify-content-between align-items-center pt-1">
+            <div className="col-lg-4">
+              <div className="top-bar d-flex justify-content-center">
                 <ul className="mb-0">
                   <li className="">
-                    <NavLink to="/login" className="">
-                      যোগাযোগ
-                    </NavLink>
-                  </li>
-                  <li className="">
                     <NavLink to="/categories/2" className="">
-                      বিজ্ঞাপনের মুল্য
+                      বিজ্ঞাপন
                     </NavLink>
                   </li>
                   <li className="">
@@ -77,6 +94,10 @@ function Header() {
                     </NavLink>
                   </li>
                 </ul>
+              </div>
+            </div>
+            <div className="col-lg-4 pe-0">
+              <div className="top-bar p-2 d-flex justify-content-end align-items-center pt-1">
                 <div>
                   <div className="social">
                     <NavLink href="#" className="">
@@ -130,20 +151,29 @@ function Header() {
               <img src="https://i.ibb.co/6D35WjX/logo.png" alt="" />
             </Link>
           </div>
+
           <div className="container-fluid">
             {/* Advertisement Banner */}
             <div className="container">
               <div className="row top-bar-area">
                 <div className="col-lg-12 px-0">
-                  <img
-                    className="img-fluid top-add"
-                    src="https://i.ibb.co/PNnmqXT/3614798860483355171.gif"
-                    alt=""
-                  />
+                  {addvertisement.map((data) =>
+                    // Check if data "ad_category_id" is equal to "2" and status is equal to "1"
+                    data.ad_category_id === "2" && data.status === "1" ? (
+                      <Link to={data.ad_link} key={data.id}>
+                        <img
+                          className="img-fluid top-add"
+                          src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}
+                          alt=""
+                        />
+                      </Link>
+                    ) : null
+                  )}
                 </div>
               </div>
             </div>
           </div>
+
           {/* Search Box Start */}
           <div className="search-container">
             <SearchBoxHeader />

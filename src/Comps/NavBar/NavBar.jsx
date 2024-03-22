@@ -71,7 +71,7 @@ const NavBar = () => {
               aria-expanded="false"
               style={{ fontSize: "18px", textDecoration: "none" }}
             >
-              আরও +
+              অন্যান্য +
             </NavLink>
             <ul
               className="dropdown-menu"
