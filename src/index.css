@@ -91,3 +91,10 @@ h6 {
   outline: 0 !important;
   box-shadow: none !important;
 }
+.border-devider {
+  background: var(--secondary);
+  width: 85px;
+  display: flex;
+  height: 3px;
+  margin-bottom: 29px;
+}

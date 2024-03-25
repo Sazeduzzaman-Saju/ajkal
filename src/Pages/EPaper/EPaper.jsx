@@ -1,53 +1,62 @@
 import React, { useEffect, useState } from "react";
 import PostHeader from "../../Comps/PostHeader/PostHeader";
+import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
+import "./Epaper.css";
 import { FacebookEmbed } from "react-social-media-embed";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import EpaperGallary from "../../Comps/EpaperGallary/EpaperGallary";
 import CalendarEngliash from "../../Comps/Calender/CalendarEnglish";
+import Skeleton from "react-loading-skeleton";
 
 const EPaper = () => {
-  const [addvertisement, setAddvertisement] = useState([]);
-  const addUrl = "https://news.goexpressus.com/ad/all";
-  useEffect(() => {
-    axios
-      .get(addUrl)
-      .then((response) => {
-        // Check if the response contains an array
-        if (Array.isArray(response.data)) {
-          setAddvertisement(response.data);
-        } else if (Array.isArray(response.data.data)) {
-          setAddvertisement(response.data.data);
-        } else {
-          console.error(
-            "Invalid data structure in API response:",
-            response.data
-          );
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
+  const [loading, setLoading] = useState(true);
 
-  // const images = [
-  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_19_b/256px/289px/102px/202px",
-  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_14_b/366px/316px/281px/174px",
-  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_17_b/656px/291px/201px/199px",
-  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_17_b/656px/291px/201px/199px",
-  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_21_b/458px/490px/190px/138px",
-  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_22_b/255px/487px/105px/89px",
-  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_21_b/458px/490px/190px/138px",
-  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_15_b/255px/488px/99px/146px",
-  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_25_b/557px/634px/296px/254px",
-  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_25_b/557px/634px/296px/354px",
-  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_25_b/557px/634px/296px/180px",
-  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_26_b/260px/723px/293px/363px",
-  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_23_b/258px/631px/299px/91px",
-  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_23_b/258px/631px/299px/91px",
-  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_20_b/364px/489px/93px/139px",
-  // ];
-  const images = [];
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    // Clear the timeout if the component unmounts or the loading state changes
+    return () => clearTimeout(timer);
+  }, [loading]);
+  const data = [
+    {
+      link: "#",
+      imageURL:
+        "https://www.ekalerkantho.com/assets/contents/2024/2024-03-25/thumbs/2024-03-25_1.jpg",
+      altText: "Image 1",
+      title: "পৃষ্ঠা 1",
+    },
+    {
+      link: "#",
+      imageURL:
+        "https://www.ekalerkantho.com/assets/contents/2024/2024-03-25/thumbs/2024-03-25_2.jpg",
+      altText: "Image 2",
+      title: "পৃষ্ঠা 2",
+    },
+    {
+      link: "#",
+      imageURL:
+        "https://www.ekalerkantho.com/assets/contents/2024/2024-03-25/thumbs/2024-03-25_3.jpg",
+      altText: "Image 3",
+      title: "পৃষ্ঠা 3",
+    },
+    {
+      link: "#",
+      imageURL:
+        "https://www.ekalerkantho.com/assets/contents/2024/2024-03-25/thumbs/2024-03-25_4.jpg",
+      altText: "Image 4",
+      title: "পৃষ্ঠা 4",
+    },
+    {
+      link: "#",
+      imageURL:
+        "https://www.ekalerkantho.com/assets/contents/2024/2024-03-25/thumbs/2024-03-25_5.jpg",
+      altText: "Image 5",
+      title: "পৃষ্ঠা 5",
+    },
+  ];
+
   const featuresData = [
     {
       title: "মরুতে বিশ্বকাপ",
@@ -62,110 +71,125 @@ const EPaper = () => {
     {
       title: "মরুতে বিশ্বকাপ",
       date: "শনিবার, ১৯ নভেম্বর, ২০২২",
-      src: "https://www.ekalerkantho.com/assets/magazine/2024/2024-03-25/thumbs/2024-03-25_1.jpg",
-    },
-    {
-      title: "মরুতে বিশ্বকাপ",
-      date: "শনিবার, ১৯ নভেম্বর, ২০২২",
       src: "https://www.ekalerkantho.com/assets/magazine/2023/2023-06-24/thumbs/2023-06-24_1.jpg",
     },
   ];
   return (
     <div className="container">
       <div className="row">
-        <div className="col-lg-3">
-          <div className="shadow-sm">
+        <div className="col-lg-2 px-0 shadow-sm">
+          <div className="">
             <div className="mt-2">
               <PostHeader title="ফিচারস" />
             </div>
-            <div>
-              <CalendarEngliash />
-            </div>
+            <p className="text-center fw-bold mb-0">আমাদের সাথে থাকুন।</p>
             <div
-              className="my-2 "
+              className="my-2 pb-2"
               style={{ display: "flex", justifyContent: "center" }}
             >
-              <FacebookEmbed
-                url="https://www.facebook.com/photo/?fbid=979852766901979"
-                width={305}
-              />
+              {loading ? ( // Render skeleton loader while loading
+                <Skeleton height={250} width={305} />
+              ) : (
+                <FacebookEmbed
+                  url="https://www.facebook.com/photo/?fbid=979852766901979"
+                  width={305}
+                />
+              )}
             </div>
             <div>
               <div>
-                {featuresData.map((image, index) => (
-                  <div key={index}>
-                    <div className="py-2 px-3 text-black border text-center bg-light">
-                      <p className="mb-0">{image.title}</p>
-                      <p className="mb-0">{image.date}</p>
-                    </div>
-                    <div className="d-flex flex-column justify-content-center align-items-center">
-                      <img className="img-fluid" src={image.src} alt="" />
-                    </div>
+                {loading ? ( // Render skeleton loader while loading
+                  <div>
+                    <Skeleton height={250} />
+                    <Skeleton height={25} width={250} count={2} />
                   </div>
-                ))}
+                ) : (
+                  featuresData.map((image, index) => (
+                    <div key={index}>
+                      <Link to={"#"}>
+                        <div className="card shadow-none border-0 mb-2">
+                          <div className="card-body p-0">
+                            <div className="py-2 px-3 text-black border text-center epaper-feature-box">
+                              <p className="mb-0 text-white">{image.title}</p>
+                              <p className="mb-0 text-white">{image.date}</p>
+                            </div>
+                            <div className="d-flex flex-column justify-content-center align-items-center">
+                              <img
+                                className="img-fluid shadow-sm w-100"
+                                src={image.src}
+                                alt=""
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    </div>
+                  ))
+                )}
               </div>
             </div>
           </div>
         </div>
-        <div className="col-lg-7">
-          <img
-            className="img-fluid"
-            src="https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_18_b/257px/146px/596px/141px"
-            alt=""
-          />
+        <div className="col-lg-8 px-0 pb-3">
+          <EpaperGallary></EpaperGallary>
           <div>
-            <EpaperGallary images={images}></EpaperGallary>
+            <div className="d-flex justify-content-between align-items-center pt-2 px-5">
+              <button className="epaper-next">
+                <div className=" d-flex align-content-center ">
+                  <p className="mb-0">
+                    <FaArrowLeftLong className="pe-2 mb-0 pb-0" size={25} />{" "}
+                  </p>
+                  <p className="mb-0">আগের পাতা</p>
+                </div>
+              </button>
+              <p className="mb-0">আগে ও পরের পাতা দেখতে ক্লিক করুন।</p>
+              <button className="epaper-next">
+                <div className="d-flex align-content-center ">
+                  <p className="mb-0">পরের পাতা</p>
+                  <p className="mb-0">
+                    <FaArrowRightLong className="ps-2 mb-0 pb-0" size={25} />
+                  </p>
+                </div>
+              </button>
+            </div>
           </div>
-          <img
-            className="img-fluid"
-            src="https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_18_b/257px/146px/596px/141px"
-            alt=""
-          />
         </div>
-        <div className="col-lg-2 shadow-sm px-0">
+        <div className="col-lg-2 px-0 shadow-sm">
           <div className="mt-2">
-            <PostHeader title="বিজ্ঞাপন কর্নার" />
+            <PostHeader title="সকল পাতা" />
           </div>
-          {/* Add Banner Start */}
-          {addvertisement.map((data) =>
-            // Check if data "ad_category_id" is equal to "2" and status is equal to "1"
-            data.ad_category_id === "3" && data.status === "1" ? (
-              <div className="mb-2" key={data.id}>
-                <Link to={data.ad_link}>
-                  <img
-                    className="img-fluid side-add"
-                    src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}
-                    alt=""
-                  />
-                </Link>
+          <div>
+            <div className="card border-0 shadow-sm epaper-scroll-bar">
+              <div className="card-body epaper-all p-0">
+                {loading ? (
+                  // Render skeleton loading
+                  <div className="skeleton-loading">
+                    <div className="skeleton-image"></div>
+                    <div className="skeleton-text"></div>
+                  </div>
+                ) : (
+                  // Render data when not loading
+                  data.map((item, index) => (
+                    <a
+                      key={index}
+                      href={item.link}
+                      className="epaper-sidebar-img"
+                    >
+                      <img
+                        className="img-fluid w-100"
+                        src={item.imageURL}
+                        alt={item.altText}
+                      />
+                      <p className="mb-0 text-center epaper-sidebar-title">
+                        {item.title}
+                      </p>
+                    </a>
+                  ))
+                )}
               </div>
-            ) : null
-          )}
-
-          {/* Add Banner End */}
-          <div className="">
-            <div>
-              <div id="fb-root" />
-              <div
-                className="fb-page"
-                data-href="https://www.facebook.com/weeklyajkal/"
-                data-tabs="timeline"
-                data-width
-                data-height={400}
-                data-small-header="false"
-                data-adapt-container-width="true"
-                data-hide-cover="false"
-                data-show-facepile="true"
-              >
-                <blockquote
-                  cite="https://www.facebook.com/weeklyajkal/"
-                  className="fb-xfbml-parse-ignore"
-                >
-                  <a href="https://www.facebook.com/weeklyajkal/">
-                    Weekly Ajkal
-                  </a>
-                </blockquote>
-              </div>
+            </div>
+            <div className="pb-2">
+              <CalendarEngliash />
             </div>
           </div>
         </div>

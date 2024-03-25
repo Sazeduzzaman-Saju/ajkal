@@ -53,8 +53,8 @@ const DynamicDateTime = ({ dynamicDate }) => {
 
   return (
     <div className="banglaDateTime">
-      <p></p>
-      <p>{englishDate}, {banglaDate} বঙ্গাব্দ</p>
+      <p className="mb-0"></p>
+      <p className="mb-0">{englishDate}, {banglaDate} বঙ্গাব্দ</p>
     </div>
   );
 };

@@ -11,7 +11,7 @@ const NavBar = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 2000); // 2 seconds delay
+    }, 3000); // 2 seconds delay
 
     return () => clearTimeout(timer);
   }, []);
@@ -92,7 +92,7 @@ const NavBar = () => {
             >
               {extraNav.map((item, index) => (
                 <li key={index}>
-                  <NavLink
+                <NavLink
                     className="dropdown-item"
                     to={`/categories/${item.id}`}
                     activeClassName="active"

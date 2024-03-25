@@ -72,7 +72,6 @@ function Header() {
           {/* Top Bar Area */}
           <div className="row top-bar-area align-items-center top-bar-area">
             <div className="col-lg-4">
-              {/* ঢাকা, বৃহস্পতিবার ১৫ ফেব্রুয়ারি ২০২৪, ২ ফাল্গুন ১৪৩০, ০৪ শাবান ১৪৪৫ */}
               <DynamicDateTime />
             </div>
             <div className="col-lg-4">

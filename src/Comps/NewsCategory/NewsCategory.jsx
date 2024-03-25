@@ -5,18 +5,65 @@ import { Link } from "react-router-dom";
 const NewsCategory = ({ categories }) => {
   return (
     <div>
-      <ul className="list-unstyled d-flex flex-wrap justify-content-center mt-1">
-        {categories.map((data) => (
-          <li key={data.id}>
-            <Link
-              to={`/categories/${data.id}`}
-              type="button"
-              className="btn btn-outline-primary border-white me-2 mb-2 rounded-0 text-white footer-ct-btn"
-            >
-              {data.name_bangla}
-            </Link>
-          </li>
-        ))}
+      <ul className="px-0" style={{ marginLeft: "0", listStyle: "none" }}>
+        <div className="row pt-5 px-0">
+          <div>
+            <h4 className="ps-0 text-white">ক্যাটেগরি</h4>
+            <span className="border-devider"></span>
+          </div>
+          <div className="col-lg-3">
+            {categories.slice(0, 4).map((data) => (
+              <li key={data.id}>
+                <Link
+                  to={`/categories/${data.id}`}
+                  type="button"
+                  className="mb-3 rounded-0 text-white footer-ct-btn"
+                >
+                  {data.name_bangla}
+                </Link>
+              </li>
+            ))}
+          </div>
+          <div className="col-lg-3">
+            {categories.slice(4, 8).map((data) => (
+              <li key={data.id}>
+                <Link
+                  to={`/categories/${data.id}`}
+                  type="button"
+                  className="mb-3 rounded-0 text-white footer-ct-btn"
+                >
+                  {data.name_bangla}
+                </Link>
+              </li>
+            ))}
+          </div>
+          <div className="col-lg-3">
+            {categories.slice(8,12).map((data) => (
+              <li key={data.id}>
+                <Link
+                  to={`/categories/${data.id}`}
+                  type="button"
+                  className="mb-3 rounded-0 text-white footer-ct-btn"
+                >
+                  {data.name_bangla}
+                </Link>
+              </li>
+            ))}
+          </div>
+          <div className="col-lg-3">
+            {categories.slice(12,16).map((data) => (
+              <li key={data.id}>
+                <Link
+                  to={`/categories/${data.id}`}
+                  type="button"
+                  className="mb-3 rounded-0 text-white footer-ct-btn"
+                >
+                  {data.name_bangla}
+                </Link>
+              </li>
+            ))}
+          </div>
+        </div>
       </ul>
     </div>
   );

@@ -1,0 +1,56 @@
+.epaper-all::-webkit-scrollbar {
+  width: 0.5em !important;
+}
+
+.epaper-all::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3) !important;
+}
+
+.epaper-all::-webkit-scrollbar-thumb {
+  background-color: var(--main) !important;
+  outline: 1px solid slategrey !important;
+}
+
+.epaper-feature-box {
+  background-color: var(--main);
+  color: white;
+}
+.epaper-next {
+  background-color: var(--main);
+  border: 0px;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  transition: all 0.5;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.epaper-next:hover {
+  background-color: var(--secondary);
+  border: 0px;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  transition: all 0.5;
+  box-shadow: none;
+}
+.epaper-all {
+  height: 50rem;
+  overflow: auto;
+}
+
+.epaper-sidebar-img img {
+  padding: 5px;
+  margin-top: 5px;
+  background-color: var(--secondary);
+  border: 1px dashed var(--secondary);
+}
+.epaper-sidebar-img img:hover {
+  background-color: var(--main);
+  border: 1px dashed var(--main);
+}
+.epaper-sidebar-title {
+  color: #fff;
+  margin-bottom: 5px;
+  background-color: var(--secondary);
+  border: 1px dashed var(--secondary);
+}
