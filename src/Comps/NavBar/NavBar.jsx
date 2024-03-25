@@ -6,6 +6,15 @@ const NavBar = () => {
   const [activeLink, setActiveLink] = useState("");
   const [navLinks, setNavLinks] = useState([]);
   const [extraNav, setExtraNav] = useState([]);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 2000); // 2 seconds delay
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleLinkClick = (link) => {
     setActiveLink(link);
@@ -25,9 +34,9 @@ const NavBar = () => {
         } else if (Array.isArray(response.data.data)) {
           // Check if the response has a property "data" containing an array
           // Slice the array to get the first 12 items
-          setNavLinks(response.data.data.slice(0, 12));
-          // Remove the second argument to get items from 12 to the end
-          setExtraNav(response.data.data.slice(12));
+          setNavLinks(response.data.data.slice(0, 10));
+          // Remove the second argument to get items from 10 to the end
+          setExtraNav(response.data.data.slice(10));
         } else {
           console.error(
             "Invalid data structure in API response:",
@@ -63,16 +72,19 @@ const NavBar = () => {
         ))}
         <li className="nav-item menu-specing ">
           <div className="dropdown main-menu">
-            <NavLink
-              className="border-0 bg-transparent pt-2 text-white"
-              type="button"
-              id="dropdownMenuButton1"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-              style={{ fontSize: "18px", textDecoration: "none" }}
-            >
-              অন্যান্য +
-            </NavLink>
+            {isVisible && (
+              <NavLink
+                className="border-0 bg-transparent pt-2 text-white"
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                style={{ fontSize: "18px", textDecoration: "none" }}
+                to="/your-link-here"
+              >
+                অন্যান্য +
+              </NavLink>
+            )}
             <ul
               className="dropdown-menu"
               style={{ borderBottom: "none" }}

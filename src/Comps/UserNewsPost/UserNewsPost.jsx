@@ -213,7 +213,7 @@ const UserNewsPost = () => {
           />
         </div>
         {/* Title */}
-        {/* <div className="col-lg-4 mb-3">
+        <div className="col-lg-4 mb-3">
           <label htmlFor="">নিউজ ইমেজ</label>
           <input
             className="w-100 form-control"
@@ -226,8 +226,8 @@ const UserNewsPost = () => {
               খোঁজার শব্দ লিখুন!
             </p>
           )}
-        </div> */}
-        {/* <div className="col-lg-4 mb-3">
+        </div>
+        <div className="col-lg-4 mb-3">
           <label htmlFor="">থাম্বনেইল ইমেজ</label>
           <input
             className="w-100 form-control"
@@ -240,7 +240,7 @@ const UserNewsPost = () => {
               খোঁজার শব্দ লিখুন!
             </p>
           )}
-        </div> */}
+        </div>
         <div className="col-lg-12 mb-3">
           <label htmlFor="">নিউজ ডিটেইলস</label>
           <textarea

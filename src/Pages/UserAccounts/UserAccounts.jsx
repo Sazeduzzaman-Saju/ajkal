@@ -5,6 +5,8 @@ import axios from "axios";
 
 const UserAccounts = () => {
   const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -20,15 +22,22 @@ const UserAccounts = () => {
           }
         );
         setUserData(response.data);
+        setLoading(false);
       } catch (error) {
-        console.error(error);
+        setError(error);
+        setLoading(false);
       }
     };
 
     fetchUserData();
   }, []);
 
-
+  // User Data
+  const fullName = userData?.full_name;
+  const phone = userData?.phone;
+  const address = userData?.address;
+  const email = userData?.email;
+  // User Data End
   return (
     <div>
       <PageTitle title="আপনার একাউন্ট" description="Text" />
@@ -86,22 +95,13 @@ const UserAccounts = () => {
                   <div className="card-body">
                     <div className="p-3 py-2">
                       <div className="row mt-2">
-                        <div className="col-md-6">
+                        <div className="col-md-12">
                           <label className="labels">Name</label>
                           <input
                             type="text"
                             className="form-control form-control-sm "
                             placeholder="first name"
-                            defaultValue={"Sazeduzzaman"}
-                          />
-                        </div>
-                        <div className="col-md-6">
-                          <label className="labels">Surname</label>
-                          <input
-                            type="text"
-                            className="form-control form-control-sm "
-                            defaultValue={"Saju"}
-                            placeholder="surname"
+                            defaultValue={fullName}
                           />
                         </div>
                       </div>
@@ -111,7 +111,7 @@ const UserAccounts = () => {
                           <input
                             type="text"
                             className="form-control form-control-sm "
-                            defaultValue={"+8801576614451"}
+                            defaultValue={phone}
                             placeholder="enter phone number"
                           />
                         </div>
@@ -121,7 +121,7 @@ const UserAccounts = () => {
                             type="text"
                             className="form-control form-control-sm "
                             placeholder="Enter address line 1"
-                            defaultValue={"Dhaka, Mirpur, Bangladesh"}
+                            defaultValue={address}
                           />
                         </div>
                         <div className="col-md-12">
@@ -130,7 +130,7 @@ const UserAccounts = () => {
                             type="text"
                             className="form-control form-control-sm "
                             placeholder="enter email id"
-                            defaultValue={"szamansaju@gmail.com"}
+                            defaultValue={email}
                           />
                         </div>
                       </div>

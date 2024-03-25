@@ -1,316 +1,175 @@
-import React, { useState } from "react";
-import { Modal } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import PostHeader from "../../Comps/PostHeader/PostHeader";
+import { FacebookEmbed } from "react-social-media-embed";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import EpaperGallary from "../../Comps/EpaperGallary/EpaperGallary";
+import CalendarEngliash from "../../Comps/Calender/CalendarEnglish";
 
 const EPaper = () => {
-  const [images, setImages] = useState([
-    {
-      id: "1",
-      src: "https://c2.staticflickr.com/9/8817/28973449265_07e3aa5d2e_b.jpg",
-      original:
-        "https://c2.staticflickr.com/9/8817/28973449265_07e3aa5d2e_b.jpg",
-      width: 320,
-      height: 174,
-      tags: [
-        { value: "Nature", title: "Nature" },
-        { value: "Flora", title: "Flora" },
-      ],
-      caption: "After Rain (Jeshu John - designerspics.com)",
-    },
-    {
-      id: "2",
-      src: "https://c2.staticflickr.com/9/8356/28897120681_3b2c0f43e0_b.jpg",
-      original:
-        "https://c2.staticflickr.com/9/8356/28897120681_3b2c0f43e0_b.jpg",
-      width: 320,
-      height: 212,
-      caption: "Boats (Jeshu John - designerspics.com)",
-    },
-    {
-      id: "3",
-      src: "https://c4.staticflickr.com/9/8887/28897124891_98c4fdd82b_b.jpg",
-      original:
-        "https://c4.staticflickr.com/9/8887/28897124891_98c4fdd82b_b.jpg",
-      width: 320,
-      height: 212,
-      caption: "Color Pencils (Jeshu John - designerspics.com)",
-    },
-    {
-      id: "4",
-      src: "https://c7.staticflickr.com/9/8546/28354329294_bb45ba31fa_b.jpg",
-      original:
-        "https://c7.staticflickr.com/9/8546/28354329294_bb45ba31fa_b.jpg",
-      width: 320,
-      height: 213,
-      caption: "Red Apples with other Red Fruit (foodiesfeed.com)",
-    },
-    {
-      id: "5",
-      src: "https://c6.staticflickr.com/9/8890/28897154101_a8f55be225_b.jpg",
-      original:
-        "https://c6.staticflickr.com/9/8890/28897154101_a8f55be225_b.jpg",
-      width: 320,
-      height: 183,
-      caption: "37H (gratispgraphy.com)",
-    },
-    {
-      id: "6",
-      src: "https://c5.staticflickr.com/9/8768/28941110956_b05ab588c1_b.jpg",
-      original:
-        "https://c5.staticflickr.com/9/8768/28941110956_b05ab588c1_b.jpg",
-      width: 240,
-      height: 320,
-      tags: [{ value: "Nature", title: "Nature" }],
-      caption: "8H (gratisography.com)",
-    },
-    {
-      id: "7",
-      src: "https://c3.staticflickr.com/9/8583/28354353794_9f2d08d8c0_b.jpg",
-      original:
-        "https://c3.staticflickr.com/9/8583/28354353794_9f2d08d8c0_b.jpg",
-      width: 320,
-      height: 190,
-      caption: "286H (gratisography.com)",
-    },
-    {
-      id: "8",
-      src: "https://c7.staticflickr.com/9/8569/28941134686_d57273d933_b.jpg",
-      original:
-        "https://c7.staticflickr.com/9/8569/28941134686_d57273d933_b.jpg",
-      width: 320,
-      height: 148,
-      tags: [{ value: "People", title: "People" }],
-      caption: "315H (gratisography.com)",
-    },
-    {
-      id: "9",
-      src: "https://c6.staticflickr.com/9/8342/28897193381_800db6419e_b.jpg",
-      original:
-        "https://c6.staticflickr.com/9/8342/28897193381_800db6419e_b.jpg",
-      width: 320,
-      height: 213,
-      caption: "201H (gratisography.com)",
-    },
-    {
-      id: "10",
-      src: "https://c2.staticflickr.com/9/8239/28897202241_1497bec71a_b.jpg",
-      original:
-        "https://c2.staticflickr.com/9/8239/28897202241_1497bec71a_b.jpg",
-      alt: "Big Ben - London",
-      width: 248,
-      height: 320,
-      caption: "Big Ben (Tom Eversley - isorepublic.com)",
-    },
-    {
-      id: "11",
-      src: "https://c7.staticflickr.com/9/8785/28687743710_3580fcb5f0_b.jpg",
-      original:
-        "https://c7.staticflickr.com/9/8785/28687743710_3580fcb5f0_b.jpg",
-      alt: "Red Zone - Paris",
-      width: 320,
-      height: 113,
-      tags: [{ value: "People", title: "People" }],
-      caption: "Red Zone - Paris (Tom Eversley - isorepublic.com)",
-    },
-    {
-      id: "12",
-      src: "https://c6.staticflickr.com/9/8520/28357073053_cafcb3da6f_b.jpg",
-      original:
-        "https://c6.staticflickr.com/9/8520/28357073053_cafcb3da6f_b.jpg",
-      alt: "Wood Glass",
-      width: 313,
-      height: 320,
-      caption: "Wood Glass (Tom Eversley - isorepublic.com)",
-    },
-    {
-      id: "13",
-      src: "https://c8.staticflickr.com/9/8104/28973555735_ae7c208970_b.jpg",
-      original:
-        "https://c8.staticflickr.com/9/8104/28973555735_ae7c208970_b.jpg",
-      width: 320,
-      height: 213,
-      caption: "Flower Interior Macro (Tom Eversley - isorepublic.com)",
-    },
-    {
-      id: "14",
-      src: "https://c4.staticflickr.com/9/8562/28897228731_ff4447ef5f_b.jpg",
-      original:
-        "https://c4.staticflickr.com/9/8562/28897228731_ff4447ef5f_b.jpg",
-      width: 320,
-      height: 194,
-      caption: "Old Barn (Tom Eversley - isorepublic.com)",
-    },
-    {
-      id: "15",
-      src: "https://c2.staticflickr.com/8/7577/28973580825_d8f541ba3f_b.jpg",
-      original:
-        "https://c2.staticflickr.com/8/7577/28973580825_d8f541ba3f_b.jpg",
-      alt: "Cosmos Flower",
-      width: 320,
-      height: 213,
-      caption: "Cosmos Flower Macro (Tom Eversley - isorepublic.com)",
-    },
-    {
-      id: "16",
-      src: "https://c7.staticflickr.com/9/8106/28941228886_86d1450016_b.jpg",
-      original:
-        "https://c7.staticflickr.com/9/8106/28941228886_86d1450016_b.jpg",
-      width: 271,
-      height: 320,
-      caption: "Orange Macro (Tom Eversley - isorepublic.com)",
-    },
-    {
-      id: "17",
-      src: "https://c1.staticflickr.com/9/8330/28941240416_71d2a7af8e_b.jpg",
-      original:
-        "https://c1.staticflickr.com/9/8330/28941240416_71d2a7af8e_b.jpg",
-      width: 320,
-      height: 213,
-      tags: [
-        { value: "Nature", title: "Nature" },
-        { value: "People", title: "People" },
-      ],
-      caption: "Surfer Sunset (Tom Eversley - isorepublic.com)",
-    },
-    {
-      id: "18",
-      src: "https://c1.staticflickr.com/9/8707/28868704912_cba5c6600e_b.jpg",
-      original:
-        "https://c1.staticflickr.com/9/8707/28868704912_cba5c6600e_b.jpg",
-      width: 320,
-      height: 213,
-      tags: [
-        { value: "People", title: "People" },
-        { value: "Sport", title: "Sport" },
-      ],
-      caption: "Man on BMX (Tom Eversley - isorepublic.com)",
-    },
-    {
-      id: "19",
-      src: "https://c4.staticflickr.com/9/8578/28357117603_97a8233cf5_b.jpg",
-      original:
-        "https://c4.staticflickr.com/9/8578/28357117603_97a8233cf5_b.jpg",
-      width: 320,
-      height: 213,
-      caption: "Ropeman - Thailand (Tom Eversley - isorepublic.com)",
-    },
-    {
-      id: "20",
-      src: "https://c4.staticflickr.com/8/7476/28973628875_069e938525_b.jpg",
-      original:
-        "https://c4.staticflickr.com/8/7476/28973628875_069e938525_b.jpg",
-      width: 320,
-      height: 213,
-      caption: "Time to Think (Tom Eversley - isorepublic.com)",
-    },
-    {
-      id: "21",
-      src: "https://c6.staticflickr.com/9/8593/28357129133_f04c73bf1e_b.jpg",
-      original:
-        "https://c6.staticflickr.com/9/8593/28357129133_f04c73bf1e_b.jpg",
-      width: 320,
-      height: 179,
-      tags: [
-        { value: "Nature", title: "Nature" },
-        { value: "Fauna", title: "Fauna" },
-      ],
-      caption: "Untitled (Jan Vasek - jeshoots.com)",
-    },
-    {
-      id: "22",
-      src: "https://c6.staticflickr.com/9/8893/28897116141_641b88e342_b.jpg",
-      original:
-        "https://c6.staticflickr.com/9/8893/28897116141_641b88e342_b.jpg",
-      width: 320,
-      height: 215,
-      tags: [{ value: "People", title: "People" }],
-      caption: "Untitled (moveast.me)",
-    },
-    {
-      id: "23",
-      src: "https://c1.staticflickr.com/9/8056/28354485944_148d6a5fc1_b.jpg",
-      original:
-        "https://c1.staticflickr.com/9/8056/28354485944_148d6a5fc1_b.jpg",
-      width: 257,
-      height: 320,
-      caption: "A photo by 贝莉儿 NG. (unsplash.com)",
-    },
-    {
-      id: "24",
-      src: "https://c7.staticflickr.com/9/8824/28868764222_19f3b30773_b.jpg",
-      original:
-        "https://c7.staticflickr.com/9/8824/28868764222_19f3b30773_b.jpg",
-      width: 226,
-      height: 320,
-      caption: "A photo by Matthew Wiebe. (unsplash.com)",
-    },
-  ]);
-  const [selectedItem, setSelectedItem] = useState(null);
-  const [showModal, setShowModal] = useState(false);
+  const [addvertisement, setAddvertisement] = useState([]);
+  const addUrl = "https://news.goexpressus.com/ad/all";
+  useEffect(() => {
+    axios
+      .get(addUrl)
+      .then((response) => {
+        // Check if the response contains an array
+        if (Array.isArray(response.data)) {
+          setAddvertisement(response.data);
+        } else if (Array.isArray(response.data.data)) {
+          setAddvertisement(response.data.data);
+        } else {
+          console.error(
+            "Invalid data structure in API response:",
+            response.data
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
 
-  const handleImageClick = (item) => {
-    setSelectedItem(item);
-    setShowModal(true);
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
-
+  // const images = [
+  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_19_b/256px/289px/102px/202px",
+  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_14_b/366px/316px/281px/174px",
+  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_17_b/656px/291px/201px/199px",
+  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_17_b/656px/291px/201px/199px",
+  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_21_b/458px/490px/190px/138px",
+  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_22_b/255px/487px/105px/89px",
+  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_21_b/458px/490px/190px/138px",
+  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_15_b/255px/488px/99px/146px",
+  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_25_b/557px/634px/296px/254px",
+  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_25_b/557px/634px/296px/354px",
+  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_25_b/557px/634px/296px/180px",
+  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_26_b/260px/723px/293px/363px",
+  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_23_b/258px/631px/299px/91px",
+  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_23_b/258px/631px/299px/91px",
+  //   "https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_20_b/364px/489px/93px/139px",
+  // ];
+  const images = [];
+  const featuresData = [
+    {
+      title: "মরুতে বিশ্বকাপ",
+      date: "শনিবার, ১৯ নভেম্বর, ২০২২",
+      src: "https://www.ekalerkantho.com/assets/magazine/2024/2024-03-25/thumbs/2024-03-25_1.jpg",
+    },
+    {
+      title: "মরুতে বিশ্বকাপ",
+      date: "শনিবার, ১৯ নভেম্বর, ২০২২",
+      src: "https://www.ekalerkantho.com/assets/magazine/2023/2023-06-24/thumbs/2023-06-24_1.jpg",
+    },
+    {
+      title: "মরুতে বিশ্বকাপ",
+      date: "শনিবার, ১৯ নভেম্বর, ২০২২",
+      src: "https://www.ekalerkantho.com/assets/magazine/2024/2024-03-25/thumbs/2024-03-25_1.jpg",
+    },
+    {
+      title: "মরুতে বিশ্বকাপ",
+      date: "শনিবার, ১৯ নভেম্বর, ২০২২",
+      src: "https://www.ekalerkantho.com/assets/magazine/2023/2023-06-24/thumbs/2023-06-24_1.jpg",
+    },
+  ];
   return (
     <div className="container">
       <div className="row">
-        <div className="col-lg-2"></div>
-        <div className="col-lg-8">
-          <div className="row gx-0">
-            {images.map((item) => (
-              <div key={item.id} className="image-item col-lg-3">
-                <div className="card border-0">
-                  <div className="card-body p-0">
-                    <img
-                      src={item.src}
-                      alt={item.caption}
-                      onClick={() => handleImageClick(item)}
-                      className="img-fluid"
-                    />
-                    {/* <button
-                      type="button"
-                      className="bg-none border-0 p-0"
-                      onClick={() => handleImageClick(item)}
-                    >
-                      <img
-                        src={item.src}
-                        alt={item.caption}
-                        className="img-fluid"
-                      />
-                    </button> */}
+        <div className="col-lg-3">
+          <div className="shadow-sm">
+            <div className="mt-2">
+              <PostHeader title="ফিচারস" />
+            </div>
+            <div>
+              <CalendarEngliash />
+            </div>
+            <div
+              className="my-2 "
+              style={{ display: "flex", justifyContent: "center" }}
+            >
+              <FacebookEmbed
+                url="https://www.facebook.com/photo/?fbid=979852766901979"
+                width={305}
+              />
+            </div>
+            <div>
+              <div>
+                {featuresData.map((image, index) => (
+                  <div key={index}>
+                    <div className="py-2 px-3 text-black border text-center bg-light">
+                      <p className="mb-0">{image.title}</p>
+                      <p className="mb-0">{image.date}</p>
+                    </div>
+                    <div className="d-flex flex-column justify-content-center align-items-center">
+                      <img className="img-fluid" src={image.src} alt="" />
+                    </div>
                   </div>
-                </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
-        <div className="col-lg-2"></div>
-      </div>
-
-      <Modal show={showModal} onHide={handleCloseModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>{selectedItem?.caption}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
+        <div className="col-lg-7">
           <img
-            src={selectedItem?.original}
-            alt={selectedItem?.caption}
             className="img-fluid"
+            src="https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_18_b/257px/146px/596px/141px"
+            alt=""
           />
-          {/* Add other modal content here */}
-        </Modal.Body>
-        <Modal.Footer>
-          <button className="btn btn-secondary" onClick={handleCloseModal}>
-            Close
-          </button>
-          {/* Add other modal buttons if needed */}
-        </Modal.Footer>
-      </Modal>
+          <div>
+            <EpaperGallary images={images}></EpaperGallary>
+          </div>
+          <img
+            className="img-fluid"
+            src="https://www.ekalerkantho.com/image/find/2024/2024-03-25/news_2024-03-25_1_18_b/257px/146px/596px/141px"
+            alt=""
+          />
+        </div>
+        <div className="col-lg-2 shadow-sm px-0">
+          <div className="mt-2">
+            <PostHeader title="বিজ্ঞাপন কর্নার" />
+          </div>
+          {/* Add Banner Start */}
+          {addvertisement.map((data) =>
+            // Check if data "ad_category_id" is equal to "2" and status is equal to "1"
+            data.ad_category_id === "3" && data.status === "1" ? (
+              <div className="mb-2" key={data.id}>
+                <Link to={data.ad_link}>
+                  <img
+                    className="img-fluid side-add"
+                    src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}
+                    alt=""
+                  />
+                </Link>
+              </div>
+            ) : null
+          )}
+
+          {/* Add Banner End */}
+          <div className="">
+            <div>
+              <div id="fb-root" />
+              <div
+                className="fb-page"
+                data-href="https://www.facebook.com/weeklyajkal/"
+                data-tabs="timeline"
+                data-width
+                data-height={400}
+                data-small-header="false"
+                data-adapt-container-width="true"
+                data-hide-cover="false"
+                data-show-facepile="true"
+              >
+                <blockquote
+                  cite="https://www.facebook.com/weeklyajkal/"
+                  className="fb-xfbml-parse-ignore"
+                >
+                  <a href="https://www.facebook.com/weeklyajkal/">
+                    Weekly Ajkal
+                  </a>
+                </blockquote>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

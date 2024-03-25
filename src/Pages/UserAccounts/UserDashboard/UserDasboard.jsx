@@ -73,7 +73,7 @@ const UserDashboard = () => {
       postStatus: "পাবলিশ হয় নি।",
     },
   ];
-
+  console.log(userData);
   return (
     <div className="container">
       <div className="row">

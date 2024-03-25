@@ -52,6 +52,7 @@ const UserAddPost = () => {
               <div className="col-lg-4 mb-3">
                 <div>
                   {/* ad_category_id, total_payment, pay_amount, ad_link, duration, start_date, ad_banner */}
+                  <label className="labels"> বিজ্ঞাপন দিন </label>
                   <select
                     className="form-select form-select-sm"
                     aria-label="Default select example"
@@ -64,19 +65,21 @@ const UserAddPost = () => {
               </div>
               <div className="col-lg-4 mb-3">
                 <div>
+                  <label className="labels"> টোটাল প্যামেন্ট </label>
                   <input
                     type="text"
                     className="form-control form-control-sm"
-                    placeholder="total_payment"
+                    placeholder="100 $"
                     {...register("total_payment")}
                   />
                 </div>
               </div>
               <div className="col-lg-4 mb-3">
                 <div>
+                  <label className="labels"> পে প্যামেন্ট </label>
                   <input
                     type="text"
-                    placeholder="pay_amount"
+                    placeholder="50$"
                     className="form-control form-control-sm"
                     {...register("pay_amount")}
                   />
@@ -84,36 +87,40 @@ const UserAddPost = () => {
               </div>
               <div className="col-lg-4 mb-3">
                 <div>
+                  <label className="labels"> এড এর লিংক</label>
                   <input
                     type="text"
                     className="form-control form-control-sm"
-                    placeholder="ad_link"
+                    placeholder="https://www.ajkalusa.com"
                     {...register("ad_link")}
                   />
                 </div>
               </div>
               <div className="col-lg-4 mb-3">
                 <div>
+                  <label className="labels"> এড এর ডিউরেশন</label>
                   <input
                     type="text"
                     className="form-control form-control-sm"
-                    placeholder="duration"
+                    placeholder="2 Week"
                     {...register("duration")}
                   />
                 </div>
               </div>
               <div className="col-lg-4 mb-3">
                 <div>
+                  <label className="labels"> স্টার্ট ডেট</label>
                   <input
                     type="text"
                     className="form-control form-control-sm"
-                    placeholder="start_date"
+                    placeholder="05 March 2024"
                     {...register("start_date")}
                   />
                 </div>
               </div>
-              <div className="col-lg-4 mb-3">
+              <div className="col-lg-12 mb-3">
                 <div>
+                  <label className="labels"> এড এর ব্যানার</label>
                   <input
                     type="file"
                     accept="image/*"
