@@ -3,22 +3,20 @@ import Skeleton from "react-loading-skeleton";
 import { Link } from "react-router-dom";
 
 const CategoryNewsSlider = ({ singleNews, loading }) => {
-
   return (
     <div>
       {loading ? (
         // Render skeleton loading placeholders
-        <Skeleton height={200} count={3} />
+        <div>
+          <Skeleton height={200} />
+          <Skeleton height={20} width={200} style={{ marginTop: "10px" }} />
+        </div>
       ) : (
         // Render actual data
         singleNews.map((data) =>
           data.is_featured === "1" ? (
-            <Link
-              to={`/news/${data.id}`}
-              className="shadow-sm"
-              key={data.id}
-            >
-              <div className="card rounded-0 border-0 ">
+            <Link to={`/news/${data.id}`} className="shadow-sm" key={data.id}>
+              <div className="card rounded-0 border-0">
                 <div className="card-header p-0"></div>
                 <div className="card-body p-0">
                   <div>

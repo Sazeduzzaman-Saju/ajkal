@@ -4,8 +4,11 @@ import SearchForm from "./SearchForm";
 import { useForm } from "react-hook-form";
 import SearchData from "./SearchData";
 import axios from "axios";
+import PostHeader from "../../Comps/PostHeader/PostHeader";
+import Skeleton from "react-loading-skeleton";
 
 const Search = () => {
+  const [loading, setLoading] = useState(true);
   const {
     register,
     formState: { errors },
@@ -15,6 +18,11 @@ const Search = () => {
 
   const [categoriesData, setCategoriesData] = useState([]);
   const url = "https://news.goexpressus.com/news-category";
+  const [archive, setArchive] = useState([]);
+  const urlArchive = "https://news.goexpressus.com/archive-news";
+  const [addvertisement, setAddvertisement] = useState([]);
+  const addUrl = "https://news.goexpressus.com/ad/all";
+
   useEffect(() => {
     axios
       .get(url)
@@ -39,9 +47,6 @@ const Search = () => {
       });
   }, []);
 
-  const [archive, setArchive] = useState([]);
-  const urlArchive = "https://news.goexpressus.com/archive-news";
-
   useEffect(() => {
     axios
       .get(urlArchive)
@@ -50,6 +55,29 @@ const Search = () => {
           setArchive(response.data);
         } else if (Array.isArray(response.data.data)) {
           setArchive(response.data.data);
+        } else {
+          console.error(
+            "Invalid data structure in API response:",
+            response.data
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(addUrl)
+      .then((response) => {
+        // Check if the response contains an array
+        if (Array.isArray(response.data)) {
+          setAddvertisement(response.data);
+          setLoading(true);
+        } else if (Array.isArray(response.data.data)) {
+          setAddvertisement(response.data.data);
+          setLoading(true);
         } else {
           console.error(
             "Invalid data structure in API response:",
@@ -79,27 +107,14 @@ const Search = () => {
         <div className="row">
           <div className="col-lg-9">
             <SearchForm />
-          </div>
-          <div className="col-lg-3">
-            <div>
-              <img
-                className=""
-                style={{ height: "250px", width: "100%" }}
-                src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2017/01/neiman_marcus.gif?auto=format&q=60&fit=max&w=930"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-lg-9">
             <div className="card border-0">
               <div className="card-header border-0">
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="d-flex justify-content-between  align-items-center ">
                     <div>
                       <p className="m-0">
-                        ফলাফল: <span className="text-danger">{archive.length}</span>
+                        ফলাফল:
+                        <span className="text-danger">{archive.length}</span>
                       </p>
                     </div>
                     <div>
@@ -119,16 +134,40 @@ const Search = () => {
                 </form>
               </div>
               {/* Filterd Data */}
-              <SearchData></SearchData>
+              <SearchData archive={archive}></SearchData>
             </div>
           </div>
           <div className="col-lg-3">
-            <div>
-              <img
-                className="img-fluid pt-2"
-                src="https://i.pinimg.com/originals/2b/13/92/2b1392f3215cd433fb7530e3959a38c7.gif"
-                alt=""
-              />
+            <div style={{ marginTop: "-3rem !important" }}>
+              <PostHeader title="বিজ্ঞাপন কর্নার"></PostHeader>
+            </div>
+            <div className="image-container">
+              {addvertisement.length === 0 ? (
+                // Render skeleton while loading
+                <>
+                  {[...Array(6)].map((_, index) => (
+                    <Skeleton
+                      key={index}
+                      height={200}
+                      style={{ marginBottom: "1rem" }}
+                    />
+                  ))}
+                </>
+              ) : (
+                addvertisement
+                  .filter(
+                    (data) => data.ad_category_id === "3" && data.status === "1"
+                  )
+                  .map((filteredData) => (
+                    <img
+                      key={filteredData.id}
+                      className="w-100 zoom-image img-fluid mb-2"
+                      src={`https://ajkal.goexpressus.com/images/${filteredData.ad_banner}`}
+                      alt="advertisement"
+                      loading="lazy"
+                    />
+                  ))
+              )}
             </div>
           </div>
         </div>

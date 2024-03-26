@@ -8,7 +8,7 @@ const EpaperGallary = () => {
         data-bs-toggle="modal"
         data-bs-target="#modalId"
         className="img-fluid w-100"
-        src="https://www.ekalerkantho.com/assets/contents/2024/2024-03-25/pages/2024-03-25_1.jpg"
+        src="https://scontent.fdac99-1.fna.fbcdn.net/v/t39.30808-6/428707180_995436535343602_8014682081593180468_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=eTED714BhAgAX-4OqO4&_nc_pt=1&_nc_ht=scontent.fdac99-1.fna&oh=00_AfAE7Z-SsTHCg9aiQWp3E2EGsQTNt-CO9b7-9azJhb8xcQ&oe=6608CE1A"
         alt=""
       />
       <div>
@@ -42,10 +42,10 @@ const EpaperGallary = () => {
                   aria-label="Close"
                 />
               </div>
-              <div className="modal-body">
+              <div className="modal-body p-0">
                 <img
                   className="img-fluid w-100"
-                  src="https://www.ekalerkantho.com/assets/contents/2024/2024-03-25/pages/2024-03-25_1.jpg"
+                  src="https://scontent.fdac99-1.fna.fbcdn.net/v/t39.30808-6/428707180_995436535343602_8014682081593180468_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=eTED714BhAgAX-4OqO4&_nc_pt=1&_nc_ht=scontent.fdac99-1.fna&oh=00_AfAE7Z-SsTHCg9aiQWp3E2EGsQTNt-CO9b7-9azJhb8xcQ&oe=6608CE1A"
                   alt=""
                 />
               </div>

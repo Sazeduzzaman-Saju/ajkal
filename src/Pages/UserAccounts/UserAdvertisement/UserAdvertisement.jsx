@@ -1,48 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { LuView } from "react-icons/lu";
-import { TbEdit } from "react-icons/tb";
-import { MdDelete } from "react-icons/md";
+
 import UserAddPost from "../../../Comps/UserNewsPost/UserAddPost";
+import MyAdds from "./MyAdds";
 
 const UserAdvertisement = () => {
-  const fakeData = [
-    {
-      id: 1,
-      category: "যুক্তরাষ্ট্র",
-      postDate: "১২ ফেব্রুয়ারি ২০২৪",
-      advertisement: "না",
-      postStatus: "পাবলিশ হয় নি।",
-    },
-    {
-      id: 2,
-      category: "বাংলাদেশ",
-      postDate: "১৫ ফেব্রুয়ারি ২০২৪",
-      advertisement: "হ্যাঁ",
-      postStatus: "পাবলিশ হয়েছে।",
-    },
-    {
-      id: 3,
-      category: "কম্পিউটার",
-      postDate: "২০ ফেব্রুয়ারি ২০২৪",
-      advertisement: "না",
-      postStatus: "পাবলিশ হয়েছে।",
-    },
-    {
-      id: 4,
-      category: "বিজ্ঞান",
-      postDate: "২৫ ফেব্রুয়ারি ২০২৪",
-      advertisement: "হ্যাঁ",
-      postStatus: "পাবলিশ হয়েছে।",
-    },
-    {
-      id: 5,
-      category: "খেলা",
-      postDate: "২৮ ফেব্রুয়ারি ২০২৪",
-      advertisement: "না",
-      postStatus: "পাবলিশ হয় নি।",
-    },
-  ];
+
   return (
     <>
       <div className="container">
@@ -82,20 +43,6 @@ const UserAdvertisement = () => {
                     বিজ্ঞাপন লিস্ট দেখুন।
                   </button>
                 </li>
-                <li className="nav-item" role="presentation">
-                  <button
-                    className="nav-link"
-                    id="messages-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#messages"
-                    type="button"
-                    role="tab"
-                    aria-controls="messages"
-                    aria-selected="false"
-                  >
-                    বিজ্ঞাপন স্ট্যাটাস দেখুন
-                  </button>
-                </li>
               </ul>
               <div className="tab-content">
                 <div
@@ -107,7 +54,9 @@ const UserAdvertisement = () => {
                   <div className="container">
                     <div className="row">
                       <div className="col-lg-12">
-                        <h3 className="text-center pt-5 main-color">বিজ্ঞাপন দিন।</h3>
+                        <h3 className="text-center pt-5 main-color">
+                          বিজ্ঞাপন দিন।
+                        </h3>
                       </div>
                     </div>
                     <div className="row">
@@ -142,40 +91,7 @@ const UserAdvertisement = () => {
                                     <th>Action</th>
                                   </tr>
                                 </thead>
-                                <tbody className="text-center">
-                                  {fakeData.map((item, index) => (
-                                    <tr key={index} className="text-center">
-                                      <td>{index + 1}</td>
-                                      <td>{item.category}</td>
-                                      <td>{item.postDate}</td>
-                                      <td>{item.advertisement}</td>
-                                      <td>{item.postStatus}</td>
-                                      <td>10$</td>
-                                      <td>
-                                        <div className="d-flex justify-content-center  align-items-center ">
-                                          <Link
-                                            to={"#"}
-                                            className="me-2 user-dash-icons"
-                                          >
-                                            <LuView></LuView>
-                                          </Link>
-                                          <Link
-                                            to={"#"}
-                                            className="me-2 user-dash-icons"
-                                          >
-                                            <TbEdit></TbEdit>
-                                          </Link>
-                                          <Link
-                                            to={"#"}
-                                            className=" user-dash-icons"
-                                          >
-                                            <MdDelete></MdDelete>
-                                          </Link>
-                                        </div>
-                                      </td>
-                                    </tr>
-                                  ))}
-                                </tbody>
+                                <MyAdds/>
                               </table>
                             </div>
                           </div>
@@ -183,14 +99,6 @@ const UserAdvertisement = () => {
                       </div>
                     </div>
                   </div>
-                </div>
-                <div
-                  className="tab-pane"
-                  id="messages"
-                  role="tabpanel"
-                  aria-labelledby="messages-tab"
-                >
-                  messages
                 </div>
               </div>
             </div>

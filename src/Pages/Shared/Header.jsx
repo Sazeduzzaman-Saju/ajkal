@@ -78,17 +78,17 @@ function Header() {
               <div className="top-bar d-flex justify-content-center">
                 <ul className="mb-0">
                   <li className="">
-                    <NavLink to="/categories/2" className="">
+                    <NavLink to={'/login'} className="">
                       বিজ্ঞাপন
                     </NavLink>
                   </li>
                   <li className="">
-                    <NavLink to="/epaper" className="">
+                    <NavLink to={'/epaper'} className="">
                       ই-পেপার
                     </NavLink>
                   </li>
                   <li className="">
-                    <NavLink to="/search" className="">
+                    <NavLink to={'/search'} className="">
                       আর্কাইভ
                     </NavLink>
                   </li>

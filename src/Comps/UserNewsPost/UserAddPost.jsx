@@ -1,43 +1,46 @@
-import axios from "axios";
-import React from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 const UserAddPost = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const [adBanner, setAdBanner] = useState(null);
+  const { register, handleSubmit } = useForm();
 
   const onSubmit = async (data) => {
     try {
-      const accessToken = localStorage.getItem("accessToken");
+      const formData = new FormData();
+      formData.append("ad_banner", adBanner); // Append the ad_banner image file
 
+      // Append other form data to formData
+      Object.entries(data).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
+
+      const accessToken = localStorage.getItem("accessToken");
       if (!accessToken) {
         throw new Error("Access token not found in localStorage");
       }
 
-      const response = await axios.post(
-        "https://news.goexpressus.com/ad/create",
-        data,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      );
+      const response = await fetch("https://news.goexpressus.com/ad/create", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: formData,
+      });
 
-      if (response.status !== 200) {
+      if (!response.ok) {
         throw new Error("Failed to add news");
       }
 
       toast.success("News added successfully");
     } catch (error) {
       toast.error("Failed to add news:", error.message);
-      // Handle error here
     }
+  };
+
+  const handleImageChange = (e) => {
+    setAdBanner(e.target.files[0]);
   };
 
   return (
@@ -120,16 +123,22 @@ const UserAddPost = () => {
               </div>
               <div className="col-lg-12 mb-3">
                 <div>
-                  <label className="labels"> এড এর ব্যানার</label>
+                  <label className="labels">এড এর ব্যানার</label>
                   <input
                     type="file"
                     accept="image/*"
-                    className="form-control form-control-sm custom-file-input"
-                    {...register("ad_banner")}
+                    onChange={handleImageChange}
+                    {...register("ad_banner")} // Register the ad_banner field with react-hook-form
                   />
+                  {/* Display the selected image */}
+                  {/* {ad_banner && (
+                    <img
+                      src={URL.createObjectURL(ad_banner)}
+                      alt="Selected Banner"
+                    />
+                  )} */}
                 </div>
               </div>
-              {/* Other input fields */}
             </div>
             <div className="row">
               <div className="col-lg-12">

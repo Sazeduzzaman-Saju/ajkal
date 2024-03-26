@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import "./UserDashboard.css";
-import { MdDelete, MdOutlineInsertComment } from "react-icons/md";
-import { TbEdit, TbFileUpload } from "react-icons/tb";
+import { TbFileUpload } from "react-icons/tb";
 import { BiRightArrow } from "react-icons/bi";
-import { LuView } from "react-icons/lu";
+import Skeleton from "react-loading-skeleton";
 
 const UserDashboard = () => {
-  const [userData, setUserData] = useState(null);
+  const [userNewsData, setUserNewsData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -17,7 +15,7 @@ const UserDashboard = () => {
       try {
         const accessToken = localStorage.getItem("accessToken");
         const response = await axios.post(
-          "https://news.goexpressus.com/auth/profile",
+          "https://news.goexpressus.com/dashboard/all-news",
           null,
           {
             headers: {
@@ -25,7 +23,8 @@ const UserDashboard = () => {
             },
           }
         );
-        setUserData(response.data);
+        setUserNewsData(response.data.data);
+        console.log("inner-Data", response.data.data); // Log the response data
         setLoading(false);
       } catch (error) {
         setError(error);
@@ -34,90 +33,49 @@ const UserDashboard = () => {
     };
 
     fetchUserData();
-  }, []);
+  }, []); // Log userAddData outside useEffect
 
-  const fakeData = [
-    {
-      id: 1,
-      category: "যুক্তরাষ্ট্র",
-      postDate: "১২ ফেব্রুয়ারি ২০২৪",
-      advertisement: "পুতিন দিয়ছে বাইডেন কে টেক্কা",
-      postStatus: "পাবলিশ হয় নি।",
-    },
-    {
-      id: 2,
-      category: "বাংলাদেশ",
-      postDate: "১৫ ফেব্রুয়ারি ২০২৪",
-      advertisement: "পুতিন দিয়ছে বাইডেন কে টেক্কা",
-      postStatus: "পাবলিশ হয়েছে।",
-    },
-    {
-      id: 3,
-      category: "কম্পিউটার",
-      postDate: "২০ ফেব্রুয়ারি ২০২৪",
-      advertisement: "পুতিন দিয়ছে বাইডেন কে টেক্কা",
-      postStatus: "পাবলিশ হয়েছে।",
-    },
-    {
-      id: 4,
-      category: "বিজ্ঞান",
-      postDate: "২৫ ফেব্রুয়ারি ২০২৪",
-      advertisement: "পুতিন দিয়ছে বাইডেন কে টেক্কা",
-      postStatus: "পাবলিশ হয়েছে।",
-    },
-    {
-      id: 5,
-      category: "খেলা",
-      postDate: "২৮ ফেব্রুয়ারি ২০২৪",
-      advertisement: "পুতিন দিয়ছে বাইডেন কে টেক্কা",
-      postStatus: "পাবলিশ হয় নি।",
-    },
-  ];
-  console.log(userData);
   return (
     <div className="container">
-      <div className="row">
+      <div className="row mx-auto">
         <div className="col-lg-12">
           <h3 className="text-center pt-5">ড্যাশবোর্ড</h3>
         </div>
       </div>
-      <div className="row py-5">
-        <div className="col-lg-4">
-          <div className="card border-0 rounded-1 shadow-sm">
-            <div className="card-body info-cards d-flex justify-content-between  align-items-center ">
-              <div>
-                <p className="icon-container">
-                  <TbFileUpload></TbFileUpload>
-                </p>
-                <h4 className="pt-3">সংবাদ পোস্ট।</h4>
+      <div className="row">
+        <div className="col-lg-8 offset-lg-2">
+          <div className="row py-5">
+            <div className="col-lg-6">
+              <div className="card border-0 rounded-1 shadow-sm">
+                <div className="card-body info-cards d-flex justify-content-between  align-items-center ">
+                  <div>
+                    <p className="icon-container">
+                      <TbFileUpload></TbFileUpload>
+                    </p>
+                    <h4 className="pt-3">সংবাদ পোস্ট।</h4>
+                  </div>
+                  {userNewsData !== null ? (
+                    <p className="icon-container-amount">
+                      {userNewsData.length}
+                    </p>
+                  ) : (
+                    <Skeleton height={10}></Skeleton>
+                  )}
+                </div>
               </div>
-              <p className="icon-container-amount">12</p>
             </div>
-          </div>
-        </div>
-        <div className="col-lg-4">
-          <div className="card border-0 rounded-1 shadow-sm">
-            <div className="card-body info-cards d-flex justify-content-between  align-items-center ">
-              <div>
-                <p className="icon-container">
-                  <BiRightArrow></BiRightArrow>
-                </p>
-                <h4 className="pt-3">মোট বিজ্ঞাপন পোস্ট।</h4>
+            <div className="col-lg-6">
+              <div className="card border-0 rounded-1 shadow-sm">
+                <div className="card-body info-cards d-flex justify-content-between  align-items-center ">
+                  <div>
+                    <p className="icon-container">
+                      <BiRightArrow></BiRightArrow>
+                    </p>
+                    <h4 className="pt-3">মোট বিজ্ঞাপন পোস্ট।</h4>
+                  </div>
+                  <p className="icon-container-amount">12</p>
+                </div>
               </div>
-              <p className="icon-container-amount">12</p>
-            </div>
-          </div>
-        </div>
-        <div className="col-lg-4">
-          <div className="card border-0 rounded-1 shadow-sm">
-            <div className="card-body info-cards d-flex justify-content-between  align-items-center ">
-              <div>
-                <p className="icon-container">
-                  <MdOutlineInsertComment></MdOutlineInsertComment>
-                </p>
-                <h4 className="pt-3">মোট মন্তব্য।</h4>
-              </div>
-              <p className="icon-container-amount">12</p>
             </div>
           </div>
         </div>
@@ -133,40 +91,43 @@ const UserDashboard = () => {
                     <thead>
                       <tr className="user-th">
                         <th>Sl</th>
+                        <th>Post Image</th>
                         <th>Post Title</th>
                         <th>Category</th>
                         <th>Post Date</th>
                         <th>Post Status</th>
-                        <th>Action</th>
+                        {/* <th>Action</th> */}
                       </tr>
                     </thead>
                     <tbody className="text-center">
-                      {fakeData.map((item, index) => (
-                        <tr key={index} className="text-center">
-                          <td>{index + 1}</td>
-                          <td>{item.advertisement}</td>
-                          <td>{item.category}</td>
-                          <td>{item.postDate}</td>
-                          <td>
-                            <span className="badge bg-dark">
-                              {item.postStatus}
-                            </span>
-                          </td>
-                          <td>
-                            <div className="d-flex justify-content-center  align-items-center ">
-                              <Link to={"#"} className="me-2 user-dash-icons">
-                                <LuView></LuView>
-                              </Link>
-                              <Link to={"#"} className="me-2 user-dash-icons">
-                                <TbEdit></TbEdit>
-                              </Link>
-                              <Link to={"#"} className=" user-dash-icons">
-                                <MdDelete></MdDelete>
-                              </Link>
-                            </div>
-                          </td>
-                        </tr>
-                      ))}
+                      {userNewsData &&
+                        userNewsData.map((item, index) => (
+                          <tr className="text-center" key={index}>
+                            <td>{index + 1}</td>
+                            <td>{item.news_title}</td>
+                            <td>{item.title_img}</td>
+                            <td>{item.category_name}</td>
+                            <td>{item.news_time}</td>
+                            <td>
+                              <span className="badge bg-info rounded-2">
+                                {item.status === 0 ? "Inactive" : "Active"}
+                              </span>
+                            </td>
+                            {/* <td>
+                              <div className="d-flex justify-content-center  align-items-center ">
+                                <Link to={"#"} className="me-2 user-dash-icons">
+                                  <LuView></LuView>
+                                </Link>
+                                <Link to={"#"} className="me-2 user-dash-icons">
+                                  <TbEdit></TbEdit>
+                                </Link>
+                                <Link to={"#"} className=" user-dash-icons">
+                                  <MdDelete></MdDelete>
+                                </Link>
+                              </div>
+                            </td> */}
+                          </tr>
+                        ))}
                     </tbody>
                   </table>
                 </div>

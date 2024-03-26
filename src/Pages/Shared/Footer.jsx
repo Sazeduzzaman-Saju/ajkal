@@ -105,27 +105,6 @@ const Footer = () => {
                   </div>
                 </div>
               </ul>
-              <div>
-                <div className=" pt-5">
-                  <p className="fs-3 text-white mb-0">
-                    <strong>সম্পাদক ও প্রকাশক : </strong>
-                    <span className="pe-3">শাহ্‌ নেওয়াজ ,</span>
-                    <strong>প্রধান সম্পাদক : </strong>
-                    <span className="">মনজুর আহমেদ</span>
-                  </p>
-                </div>
-                <div className="text-lg-start text-center ">
-                  <p className="text-white mb-0 ">
-                    ফোন: <span>+1646 267-7751</span> ফ্যাক্স:
-                    <span>718-865-9130</span>
-                    <span> 71-16 35th Ave, Jackson Heights,NY 11372, USA.</span>
-                  </p>
-                  <p className="text-white mb-0">
-                    ইমেইল: <span>ajkalnews@gmail.com</span> সম্পাদক ইমেইল:
-                    <span>editor@ajkalusa.com</span>
-                  </p>
-                </div>
-              </div>
             </div>
             <div className="col-lg-2">
               <div className="pt-5">
@@ -150,32 +129,51 @@ const Footer = () => {
                       alt=""
                     />
                   </Link>
-                  <Link to={"#"}>
-                    <img
-                      className="mb-3"
-                      width={180}
-                      src="https://www.jugantor.com/web-assets/img/converter.png"
-                      alt=""
-                    />
-                  </Link>
                 </div>
-                <h5 className="pt-5 text-white text-lg-start text-center">
-                  অনুসরণ করুন
-                </h5>
-                <div className="footer-social pt-2 text-lg-start text-center pt-4">
-                  <a href="#" className="ms-0">
-                    <FaFacebookF />
-                  </a>
-                  <a href="#" className="">
-                    <FaTwitter />
-                  </a>
-                  <a href="#" className="">
-                    <FaYoutube />
-                  </a>
-                  <a href="#" className="">
-                    <AiFillInstagram />
-                  </a>
+              </div>
+            </div>
+          </div>
+          <div className="row align-items-center" style={{paddingTop: '4rem'}}>
+            <div className="col-lg-10">
+              <div>
+                <div className="">
+                  <p className="fs-3 text-white mb-0">
+                    <strong>সম্পাদক ও প্রকাশক : </strong>
+                    <span className="pe-3">শাহ্‌ নেওয়াজ ,</span>
+                    <strong>প্রধান সম্পাদক : </strong>
+                    <span className="">মনজুর আহমেদ</span>
+                  </p>
+              </div>
+                <div className="text-lg-start text-center ">
+                  <p className="text-white mb-0 ">
+                    ফোন: <span>+1646 267-7751</span> ফ্যাক্স:
+                    <span>718-865-9130</span>
+                    <span> 71-16 35th Ave, Jackson Heights,NY 11372, USA.</span>
+                  </p>
+                  <p className="text-white mb-0">
+                    ইমেইল: <span>ajkalnews@gmail.com</span> সম্পাদক ইমেইল:
+                    <span>editor@ajkalusa.com</span>
+                  </p>
                 </div>
+              </div>
+            </div>
+            <div className="col-lg-2">
+              <h5 className="text-white text-lg-start text-center">
+                অনুসরণ করুন
+              </h5>
+              <div className="footer-social text-lg-start text-center pt-4">
+                <a href="#" className="ms-0">
+                  <FaFacebookF />
+                </a>
+                <a href="#" className="">
+                  <FaTwitter />
+                </a>
+                <a href="#" className="">
+                  <FaYoutube />
+                </a>
+                <a href="#" className="">
+                  <AiFillInstagram />
+                </a>
               </div>
             </div>
           </div>
@@ -190,11 +188,11 @@ const Footer = () => {
             <div className="row ">
               <div className="col-lg-12 ">
                 <div className="row ">
-                  <div className="col-lg-12">
+                  <div className="col-lg-10">
                     <div className="d-flex justify-content-between align-items-center p-2">
                       <p className="text-white text-center mb-0">
                         এই ওয়েবসাইটের কোনো লেখা, ছবি, অডিও, ভিডিও অনুমতি ছাড়া
-                        ব্যবহার বেআইনি। 
+                        ব্যবহার বেআইনি।
                       </p>
                       <p className="text-white text-center mb-0">
                         কপিরাইট © ২০২৪ সাপ্তাহিক আজকাল কর্তৃক সর্বসত্ব ®

@@ -2,9 +2,14 @@ import React from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import Footer from "../Pages/Shared/Footer";
 import Header from "../Pages/Shared/Header";
+import { FaRegUser } from "react-icons/fa6";
+import { ImUpload } from "react-icons/im";
+import { IoIosLogOut } from "react-icons/io";
+import { RiAdvertisementLine } from "react-icons/ri";
 import "./UserLayout.css";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { MdOutlineSpaceDashboard } from "react-icons/md";
 
 const UserLayout = () => {
   const navigate = useNavigate();
@@ -52,7 +57,12 @@ const UserLayout = () => {
                     to={"/user/dahboard"}
                     className="user-dashboard-nav nav-link"
                   >
-                    Dashboard
+                    <div className="d-flex align-items-center ">
+                      <span style={{ color: "var(--main)" }}>
+                        <MdOutlineSpaceDashboard className="pe-2 fs-2" />
+                      </span>{" "}
+                      <span className="pt-1">Dashboard</span>
+                    </div>
                   </NavLink>
                 </li>
                 <li className="nav-item">
@@ -60,7 +70,12 @@ const UserLayout = () => {
                     to={"/user/my-profile"}
                     className="user-dashboard-nav nav-link"
                   >
-                    My Profile
+                    <div className="d-flex align-items-center ">
+                      <span style={{ color: "var(--main)" }}>
+                        <FaRegUser className="pe-2 ps-1 fs-3" />
+                      </span>{" "}
+                      <span className="pt-1 ps-1">My Profile</span>
+                    </div>
                   </NavLink>
                 </li>
                 <li className="nav-item">
@@ -68,7 +83,12 @@ const UserLayout = () => {
                     to={"/user/my-post"}
                     className="user-dashboard-nav nav-link"
                   >
-                    Post News
+                    <div className="d-flex align-items-center ">
+                      <span style={{ color: "var(--main)" }}>
+                        <ImUpload className="pe-2 fs-2" />
+                      </span>{" "}
+                      <span className="pt-1">Post News</span>
+                    </div>
                   </NavLink>
                 </li>
                 <li className="nav-item">
@@ -76,7 +96,12 @@ const UserLayout = () => {
                     to={"/user/my-advertisement"}
                     className="user-dashboard-nav nav-link"
                   >
-                    Advertisement
+                    <div className="d-flex align-items-center ">
+                      <span style={{ color: "var(--main)" }}>
+                        <RiAdvertisementLine className="pe-2 fs-2" />
+                      </span>{" "}
+                      <span className="pt-1">Advertisement</span>
+                    </div>
                   </NavLink>
                 </li>
                 <li className="nav-item">
@@ -85,7 +110,12 @@ const UserLayout = () => {
                     className="user-dashboard-nav nav-link"
                     onClick={handleLogout}
                   >
-                    Logout
+                    <div className="d-flex align-items-center ">
+                      <span style={{ color: "var(--main)" }}>
+                        <IoIosLogOut className="pe-2 fs-2" />
+                      </span>{" "}
+                      <span className="pt-1">Logout</span>
+                    </div>
                   </Link>
                 </li>
               </ul>
