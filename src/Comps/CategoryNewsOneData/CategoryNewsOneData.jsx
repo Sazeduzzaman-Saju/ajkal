@@ -48,7 +48,11 @@ const CategoryNewsOneData = () => {
           // Render actual feature news once data is loaded
           bangladeshNews.map((data) =>
             data.is_featured === "1" ? (
-              <Link to={`/news/${data.id}`} className="text-muted" key={data.id}>
+              <Link
+                to={`/news/${data.id}`}
+                className="text-muted"
+                key={data.id}
+              >
                 <div>
                   <p className="cnewsone_title">{data.category_name_bangla}</p>
                 </div>
@@ -57,14 +61,14 @@ const CategoryNewsOneData = () => {
                     <img
                       className="img-fluid"
                       height={310}
-                      style={{objectFit: 'fit'}}
+                      style={{ objectFit: "fit" }}
                       src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
                       alt=""
                     />
                   </div>
                   <div className="card-footer news-info-box">
                     <div className="news-hover-box">
-                      <Link to={"#"}>
+                      <Link to={`/news/${data.id}`}>
                         <p className="mb-0 text-white">
                           {data.category_name_bangla}
                         </p>
@@ -82,43 +86,41 @@ const CategoryNewsOneData = () => {
       </div>
       {/* Regular News */}
       <div>
-        {loadingBangladesh ? (
-          // Skeleton loader for regular news
-          Array.from({ length: 3 }, (_, index) => (
-            <div className="card border-0 shadow-sm mb-3" key={index}>
-              <Skeleton height={200} />
-              <div className="card-footer news-info-box">
-                <div className="news-hover-box">
-                  <Skeleton width={100} />
-                  <Skeleton width={200} />
+        {loadingBangladesh
+          ? // Skeleton loader for regular news
+            Array.from({ length: 3 }, (_, index) => (
+              <div className="card border-0 shadow-sm mb-3" key={index}>
+                <Skeleton height={200} />
+                <div className="card-footer news-info-box">
+                  <div className="news-hover-box">
+                    <Skeleton width={100} />
+                    <Skeleton width={200} />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))
-        ) : (
-          // Render actual regular news once data is loaded
-          bangladeshNews.slice(0, 3).map((data) =>
-            data.is_featured === "0" ? (
-              <div className="card border-0 shadow-sm mb-3" key={data.id}>
-                <Link to={"#"}>
-                  <div className="card-body ctnone_regular-news d-flex p-0 align-items-center ">
-                    <div className="w-50">
-                      <img
-                        className="rounded-1"
-                        width={150}
-                        src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
-                        alt=""
-                      />
+            ))
+          : // Render actual regular news once data is loaded
+            bangladeshNews.slice(0, 3).map((data) =>
+              data.is_featured === "0" ? (
+                <div className="card border-0 shadow-sm mb-3" key={data.id}>
+                  <Link to={`/news/${data.id}`}>
+                    <div className="card-body ctnone_regular-news d-flex p-0 align-items-center ">
+                      <div className="w-50">
+                        <img
+                          className="rounded-1"
+                          width={150}
+                          src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                          alt=""
+                        />
+                      </div>
+                      <div>
+                        <h6 className="ps-3 main_color">{data.news_title}</h6>
+                      </div>
                     </div>
-                    <div>
-                      <h6 className="ps-3 main_color">{data.news_title}</h6>
-                    </div>
-                  </div>
-                </Link>
-              </div>
-            ) : null
-          )
-        )}
+                  </Link>
+                </div>
+              ) : null
+            )}
       </div>
     </div>
   );

@@ -54,7 +54,7 @@ const CategoryNewsTwo = () => {
           // Render actual news cards once data is loaded
           videoNews.map((news, index) => (
             <div className="col-lg-3" key={index}>
-              <Link to={news.link}>
+              <Link to={`/news/${news.id}`}>
                 <div className="card border-0 shadow-sm mb-4" style={{ height: "22rem" }}>
                   <div className="card-body p-0">
                     <div>

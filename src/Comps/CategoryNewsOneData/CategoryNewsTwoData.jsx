@@ -60,15 +60,15 @@ const CategoryNewsThreeData = () => {
                   <div className="card-body p-0">
                     <img
                       className="img-fluid"
-                      height={'233px'}
-                      style={{objectFit: 'fit'}}
+                      height={"233px"}
+                      style={{ objectFit: "fit" }}
                       src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
                       alt=""
                     />
                   </div>
                   <div className="card-footer news-info-box">
                     <div className="news-hover-box">
-                      <Link to={"#"}>
+                      <Link to={`/news/${data.id}`}>
                         <p className="mb-0 text-white">
                           {data.category_name_bangla}
                         </p>
@@ -103,7 +103,7 @@ const CategoryNewsThreeData = () => {
             bangladeshNews.slice(0, 3).map((data) =>
               data.is_featured === "0" ? (
                 <div className="card border-0 shadow-sm mb-3" key={data.id}>
-                  <Link to={"#"}>
+                  <Link to={`/news/${data.id}`}>
                     <div className="card-body ctnone_regular-news d-flex p-0 align-items-center ">
                       <div className="w-50">
                         <img
