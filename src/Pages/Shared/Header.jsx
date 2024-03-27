@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./Header.css";
 import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
@@ -15,10 +15,34 @@ import axios from "axios";
 
 function Header() {
   // Retrieve access token from localStorage
-  const accessToken = localStorage.getItem("accessToken");
   const [isHovered, setIsHovered] = useState(false);
   const [navLinks, setNavLinks] = useState([]);
   const url = "https://news.goexpressus.com/news-category";
+
+  const navigate = useNavigate();
+  const [accessTokenTimeout, setAccessTokenTimeout] = useState(null);
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      navigate("/login"); // Navigate to login if access token is not found
+      return;
+    }
+
+    // Set timeout to navigate to login page after 3600 seconds
+    const timeout = setTimeout(() => {
+      localStorage.removeItem("accessToken");
+      alert('localStorage data delete') // Remove accessToken from localStorage
+      navigate("/login");
+    }, 3600 * 1000);
+
+    // Store timeout reference in state for cleanup
+    setAccessTokenTimeout(timeout);
+
+    // Cleanup function to clear timeout on component unmount
+    return () => clearTimeout(timeout);
+  }, []);
+
   useEffect(() => {
     axios
       .get(url)
@@ -78,17 +102,17 @@ function Header() {
               <div className="top-bar d-flex justify-content-center">
                 <ul className="mb-0">
                   <li className="">
-                    <NavLink to={'/login'} className="">
+                    <NavLink to={"/login"} className="">
                       বিজ্ঞাপন
                     </NavLink>
                   </li>
                   <li className="">
-                    <NavLink to={'/epaper'} className="">
+                    <NavLink to={"/epaper"} className="">
                       ই-পেপার
                     </NavLink>
                   </li>
                   <li className="">
-                    <NavLink to={'/search'} className="">
+                    <NavLink to={"/search"} className="">
                       আর্কাইভ
                     </NavLink>
                   </li>
@@ -111,7 +135,7 @@ function Header() {
                     <NavLink href="#" className="">
                       <AiFillInstagram />
                     </NavLink>
-                    {accessToken ? (
+                    {accessTokenTimeout ? (
                       <NavLink to="/user" className="">
                         <FaHome />
                       </NavLink>
@@ -159,7 +183,7 @@ function Header() {
                   {addvertisement.map((data) =>
                     // Check if data "ad_category_id" is equal to "2" and status is equal to "1"
                     data.ad_category_id === "2" && data.status === "1" ? (
-                      <Link to={data.ad_link} key={data.id}>
+                      <Link to={data.ad_link} key={data.id} target="_blank">
                         <img
                           className="img-fluid top-add"
                           src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}

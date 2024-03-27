@@ -81,13 +81,12 @@ const UserNewsPost = () => {
       );
 
       if (response.status !== 200) {
-        throw new Error("Failed to add news");
+        throw new Error("Failed to Post news");
       }
 
-
-      toast.success("News added successfully");
+      toast.success("News Post successfully");
     } catch (error) {
-      toast.error("Failed to add news:", error.message);
+      toast.error("Failed to Post news:", error.message);
       // Handle error here
     }
   };

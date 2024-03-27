@@ -100,7 +100,7 @@ const Login = () => {
                       onSubmit={handleSubmit(handleSignUp)}
                       className=""
                     >
-                      <div className="row pt-5">
+                      <div className="row">
                         <div className="col-lg-12">
                           <label htmlFor="">
                             ইমেইল দিন <span className="text-danger">*</span>

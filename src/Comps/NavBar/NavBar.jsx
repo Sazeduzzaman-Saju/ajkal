@@ -11,7 +11,7 @@ const NavBar = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 3000); // 2 seconds delay
+    }, 3600 * 1000); // 2 seconds delay
 
     return () => clearTimeout(timer);
   }, []);

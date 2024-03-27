@@ -53,8 +53,8 @@ const NewsSectionThree = ({ dhormo, loading }) => {
                 className="text-muted"
                 key={data.id}
               >
-                <div className="d-flex align-items-center mb-3 row">
-                  <div className="col-lg-3">
+                <div className="d-flex align-items-center mb-3">
+                  <div className="">
                     <img
                       className="rounded-2"
                       width={90}
@@ -62,7 +62,7 @@ const NewsSectionThree = ({ dhormo, loading }) => {
                       alt=""
                     />
                   </div>
-                  <div className="col-lg-9">
+                  <div className="">
                     <h6 className="mb-0 text-muted fw-semibold ">
                       {data.news_title}
                     </h6>

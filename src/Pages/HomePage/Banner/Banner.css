@@ -126,8 +126,9 @@
   }
   .showcase h1 {
     margin-top: 45px;
-    font-size: 3em;
+    font-size: 2em !important;
     text-align: center;
+    width: 100% !important;
   }
   .showcase h2 {
     text-align: center;

@@ -133,7 +133,10 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="row align-items-center" style={{paddingTop: '4rem'}}>
+          <div
+            className="row align-items-center"
+            style={{ paddingTop: "4rem" }}
+          >
             <div className="col-lg-10">
               <div>
                 <div className="">
@@ -143,7 +146,7 @@ const Footer = () => {
                     <strong>প্রধান সম্পাদক : </strong>
                     <span className="">মনজুর আহমেদ</span>
                   </p>
-              </div>
+                </div>
                 <div className="text-lg-start text-center ">
                   <p className="text-white mb-0 ">
                     ফোন: <span>+1646 267-7751</span> ফ্যাক্স:
@@ -153,6 +156,9 @@ const Footer = () => {
                   <p className="text-white mb-0">
                     ইমেইল: <span>ajkalnews@gmail.com</span> সম্পাদক ইমেইল:
                     <span>editor@ajkalusa.com</span>
+                  </p>
+                  <p className="text-white text-start mb-0 pt-4">
+                    কপিরাইট © ২০২৪ সাপ্তাহিক আজকাল কর্তৃক সর্বসত্ব ® সংরক্ষিত
                   </p>
                 </div>
               </div>
@@ -186,20 +192,22 @@ const Footer = () => {
         <div className="container-fluid">
           <div className="container">
             <div className="row ">
-              <div className="col-lg-12 ">
-                <div className="row ">
-                  <div className="col-lg-10">
-                    <div className="d-flex justify-content-between align-items-center p-2">
-                      <p className="text-white text-center mb-0">
-                        এই ওয়েবসাইটের কোনো লেখা, ছবি, অডিও, ভিডিও অনুমতি ছাড়া
-                        ব্যবহার বেআইনি।
-                      </p>
-                      <p className="text-white text-center mb-0">
-                        কপিরাইট © ২০২৪ সাপ্তাহিক আজকাল কর্তৃক সর্বসত্ব ®
-                        সংরক্ষিত
-                      </p>
-                    </div>
-                  </div>
+              <div className="col-lg-12">
+                <div className="d-flex justify-content-between align-items-center p-2">
+                  <p className="text-white text-start mb-0">
+                    এই ওয়েবসাইটের কোনো লেখা, ছবি, অডিও, ভিডিও অনুমতি ছাড়া
+                    ব্যবহার বেআইনি।
+                  </p>
+                  <p className="text-white text-end mb-0">
+                    Developed With Loved By
+                    <Link
+                      className="text-muted ps-2"
+                      to={"https://galaxymediaus.com/"}
+                      target="_blank"
+                    >
+                      (Galaxy Media)
+                    </Link>
+                  </p>
                 </div>
               </div>
             </div>

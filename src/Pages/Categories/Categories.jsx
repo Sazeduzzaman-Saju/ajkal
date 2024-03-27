@@ -130,7 +130,7 @@ const Categories = () => {
                 // Check if data "ad_category_id" is equal to "2" and status is equal to "1"
                 data.ad_category_id === "3" && data.status === "1" ? (
                   <div className="mb-2" key={data.id}>
-                    <Link to={data.ad_link}>
+                    <Link to={data.ad_link} target="_blank">
                       <img
                         className="img-fluid side-add"
                         src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}

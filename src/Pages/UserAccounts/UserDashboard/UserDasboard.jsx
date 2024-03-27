@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./UserDashboard.css";
 import { TbFileUpload } from "react-icons/tb";
 import { BiRightArrow } from "react-icons/bi";
 import Skeleton from "react-loading-skeleton";
 
 const UserDashboard = () => {
+  const navigate = useNavigate();
   const [userNewsData, setUserNewsData] = useState(null);
+  const [userAddData, setUserAddData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -14,6 +17,11 @@ const UserDashboard = () => {
     const fetchUserData = async () => {
       try {
         const accessToken = localStorage.getItem("accessToken");
+        if (!accessToken) {
+          navigate("/login"); // Use Navigate function to navigate
+          return;
+        }
+
         const response = await axios.post(
           "https://news.goexpressus.com/dashboard/all-news",
           null,
@@ -24,7 +32,6 @@ const UserDashboard = () => {
           }
         );
         setUserNewsData(response.data.data);
-        console.log("inner-Data", response.data.data); // Log the response data
         setLoading(false);
       } catch (error) {
         setError(error);
@@ -33,13 +40,68 @@ const UserDashboard = () => {
     };
 
     fetchUserData();
-  }, []); // Log userAddData outside useEffect
 
+    const timeout = setTimeout(() => {
+      navigate("/login"); // Navigate to login after 3600 seconds
+    }, 3600 * 1000);
+
+    return () => clearTimeout(timeout); // Clear timeout on component unmount
+  }, []);
+
+  useEffect(() => {
+    const fetchAddData = async () => {
+      try {
+        const accessToken = localStorage.getItem("accessToken");
+        const response = await axios.post(
+          "https://news.goexpressus.com/ad/my-ads",
+          null,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        );
+        setUserAddData(response.data.data);
+        setLoading(false);
+      } catch (error) {
+        setError(error);
+        setLoading(false);
+      }
+    };
+
+    fetchAddData();
+  }, []);
+  console.log(userAddData);
+  const [userData, setUserData] = useState(null);
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const accessToken = localStorage.getItem("accessToken");
+        const response = await axios.post(
+          "https://news.goexpressus.com/auth/profile",
+          null,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        );
+        setUserData(response.data);
+        setLoading(false);
+      } catch (error) {
+        setError(error);
+        setLoading(false);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+  const fullName = userData?.full_name;
   return (
     <div className="container">
       <div className="row mx-auto">
         <div className="col-lg-12">
-          <h3 className="text-center pt-5">ড্যাশবোর্ড</h3>
+          <h3 className="text-center pt-5">Hello, {fullName} আপনার ড্যাশবোর্ড</h3>
         </div>
       </div>
       <div className="row">
@@ -54,13 +116,13 @@ const UserDashboard = () => {
                     </p>
                     <h4 className="pt-3">সংবাদ পোস্ট।</h4>
                   </div>
-                  {userNewsData !== null ? (
-                    <p className="icon-container-amount">
-                      {userNewsData.length}
-                    </p>
-                  ) : (
-                    <Skeleton height={10}></Skeleton>
-                  )}
+                  <p className="icon-container-amount">
+                    {userNewsData !== null ? (
+                      <span className="">{userNewsData.length}</span>
+                    ) : (
+                      <Skeleton height={10}></Skeleton>
+                    )}
+                  </p>
                 </div>
               </div>
             </div>
@@ -73,7 +135,13 @@ const UserDashboard = () => {
                     </p>
                     <h4 className="pt-3">মোট বিজ্ঞাপন পোস্ট।</h4>
                   </div>
-                  <p className="icon-container-amount">12</p>
+                  <p className="icon-container-amount">
+                    {userAddData !== null ? (
+                      <span className="">{userAddData.length}</span>
+                    ) : (
+                      <Skeleton height={10}></Skeleton>
+                    )}
+                  </p>
                 </div>
               </div>
             </div>
@@ -113,19 +181,6 @@ const UserDashboard = () => {
                                 {item.status === 0 ? "Inactive" : "Active"}
                               </span>
                             </td>
-                            {/* <td>
-                              <div className="d-flex justify-content-center  align-items-center ">
-                                <Link to={"#"} className="me-2 user-dash-icons">
-                                  <LuView></LuView>
-                                </Link>
-                                <Link to={"#"} className="me-2 user-dash-icons">
-                                  <TbEdit></TbEdit>
-                                </Link>
-                                <Link to={"#"} className=" user-dash-icons">
-                                  <MdDelete></MdDelete>
-                                </Link>
-                              </div>
-                            </td> */}
                           </tr>
                         ))}
                     </tbody>

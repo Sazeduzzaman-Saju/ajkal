@@ -1,9 +1,45 @@
-
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import UserAddPost from "../../../Comps/UserNewsPost/UserAddPost";
-import MyAdds from "./MyAdds";
 
 const UserAdvertisement = () => {
+  const [userNewsData, setUserNewsData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const accessToken = localStorage.getItem("accessToken");
+        const response = await axios.post(
+          "https://news.goexpressus.com/ad/my-ads",
+          null,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        );
+        setUserNewsData(response.data.data);
+        setLoading(false);
+      } catch (error) {
+        setError(error);
+        setLoading(false);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
+
+  console.log(userNewsData);
   return (
     <>
       <div className="container">
@@ -83,15 +119,57 @@ const UserAdvertisement = () => {
                                 <thead>
                                   <tr className="user-th">
                                     <th>Sl</th>
-                                    <th>Category</th>
+                                    <th>Add Image</th>
+                                    <th>Type</th>
                                     <th>Post Date</th>
-                                    <th>Advertisement</th>
+                                    <th>Paid Amount</th>
+                                    <th>Due Amount</th>
                                     <th>Post Status</th>
-                                    <th>Due Ammount</th>
+                                    <th>Post Duration</th>
+                                    <th>Payable Ammount</th>
                                     <th>Action</th>
                                   </tr>
                                 </thead>
-                                <MyAdds/>
+                                <tbody>
+                                  {userNewsData.map((item, index) => (
+                                    <tr key={index}>
+                                      <td>{index + 1}</td>
+                                      <td>
+                                        <div>
+                                          <img
+                                            width={50}
+                                            src={item.ad_banner}
+                                            alt={item.ad_banner}
+                                          />
+                                        </div>
+                                      </td>
+                                      <td>
+                                        {item.type === "1" ? (
+                                          <span>ইপেপার</span>
+                                        ) : item.type === "2" ? (
+                                          <span>অনলাইন পোর্টাল</span>
+                                        ) : null}
+                                      </td>
+                                      <td>{item.start_date}</td>
+                                      <td>{item.paid_amount.slice(0, 3)}</td>
+                                      <td>{item.due_amount.slice(0, 3)}</td>
+                                      <td>
+                                        {item.status === "1" ? (
+                                          <span className="badge bg-success ">
+                                            Approved
+                                          </span>
+                                        ) : item.type === "2" ? (
+                                          <span className="badge bg-warning ">
+                                            Pending
+                                          </span>
+                                        ) : null}
+                                      </td>
+                                      <td>{item.duration} Week</td>
+                                      <td>{item.payable_amount}</td>
+                                      <td>10$</td>
+                                    </tr>
+                                  ))}
+                                </tbody>
                               </table>
                             </div>
                           </div>

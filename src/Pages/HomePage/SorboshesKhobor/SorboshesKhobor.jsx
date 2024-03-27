@@ -77,7 +77,7 @@ const SorboshesKhobor = () => {
                 <div className="col-lg-4" key={index}>
                   <Link to={`/news/${data.id}`}>
                     <div
-                      className="card rounded-1 border-0 shadow-sm mb-4"
+                      className="card rounded-1 border-0 shadow-sm mb-4 sorboshes_khobor"
                       style={{ height: "18rem" }}
                     >
                       <div className="card-body p-0 card-body-2">

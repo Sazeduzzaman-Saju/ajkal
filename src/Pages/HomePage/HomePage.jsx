@@ -67,13 +67,14 @@ const HomePage = () => {
                 {addvertisement.map((data) =>
                   // Check if data "ad_category_id" is equal to "2" and status is equal to "1"
                   data.ad_category_id === "4" && data.status === "1" ? (
-                    <img
-                      key={data.id}
-                      className="w-100 zoom-image img-fluid "
-                      src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}
-                      alt={"advertisement"}
-                      loading="lazy"
-                    />
+                    <Link to={data.ad_link} target="_blank" key={data.id}>
+                      <img
+                        className="w-100 zoom-image img-fluid "
+                        src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}
+                        alt={"advertisement"}
+                        loading="lazy"
+                      />
+                    </Link>
                   ) : null
                 )}
               </div>
@@ -91,24 +92,27 @@ const HomePage = () => {
                 <PostHeader title="বিজ্ঞাপন কর্নার" />
               </div>
               <div style={{ display: "flex", justifyContent: "center" }}>
-                  <FacebookEmbed
-                    url="https://www.facebook.com/photo/?fbid=979852766901979"
-                    width={418}
-                  />
-                </div>
-                <div className="pt-3" style={{ display: "flex", justifyContent: "center" }}>
-                  <YouTubeEmbed
-                    url="https://www.youtube.com/watch?v=JQkevGu41D4"
-                    width={418}
-                    height={365}
-                  />
-                </div>
+                <FacebookEmbed
+                  url="https://www.facebook.com/photo/?fbid=979852766901979"
+                  width={418}
+                />
+              </div>
+              <div
+                className="pt-3"
+                style={{ display: "flex", justifyContent: "center" }}
+              >
+                <YouTubeEmbed
+                  url="https://www.youtube.com/watch?v=JQkevGu41D4"
+                  width={418}
+                  height={365}
+                />
+              </div>
               {/* Add Banner Start */}
               {addvertisement.map((data) =>
                 // Check if data "ad_category_id" is equal to "2" and status is equal to "1"
                 data.ad_category_id === "3" && data.status === "1" ? (
                   <div className="mb-2" key={data.id}>
-                    <Link to={data.ad_link}>
+                    <Link to={data.ad_link} target="_blank">
                       <img
                         className="img-fluid side-add"
                         src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}
@@ -166,7 +170,7 @@ const HomePage = () => {
                   // Check if data "ad_category_id" is equal to "2" and status is equal to "1"
                   data.ad_category_id === "5" && data.status === "1" ? (
                     <div className="mb-2" key={data.id}>
-                      <Link to={data.ad_link}>
+                      <Link to={data.ad_link} target="_blank">
                         <img
                           className="img-fluid w-100 mt-4"
                           src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}
