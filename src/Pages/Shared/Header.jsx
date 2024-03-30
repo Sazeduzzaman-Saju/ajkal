@@ -25,15 +25,14 @@ function Header() {
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
     if (!accessToken) {
-      navigate("/login"); // Navigate to login if access token is not found
+      navigate("/"); // Navigate to login if access token is not found
       return;
     }
 
     // Set timeout to navigate to login page after 3600 seconds
     const timeout = setTimeout(() => {
       localStorage.removeItem("accessToken");
-      alert('localStorage data delete') // Remove accessToken from localStorage
-      navigate("/login");
+      navigate("/");
     }, 3600 * 1000);
 
     // Store timeout reference in state for cleanup

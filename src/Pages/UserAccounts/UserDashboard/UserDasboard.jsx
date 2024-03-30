@@ -85,7 +85,7 @@ const UserDashboard = () => {
               Authorization: `Bearer ${accessToken}`,
             },
           }
-        );
+      );
         setUserData(response.data);
         setLoading(false);
       } catch (error) {

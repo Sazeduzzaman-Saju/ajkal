@@ -120,7 +120,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: '/user',
+        path: '/user/',
         element: <UserDasboard />,
       },
       {
