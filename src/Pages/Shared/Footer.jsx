@@ -51,7 +51,7 @@ const Footer = () => {
             <div className="col-lg-12">
               <Link className="" to="/">
                 <img
-                  src="https://i.ibb.co/LJtVLvQ/logo-white.png"
+                  src="https://i.ibb.co/ZTVsmVQ/logo-footer.png"
                   className="img-fluid"
                   alt=""
                   width={250}
@@ -62,8 +62,17 @@ const Footer = () => {
         </div>
       </div>
       <div
-        className="container-fluid p-2 pb-5"
-        style={{ backgroundColor: "black" }}
+        className="container-fluid p-2 pb-3"
+        style={{
+          backgroundColor: 'black',
+          // // backgroundImage: 'url(https://i.ibb.co/VNtg1xk/abstract-modern-dark-black-background-design-with-stripes-lines-84443-2818.jpg)',
+          // backgroundImage: 'url(https://i.ibb.co/BjxrDKk/gradient-black-background-with-wavy-lines-23-2149146012.jpg)',
+          // // backgroundImage: 'url(https://i.ibb.co/RyqKjzy/gradient-black-background-with-wavy-lines-23-2149158560.jpg)',
+          // backgroundRepeat: 'no-repeat',
+          // backgroundSize: 'cover',
+          // backgroundPosition: 'center center',
+          // width: '100%'
+        }}
       >
         <div className="container">
           <div className="row">
@@ -115,7 +124,7 @@ const Footer = () => {
                 <div className="pb-3">
                   <Link to={"#"}>
                     <img
-                      className="mb-3"
+                      className="mb-1"
                       width={180}
                       src="https://i.ibb.co/mvChxhk/play.png"
                       alt=""
@@ -123,7 +132,7 @@ const Footer = () => {
                   </Link>
                   <Link to={"#"}>
                     <img
-                      className="mb-3"
+                      className="mb-1"
                       width={180}
                       src="https://i.ibb.co/WKqnRZW/applestore.png"
                       alt=""
@@ -133,10 +142,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div
-            className="row align-items-center"
-            style={{ paddingTop: "4rem" }}
-          >
+          <div className="row align-items-center">
             <div className="col-lg-10">
               <div>
                 <div className="">
@@ -157,7 +163,7 @@ const Footer = () => {
                     ইমেইল: <span>ajkalnews@gmail.com</span> সম্পাদক ইমেইল:
                     <span>editor@ajkalusa.com</span>
                   </p>
-                  <p className="text-white text-start mb-0 pt-4">
+                  <p className="text-white text-start mb-0 pt-0">
                     কপিরাইট © ২০২৪ সাপ্তাহিক আজকাল কর্তৃক সর্বসত্ব ® সংরক্ষিত
                   </p>
                 </div>
@@ -168,7 +174,7 @@ const Footer = () => {
                 অনুসরণ করুন
               </h5>
               <div className="footer-social text-lg-start text-center pt-4">
-                <a href="#" className="ms-0">
+                <a href="https://www.facebook.com/weeklyajkal" className="ms-0">
                   <FaFacebookF />
                 </a>
                 <a href="#" className="">
@@ -187,25 +193,25 @@ const Footer = () => {
       </div>
       <div
         className="container-fluid p-0"
-        style={{ backgroundColor: "var(--main)" }}
+        style={{ backgroundColor: "var(--secondary)" }}
       >
         <div className="container-fluid">
           <div className="container">
             <div className="row ">
               <div className="col-lg-12">
                 <div className="d-flex justify-content-between align-items-center p-2">
-                  <p className="text-white text-start mb-0">
+                  <p className="text-start mb-0" style={{color: '#fff'}}>
                     এই ওয়েবসাইটের কোনো লেখা, ছবি, অডিও, ভিডিও অনুমতি ছাড়া
                     ব্যবহার বেআইনি।
                   </p>
                   <p className="text-white text-end mb-0">
                     Developed With Loved By
                     <Link
-                      className="text-muted ps-2"
+                      className="ps-2" style={{color: 'orange'}}
                       to={"https://galaxymediaus.com/"}
                       target="_blank"
                     >
-                      (Galaxy Media)
+                      Galaxy Media
                     </Link>
                   </p>
                 </div>

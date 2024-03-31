@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 const NewsCategory = ({ categories }) => {
   return (
     <div>
-      <ul className="px-0" style={{ marginLeft: "0", listStyle: "none" }}>
-        <div className="row pt-5 px-0">
+      <ul className="px-0 mb-0" style={{ marginLeft: "0", listStyle: "none" }}>
+        <div className="row pt-3 px-0">
           <div>
             <h4 className="ps-0 text-white">ক্যাটেগরি</h4>
             <span className="border-devider"></span>
@@ -17,7 +17,7 @@ const NewsCategory = ({ categories }) => {
                 <Link
                   to={`/categories/${data.id}`}
                   type="button"
-                  className="mb-3 rounded-0 text-white footer-ct-btn"
+                  className="mb-1 rounded-0 text-white footer-ct-btn"
                 >
                   {data.name_bangla}
                 </Link>
@@ -30,7 +30,7 @@ const NewsCategory = ({ categories }) => {
                 <Link
                   to={`/categories/${data.id}`}
                   type="button"
-                  className="mb-3 rounded-0 text-white footer-ct-btn"
+                  className="mb-1 rounded-0 text-white footer-ct-btn"
                 >
                   {data.name_bangla}
                 </Link>
@@ -43,7 +43,7 @@ const NewsCategory = ({ categories }) => {
                 <Link
                   to={`/categories/${data.id}`}
                   type="button"
-                  className="mb-3 rounded-0 text-white footer-ct-btn"
+                  className="mb-1 rounded-0 text-white footer-ct-btn"
                 >
                   {data.name_bangla}
                 </Link>
@@ -56,7 +56,7 @@ const NewsCategory = ({ categories }) => {
                 <Link
                   to={`/categories/${data.id}`}
                   type="button"
-                  className="mb-3 rounded-0 text-white footer-ct-btn"
+                  className="mb-1 rounded-0 text-white footer-ct-btn"
                 >
                   {data.name_bangla}
                 </Link>
