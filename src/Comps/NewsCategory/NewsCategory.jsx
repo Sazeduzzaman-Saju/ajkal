@@ -8,7 +8,7 @@ const NewsCategory = ({ categories }) => {
       <ul className="px-0 mb-0" style={{ marginLeft: "0", listStyle: "none" }}>
         <div className="row pt-3 px-0">
           <div>
-            <h4 className="ps-0 text-white">ক্যাটেগরি</h4>
+            <h4 className="ps-0 text-white">ক্যাটাগরিস</h4>
             <span className="border-devider"></span>
           </div>
           <div className="col-lg-3">

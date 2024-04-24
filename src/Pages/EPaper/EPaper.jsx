@@ -2,90 +2,17 @@ import React, { useEffect, useState } from "react";
 import PostHeader from "../../Comps/PostHeader/PostHeader";
 import "./Epaper.css";
 import { FacebookEmbed } from "react-social-media-embed";
-import { Link } from "react-router-dom";
 import EpaperGallary from "../../Comps/EpaperGallary/EpaperGallary";
-import CalendarEngliash from "../../Comps/Calender/CalendarEnglish";
 import Skeleton from "react-loading-skeleton";
 import axios from "axios";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import BanglaTimeAgo from "../../Comps/BanglaTime/BanglaTimeDiffrence";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 
 const EPaper = () => {
   const [loading, setLoading] = useState(true);
-  const [bannerData, setBannerData] = useState([]);
-  const url = "https://news.goexpressus.com/breaking-news";
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-
-    // Clear the timeout if the component unmounts or the loading state changes
-    return () => clearTimeout(timer);
-  }, [loading]);
-
-  const epaperData = [
-    {
-      link: "#",
-      imageURL: "https://ajkal.us/image/epaper/1.jpg",
-      altText: "Image 1",
-      title: "পৃষ্ঠা 1",
-    },
-    {
-      link: "#",
-      imageURL: "https://ajkal.us/image/epaper/2.jpg",
-      altText: "Image 2",
-      title: "পৃষ্ঠা 2",
-    },
-    {
-      link: "#",
-      imageURL: "https://ajkal.us/image/epaper/3.jpg",
-      altText: "Image 3",
-      title: "পৃষ্ঠা 3",
-    },
-    {
-      link: "#",
-      imageURL: "https://ajkal.us/image/epaper/4.jpg",
-      altText: "Image 4",
-      title: "পৃষ্ঠা 4",
-    },
-    {
-      link: "#",
-      imageURL: "https://ajkal.us/image/epaper/5.jpg",
-      altText: "Image 5",
-      title: "পৃষ্ঠা 5",
-    },
-    {
-      link: "#",
-      imageURL: "https://ajkal.us/image/epaper/6.jpg",
-      altText: "Image 6",
-      title: "পৃষ্ঠা 6",
-    },
-    {
-      link: "#",
-      imageURL: "https://ajkal.us/image/epaper/7.jpg",
-      altText: "Image 7",
-      title: "পৃষ্ঠা 7",
-    },
-    {
-      link: "#",
-      imageURL: "https://ajkal.us/image/epaper/8.jpg",
-      altText: "Image 8",
-      title: "পৃষ্ঠা 8",
-    },
-    {
-      link: "#",
-      imageURL: "https://ajkal.us/image/epaper/9.jpg",
-      altText: "Image 9",
-      title: "পৃষ্ঠা 9",
-    },
-    {
-      link: "#",
-      imageURL: "https://ajkal.us/image/epaper/10.jpg",
-      altText: "Image 10",
-      title: "পৃষ্ঠা 10",
-    },
-  ];
+  const [epaperData, setEpaperData] = useState([]);
+  const url = "https://backoffice.ajkal.us/all-epapers";
 
   useEffect(() => {
     const fetchData = () => {
@@ -93,9 +20,9 @@ const EPaper = () => {
         .get(url)
         .then((response) => {
           if (Array.isArray(response.data)) {
-            setBannerData(response.data.slice(0, 10));
+            setEpaperData(response.data.slice(0, 10));
           } else if (Array.isArray(response.data.data)) {
-            setBannerData(response.data.data.slice(0, 12));
+            setEpaperData(response.data.data.slice(0, 12));
           } else {
             console.error(
               "Invalid data structure in API response:",
@@ -119,10 +46,72 @@ const EPaper = () => {
     // Clean up the timer to avoid memory leaks
     return () => clearTimeout(timer);
   }, []);
-  console.log(bannerData);
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [modalOpen, setModalOpen] = useState(false); // State to track modal open/close
+  const [selectedImage, setSelectedImage] = useState(null); // State to store selected image data
+
+  const currentImage = epaperData[currentImageIndex];
+
+  const handlePrevious = () => {
+    const prevIndex =
+      currentImageIndex === 0 ? epaperData.length - 1 : currentImageIndex - 1;
+    setCurrentImageIndex(prevIndex);
+    setSelectedImage(epaperData[prevIndex]);
+  };
+
+  const handleNext = () => {
+    const nextIndex =
+      currentImageIndex === epaperData.length - 1 ? 0 : currentImageIndex + 1;
+    setCurrentImageIndex(nextIndex);
+    setSelectedImage(epaperData[nextIndex]);
+  };
+
+  const isRecentOrCloseToDate = (dateString) => {
+    const currentDate = new Date();
+    const epaperDate = new Date(dateString);
+    const differenceInMs = Math.abs(currentDate - epaperDate);
+    const differenceInDays = differenceInMs / (1000 * 60 * 60 * 24);
+    return differenceInDays <= 7;
+  };
+
+  const openModal = () => {
+    setModalOpen(true); // Set modal state to open
+    setSelectedImage(currentImage); // Set selected image data
+  };
+
+  const closeModal = () => {
+    setModalOpen(false); // Set modal state to close
+  };
+
+  const handleBackdropClick = (e) => {
+    if (e.target.classList.contains("modal-backdrop")) {
+      setModalOpen(false);
+    }
+  };
+
+  const [value, setValue] = useState(new Date());
+
+  const handleDateChange = (date) => {
+    // Adjusting the date to local time zone before formatting
+    const adjustedDate = new Date(
+      date.getTime() - date.getTimezoneOffset() * 60000
+    );
+    const formattedDate = adjustedDate.toISOString().substr(0, 10);
+    setValue(adjustedDate); // Update the state with adjustedDate
+    console.log("Selected date:", formattedDate);
+
+    // Constructing the URL using the formatted date
+    const dateWiseEpaper = `https://backoffice.ajkal.us/date-epapers/${formattedDate}`;
+    console.log("URL:", dateWiseEpaper);
+
+    // You can perform additional actions with the formatted date here if needed
+  };
+
   return (
     <div className="container">
       <div className="row">
+        {/* Side Bar Area */}
         <div className="col-lg-2 px-0 shadow-sm">
           <div className="">
             <div className="mt-2">
@@ -143,53 +132,128 @@ const EPaper = () => {
               )}
             </div>
             <div>
-              <div>
-                {loading ? ( // Render skeleton loader while loading
-                  <div>
-                    <Skeleton height={250} />
-                    <Skeleton height={25} width={250} count={2} />
-                  </div>
-                ) : (
-                  bannerData.map((image, index) => (
-                    <div key={index}>
-                      <Link to={`/news/${image.id}`}>
-                        <div className="card shadow-none border-0 mb-2">
-                          <div className="card-body p-0">
-                            <div className="py-2 px-3 text-black border text-center epaper-feature-box">
-                              <p className="mb-0 text-white">
-                                {image.news_title.slice(0, 20)}...
-                              </p>
-                              <p
-                                className="mb-0 text-info"
-                                style={{ fontSize: "10px" }}
-                              >
-                                <BanglaTimeAgo
-                                  postTime={image.news_time}
-                                ></BanglaTimeAgo>
-                              </p>
-                            </div>
-                            <div className="d-flex flex-column justify-content-center align-items-center">
-                              <LazyLoadImage
-                                alt={image.news_title}
-                                className="img-fluid shadow-sm w-100 pt-0"
-                                effect="blur"
-                                loading="lazy"
-                                src={`https://ajkal.goexpressus.com/images/${image.title_img}`}
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </Link>
-                    </div>
-                  ))
-                )}
+              {/* Sidebar Advertisement */}
+              <div className="mb-2">
+                <img
+                  className="img-fluid "
+                  src="https://i.pinimg.com/originals/06/9d/61/069d617dca720be2d65014963515d28e.gif"
+                  alt=""
+                />
               </div>
+              <div className="mb-2">
+                <img
+                  className="img-fluid "
+                  src="https://i.pinimg.com/originals/6b/09/f8/6b09f8c066f90cc82af0b9f99cb401d5.gif"
+                  alt=""
+                />
+              </div>
+              <div className="mb-2">
+                <img
+                  className="img-fluid "
+                  src="https://vriddle.com/wp-content/uploads/2018/04/JScrew-ice-cream-email-template.gif"
+                  alt=""
+                />
+              </div>
+              <div className="mb-2">
+                <img
+                  className="img-fluid "
+                  src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/cdd8bd99001381.5ee904eb9b5ca.gif"
+                  alt=""
+                />
+              </div>
+              {/* Sidebar Advertisement End */}
             </div>
           </div>
         </div>
+        {/* Main Epaper Area */}
         <div className="col-lg-8 px-0 pb-3">
-          <EpaperGallary epaperData={epaperData}></EpaperGallary>
+          <div>
+            {epaperData.length > 0 && (
+              <div className="epaper-slider-container">
+                <img
+                  className="epaper-image img-fluid"
+                  src={`https://ajkal.us/img/epaper/${currentImage.epaper_image}`}
+                  alt=""
+                  onClick={openModal}
+                />
+              </div>
+            )}
+            <div className="d-flex justify-content-between align-items-center pt-2 px-5">
+              <button className="epaper-next" onClick={handlePrevious}>
+                <div className="d-flex align-content-center">
+                  <p className="mb-0">
+                    <FaArrowLeftLong className="pe-2 mb-0 pb-0" size={25} />
+                  </p>
+                  <p className="mb-0">আগের পাতা</p>
+                </div>
+              </button>
+              <p className="mb-0">আগে ও পরের পাতা দেখতে ক্লিক করুন।</p>
+              <button className="epaper-next" onClick={handleNext}>
+                <div className="d-flex align-content-center">
+                  <p className="mb-0">পরের পাতা</p>
+                  <p className="mb-0">
+                    <FaArrowRightLong className="ps-2 mb-0 pb-0" size={25} />
+                  </p>
+                </div>
+              </button>
+            </div>
+            {/* Conditionally render modal based on state */}
+            {modalOpen && (
+              <div
+                className="modal-backdrop fade show"
+                style={{ opacity: 1, backgroundColor: "rgba(0, 0, 0, 0.7)" }}
+                onClick={handleBackdropClick}
+              >
+                {/* Close modal when clicking outside of it */}
+                <div className="modal fade show" style={{ display: "block" }}>
+                  <div className="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h5 className="modal-title" id="modalTitleId">
+                          {selectedImage.name}
+                        </h5>
+                        <button
+                          type="button"
+                          className="btn-close"
+                          onClick={closeModal}
+                        />
+                      </div>
+                      <div className="modal-body">
+                        {/* Render selected image in modal body */}
+                        {selectedImage && (
+                          <img
+                            src={`https://ajkal.us/img/epaper/${selectedImage.epaper_image}`}
+                            alt=""
+                            className="img-fluid"
+                          />
+                        )}
+                      </div>
+                      <div className="modal-footer">
+                        <button
+                          type="button"
+                          className="btn btn-secondary"
+                          onClick={closeModal}
+                        >
+                          Close
+                        </button>
+                        <button
+                          className="epaper-next"
+                          onClick={handlePrevious}
+                        >
+                          Previous
+                        </button>
+                        <button className="epaper-next" onClick={handleNext}>
+                          Next
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
+        {/* Right Side Sidebar Area */}
         <div className="col-lg-2 px-0 shadow-sm">
           <div className="mt-2">
             <PostHeader title="সকল পাতা" />
@@ -208,16 +272,16 @@ const EPaper = () => {
                   epaperData.map((item, index) => (
                     <a
                       key={index}
-                      href={item.link}
+                      href={`https://backoffice.ajkal.us/epaper-detail/${item.id}`}
                       className="epaper-sidebar-img"
                     >
                       <img
-                        className="img-fluid w-100"
-                        src={item.imageURL}
-                        alt={item.altText}
+                        className="img-fluid w-100 mt-4"
+                        src={`https://ajkal.us/img/epaper/${item.epaper_image}`}
+                        alt=""
                       />
                       <p className="mb-0 text-center epaper-sidebar-title">
-                        {item.title}
+                        {item.name}
                       </p>
                     </a>
                   ))
@@ -225,7 +289,14 @@ const EPaper = () => {
               </div>
             </div>
             <div className="pb-2">
-              <CalendarEngliash />
+              <p className="text-center fw-bold pt-4">আজকের ইপেপার</p>
+              <div className="react-calendar-box">
+                <Calendar
+                  onChange={handleDateChange}
+                  value={value}
+                  className="border-0 shadow-sm"
+                />
+              </div>
             </div>
           </div>
         </div>

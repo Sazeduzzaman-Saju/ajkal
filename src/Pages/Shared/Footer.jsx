@@ -116,7 +116,7 @@ const Footer = () => {
               </ul>
             </div>
             <div className="col-lg-2">
-              <div className="pt-5">
+              <div className="pt-1">
                 <h4 className="ps-0 text-white pt-1">ডাউনলোড করুন।</h4>
                 <span className="border-devider"></span>
               </div>

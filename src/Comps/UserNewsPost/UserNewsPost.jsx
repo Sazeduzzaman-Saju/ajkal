@@ -128,7 +128,7 @@ const UserNewsPost = () => {
         </div>
         {/* ক্যাটেগরি */}
         <div className="col-lg-6 mb-3">
-          <label htmlFor="">ক্যাটেগরি</label>
+          <label htmlFor="">ক্যাটাগরিস</label>
           <select
             className="form-select"
             aria-label="Default select example"
