@@ -26,6 +26,7 @@ import UserPostStatus from '../Pages/UserAccounts/UserPostStatus/UserPostStatus'
 import NewsVideos from '../Pages/NewsVideos/NewsVideos';
 import EPaper from '../Pages/EPaper/EPaper';
 import { useEffect } from 'react';
+import DateEpaper from '../Pages/EPaper/DateEpaper';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -105,6 +106,10 @@ const router = createBrowserRouter([
       {
         path: '/epaper',
         element: <EPaper />,
+      },
+      {
+        path: '/date-wise-epaper',
+        element: <DateEpaper />,
       },
     ],
   },

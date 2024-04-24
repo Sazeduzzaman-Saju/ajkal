@@ -1,12 +1,49 @@
-.epaper-all::-webkit-scrollbar {
+.epaper-thumbnail-scroll {
+  height: 80em;
+  overflow: auto;
+  width: 100%;
+  overflow-x: hidden;
+}
+.slick-prev:before,
+.slick-next:before {
+  font-family: "slick";
+  font-size: 25px !important;
+  line-height: 1;
+  opacity: 0.75;
+  color: #165588 !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.menu-epaper {
+  height: 22em;
+  overflow-x: hidden;
+  overflow: auto;
+}
+.menu-epaper::-webkit-scrollbar {
   width: 0.5em !important;
 }
 
-.epaper-all::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3) !important;
+.menu-epaper::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(224, 200, 200, 0.3) !important;
 }
 
-.epaper-all::-webkit-scrollbar-thumb {
+.menu-epaper::-webkit-scrollbar-thumb {
+  background-color: var(--main) !important;
+  outline: 1px solid slategrey !important;
+}
+.slick-next:before {
+  position: relative;
+  right: 18px;
+}
+.epaper-thumbnail-scroll::-webkit-scrollbar {
+  width: 0.5em !important;
+}
+
+.epaper-thumbnail-scroll::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(224, 200, 200, 0.3) !important;
+}
+
+.epaper-thumbnail-scroll::-webkit-scrollbar-thumb {
   background-color: var(--main) !important;
   outline: 1px solid slategrey !important;
 }
@@ -53,4 +90,24 @@
   margin-bottom: 5px;
   background-color: var(--secondary);
   border: 1px dashed var(--secondary);
+}
+
+.flex-column .slick-list {
+  transform: none !important; /* Reset the transform applied for horizontal layout */
+}
+
+.slick-vertical .slick-slide.slick-current {
+  background-color: red !important;
+  color: white;
+}
+.slick-slide {
+  background-color: transparent !important;
+  color: black;
+}
+.no-data-epaper {
+  height: 102vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
