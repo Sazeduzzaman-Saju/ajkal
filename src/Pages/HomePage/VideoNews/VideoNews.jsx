@@ -62,9 +62,12 @@ const VideoNews = () => {
                         src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
                         alt=""
                       />
-                      <h5 className="mb-1 main-color pt-3">
-                        {data.news_title.slice(0, 50)}
-                      </h5>
+                      <div className="vide-feature-title">
+                        <h5 className="mb-1 text-white pt-3">
+                          {data.news_title &&
+                            data.news_title.split(" ").slice(0, 7).join(" ")}
+                        </h5>
+                      </div>
                     </div>
                   </div>
                 </Link>
@@ -72,46 +75,50 @@ const VideoNews = () => {
           )}
         </div>
         <div className="col-lg-6">
-          {loading ? (
-            // Skeleton loader for other videos
-            Array.from({ length: 5 }).map((_, index) => (
-              <div className="text-muted" key={index}>
-                <div className="d-flex align-items-center mb-1">
-                  <div className="video-side">
-                    <MdPlayCircleFilled />
-                  </div>
-                  <div className="rounded-1">
-                    <Skeleton height={100} width={150} />
-                  </div>
-                  <div className="ps-3">
-                    <Skeleton height={30} width={200} />
-                  </div>
-                </div>
-              </div>
-            ))
-          ) : (
-            // Render other videos
-            videoNews.map((data) => (
-              <Link to={`/news/${data.id}`} key={data.id} className="text-muted">
-                <div className="d-flex align-items-center mb-1">
-                  <div className="video-side">
-                    <MdPlayCircleFilled />
-                  </div>
-                  <div className="rounded-1">
-                    <img
-                      className="rounded-2"
-                      width={150}
-                      src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
-                      alt=""
-                    />
-                  </div>
-                  <div className="ps-3">
-                    <h5 className="mb-1 main-color">{data.news_title}</h5>
+          {loading
+            ? // Skeleton loader for other videos
+              Array.from({ length: 5 }).map((_, index) => (
+                <div className="text-muted" key={index}>
+                  <div className="d-flex align-items-center mb-3">
+                    <div className="video-side">
+                      <MdPlayCircleFilled />
+                    </div>
+                    <div className="rounded-1">
+                      <Skeleton height={100} width={150} />
+                    </div>
+                    <div className="ps-3">
+                      <Skeleton height={30} width={200} />
+                    </div>
                   </div>
                 </div>
-              </Link>
-            ))
-          )}
+              ))
+            : // Render other videos
+              videoNews.map((data) => (
+                <Link
+                  to={`/news/${data.id}`}
+                  key={data.id}
+                  className="text-muted"
+                >
+                  <div className="d-flex align-items-center mb-3">
+                    <div className="video-side">
+                      <MdPlayCircleFilled />
+                    </div>
+                    <div className="rounded-1">
+                      <img
+                        className="rounded-2"
+                        width={150}
+                        src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                        alt=""
+                      />
+                    </div>
+                    <div className="ps-3">
+                      <div className="">
+                        <h5 className="mb-1 main-color">{data.news_title}</h5>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              ))}
         </div>
       </div>
     </div>

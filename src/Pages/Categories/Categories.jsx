@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Categories.css";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLocation, useLoaderData } from "react-router-dom";
 import CategoryFeature from "./CategoryFeature/CategoryFeature";
 import NewsSidebar from "../../Comps/NewsSidebar/NewsSidebar";
 import PageHelmet from "../../Comps/PageHelmet/PageHelmet";
@@ -9,15 +9,20 @@ import CommonLoader from "../../Comps/CommonLoader/CommonLoader";
 import PostHeader from "../../Comps/PostHeader/PostHeader";
 import { FacebookEmbed, YouTubeEmbed } from "react-social-media-embed";
 import axios from "axios";
+import SanitizedParagraph from "../../Comps/SanitizedParagraph";
 
 const Categories = () => {
   const [addvertisement, setAddvertisement] = useState([]);
-  const addUrl = "https://news.goexpressus.com/ad/all";
+  const [showMoreCount, setShowMoreCount] = useState(5); // Initial count
+  const singleNews = useLoaderData();
+  const location = useLocation();
+
+  // Fetch advertisement data
   useEffect(() => {
+    const addUrl = "https://news.goexpressus.com/ad/all";
     axios
       .get(addUrl)
       .then((response) => {
-        // Check if the response contains an array
         if (Array.isArray(response.data)) {
           setAddvertisement(response.data);
         } else if (Array.isArray(response.data.data)) {
@@ -30,19 +35,23 @@ const Categories = () => {
         }
       })
       .catch((error) => {
-        console.error("Error fetching data:", error);
+        console.error("Error fetching advertisement data:", error);
       });
   }, []);
-  const singleNews = useLoaderData();
-  const categoryBanglaName =
-    singleNews && singleNews.data.length > 0
-      ? singleNews.data[0].category_name_bangla
-      : "";
 
+  // Reset showMoreCount when location (pathname) changes
+  useEffect(() => {
+    setShowMoreCount(5); // Reset count to initial value
+  }, [location.pathname]);
+
+  // Handle "Load More" button click
+  const handleShowMore = () => {
+    setShowMoreCount((prevCount) => prevCount + 5); // Increment count by 5
+  };
   return singleNews ? (
     <div className="container">
       <PageHelmet
-        title={categoryBanglaName}
+        title={singleNews.categoryBanglaName}
         type="article"
         image="https://i.ibb.co/6D35WjX/logo.png" // Replace with actual image URL
         url={window.location.href} // Replace with actual page URL
@@ -67,44 +76,55 @@ const Categories = () => {
           <hr />
           <div className="row">
             <div className="col-lg-8">
-              {singleNews.data.map((data) => (
-                <Link to={`/news/${data.id}`} key={data.id}>
-                  <div className="row align-items-center py-3">
-                    <div className="col-sm-7">
-                      <div>
-                        <h4 className="main_color">{data.news_title}</h4>
-                        <p
-                          className="text-muted"
-                          dangerouslySetInnerHTML={{
-                            __html: data.news_detail.slice(0, 198),
-                          }}
-                        ></p>
+              {singleNews &&
+                singleNews.data.slice(0, showMoreCount).map((data) => (
+                  <Link to={`/news/${data.id}`} key={data.id}>
+                    <div className="row align-items-center py-3">
+                      <div className="col-sm-7">
+                        <div>
+                          <h4 className="main_color">{data.news_title}</h4>
 
-                        <p className="text-danger">আরও পড়ুন...</p>
+                          <p className="text-muted">
+                            <SanitizedParagraph
+                              className="text-muted"
+                              htmlContent={data.news_detail
+                                .split(" ")
+                                .slice(0, 20)
+                                .join(" ")}
+                            ></SanitizedParagraph>
+                          </p>
+
+                          <p className="text-danger">আরও পড়ুন...</p>
+                        </div>
+                      </div>
+                      <div className="col-sm-5">
+                        <div>
+                          <img
+                            src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                            className="img-fluid rounded-1"
+                            alt="{data.news_title}"
+                          />
+                        </div>
                       </div>
                     </div>
-                    <div className="col-sm-5">
-                      <div>
-                        <img
-                          src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
-                          className="img-fluid rounded-1"
-                          alt="{data.news_title}"
-                        />
-                      </div>
+                  </Link>
+                ))}
+              {showMoreCount < (singleNews?.data?.length || 0) && (
+                <div className="row pt-3">
+                  <div className="col-lg-12 pt-3 pb-5">
+                    <div className="d-flex justify-content-lg-start justify-content-center align-items-center ">
+                      <button
+                        className="submit-btn-one rounded-pill px-5"
+                        onClick={handleShowMore}
+                      >
+                        আরও দেখুন
+                      </button>
                     </div>
-                  </div>
-                </Link>
-              ))}
-              <div className="row pt-3">
-                <div className="col-lg-12 pt-3 pb-5">
-                  <div className="d-flex justify-content-lg-start justify-content-center align-items-center ">
-                    <button className="submit-btn-one rounded-pill px-5">
-                      আরও দেখুন
-                    </button>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
+
             <div className="col-lg-4">
               <div className="mt-5">
                 <PostHeader title="বিজ্ঞাপন কর্নার" />

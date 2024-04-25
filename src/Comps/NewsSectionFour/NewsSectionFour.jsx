@@ -20,9 +20,7 @@ const NewsSectionThree = ({ dhormo, loading }) => {
                   <div className="card border-0">
                     <div className="card-body p-0">
                       <img
-                        className="img-fluid"
-                        height={235}
-                        style={{ objectFit: "fit" }}
+                        className="img-fluid dhormo-feature-image"
                         src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
                         alt=""
                       />
@@ -56,15 +54,14 @@ const NewsSectionThree = ({ dhormo, loading }) => {
                 <div className="d-flex align-items-center mb-3">
                   <div className="">
                     <img
-                      className="rounded-2"
-                      width={90}
+                      className="rounded-2 submenu-category"
                       src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
                       alt=""
                     />
                   </div>
                   <div className="">
-                    <h6 className="mb-0 text-muted fw-semibold ">
-                      {data.news_title}
+                    <h6 className="mb-0 text-muted fw-semibold ps-4">
+                      {data && data.news_title.split(" ").slice(0, 7).join(" ")}
                     </h6>
                   </div>
                 </div>

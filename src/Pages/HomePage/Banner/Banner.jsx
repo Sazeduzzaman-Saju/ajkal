@@ -71,11 +71,9 @@ export default function Banner() {
             delay: 6000,
             disableOnInteraction: false,
           }}
-          pagination={{
-            clickable: true,
-          }}
+          pagination={false} // Set pagination to false
           navigation={false}
-          effect="fade"
+          effect="fade" // Add fade effect for transition
           modules={[Autoplay, Pagination, EffectFade]}
           onAutoplayTimeLeft={onAutoplayTimeLeft}
           className="mySwiper"
@@ -92,12 +90,12 @@ export default function Banner() {
                 <div className="overlay">
                   <Link to={`/news/${slide.id}`} className="text-white">
                     <div className="container">
-                      <h1 className="mb-0 fw-bold banner_title w-75">
+                      <h1 className="mb-0 fw-bold banner_title">
                         {slide.news_title || (
                           <Skeleton count={3} />
                         )}
                       </h1>
-                      <h2 className="mb-0 pt-2">
+                      <h2 className="mb-0 pt-2 banner-description">
                         {slide.news_short_brief.slice(0, 97)}
                       </h2>
                       <p className="w-50 pt-5 bannger-description">

@@ -57,7 +57,7 @@ function EPaper() {
           <div className="mt-4">
             <div className="dropdown px-0">
               <Link
-                to={"/date-wise-epaper"}
+                to={"/epaper-archive"}
                 className="btn btn-danger rounded-0 w-100 fw-bold"
               >
                 আগের পত্রিকা

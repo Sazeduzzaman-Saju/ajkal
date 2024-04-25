@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { PiAirplayFill } from "react-icons/pi";
 import BanglaTimeAgo from "../BanglaTime/BanglaTimeDiffrence";
+import SanitizedParagraph from "../SanitizedParagraph";
 
 const RelatedNews = ({ singleNewsDetails }) => {
   const [reletedNews, setReletedNews] = useState([]);
@@ -73,17 +74,18 @@ const RelatedNews = ({ singleNewsDetails }) => {
               </div>
               <div className="post-content">
                 <div className="category">{news.category_name_bangla}</div>
-                <h1 className="title">{news.news_title.slice(0, 22)}</h1>
+                <h1 className="title">{news.news_title.split(' ').slice(0, 7).join(' ')}</h1>
                 <h2 className="sub-title mb-0 pb-0">
-                  {news.news_short_brief.slice(0, 40)}{" "}
+                  {news.news_short_brief.split(' ').slice(0, 8).join(' ')} ..
                   <span className="text-primary"></span>
                 </h2>
                 <p
                   className={`description ${
                     hoveredCard === news.id ? "visible" : ""
                   }`}
-                >
-                  {news.news_detail.slice(3, 100)}
+                  >
+                  
+                  <SanitizedParagraph htmlContent={news.news_detail.split(' ').slice(0, 15).join(' ')} />
                 </p>
                 <div className="post-meta mt-1">
                   <span className="timestamp">

@@ -1,59 +1,68 @@
 @keyframes ring-blink {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(1.2);
-        opacity: 0.8;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .is_video_icon {
-    position: absolute;
-    background: #f22228;
-    color: #fff;
-    text-align: center;
-    padding: 3px 10px 3px;
-    top: 280px;
-    right: 20px;
-    z-index: 1;
-    font-size: 30px;
-    border-radius: 100%;
-    box-shadow: rgb(230, 8, 8) 0px 8px 30px;
-    animation: ring-blink 2s infinite;
+  position: absolute;
+  background: #f22228;
+  color: #fff;
+  text-align: center;
+  padding: 3px 10px 3px;
+  top: 280px;
+  right: 20px;
+  z-index: 1;
+  font-size: 30px;
+  border-radius: 100%;
+  box-shadow: rgb(230, 8, 8) 0px 8px 30px;
+  animation: ring-blink 2s infinite;
 }
 
 .video-side {
-    position: relative;
-    background: var(--main);
-    color: #fff;
-    text-align: center;
-    padding: 3px 10px 5px;
-    top: 0;
-    right: -100px;
-    z-index: 1;
-    font-size: 20px;
-    border-radius: 100%;
-    box-shadow: rgb(230, 8, 8) 0px 8px 30px;
-    animation: ring-blink 2s infinite;
+  position: relative;
+  background: var(--main);
+  color: #fff;
+  text-align: center;
+  padding: 3px 10px 5px;
+  top: 0;
+  right: -100px;
+  z-index: 1;
+  font-size: 20px;
+  border-radius: 100%;
+  box-shadow: rgb(230, 8, 8) 0px 8px 30px;
+  animation: ring-blink 2s infinite;
 }
 
 @keyframes ring-blink {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(1.2);
-        opacity: 0.8;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.vide-feature-title {
+  background: #165588;
+  padding: 10px;
+  margin-top: -5px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  color: white;
 }

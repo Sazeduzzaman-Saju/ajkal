@@ -34,10 +34,10 @@ const CategoryFeature = ({ singleNews }) => {
                     </div>
                     <div className="p-2">
                       <h5 className="pt-2 main_color">
-                        {data.news_title.slice(0, 24)}
+                        {data.news_title.split(' ').slice(0, 8).join(' ')}
                       </h5>
                       <p className="">
-                        {data.news_short_brief.slice(0, 59)}...
+                        {data.news_short_brief.split(' ').slice(0, 10).join(' ')}...
                       </p>
                       <p
                         className="text-muted mb-1"

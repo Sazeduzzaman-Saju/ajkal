@@ -81,7 +81,22 @@
 .showcase .overlay {
   width: 100%;
   height: 600px;
-  background-color: #1655889e;
+  /* background-color: #1655889e; */
+  background-image: linear-gradient(
+    to bottom,
+    #ffffff00 0%,
+    #dbd7f118 0%,
+    #b6b1e262 0%,
+    #165588 80%,
+    #165588 0%,
+    #165588 86%,
+    #165588 62%,
+    #165588 82%,
+    #165588 64%,
+    #165588 106%,
+    #165588 89%,
+    #165588 100%
+  );
   position: absolute;
   top: 0;
   left: 0;
@@ -99,6 +114,12 @@
 .showcase p {
   margin-top: 8px;
   font-size: 1.2em;
+}
+.banner_title {
+  width: 60%;
+}
+.banner-description{
+  width: 50%;
 }
 
 @media screen and (max-width: 575.98px) {

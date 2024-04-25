@@ -52,7 +52,7 @@ const NewsSidebar = () => {
         sorboshesData.map((data, index) => (
           <div className="col-lg-12 " key={index}>
             <Link to={`/news/${data.id}`}>
-              <div className="card mb-1 border-0 shadow-sm rounded-2">
+              <div className="card mb-3 border-0 shadow-sm rounded-2">
                 <div className="card-body p-0 d-flex align-items-center">
                   <div className="pothito-img w-25 h-100 ">
                     <img
@@ -68,7 +68,7 @@ const NewsSidebar = () => {
                         {data.category_name_bangla}
                       </h5>
                       <p className="m-0 text-muted">
-                        {data.news_title.slice(0, 38)}
+                        {data.news_title.split(' ').slice(0, 4).join(' ')}
                         <span className="text-primary">...</span>
                       </p>
                     </div>

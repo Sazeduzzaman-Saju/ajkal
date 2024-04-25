@@ -37,53 +37,51 @@ const FeatureNews = () => {
 
   return (
     <div className="row">
-      {loading ? (
-        Array.from({ length: 4 }).map((_, index) => (
-          <div className="col-lg-3" key={index}>
-            <div className="card rounded-1 border-0 shadow-sm feature-cards">
-              <div className="card-body">
-                <Skeleton height={20} />
-                <Skeleton height={30} count={2} />
-              </div>
-              <Skeleton height={200} />
-            </div>
-          </div>
-        ))
-      ) : (
-        spotlightNews.map((data, index) => (
-          <div className="col-lg-3" key={index}>
-            <Link to={`/news/${data.id}`}>
+      {loading
+        ? Array.from({ length: 4 }).map((_, index) => (
+            <div className="col-lg-3" key={index}>
               <div className="card rounded-1 border-0 shadow-sm feature-cards">
                 <div className="card-body">
-                  <div className="d-flex justify-content-between align-items-center">
-                    <p className="secondary-color">
-                      {data.category_name_bangla}
-                    </p>
-                    <p className="badge bg-light text-black">
-                      <BanglaTimeAgo postTime={data.news_time} />
+                  <Skeleton height={20} />
+                  <Skeleton height={30} count={2} />
+                </div>
+                <Skeleton height={200} />
+              </div>
+            </div>
+          ))
+        : spotlightNews.map((data, index) => (
+            <div className="col-lg-3" key={index}>
+              <Link to={`/news/${data.id}`} target='_blank'>
+                <div className="card rounded-1 border-0 shadow-sm feature-cards">
+                  <div className="card-body">
+                    <div className="d-flex justify-content-between align-items-center">
+                      <p className="secondary-color">
+                        {data.category_name_bangla}
+                      </p>
+                      <p className="badge bg-light text-black">
+                        <BanglaTimeAgo postTime={data.news_time} />
+                      </p>
+                    </div>
+                    <h5 className="main-color" style={{ height: "50px" }}>
+                      {data.news_title.split(" ").slice(0, 10).join(" ")}
+                    </h5>
+                    <p className="card-text text-muted" style={{ height: "70px" }}>
+                      {/* {data?.news_short_brief?.length > 70 ? `${data.news_short_brief.slice(0, 70)}...` : data?.news_short_brief} */}
+
+                      {data.news_short_brief.split(" ").slice(0, 10).join(" ")}
                     </p>
                   </div>
-                  <h5 className="main-color">
-                    {data.news_title.slice(0, 28)}
-                  </h5>
-                  <p className="card-text text-muted">
-                    {data?.news_short_brief?.length > 70
-                      ? `${data.news_short_brief.slice(0, 70)}...`
-                      : data?.news_short_brief}
-                  </p>
+                  <img
+                    src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                    className="card-img-top rounded-0"
+                    alt="Card Image"
+                    loading="lazy"
+                    style={{ height: "200px" }}
+                  />
                 </div>
-                <img
-                  src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
-                  className="card-img-top rounded-0"
-                  alt="Card Image"
-                  loading="lazy"
-                  style={{ height: "200px" }}
-                />
-              </div>
-            </Link>
-          </div>
-        ))
-      )}
+              </Link>
+            </div>
+          ))}
     </div>
   );
 };

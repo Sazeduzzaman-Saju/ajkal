@@ -38,7 +38,7 @@ const BanglaTimeAgo = ({ postTime }) => {
   }, [postTime]);
 
   return (
-    <span>{timeDifference > 0 ? <BanglaTimeDifference days={timeDifference} /> : 'এই মুহূর্তে'}</span>
+    <span className='fw-bold'>{timeDifference > 0 ? <BanglaTimeDifference days={timeDifference} /> : 'এই মুহূর্তে'}</span>
   );
 };
 

@@ -59,9 +59,9 @@ const CategoryNewsOneData = () => {
                 <div className="card ctn_one">
                   <div className="card-body p-0">
                     <img
-                      className="img-fluid"
-                      height={310}
-                      style={{ objectFit: "fit" }}
+                      className="img-fluid bottom-there-cat"
+                      // height={310}
+                      // style={{ objectFit: "fit" }}
                       src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
                       alt=""
                     />
@@ -73,7 +73,7 @@ const CategoryNewsOneData = () => {
                           {data.category_name_bangla}
                         </p>
                         <h5 className="mb-0 text-white">
-                          {data.news_title.slice(0, 28)}
+                          {data.news_title.split(' ').slice(0, 7).join(' ')}
                         </h5>
                       </Link>
                     </div>
@@ -105,7 +105,7 @@ const CategoryNewsOneData = () => {
                 <div className="card border-0 shadow-sm mb-3" key={data.id}>
                   <Link to={`/news/${data.id}`}>
                     <div className="card-body ctnone_regular-news d-flex p-0 align-items-center ">
-                      <div className="w-50">
+                      <div>
                         <img
                           className="rounded-1"
                           width={150}

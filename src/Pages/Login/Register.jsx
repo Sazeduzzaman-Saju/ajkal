@@ -33,7 +33,7 @@ const Register = () => {
         throw new Error("Failed to create user");
       }
       toast.success("User created successfully");
-      navigate("/login"); // Use Navigate function to navigate
+      navigate("/user"); // Use Navigate function to navigate
     } catch (error) {
       toast.error("Failed to create user:", error.message);
       // Handle error here

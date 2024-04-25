@@ -13,10 +13,15 @@
   border-radius: 3px !important;
   border: none !important;
 }
-
-.ctn_one {
-  height: 150px !important;
-  margin-bottom: 100px;
+.ctn_one{
+  margin-bottom: 30px;
+}
+.ctn_one img {
+  height: 250px !important;
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  object-fit: cover;
 }
 
 .ctnone_regular-news {

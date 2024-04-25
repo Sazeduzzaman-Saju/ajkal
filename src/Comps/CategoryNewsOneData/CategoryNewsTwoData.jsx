@@ -105,7 +105,7 @@ const CategoryNewsThreeData = () => {
                 <div className="card border-0 shadow-sm mb-3" key={data.id}>
                   <Link to={`/news/${data.id}`}>
                     <div className="card-body ctnone_regular-news d-flex p-0 align-items-center ">
-                      <div className="w-50">
+                      <div>
                         <img
                           className="rounded-1"
                           width={150}

@@ -104,10 +104,10 @@ const SorboshesKhobor = () => {
           </div>
           <div className="col-lg-4">
             <PostHeader title="সর্বাধিক পঠিত"></PostHeader>
-            <div style={{ borderBottom: "2px solid var(--secondary)" }}>
+            {/* <div style={{ borderBottom: "2px solid var(--secondary)" }}>
               <h5 className="text-muted">সর্বাধিক পঠিত</h5>
-            </div>
-            <div className="row mt-3">
+            </div> */}
+            <div className="row">
               {sorboshesPothitoData.map((data, index) => (
                 <div className="col-lg-12 mt-2" key={index}>
                   <Link to={`/news/${data.id}`}>
@@ -127,7 +127,7 @@ const SorboshesKhobor = () => {
                               {data.category_name_bangla}
                             </h5>
                             <p className="m-0 text-muted">
-                              {data.news_title.slice(0, 38)}
+                              {data.news_title.split(" ").slice(0, 30).join(" ")}
                               <span className="text-primary">...</span>
                             </p>
                           </div>

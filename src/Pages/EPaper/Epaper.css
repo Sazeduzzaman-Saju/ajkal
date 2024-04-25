@@ -33,7 +33,24 @@
 }
 .slick-next:before {
   position: relative;
-  right: 18px;
+  right: 40px;
+  background: #165588;
+  padding: 20px 10px;
+  color: white !important;
+  border-radius: 5px;
+}
+.slick-prev{
+  position: absolute !important;
+  left: 0 !important;
+  z-index: 1;
+}
+.slick-prev:before{
+  position: relative;
+  left: 0px;
+  background: #165588;
+  padding: 20px 10px;
+  color: white !important;
+  border-radius: 5px;
 }
 .epaper-thumbnail-scroll::-webkit-scrollbar {
   width: 0.5em !important;

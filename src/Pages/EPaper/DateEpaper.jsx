@@ -5,11 +5,17 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import Calendar from "react-calendar";
 import axios from "axios";
+import { Button, Modal } from "bootstrap";
 
 function DateEpaper() {
-  const [value, setValue] = useState(new Date());
+  const [value, setValue] = useState(""); // Updated to an empty string initially
   const [loading, setLoading] = useState(true);
   const [epaperData, setEpaperData] = useState([]);
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const handleDateChange = async (date) => {
     const year = date.getFullYear();
@@ -39,6 +45,16 @@ function DateEpaper() {
     }
   };
 
+  useEffect(() => {
+    // Set default date to current date
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, "0"); // Months are zero-based
+    const day = String(currentDate.getDate()).padStart(2, "0");
+    const formattedDate = `${year}-${month}-${day}`;
+    setValue(formattedDate);
+    handleDateChange(currentDate);
+  }, []); // Empty dependency array ensures this effect runs only once on component mount
   return (
     <div className="container slider-container">
       <div className="row">
@@ -91,9 +107,29 @@ function DateEpaper() {
                     className="img-fluid"
                     src={`https://ajkal.us/img/epaper/${url.epaper_image}`}
                     alt={`https://ajkal.us/img/epaper/${url.epaper_image}`}
+                    onClick={handleShow}
+                    type="button"
                   />
                 </div>
               ))}
+              {/* Modal */}
+              {/* {epaperData.map((url, index) => (
+                  <Modal show={show} onHide={handleClose} key={index}>
+                    <Modal.Header closeButton>
+                      <Modal.Title>Modal heading</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      Woohoo, you are reading this text in a modal!
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose}>
+                        Close
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
+                <div key={index}>
+                </div>
+              ))} */}
             </Slider>
           </div>
         ) : (

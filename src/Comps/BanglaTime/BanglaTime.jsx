@@ -50,7 +50,7 @@ const BanglaDateTime = ({ dateTime }) => {
   // Format the provided date and time to Bangla
   const banglaDateTime = formatDateToBangla(dateTime);
 
-  return <span>{banglaDateTime.slice(0,24)}</span>;
+  return <span className='fw-bold '>{banglaDateTime.slice(0,24)}</span>;
 };
 
 export default BanglaDateTime;

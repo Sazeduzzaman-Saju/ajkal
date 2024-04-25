@@ -10,6 +10,7 @@ import PageHelmet from "../../Comps/PageHelmet/PageHelmet";
 import axios from "axios";
 import PostHeader from "../../Comps/PostHeader/PostHeader";
 import { FacebookEmbed, YouTubeEmbed } from "react-social-media-embed";
+import SanitizedParagraph from "../../Comps/SanitizedParagraph";
 
 const NewsDetails = () => {
   const singleNews = useLoaderData();
@@ -144,12 +145,15 @@ const NewsDetails = () => {
               </div>
               {/* News Details */}
               {/* <p>{singleNewsDetails.news_detail.slice(0, 250)}</p> */}
-              <p
+              {/* <p
                 style={{ fontSize: `${fontSize}px`, textAlign: "justify" }}
                 dangerouslySetInnerHTML={{
                   __html: slicedText,
                 }}
-              />
+              /> */}
+              <p>
+              <SanitizedParagraph htmlContent={singleNewsDetails.news_detail} />
+              </p>
               <div className="pb-4 py-3">
                 {addvertisement.map((data) =>
                   // Check if data "ad_category_id" is equal to "2" and status is equal to "1"

@@ -62,7 +62,7 @@ const CategoryNewsTwo = () => {
                     </div>
                     <div className="px-2 py-3">
                       <h5 className="main_color fw-bold ">{news.news_title}</h5>
-                      <p className="mb-0">{news.news_short_brief.slice(0, 125)}...</p>
+                      <p className="mb-0">{news.news_short_brief.split(' ').slice(0, 19).join(' ')}..</p>
                     </div>
                   </div>
                 </div>

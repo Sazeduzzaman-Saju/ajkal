@@ -108,7 +108,7 @@ const router = createBrowserRouter([
         element: <EPaper />,
       },
       {
-        path: '/date-wise-epaper',
+        path: '/epaper-archive',
         element: <DateEpaper />,
       },
     ],
