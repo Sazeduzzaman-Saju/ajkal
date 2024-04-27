@@ -25,7 +25,7 @@ function Header() {
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
     if (!accessToken) {
-      navigate("/"); // Navigate to login if access token is not found
+      // navigate("/login"); // Navigate to login if access token is not found
       return;
     }
 
@@ -182,7 +182,7 @@ function Header() {
                   {addvertisement.map((data) =>
                     // Check if data "ad_category_id" is equal to "2" and status is equal to "1"
                     data.ad_category_id === "2" && data.status === "1" ? (
-                      <Link to={data.ad_link} key={data.id} target="_blank">
+                      <Link to={data.ad_link} key={data.id}>
                         <img
                           className="img-fluid top-add"
                           src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}

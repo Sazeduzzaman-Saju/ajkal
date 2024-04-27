@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { Triangle } from "react-loader-spinner";
 
 const UserNewsPost = () => {
   //   Fetch The Category Data
@@ -68,6 +69,22 @@ const UserNewsPost = () => {
         throw new Error("Access token not found in localStorage");
       }
 
+      // Convert selected images to base64
+      const newsImageFile = data.news_image[0];
+      const thumbnailImageFile = data.thumbnail_image[0];
+      const newsImageBase64 = await convertToBase64(newsImageFile);
+      const thumbnailImageBase64 = await convertToBase64(thumbnailImageFile);
+
+      // console.log('News Image Base64:', newsImageBase64);
+      // console.log('Thumbnail Image Base64:', thumbnailImageBase64);
+
+      // Include base64 data in the form data
+      const formData = {
+        ...data,
+        news_image: newsImageBase64,
+        thumbnail_image: thumbnailImageBase64,
+      };
+
       const response = await fetch(
         "https://news.goexpressus.com/post/add-news",
         {
@@ -76,7 +93,7 @@ const UserNewsPost = () => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${accessToken}`,
           },
-          body: JSON.stringify(data),
+          body: JSON.stringify(formData),
         }
       );
 
@@ -91,6 +108,20 @@ const UserNewsPost = () => {
     }
   };
 
+  // Function to convert file to base64
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        // console.log('File converted to Base64:', reader.result);
+        resolve(reader.result);
+      };
+      reader.onerror = (error) => reject(error);
+    });
+  };
+
+  
   return (
     <form onSubmit={handleSubmit(handlePost)} encType="multipart/form-data">
       <div className="row pt-4">
@@ -212,6 +243,7 @@ const UserNewsPost = () => {
           />
         </div>
         {/* Title */}
+
         <div className="col-lg-4 mb-3">
           <label htmlFor="">নিউজ ইমেজ</label>
           <input
@@ -240,6 +272,7 @@ const UserNewsPost = () => {
             </p>
           )}
         </div>
+
         <div className="col-lg-12 mb-3">
           <label htmlFor="">নিউজ ডিটেইলস</label>
           <textarea

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import PageTitle from "../../Comps/PageTitle/PageTitle";
 import "./UserAccounts.css";
 import axios from "axios";
+import { Triangle } from "react-loader-spinner";
 
 const UserAccounts = () => {
   const [userData, setUserData] = useState(null);
@@ -38,6 +39,30 @@ const UserAccounts = () => {
   const address = userData?.address;
   const email = userData?.email;
   // User Data End
+  if (loading) {
+    return (
+      <div className="">
+        <div
+          className="d-flex justify-content-center align-items-center"
+          style={{ height: "100vh" }}
+        >
+          <Triangle
+            height={80}
+            width={80}
+            color={"#4fa94d"}
+            ariaLabel={"circles-loading"}
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
   return (
     <div>
       <PageTitle title="আপনার একাউন্ট" description="Text" />

@@ -4,11 +4,11 @@ import { FaFacebookF, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const navigate = useNavigate();
-  
+
   const {
     register,
     handleSubmit,
@@ -17,7 +17,6 @@ const Register = () => {
 
   const handleSignUp = async (data) => {
     try {
-  
       const response = await fetch(
         "https://news.goexpressus.com/auth/registration",
         {
@@ -33,12 +32,13 @@ const Register = () => {
         throw new Error("Failed to create user");
       }
       toast.success("User created successfully");
-      navigate("/user"); // Use Navigate function to navigate
+      // After successful registration, navigate to the user dashboard
+      navigate("/user"); 
     } catch (error) {
       toast.error("Failed to create user:", error.message);
       // Handle error here
     }
-  };
+  }; 
 
   return (
     <div className="container">
@@ -153,9 +153,7 @@ const Register = () => {
                             className=" form-style mb-2 form-control"
                             aria-label="Default select example"
                           >
-                            <option value="1">
-                              পুরুষ
-                            </option>
+                            <option value="1">পুরুষ</option>
                             <option value="2">মহিলা</option>
                           </select>
                           {errors.gender && (

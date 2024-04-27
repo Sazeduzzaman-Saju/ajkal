@@ -53,11 +53,6 @@ const NewsDetails = () => {
       });
   }, []);
 
-  const slicedText = singleNewsDetails.news_detail
-    .split(/\s+/)
-    .slice(0, 200)
-    .join(" "); // Split by whitespace, slice the array, then join it back into a string
-
   const slicedText2 = singleNewsDetails.news_detail
     .split(/\s+/)
     .slice(200)
@@ -158,7 +153,7 @@ const NewsDetails = () => {
                 {addvertisement.map((data) =>
                   // Check if data "ad_category_id" is equal to "2" and status is equal to "1"
                   data.ad_category_id === "4" && data.status === "1" ? (
-                    <Link to={data.ad_link} key={data.id} target="_blank">
+                    <Link to={data.ad_link} key={data.id} >
                       <img
                         className="img-fluid"
                         src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}
@@ -206,7 +201,7 @@ const NewsDetails = () => {
               // Check if data "ad_category_id" is equal to "2" and status is equal to "1"
               data.ad_category_id === "3" && data.status === "1" ? (
                 <div className="mb-2" key={data.id}>
-                  <Link to={data.ad_link} target="_blank">
+                  <Link to={data.ad_link}>
                     <img
                       className="img-fluid side-add"
                       src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}

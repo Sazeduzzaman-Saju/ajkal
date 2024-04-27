@@ -45,7 +45,6 @@ const NavBar = () => {
   }, []);
 
   const currentActiveLink = activeLink || "";
-console.log(extraNav, 'asdasd')
   return (
     <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul className="navbar-nav mx-auto mb-2 mb-lg-0">

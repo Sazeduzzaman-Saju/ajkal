@@ -28,7 +28,7 @@ const UserLayout = () => {
         localStorage.removeItem("accessToken");
         // Redirect to login page or any other page as needed
         toast.success("User Logout successfully");
-        navigate("/login"); // Use Navigate function to navigate
+        navigate("/"); // Use Navigate function to navigate
       })
       .catch((error) => {
         console.error("Error logging out:", error);

@@ -67,7 +67,7 @@ const HomePage = () => {
                 {addvertisement.map((data) =>
                   // Check if data "ad_category_id" is equal to "2" and status is equal to "1"
                   data.ad_category_id === "4" && data.status === "1" ? (
-                    <Link to={data.ad_link} target="_blank" key={data.id}>
+                    <Link to={data.ad_link} key={data.id}>
                       <img
                         className="w-100 zoom-image img-fluid "
                         src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}
@@ -112,7 +112,7 @@ const HomePage = () => {
                 // Check if data "ad_category_id" is equal to "2" and status is equal to "1"
                 data.ad_category_id === "3" && data.status === "1" ? (
                   <div className="mb-2" key={data.id}>
-                    <Link to={data.ad_link} target="_blank">
+                    <Link to={data.ad_link} >
                       <img
                         className="img-fluid side-add"
                         src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}
@@ -170,7 +170,7 @@ const HomePage = () => {
                   // Check if data "ad_category_id" is equal to "2" and status is equal to "1"
                   data.ad_category_id === "5" && data.status === "1" ? (
                     <div className="mb-2" key={data.id}>
-                      <Link to={data.ad_link} target="_blank">
+                      <Link to={data.ad_link}>
                         <img
                           className="img-fluid w-100 mt-4"
                           src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}

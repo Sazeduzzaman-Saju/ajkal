@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import UserAddPost from "../../../Comps/UserNewsPost/UserAddPost";
+import { Triangle } from "react-loader-spinner";
 
 const UserAdvertisement = () => {
   const [userNewsData, setUserNewsData] = useState(null);
@@ -32,14 +33,31 @@ const UserAdvertisement = () => {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="">
+        <div
+          className="d-flex justify-content-center align-items-center"
+          style={{ height: "100vh" }}
+        >
+          <Triangle
+            height={80}
+            width={80}
+            color={"#4fa94d"}
+            ariaLabel={"circles-loading"}
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
+        </div>
+      </div>
+    );
   }
 
   if (error) {
     return <p>Error: {error.message}</p>;
   }
 
-  console.log(userNewsData);
+  // console.log(userNewsData);
   return (
     <>
       <div className="container">

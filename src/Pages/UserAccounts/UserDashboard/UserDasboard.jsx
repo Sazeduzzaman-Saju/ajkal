@@ -5,6 +5,7 @@ import "./UserDashboard.css";
 import { TbFileUpload } from "react-icons/tb";
 import { BiRightArrow } from "react-icons/bi";
 import Skeleton from "react-loading-skeleton";
+import { Triangle } from "react-loader-spinner";
 
 const UserDashboard = () => {
   const navigate = useNavigate();
@@ -71,7 +72,7 @@ const UserDashboard = () => {
 
     fetchAddData();
   }, []);
-  console.log(userAddData);
+  // console.log(userAddData);
   const [userData, setUserData] = useState(null);
   useEffect(() => {
     const fetchUserData = async () => {
@@ -97,6 +98,32 @@ const UserDashboard = () => {
     fetchUserData();
   }, []);
   const fullName = userData?.full_name;
+
+  if (loading) {
+    return (
+      <div className="">
+        <div
+          className="d-flex justify-content-center align-items-center"
+          style={{ height: "100vh" }}
+        >
+          <Triangle
+            height={80}
+            width={80}
+            color={"#4fa94d"}
+            ariaLabel={"circles-loading"}
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
+
   return (
     <div className="container">
       <div className="row mx-auto">

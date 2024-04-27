@@ -10,20 +10,28 @@ const UserAddPost = () => {
   } = useForm();
 
   const handleAdPost = async (data) => {
-    console.log(data);
     try {
       const accessToken = localStorage.getItem("accessToken");
       if (!accessToken) {
         throw new Error("Access token not found in localStorage");
       }
-      console.log(accessToken);
+
+      // Convert selected image file to base64
+      const adBannerFile = data.ad_banner[0];
+      const adBannerBase64 = await convertToBase64(adBannerFile);
+
+      // Include base64 data in the form data
+      const formData = {
+        ...data,
+        ad_banner: adBannerBase64,
+      };
       const response = await fetch("https://news.goexpressus.com/ad/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(formData),
       });
 
       if (response.status !== 200) {
@@ -33,8 +41,21 @@ const UserAddPost = () => {
       toast.success("Your Add Post successfully");
     } catch (error) {
       toast.error("Failed to Add Post:", error.message);
+
       // Handle error here
     }
+  };
+
+  // Function to convert file to base64
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        resolve(reader.result);
+      };
+      reader.onerror = (error) => reject(error);
+    });
   };
   return (
     <>
