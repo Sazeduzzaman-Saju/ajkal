@@ -101,7 +101,13 @@ const CategoryWiseNews = () => {
     <div>
       {/* First Style */}
       <div>
-        <PostHeader title="বাংলাদেশ" />
+        <PostHeader
+          title={
+            bangladeshNews.length > 0
+              ? bangladeshNews[0].category_name_bangla
+              : ""
+          }
+        />
         <NewsSectionOne bangladeshNews={bangladeshNews} />
       </div>
       {/* add */}
@@ -114,16 +120,26 @@ const CategoryWiseNews = () => {
       </div>
       {/* Second Style */}
       <div className="pt-2">
-        <PostHeader title="প্রবাস" />
+        <PostHeader
+          title={
+            probashNews.length > 0 ? probashNews[0].category_name_bangla : ""
+          }
+        />
         <NewsSectionTwo probashNews={probashNews} />
       </div>
       {/* Third Style */}
       <div className="">
-        <PostHeader title="সারা বিশ্ব" />
+        <PostHeader
+          title={
+            khelarNews.length > 0 ? khelarNews[0].category_name_bangla : ""
+          }
+        />
         <NewsSectionThree khelarNews={khelarNews} />
       </div>
       <div className="">
-        <PostHeader title="ধর্ম" />
+        <PostHeader
+          title={dhormo.length > 0 ? dhormo[0].category_name_bangla : ""}
+        />
         <NewsSectionFour dhormo={dhormo} />
       </div>
     </div>

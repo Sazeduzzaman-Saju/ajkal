@@ -17,7 +17,7 @@ const NewsSectionThree = ({ khelarNews, loading }) => {
             // Render actual data
             khelarNews.slice(0, 4).map((data) => (
               <Link
-                to={`/news/${data.id}`}
+                to={`/${data.category_name_bangla}/${data.id}`}
                 className="text-muted"
                 key={data.id}
               >

@@ -37,7 +37,9 @@ const VideoNews = () => {
 
   return (
     <div>
-      <PostHeader title={"ভিডিও"} />
+      <PostHeader
+        title={videoNews.length > 0 ? videoNews[0].category_name_bangla : ""}
+      />
       <div className="row gx-3 align-items-center">
         <div className="col-lg-6">
           {loading ? (
@@ -51,7 +53,10 @@ const VideoNews = () => {
             videoNews
               .filter((data) => data.is_featured === "1")
               .map((data, index) => (
-                <Link to={`/news/${data.id}`} key={index}>
+                <Link
+                  to={`/${data.category_name_bangla}/${data.id}`}
+                  key={index}
+                >
                   <div className="card border-0">
                     <div className="card-body p-0">
                       <div className="is_video_icon">
@@ -95,7 +100,7 @@ const VideoNews = () => {
             : // Render other videos
               videoNews.map((data) => (
                 <Link
-                  to={`/news/${data.id}`}
+                  to={`/${data.category_name_bangla}/${data.id}`}
                   key={data.id}
                   className="text-muted"
                 >

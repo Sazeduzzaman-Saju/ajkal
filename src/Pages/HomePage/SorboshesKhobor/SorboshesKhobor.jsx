@@ -75,7 +75,7 @@ const SorboshesKhobor = () => {
             <div className="row mt-1">
               {sorboshesData.map((data, index) => (
                 <div className="col-lg-4" key={index}>
-                  <Link to={`/news/${data.id}`}>
+                  <Link to={`/${data.category_name_bangla}/${data.id}`}>
                     <div
                       className="card rounded-1 border-0 shadow-sm mb-4 sorboshes_khobor"
                       style={{ height: "18rem" }}
@@ -110,7 +110,7 @@ const SorboshesKhobor = () => {
             <div className="row">
               {sorboshesPothitoData.map((data, index) => (
                 <div className="col-lg-12 mt-2" key={index}>
-                  <Link to={`/news/${data.id}`}>
+                  <Link to={`/${data.category_name_bangla}/${data.id}`}>
                     <div className="card mb-1 border-0 shadow-sm rounded-2">
                       <div className="card-body p-0 d-flex align-items-center">
                         <div className="pothito-img w-25 h-100 ">

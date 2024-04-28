@@ -30,9 +30,9 @@ const NewsSectionTwo = ({ probashNews }) => {
           ))
         ) : (
           // Render actual content when data is loaded
-          probashNews.map(({ title_img, news_title, postDescription, id }) => (
+          probashNews.map(({ title_img, news_title, postDescription, id, category_name_bangla }) => (
             <div className="col-lg-3" key={id}>
-              <Link to={`/news/${id}`} className="text-muted">
+              <Link to={`/${category_name_bangla}/${id}`} className="text-muted">
                 <div className="card border-0 shadow-sm mb-4" style={{height: '17.2rem'}}>
                   <img
                     width={100}

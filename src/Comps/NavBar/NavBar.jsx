@@ -62,7 +62,7 @@ const NavBar = () => {
             >
               {link.name_bangla}
             </NavLink>
-          </li>
+        </li>
         ))}
         {navLinks.length > 0 && ( // Render "অন্যান্য +" only when navLinks has items
           <li className="nav-item menu-specing ">

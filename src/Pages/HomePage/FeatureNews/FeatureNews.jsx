@@ -50,8 +50,8 @@ const FeatureNews = () => {
             </div>
           ))
         : spotlightNews.map((data, index) => (
-            <div className="col-lg-3" key={index}>
-              <Link to={`/news/${data.category_name_bangla}/${data.id}`} >
+            <div className="col-lg-3" key={index}> 
+              <Link to={`/${data.category_name_bangla}/${data.id}`}>
                 <div className="card rounded-1 border-0 shadow-sm feature-cards">
                   <div className="card-body">
                     <div className="d-flex justify-content-between align-items-center">

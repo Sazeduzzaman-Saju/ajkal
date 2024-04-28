@@ -16,7 +16,7 @@ const NewsSectionThree = ({ dhormo, loading }) => {
             // Render actual data
             dhormo.map((data) =>
               data.is_featured === "1" ? (
-                <Link to={`/news/${data.id}`} key={data.id}>
+                <Link to={`/${data.category_name_bangla}/${data.id}`} key={data.id}>
                   <div className="card border-0">
                     <div className="card-body p-0">
                       <img
@@ -47,7 +47,7 @@ const NewsSectionThree = ({ dhormo, loading }) => {
             // Render actual data
             dhormo.slice(0, 4).map((data) => (
               <Link
-                to={`/news/${data.id}`}
+                to={`/${data.category_name_bangla}/${data.id}`}
                 className="text-muted"
                 key={data.id}
               >

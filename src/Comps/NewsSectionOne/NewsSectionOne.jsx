@@ -28,7 +28,7 @@ const NewsSectionOne = ({ bangladeshNews }) => {
             ) : (
               bangladeshNews.map((data) => (
                 <div className="col-lg-6" key={data.id}>
-                  <Link to={`/news/${data.id}`} className="text-muted">
+                  <Link to={`/${data.category_name_bangla}/${data.id}`} className="text-muted">
                     <div className="card border-0 shadow-sm mb-2">
                       <div className="card-body p-0">
                         <div className="d-flex align-items-center image-container">
@@ -63,7 +63,7 @@ const NewsSectionOne = ({ bangladeshNews }) => {
               // Check if data "is_featured" is equal to "1"
               data.is_featured === "1" ? (
                 <Link
-                  to={`/news/${data.id}`}
+                  to={`/${data.category_name_bangla}/${data.id}`}
                   className="text-muted"
                   key={data.id}
                 >

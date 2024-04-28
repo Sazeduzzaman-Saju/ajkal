@@ -78,7 +78,7 @@ const Categories = () => {
             <div className="col-lg-8">
               {singleNews &&
                 singleNews.data.slice(0, showMoreCount).map((data) => (
-                  <Link to={`/news/${data.id}`} key={data.id}>
+                  <Link to={`/${data.category_name_bangla}/${data.id}`} key={data.id}>
                     <div className="row align-items-center py-3">
                       <div className="col-sm-7">
                         <div>

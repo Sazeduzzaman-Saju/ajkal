@@ -27,6 +27,7 @@ import NewsVideos from '../Pages/NewsVideos/NewsVideos';
 import EPaper from '../Pages/EPaper/EPaper';
 import { useEffect } from 'react';
 import DateEpaper from '../Pages/EPaper/DateEpaper';
+import AdCost from '../Pages/AdCost/AdCost';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -58,18 +59,22 @@ const router = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path: '/news/:id',
+        path: '/:news/:id',
         element: <NewsDetails />,
         loader: ({ params }) => fetch(`https://news.goexpressus.com/news-detail/${params.id}`)
       },
       {
-        path: '/:categories/:id',
+        path: '/categories/:id',
         element: <Categories />,
         loader: ({ params }) => fetch(`https://news.goexpressus.com/category-news/${params.id}`)
       },
       {
         path: '/about',
         element: <About></About>,
+      },
+      {
+        path: '/ad-cost',
+        element: <AdCost></AdCost>,
       },
       {
         path: '/advertisement',

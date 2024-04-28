@@ -115,6 +115,11 @@ function Header() {
                       আর্কাইভ
                     </NavLink>
                   </li>
+                  <li className="">
+                    <NavLink to={"/ad-cost"} className="">
+                    বিজ্ঞাপনের মূল্য
+                    </NavLink>
+                  </li>
                 </ul>
               </div>
             </div>

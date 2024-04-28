@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
-import PostHeader from "../PostHeader/PostHeader";
 
 const NewsSidebar = () => {
   const [sorboshesData, setSorboshesData] = useState([]);
@@ -51,7 +50,7 @@ const NewsSidebar = () => {
         // Render actual data if loading is false
         sorboshesData.map((data, index) => (
           <div className="col-lg-12 " key={index}>
-            <Link to={`/news/${data.id}`}>
+            <Link to={`/${data.category_name_bangla}/${data.id}`}>
               <div className="card mb-3 border-0 shadow-sm rounded-2">
                 <div className="card-body p-0 d-flex align-items-center">
                   <div className="pothito-img w-25 h-100 ">
@@ -68,7 +67,7 @@ const NewsSidebar = () => {
                         {data.category_name_bangla}
                       </h5>
                       <p className="m-0 text-muted">
-                        {data.news_title.split(' ').slice(0, 4).join(' ')}
+                        {data.news_title.split(" ").slice(0, 4).join(" ")}
                         <span className="text-primary">...</span>
                       </p>
                     </div>

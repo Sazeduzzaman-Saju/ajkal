@@ -8,14 +8,21 @@ import BanglaTime from "../../Comps/BanglaTime/BanglaDynamicTIme";
 import SocialShareButtons from "../../Comps/SocialShareButtons/SocialShareButtons";
 import PageHelmet from "../../Comps/PageHelmet/PageHelmet";
 import axios from "axios";
+import { IoMdArrowDropright } from "react-icons/io";
 import PostHeader from "../../Comps/PostHeader/PostHeader";
 import { FacebookEmbed, YouTubeEmbed } from "react-social-media-embed";
 import SanitizedParagraph from "../../Comps/SanitizedParagraph";
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+} from "react-share";
+import { FaFacebook, FaTwitter, FaWhatsapp } from "react-icons/fa";
 
 const NewsDetails = () => {
   const singleNews = useLoaderData();
   const singleNewsDetails = singleNews.data;
-
+  console.log("asdasdasd", singleNewsDetails);
   const [fontSize, setFontSize] = useState(16); // Initial font size
 
   const increaseFontSize = () => {
@@ -73,7 +80,14 @@ const NewsDetails = () => {
           <div className="col-lg-12">
             <div style={{ borderBottom: "1px solid var(--main)" }}>
               <h5 className="text-muted">
-                বিস্তারিত নিউজ {singleNews.data.lenght}
+                <span> প্রচ্ছদ </span> <IoMdArrowDropright />
+                <Link
+                  className="text-muted"
+                  to={`/categories/${singleNewsDetails.category_id}`}
+                >
+                  {singleNewsDetails.category_name_bangla}
+                </Link>{" "}
+                <IoMdArrowDropright /> {singleNewsDetails.news_title}
               </h5>
             </div>
             <div className="d-flex justify-content-between  align-items-center pt-3">
@@ -128,7 +142,7 @@ const NewsDetails = () => {
                       title={singleNewsDetails.news_title}
                       type="article"
                       image={`https://ajkal.goexpressus.com/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
-                      url={`https://ajkalusa.nawazgroup.us/news/${singleNewsDetails.id}`} // Replace with actual page URL
+                      url={`https://ajkal.us/news/${singleNewsDetails.id}`} // Replace with actual page URL
                       card={`https://ajkal.goexpressus.com/images/${singleNewsDetails.title_img}`}
                       description={singleNewsDetails.news_detail}
                       increaseFontSize={increaseFontSize}
@@ -147,13 +161,15 @@ const NewsDetails = () => {
                 }}
               /> */}
               <p>
-              <SanitizedParagraph htmlContent={singleNewsDetails.news_detail} />
+                <SanitizedParagraph
+                  htmlContent={singleNewsDetails.news_detail}
+                />
               </p>
               <div className="pb-4 py-3">
                 {addvertisement.map((data) =>
                   // Check if data "ad_category_id" is equal to "2" and status is equal to "1"
                   data.ad_category_id === "4" && data.status === "1" ? (
-                    <Link to={data.ad_link} key={data.id} >
+                    <Link to={data.ad_link} key={data.id}>
                       <img
                         className="img-fluid"
                         src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}
@@ -169,6 +185,49 @@ const NewsDetails = () => {
                   __html: slicedText2,
                 }}
               />
+            </div>
+            <div>
+              <div className="social-share-buttons">
+                <FacebookShareButton
+                  title={singleNewsDetails.news_title}
+                  type="article"
+                  image={`https://ajkal.goexpressus.com/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
+                  url={`https://ajkal.us/${singleNewsDetails.category_name_bangla}/${singleNewsDetails.id}`} // Replace with actual page URL
+                  card={`https://ajkal.goexpressus.com/images/${singleNewsDetails.title_img}`}
+                  description={singleNewsDetails.news_detail}
+                  increaseFontSize={increaseFontSize}
+                  decreaseFontSize={decreaseFontSize}
+                  resetFontSize={resetFontSize}
+                >
+                  <FaFacebook />
+                </FacebookShareButton>
+                <TwitterShareButton
+                  title={singleNewsDetails.news_title}
+                  type="article"
+                  image={`https://ajkal.goexpressus.com/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
+                  url={`https://ajkal.us/${singleNewsDetails.category_name_bangla}/${singleNewsDetails.id}`} // Replace with actual page URL
+                  card={`https://ajkal.goexpressus.com/images/${singleNewsDetails.title_img}`}
+                  description={singleNewsDetails.news_detail}
+                  increaseFontSize={increaseFontSize}
+                  decreaseFontSize={decreaseFontSize}
+                  resetFontSize={resetFontSize}
+                >
+                  <FaTwitter />
+                </TwitterShareButton>
+                <WhatsappShareButton
+                  title={singleNewsDetails.news_title}
+                  type="article"
+                  image={`https://ajkal.goexpressus.com/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
+                  url={`https://ajkal.us/${singleNewsDetails.category_name_bangla}/${singleNewsDetails.id}`} // Replace with actual page URL
+                  card={`https://ajkal.goexpressus.com/images/${singleNewsDetails.title_img}`}
+                  description={singleNewsDetails.news_detail}
+                  increaseFontSize={increaseFontSize}
+                  decreaseFontSize={decreaseFontSize}
+                  resetFontSize={resetFontSize}
+                >
+                  <FaWhatsapp />
+                </WhatsappShareButton>
+              </div>
             </div>
           </div>
           <div className="col-lg-4">

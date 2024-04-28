@@ -15,7 +15,7 @@ const CategoryNewsSlider = ({ singleNews, loading }) => {
         // Render actual data
         singleNews.map((data) =>
           data.is_featured === "1" ? (
-            <Link to={`/news/${data.id}`} className="shadow-sm" key={data.id}>
+            <Link to={`/${data.category_name_bangla}/${data.id}`} className="shadow-sm" key={data.id}>
               <div className="card rounded-0 border-0">
                 <div className="card-header p-0"></div>
                 <div className="card-body p-0">

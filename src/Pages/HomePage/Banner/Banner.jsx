@@ -88,12 +88,13 @@ export default function Banner() {
                   src={`https://ajkal.goexpressus.com/images/${slide.title_img}`}
                 />
                 <div className="overlay">
-                  <Link to={`/news/${slide.id}`} className="text-white">
+                  <Link
+                    to={`/${slide.category_name_bangla}/${slide.id}`}
+                    className="text-white"
+                  >
                     <div className="container">
                       <h1 className="mb-0 fw-bold banner_title">
-                        {slide.news_title || (
-                          <Skeleton count={3} />
-                        )}
+                        {slide.news_title || <Skeleton count={3} />}
                       </h1>
                       <h2 className="mb-0 pt-2 banner-description">
                         {slide.news_short_brief.slice(0, 97)}
