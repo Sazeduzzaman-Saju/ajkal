@@ -18,7 +18,7 @@ const Register = () => {
   const handleSignUp = async (data) => {
     try {
       const response = await fetch(
-        "https://news.goexpressus.com/auth/registration",
+        "https://backoffice.ajkal.us/auth/registration",
         {
           method: "POST",
           headers: {
@@ -225,7 +225,7 @@ const Register = () => {
                               className="form-check-input"
                               type="checkbox"
                               {...register("policy", {
-                                required: "Password Required",
+                                required: "Policy Check Required",
                               })}
                               id="flexCheckChecked"
                               defaultChecked

@@ -7,7 +7,7 @@ const NewsSidebar = () => {
   const [sorboshesData, setSorboshesData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const url = "https://news.goexpressus.com/viewed-news";
+  const url = "https://backoffice.ajkal.us/viewed-news";
 
   useEffect(() => {
     axios
@@ -57,7 +57,7 @@ const NewsSidebar = () => {
                     <img
                       className="img-fluid rounded-1"
                       style={{ height: "70px", objectFit: "cover" }}
-                      src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                      src={`https://ajkal.us/images/${data.title_img}`}
                       alt=""
                     />
                   </div>

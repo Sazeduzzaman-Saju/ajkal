@@ -28,7 +28,7 @@ const CategoryFeature = ({ singleNews }) => {
                     <div>
                       <img
                         className="card-img-top"
-                        src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                        src={`https://ajkal.us/images/${data.title_img}`}
                         alt=""
                       />
                     </div>

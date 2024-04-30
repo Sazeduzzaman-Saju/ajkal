@@ -7,7 +7,7 @@ import { Triangle } from "react-loader-spinner";
 const UserNewsPost = () => {
   //   Fetch The Category Data
   const [categoryLink, setCategoryLink] = useState([]);
-  const url = "https://news.goexpressus.com/news-category";
+  const url = "https://backoffice.ajkal.us/news-category";
   useEffect(() => {
     axios
       .get(url)
@@ -39,7 +39,7 @@ const UserNewsPost = () => {
       try {
         const accessToken = localStorage.getItem("accessToken");
         const response = await axios.post(
-          "https://news.goexpressus.com/auth/profile",
+          "https://backoffice.ajkal.us/auth/profile",
           null,
           {
             headers: {
@@ -86,7 +86,7 @@ const UserNewsPost = () => {
       };
 
       const response = await fetch(
-        "https://news.goexpressus.com/post/add-news",
+        "https://backoffice.ajkal.us/post/add-news",
         {
           method: "POST",
           headers: {

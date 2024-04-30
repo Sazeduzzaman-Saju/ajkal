@@ -25,7 +25,7 @@ const UserAddPost = () => {
         ...data,
         ad_banner: adBannerBase64,
       };
-      const response = await fetch("https://news.goexpressus.com/ad/create", {
+      const response = await fetch("https://backoffice.ajkal.us/ad/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

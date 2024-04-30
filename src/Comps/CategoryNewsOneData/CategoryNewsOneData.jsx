@@ -6,7 +6,7 @@ import Skeleton from "react-loading-skeleton";
 const CategoryNewsOneData = () => {
   const [bangladeshNews, setBangladeshNews] = useState([]);
   const [loadingBangladesh, setLoadingBangladesh] = useState(true);
-  const url = "https://news.goexpressus.com/category-news/7";
+  const url = "https://backoffice.ajkal.us/category-news/7";
 
   useEffect(() => {
     axios
@@ -62,7 +62,7 @@ const CategoryNewsOneData = () => {
                       className="img-fluid bottom-there-cat"
                       // height={310}
                       // style={{ objectFit: "fit" }}
-                      src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                      src={`https://ajkal.us/images/${data.title_img}`}
                       alt=""
                     />
                   </div>
@@ -109,7 +109,7 @@ const CategoryNewsOneData = () => {
                         <img
                           className="rounded-1"
                           width={150}
-                          src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                          src={`https://ajkal.us/images/${data.title_img}`}
                           alt=""
                         />
                       </div>

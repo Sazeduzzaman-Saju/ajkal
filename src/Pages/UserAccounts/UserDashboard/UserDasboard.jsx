@@ -24,7 +24,7 @@ const UserDashboard = () => {
         }
 
         const response = await axios.post(
-          "https://news.goexpressus.com/dashboard/all-news",
+          "https://backoffice.ajkal.us/dashboard/all-news",
           null,
           {
             headers: {
@@ -54,7 +54,7 @@ const UserDashboard = () => {
       try {
         const accessToken = localStorage.getItem("accessToken");
         const response = await axios.post(
-          "https://news.goexpressus.com/ad/my-ads",
+          "https://backoffice.ajkal.us/ad/my-ads",
           null,
           {
             headers: {
@@ -79,7 +79,7 @@ const UserDashboard = () => {
       try {
         const accessToken = localStorage.getItem("accessToken");
         const response = await axios.post(
-          "https://news.goexpressus.com/auth/profile",
+          "https://backoffice.ajkal.us/auth/profile",
           null,
           {
             headers: {

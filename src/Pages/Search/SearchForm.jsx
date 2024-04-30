@@ -11,7 +11,7 @@ export default function SearchForm() {
   const onSubmit = (data) => console.log(data);
 
   const [categoriesData, setCategoriesData] = useState([]);
-  const url = "https://news.goexpressus.com/news-category";
+  const url = "https://backoffice.ajkal.us/news-category";
   useEffect(() => {
     axios
       .get(url)

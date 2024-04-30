@@ -8,7 +8,7 @@ import SanitizedParagraph from "../SanitizedParagraph";
 
 const RelatedNews = ({ singleNewsDetails }) => {
   const [reletedNews, setReletedNews] = useState([]);
-  const url = `https://news.goexpressus.com/category-news/${singleNewsDetails}`;
+  const url = `https://backoffice.ajkal.us/category-news/${singleNewsDetails}`;
 
   useEffect(() => {
     axios
@@ -67,7 +67,7 @@ const RelatedNews = ({ singleNewsDetails }) => {
                   )}
                 </div>
                 <img
-                  src={`https://ajkal.goexpressus.com/images/${news.title_img}`}
+                  src={`https://ajkal.us/images/${news.title_img}`}
                   alt={news.news_title}
                   style={{ height: "250px", objectFit: "cover" }}
                 />

@@ -16,7 +16,7 @@ const Login = () => {
 
   const handleSignUp = async (data) => {
     try {
-      const response = await fetch("https://news.goexpressus.com/auth/login", {
+      const response = await fetch("https://backoffice.ajkal.us/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,7 +39,7 @@ const Login = () => {
       localStorage.setItem("accessToken", accessToken);
   
       // Now use the access token as a bearer token to send requests
-      const userResponse = await fetch(`https://news.goexpressus.com/auth/profile`, {
+      const userResponse = await fetch(`https://backoffice.ajkal.us/auth/profile`, {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${accessToken}`,

@@ -16,8 +16,8 @@ const UserLayout = () => {
   // Logout function
   const handleLogout = () => {
     const accessToken = localStorage.getItem("accessToken");
-    // Assuming logout API URL is "https://news.goexpressus.com/auth/logout"
-    fetch("https://news.goexpressus.com/auth/logout", {
+    // Assuming logout API URL is "https://backoffice.ajkal.us/auth/logout"
+    fetch("https://backoffice.ajkal.us/auth/logout", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${accessToken}`,

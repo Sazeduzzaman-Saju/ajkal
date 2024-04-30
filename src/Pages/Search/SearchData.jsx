@@ -58,7 +58,7 @@ const SearchData = ({ archive }) => {
                         <LazyLoad height={120} once>
                           <img
                             className="img-fluid w-100 rounded"
-                            src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                            src={`https://ajkal.us/images/${data.title_img}`}
                             alt=""
                           />
                         </LazyLoad>

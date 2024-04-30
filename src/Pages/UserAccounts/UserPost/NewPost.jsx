@@ -8,7 +8,7 @@ export default function NewPost() {
   const [userData, setUserData] = useState(null);
 
   // const fullName = userData?.full_name;
-  const url = "https://news.goexpressus.com/news-category";
+  const url = "https://backoffice.ajkal.us/news-category";
 
   // Login User Credintial
   useEffect(() => {
@@ -16,7 +16,7 @@ export default function NewPost() {
       try {
         const accessToken = localStorage.getItem("accessToken");
         const response = await axios.post(
-          "https://news.goexpressus.com/auth/profile",
+          "https://backoffice.ajkal.us/auth/profile",
           null,
           {
             headers: {
@@ -66,16 +66,18 @@ export default function NewPost() {
   } = useForm();
 
   const handleSignUp = async (data) => {
+    console.log(data);
     try {
       const accessToken = localStorage.getItem("accessToken");
       const response = await fetch(
-        "https://news.goexpressus.com/post/add-news",
+        "https://backoffice.ajkal.us/post/add-news",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${accessToken}`,
           },
+
           body: JSON.stringify(data),
         }
       );

@@ -17,7 +17,7 @@ function Header() {
   // Retrieve access token from localStorage
   const [isHovered, setIsHovered] = useState(false);
   const [navLinks, setNavLinks] = useState([]);
-  const url = "https://news.goexpressus.com/news-category";
+  const url = "https://backoffice.ajkal.us/news-category";
 
   const navigate = useNavigate();
   const [accessTokenTimeout, setAccessTokenTimeout] = useState(null);
@@ -66,7 +66,7 @@ function Header() {
   }, []);
 
   const [addvertisement, setAddvertisement] = useState([]);
-  const addUrl = "https://news.goexpressus.com/ad/all";
+  const addUrl = "https://backoffice.ajkal.us/ad/all";
   useEffect(() => {
     axios
       .get(addUrl)
@@ -190,7 +190,7 @@ function Header() {
                       <Link to={data.ad_link} key={data.id}>
                         <img
                           className="img-fluid top-add"
-                          src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}
+                          src={`https://ajkal.us/images/${data.ad_banner}`}
                           alt=""
                         />
                       </Link>

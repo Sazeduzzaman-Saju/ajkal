@@ -6,7 +6,7 @@ const PostForm = ({ userData, userData }) => {
     try {
       const accessToken = localStorage.getItem("accessToken");
       const response = await fetch(
-        "https://news.goexpressus.com/post/add-news",
+        "https://backoffice.ajkal.us/post/add-news",
         {
           method: "POST",
           headers: {

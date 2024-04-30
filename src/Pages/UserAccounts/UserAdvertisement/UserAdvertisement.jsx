@@ -13,7 +13,7 @@ const UserAdvertisement = () => {
       try {
         const accessToken = localStorage.getItem("accessToken");
         const response = await axios.post(
-          "https://news.goexpressus.com/ad/my-ads",
+          "https://backoffice.ajkal.us/ad/my-ads",
           null,
           {
             headers: {

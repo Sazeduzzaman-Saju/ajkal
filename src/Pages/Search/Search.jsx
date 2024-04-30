@@ -17,11 +17,11 @@ const Search = () => {
   const onSubmit = (data) => console.log(data);
 
   const [categoriesData, setCategoriesData] = useState([]);
-  const url = "https://news.goexpressus.com/news-category";
+  const url = "https://backoffice.ajkal.us/news-category";
   const [archive, setArchive] = useState([]);
-  const urlArchive = "https://news.goexpressus.com/archive-news";
+  const urlArchive = "https://backoffice.ajkal.us/archive-news";
   const [addvertisement, setAddvertisement] = useState([]);
-  const addUrl = "https://news.goexpressus.com/ad/all";
+  const addUrl = "https://backoffice.ajkal.us/ad/all";
 
   useEffect(() => {
     axios
@@ -162,7 +162,7 @@ const Search = () => {
                     <img
                       key={filteredData.id}
                       className="w-100 zoom-image img-fluid mb-2"
-                      src={`https://ajkal.goexpressus.com/images/${filteredData.ad_banner}`}
+                      src={`https://ajkal.us/images/${filteredData.ad_banner}`}
                       alt="advertisement"
                       loading="lazy"
                     />

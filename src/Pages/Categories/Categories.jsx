@@ -19,7 +19,7 @@ const Categories = () => {
 
   // Fetch advertisement data
   useEffect(() => {
-    const addUrl = "https://news.goexpressus.com/ad/all";
+    const addUrl = "https://backoffice.ajkal.us/ad/all";
     axios
       .get(addUrl)
       .then((response) => {
@@ -100,7 +100,7 @@ const Categories = () => {
                       <div className="col-sm-5">
                         <div>
                           <img
-                            src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                            src={`https://ajkal.us/images/${data.title_img}`}
                             className="img-fluid rounded-1"
                             alt="{data.news_title}"
                           />
@@ -153,7 +153,7 @@ const Categories = () => {
                     <Link to={data.ad_link}>
                       <img
                         className="img-fluid side-add"
-                        src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}
+                        src={`https://ajkal.us/images/${data.ad_banner}`}
                         alt=""
                       />
                     </Link>

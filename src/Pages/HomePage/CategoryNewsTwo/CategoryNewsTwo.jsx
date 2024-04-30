@@ -9,7 +9,7 @@ const CategoryNewsTwo = () => {
   // Define dynamic data within the component
   const [videoNews, setVideoNews] = useState([]);
   const [loading, setLoading] = useState(true);
-  const url = "https://news.goexpressus.com/category-news/3";
+  const url = "https://backoffice.ajkal.us/category-news/3";
 
   useEffect(() => {
     axios
@@ -67,7 +67,7 @@ const CategoryNewsTwo = () => {
                       <div>
                         <img
                           className="img-fluid rounded-1 border-0"
-                          src={`https://ajkal.goexpressus.com/images/${news.title_img}`}
+                          src={`https://ajkal.us/images/${news.title_img}`}
                           alt=""
                         />
                       </div>

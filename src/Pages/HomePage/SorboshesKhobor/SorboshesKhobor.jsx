@@ -11,8 +11,8 @@ const SorboshesKhobor = () => {
   const [sorboshesData, setSorboshesData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const url = "https://news.goexpressus.com/viewed-news";
-  const urlsorboshes = "https://news.goexpressus.com/latest-news";
+  const url = "https://backoffice.ajkal.us/viewed-news";
+  const urlsorboshes = "https://backoffice.ajkal.us/latest-news";
 
   useEffect(() => {
     axios
@@ -83,7 +83,7 @@ const SorboshesKhobor = () => {
                       <div className="card-body p-0 card-body-2">
                         <img
                           className="img-fluid rounded-1"
-                          src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                          src={`https://ajkal.us/images/${data.title_img}`}
                           alt=""
                         />
                       </div>
@@ -117,7 +117,7 @@ const SorboshesKhobor = () => {
                           <img
                             className="img-fluid rounded-1"
                             style={{ height: "70px", objectFit: "cover" }}
-                            src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                            src={`https://ajkal.us/images/${data.title_img}`}
                             alt=""
                           />
                         </div>

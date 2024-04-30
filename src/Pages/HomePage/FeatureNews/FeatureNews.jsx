@@ -9,7 +9,7 @@ const FeatureNews = () => {
   const [spotlightNews, setSpotlightNews] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const url = "https://news.goexpressus.com/spotlight-news";
+  const url = "https://backoffice.ajkal.us/spotlight-news";
 
   useEffect(() => {
     axios
@@ -72,7 +72,7 @@ const FeatureNews = () => {
                     </p>
                   </div>
                   <img
-                    src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                    src={`https://ajkal.us/images/${data.title_img}`}
                     className="card-img-top rounded-0"
                     alt="Card Image"
                     loading="lazy"

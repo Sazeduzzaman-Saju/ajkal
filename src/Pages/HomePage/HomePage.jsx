@@ -14,7 +14,7 @@ import { FacebookEmbed, YouTubeEmbed } from "react-social-media-embed";
 
 const HomePage = () => {
   const [addvertisement, setAddvertisement] = useState([]);
-  const addUrl = "https://news.goexpressus.com/ad/all";
+  const addUrl = "https://backoffice.ajkal.us/ad/all";
   useEffect(() => {
     axios
       .get(addUrl)
@@ -70,7 +70,7 @@ const HomePage = () => {
                     <Link to={data.ad_link} key={data.id}>
                       <img
                         className="w-100 zoom-image img-fluid "
-                        src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}
+                        src={`https://ajkal.us/images/${data.ad_banner}`}
                         alt={"advertisement"}
                         loading="lazy"
                       />
@@ -115,7 +115,7 @@ const HomePage = () => {
                     <Link to={data.ad_link} >
                       <img
                         className="img-fluid side-add"
-                        src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}
+                        src={`https://ajkal.us/images/${data.ad_banner}`}
                         alt=""
                       />
                     </Link>
@@ -173,7 +173,7 @@ const HomePage = () => {
                       <Link to={data.ad_link}>
                         <img
                           className="img-fluid w-100 mt-4"
-                          src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}
+                          src={`https://ajkal.us/images/${data.ad_banner}`}
                           alt=""
                         />
                       </Link>

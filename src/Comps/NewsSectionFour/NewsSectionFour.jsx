@@ -21,7 +21,7 @@ const NewsSectionThree = ({ dhormo, loading }) => {
                     <div className="card-body p-0">
                       <img
                         className="img-fluid dhormo-feature-image"
-                        src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                        src={`https://ajkal.us/images/${data.title_img}`}
                         alt=""
                       />
                       <h5
@@ -55,7 +55,7 @@ const NewsSectionThree = ({ dhormo, loading }) => {
                   <div className="">
                     <img
                       className="rounded-2 submenu-category"
-                      src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                      src={`https://ajkal.us/images/${data.title_img}`}
                       alt=""
                     />
                   </div>

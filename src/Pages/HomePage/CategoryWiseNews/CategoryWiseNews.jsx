@@ -12,10 +12,10 @@ const CategoryWiseNews = () => {
   const [khelarNews, setKhelarNews] = useState([]);
   const [dhormo, setDhormo] = useState([]);
 
-  const url = "https://news.goexpressus.com/category-news/2";
-  const urlProbas = "https://news.goexpressus.com/category-news/5";
-  const urlKhela = "https://news.goexpressus.com/category-news/4";
-  const dhormoData = "https://news.goexpressus.com/category-news/10";
+  const url = "https://backoffice.ajkal.us/category-news/2";
+  const urlProbas = "https://backoffice.ajkal.us/category-news/5";
+  const urlKhela = "https://backoffice.ajkal.us/category-news/4";
+  const dhormoData = "https://backoffice.ajkal.us/category-news/10";
 
   useEffect(() => {
     axios

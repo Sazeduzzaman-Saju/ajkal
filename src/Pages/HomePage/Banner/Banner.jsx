@@ -23,7 +23,7 @@ export default function Banner() {
     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
   };
 
-  const url = "https://news.goexpressus.com/breaking-news";
+  const url = "https://backoffice.ajkal.us/breaking-news";
   useEffect(() => {
     const fetchData = () => {
       axios
@@ -85,7 +85,7 @@ export default function Banner() {
                   alt={slide.news_title}
                   effect="blur"
                   loading="lazy"
-                  src={`https://ajkal.goexpressus.com/images/${slide.title_img}`}
+                  src={`https://ajkal.us/images/${slide.title_img}`}
                 />
                 <div className="overlay">
                   <Link

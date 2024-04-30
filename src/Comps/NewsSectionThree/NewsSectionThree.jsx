@@ -26,7 +26,7 @@ const NewsSectionThree = ({ khelarNews, loading }) => {
                     <img
                       className="img-fluid"
                       width={90}
-                      src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                      src={`https://ajkal.us/images/${data.title_img}`}
                       alt=""
                     />
                   </div>
@@ -57,7 +57,7 @@ const NewsSectionThree = ({ khelarNews, loading }) => {
                         className="img-fluid"
                         height={235}
                         style={{ objectFit: "cover" }}
-                        src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                        src={`https://ajkal.us/images/${data.title_img}`}
                         alt=""
                       />
                       <h5

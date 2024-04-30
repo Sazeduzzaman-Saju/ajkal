@@ -36,7 +36,7 @@ const NewsSectionTwo = ({ probashNews }) => {
                 <div className="card border-0 shadow-sm mb-4" style={{height: '17.2rem'}}>
                   <img
                     width={100}
-                    src={`https://ajkal.goexpressus.com/images/${title_img}`}
+                    src={`https://ajkal.us/images/${title_img}`}
                     className="card-img-top rounded-1"
                     alt=""
                   />

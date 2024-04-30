@@ -10,7 +10,7 @@ import "./VideoNews.css";
 const VideoNews = () => {
   const [videoNews, setVideoNews] = useState([]);
   const [loading, setLoading] = useState(true);
-  const url = "https://news.goexpressus.com/category-news/18";
+  const url = "https://backoffice.ajkal.us/category-news/18";
 
   useEffect(() => {
     axios
@@ -64,7 +64,7 @@ const VideoNews = () => {
                       </div>
                       <img
                         className="img-fluid rounded-2"
-                        src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                        src={`https://ajkal.us/images/${data.title_img}`}
                         alt=""
                       />
                       <div className="vide-feature-title">
@@ -112,7 +112,7 @@ const VideoNews = () => {
                       <img
                         className="rounded-2"
                         width={150}
-                        src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                        src={`https://ajkal.us/images/${data.title_img}`}
                         alt=""
                       />
                     </div>

@@ -22,7 +22,7 @@ const CategoryNewsSlider = ({ singleNews, loading }) => {
                   <div>
                     <img
                       className="img-fluid w-100 category-slider-img"
-                      src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                      src={`https://ajkal.us/images/${data.title_img}`}
                       alt=""
                     />
                   </div>

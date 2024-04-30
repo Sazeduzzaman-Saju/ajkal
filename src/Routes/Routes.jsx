@@ -61,12 +61,12 @@ const router = createBrowserRouter([
       {
         path: '/:news/:id',
         element: <NewsDetails />,
-        loader: ({ params }) => fetch(`https://news.goexpressus.com/news-detail/${params.id}`)
+        loader: ({ params }) => fetch(`https://backoffice.ajkal.us/news-detail/${params.id}`)
       },
       {
         path: '/categories/:id',
         element: <Categories />,
-        loader: ({ params }) => fetch(`https://news.goexpressus.com/category-news/${params.id}`)
+        loader: ({ params }) => fetch(`https://backoffice.ajkal.us/category-news/${params.id}`)
       },
       {
         path: '/about',

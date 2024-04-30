@@ -38,7 +38,7 @@ const NewsDetails = () => {
   };
 
   const [addvertisement, setAddvertisement] = useState([]);
-  const addUrl = "https://news.goexpressus.com/ad/all";
+  const addUrl = "https://backoffice.ajkal.us/ad/all";
   useEffect(() => {
     axios
       .get(addUrl)
@@ -70,9 +70,9 @@ const NewsDetails = () => {
       <PageHelmet
         title={singleNewsDetails.news_title}
         type="article"
-        image={`https://ajkal.goexpressus.com/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
+        image={`https://ajkal.us/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
         url={window.location.href} // Replace with actual page URL
-        card={`https://ajkal.goexpressus.com/images/${singleNewsDetails.title_img}`}
+        card={`https://ajkal.us/images/${singleNewsDetails.title_img}`}
         description={singleNewsDetails.news_detail} // Replace with appropriate description field from singleNewsDetails
       />
       <div className="container">
@@ -118,7 +118,7 @@ const NewsDetails = () => {
                 ></iframe>
               ) : (
                 <img
-                  src={`https://ajkal.goexpressus.com/images/${singleNewsDetails.title_img}`}
+                  src={`https://ajkal.us/images/${singleNewsDetails.title_img}`}
                   className="rounded-2 img-fluid w-100"
                   alt=""
                 />
@@ -141,9 +141,9 @@ const NewsDetails = () => {
                     <SocialShareButtons
                       title={singleNewsDetails.news_title}
                       type="article"
-                      image={`https://ajkal.goexpressus.com/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
+                      image={`https://ajkal.us/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
                       url={`https://ajkal.us/news/${singleNewsDetails.id}`} // Replace with actual page URL
-                      card={`https://ajkal.goexpressus.com/images/${singleNewsDetails.title_img}`}
+                      card={`https://ajkal.us/images/${singleNewsDetails.title_img}`}
                       description={singleNewsDetails.news_detail}
                       increaseFontSize={increaseFontSize}
                       decreaseFontSize={decreaseFontSize}
@@ -172,7 +172,7 @@ const NewsDetails = () => {
                     <Link to={data.ad_link} key={data.id}>
                       <img
                         className="img-fluid"
-                        src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}
+                        src={`https://ajkal.us/images/${data.ad_banner}`}
                         alt=""
                       />
                     </Link>
@@ -191,9 +191,9 @@ const NewsDetails = () => {
                 <FacebookShareButton
                   title={singleNewsDetails.news_title}
                   type="article"
-                  image={`https://ajkal.goexpressus.com/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
+                  image={`https://ajkal.us/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
                   url={`https://ajkal.us/${singleNewsDetails.category_name_bangla}/${singleNewsDetails.id}`} // Replace with actual page URL
-                  card={`https://ajkal.goexpressus.com/images/${singleNewsDetails.title_img}`}
+                  card={`https://ajkal.us/images/${singleNewsDetails.title_img}`}
                   description={singleNewsDetails.news_detail}
                   increaseFontSize={increaseFontSize}
                   decreaseFontSize={decreaseFontSize}
@@ -204,9 +204,9 @@ const NewsDetails = () => {
                 <TwitterShareButton
                   title={singleNewsDetails.news_title}
                   type="article"
-                  image={`https://ajkal.goexpressus.com/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
+                  image={`https://ajkal.us/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
                   url={`https://ajkal.us/${singleNewsDetails.category_name_bangla}/${singleNewsDetails.id}`} // Replace with actual page URL
-                  card={`https://ajkal.goexpressus.com/images/${singleNewsDetails.title_img}`}
+                  card={`https://ajkal.us/images/${singleNewsDetails.title_img}`}
                   description={singleNewsDetails.news_detail}
                   increaseFontSize={increaseFontSize}
                   decreaseFontSize={decreaseFontSize}
@@ -217,9 +217,9 @@ const NewsDetails = () => {
                 <WhatsappShareButton
                   title={singleNewsDetails.news_title}
                   type="article"
-                  image={`https://ajkal.goexpressus.com/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
+                  image={`https://ajkal.us/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
                   url={`https://ajkal.us/${singleNewsDetails.category_name_bangla}/${singleNewsDetails.id}`} // Replace with actual page URL
-                  card={`https://ajkal.goexpressus.com/images/${singleNewsDetails.title_img}`}
+                  card={`https://ajkal.us/images/${singleNewsDetails.title_img}`}
                   description={singleNewsDetails.news_detail}
                   increaseFontSize={increaseFontSize}
                   decreaseFontSize={decreaseFontSize}
@@ -263,7 +263,7 @@ const NewsDetails = () => {
                   <Link to={data.ad_link}>
                     <img
                       className="img-fluid side-add"
-                      src={`https://ajkal.goexpressus.com/images/${data.ad_banner}`}
+                      src={`https://ajkal.us/images/${data.ad_banner}`}
                       alt=""
                     />
                   </Link>

@@ -14,7 +14,7 @@ const UserAccounts = () => {
       try {
         const accessToken = localStorage.getItem("accessToken");
         const response = await axios.post(
-          "https://news.goexpressus.com/auth/profile",
+          "https://backoffice.ajkal.us/auth/profile",
           null,
           {
             headers: {

@@ -34,7 +34,7 @@ const NewsSectionOne = ({ bangladeshNews }) => {
                         <div className="d-flex align-items-center image-container">
                           <img
                             className="rouned-2 news-ft-section-imge zoom-image"
-                            src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                            src={`https://ajkal.us/images/${data.title_img}`}
                             width={80}
                             alt=""
                           />
@@ -71,7 +71,7 @@ const NewsSectionOne = ({ bangladeshNews }) => {
                     <div className="card-body p-0 image-container">
                       <img
                         className="img-fluid rouned-2 "
-                        src={`https://ajkal.goexpressus.com/images/${data.title_img}`}
+                        src={`https://ajkal.us/images/${data.title_img}`}
                         alt={data.news_title}
                         style={{ borderRadius: "5px" }}
                       />

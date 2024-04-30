@@ -10,7 +10,7 @@ import axios from "axios";
 
 const Footer = () => {
   const [categoriesData, setCategoriesData] = useState([]);
-  const url = "https://news.goexpressus.com/news-category";
+  const url = "https://backoffice.ajkal.us/news-category";
 
   useEffect(() => {
     axios
