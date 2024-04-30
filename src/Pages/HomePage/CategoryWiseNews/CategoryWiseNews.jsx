@@ -114,7 +114,7 @@ const CategoryWiseNews = () => {
       <div>
         <img
           className="img-fluid"
-          src="https://i.ibb.co/JdGPxKn/Image-11.jpg"
+          src="https://ajkal.us/image/settings/Image-11.jpg"
           alt=""
         />
       </div>

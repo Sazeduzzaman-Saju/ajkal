@@ -175,7 +175,7 @@ function Header() {
 
           <div>
             <Link className="navbar-brand" to="/">
-              <img src="https://i.ibb.co/XYvTsd5/logo-red.png" alt="" />
+              <img src="https://ajkal.us/image/settings/logo_red.png" alt="" />
             </Link>
           </div>
 

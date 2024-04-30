@@ -51,7 +51,7 @@ const Footer = () => {
             <div className="col-lg-12">
               <Link className="" to="/">
                 <img
-                  src="https://i.ibb.co/ZTVsmVQ/logo-footer.png"
+                  src="https://ajkal.us/image/settings/logo_red.jpg"
                   className="img-fluid"
                   alt=""
                   width={250}
@@ -65,9 +65,9 @@ const Footer = () => {
         className="container-fluid p-2 pb-3"
         style={{
           backgroundColor: 'black',
-          // // backgroundImage: 'url(https://i.ibb.co/VNtg1xk/abstract-modern-dark-black-background-design-with-stripes-lines-84443-2818.jpg)',
-          // backgroundImage: 'url(https://i.ibb.co/BjxrDKk/gradient-black-background-with-wavy-lines-23-2149146012.jpg)',
-          // // backgroundImage: 'url(https://i.ibb.co/RyqKjzy/gradient-black-background-with-wavy-lines-23-2149158560.jpg)',
+          // // backgroundImage: 'url(https://ajkal.us/image/settings/dark-bg.jpg)',
+          // backgroundImage: 'url(https://ajkal.us/image/settings/bg-2.jpg)',
+          // // backgroundImage: 'url(https://ajkal.us/image/settings/bg-3.jpg)',
           // backgroundRepeat: 'no-repeat',
           // backgroundSize: 'cover',
           // backgroundPosition: 'center center',
@@ -126,7 +126,7 @@ const Footer = () => {
                     <img
                       className="mb-1"
                       width={180}
-                      src="https://i.ibb.co/mvChxhk/play.png"
+                      src="https://ajkal.us/image/settings/play.png"
                       alt=""
                     />
                   </Link>
@@ -134,7 +134,7 @@ const Footer = () => {
                     <img
                       className="mb-1"
                       width={180}
-                      src="https://i.ibb.co/WKqnRZW/applestore.png"
+                      src="https://ajkal.us/image/settings/applestore.png"
                       alt=""
                     />
                   </Link>

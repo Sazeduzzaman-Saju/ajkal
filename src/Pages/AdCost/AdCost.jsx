@@ -11,10 +11,10 @@ const AdCost = () => {
       <PageHelmet
         title="বিজ্ঞাপনের মূল্য তালিকা"
         type="article"
-        image="https://i.ibb.co/6D35WjX/logo.png"
+        image="https://ajkal.us/image/settings/logo_red.png"
         url={window.location.href}
-        card="https://i.ibb.co/6D35WjX/logo.png"
-        description="আজকাল বিজ্ঞাপন এর কস্ট  এর বিষয়ে ধারণা"
+        card="https://ajkal.us/image/settings/logo_red.png"
+        description="আজকাল বিজ্ঞাপন এর মুল্য তালিকা"
       />
       <div className="row">
         <div className="col-lg-12">

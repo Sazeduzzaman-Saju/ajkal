@@ -47,7 +47,7 @@ const Register = () => {
           <div>
             <img
               className="img-fluid"
-              src="https://i.ibb.co/QbMgZSm/Sign-up-rafiki.png"
+              src="https://ajkal.us/image/settings/Sign-up-rafiki.png"
               alt=""
             />
           </div>

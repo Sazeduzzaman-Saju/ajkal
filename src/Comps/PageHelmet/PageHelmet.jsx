@@ -12,7 +12,7 @@ const PageHelmet = ({ title, type, image, url, card, description }) => {
       <meta name="twitter:card" content={card} />
       <meta property="og:description" content={description} />
       <meta property="og:site_name" content="সাপ্তাহিক আজ কাল উএসএ" />
-      <meta name="twitter:image:alt" content='https://i.ibb.co/6D35WjX/logo.png' />
+      <meta name="twitter:image:alt" content='https://ajkal.us/image/settings/logo_red.png' />
     </Helmet>
   );
 };

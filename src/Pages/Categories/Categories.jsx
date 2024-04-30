@@ -53,9 +53,9 @@ const Categories = () => {
       <PageHelmet
         title={singleNews.categoryBanglaName}
         type="article"
-        image="https://i.ibb.co/6D35WjX/logo.png" // Replace with actual image URL
+        image="https://ajkal.us/image/settings/logo_red.png" // Replace with actual image URL
         url={window.location.href} // Replace with actual page URL
-        card="https://i.ibb.co/6D35WjX/logo.png"
+        card="https://ajkal.us/image/settings/logo_red.png"
         description={singleNews.news_detail} // Replace with appropriate description field from singleNewsDetails
       />
       {singleNews.data.length > 0 ? (
@@ -66,7 +66,7 @@ const Categories = () => {
               <NewsSidebar />
               <div className="d-flex justify-content-center align-items-center pt-3 ">
                 <img
-                  src="https://i.ibb.co/CHz52fX/goldenagehome.jpg"
+                  src="https://ajkal.us/image/settings/goldenagehome.jpg"
                   className="img-fluid"
                   alt=""
                 />

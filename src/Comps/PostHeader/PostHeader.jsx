@@ -15,7 +15,7 @@ const PostHeader = ({ title }) => {
         <img
           className="pe-2"
           width={40}
-          src="https://i.ibb.co/rFf4z0w/Asset-2.png"
+          src="https://ajkal.us/image/settings/Asset-2.png"
           alt=""
         />
         {title}
