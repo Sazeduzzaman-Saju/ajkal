@@ -8,6 +8,10 @@ const EpaperGallery = (epaper_image, nav2) => {
           <img
             className="img-fluid"
             src={`https://ajkal.us/img/epaper/${item.epaper_image}`}
+            onError={(e) => {
+              e.target.src =
+                "https://ajkal.us/image/settings/placeholder.jpg";
+            }}
           />
         </div>
       ))}

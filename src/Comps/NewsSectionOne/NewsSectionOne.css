@@ -1,5 +1,6 @@
 .news-ft-section-imge {
   width: 100px;
-  height: 65px !important;
+  height: 80px !important;
+  object-fit: cover;
   border-radius: 7px;
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { IoMdTimer } from "react-icons/io";
 
 const BanglaTime = ({ time }) => {
   if (!time) {
@@ -29,12 +30,12 @@ const BanglaTime = ({ time }) => {
       .map((digit) => banglaNumerals[digit])
       .join("");
 
-    return `${banglaHours}:${banglaMinutes}:${banglaSeconds} ${ampm}`;
+    return `${banglaHours}:${banglaMinutes}: ${ampm}`;
   };
 
   const banglaTime = convertToBanglaNumerals(time);
 
-  return <span>সময়ঃ {banglaTime}</span>;
+  return <span className="secondary-color"><IoMdTimer/> {banglaTime}</span>;
 };
 
 export default BanglaTime;

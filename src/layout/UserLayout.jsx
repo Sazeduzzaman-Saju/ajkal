@@ -54,7 +54,7 @@ const UserLayout = () => {
               <ul className="user-nav navbar-nav pt-3">
                 <li className="nav-item">
                   <NavLink
-                    to={"/user/dahboard"}
+                    to={"/user"}
                     className="user-dashboard-nav nav-link"
                   >
                     <div className="d-flex align-items-center ">

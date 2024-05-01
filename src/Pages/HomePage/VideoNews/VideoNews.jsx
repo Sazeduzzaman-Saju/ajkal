@@ -9,6 +9,7 @@ import "./VideoNews.css";
 
 const VideoNews = () => {
   const [videoNews, setVideoNews] = useState([]);
+  const [videoNewsAll, setVideoNewsAll] = useState([]);
   const [loading, setLoading] = useState(true);
   const url = "https://backoffice.ajkal.us/category-news/18";
 
@@ -17,9 +18,11 @@ const VideoNews = () => {
       .get(url)
       .then((response) => {
         if (Array.isArray(response.data)) {
-          setVideoNews(response.data);
+          setVideoNews(response.data.slice(0, 4));
+          setVideoNewsAll(response.data);
         } else if (Array.isArray(response.data.data)) {
-          setVideoNews(response.data.data);
+          setVideoNews(response.data.data.slice(0, 4));
+          setVideoNewsAll(response.data.data);
         } else {
           console.error(
             "Invalid data structure in API response:",
@@ -35,50 +38,67 @@ const VideoNews = () => {
       });
   }, []);
 
+  console.log(setVideoNewsAll, "videoNews");
   return (
     <div>
       <PostHeader
         title={videoNews.length > 0 ? videoNews[0].category_name_bangla : ""}
       />
       <div className="row gx-3 align-items-center">
-        <div className="col-lg-6">
-          {loading ? (
-            // Skeleton loader for featured videos
-            <div>
-              <Skeleton height={200} />
-              <Skeleton height={30} width={200} />
-            </div>
-          ) : (
-            // Render featured videos
-            videoNews
-              .filter((data) => data.is_featured === "1")
-              .map((data, index) => (
-                <Link
-                  to={`/${data.category_name_bangla}/${data.id}`}
-                  key={index}
-                >
-                  <div className="card border-0">
-                    <div className="card-body p-0">
-                      <div className="is_video_icon">
-                        <PiAirplayFill />
-                      </div>
-                      <img
-                        className="img-fluid rounded-2"
-                        src={`https://ajkal.us/images/${data.title_img}`}
-                        alt=""
-                      />
-                      <div className="vide-feature-title">
-                        <h5 className="mb-1 text-white pt-3">
-                          {data.news_title &&
-                            data.news_title.split(" ").slice(0, 7).join(" ")}
-                        </h5>
+      <div className="col-lg-6">
+      {loading ? (
+        // Render skeleton loading placeholders
+        <>
+          <Skeleton height={100} width={100} count={3} />
+        </>
+      ) : (
+        // Render actual data
+        <>
+          {Array.from(new Set(videoNewsAll.map((data) => data.id))).map(
+            (uniqueId) => {
+              const data = videoNewsAll.find((item) => item.id === uniqueId);
+              if (data && data.is_featured === 1) {
+                return (
+                  <Link
+                    to={`/${data.category_name_bangla}/${data.id}`}
+                    key={data.id}
+                    className="text-muted"
+                  >
+                    <div className="card border-0">
+                      <div className="card-body p-0">
+                        <div className="is_video_icon">
+                          <PiAirplayFill /> {/* I'm assuming this is an icon */}
+                        </div>
+                        <img
+                          className="img-fluid rounded-2"
+                          src={`https://ajkal.us/images/${data?.title_img}`}
+                          alt=""
+                          onError={(e) => {
+                            e.target.src =
+                              "https://ajkal.us/image/settings/placeholder.jpg";
+                          }}
+                        />
+                        <div className="vide-feature-title">
+                          <h5 className="mb-1 text-white pt-3">
+                            {data.news_title &&
+                              data.news_title
+                                .split(" ")
+                                .slice(0, 7)
+                                .join(" ")}
+                          </h5>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Link>
-              ))
+                  </Link>
+                );
+              }
+              return null;
+            }
           )}
-        </div>
+        </>
+      )}
+    </div>
+
         <div className="col-lg-6">
           {loading
             ? // Skeleton loader for other videos
@@ -114,6 +134,10 @@ const VideoNews = () => {
                         width={150}
                         src={`https://ajkal.us/images/${data.title_img}`}
                         alt=""
+                        onError={(e) => {
+                          e.target.src =
+                            "https://ajkal.us/image/settings/placeholder.jpg";
+                        }}
                       />
                     </div>
                     <div className="ps-3">

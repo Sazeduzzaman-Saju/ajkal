@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./CategoryNewsOne.css";
-import { Link } from "react-router-dom";
-import axios from "axios";
 import CategoryNewsOneData from "../../../Comps/CategoryNewsOneData/CategoryNewsOneData";
 import CategoryNewsTwoData from "../../../Comps/CategoryNewsOneData/CategoryNewsOneThree";
 import CategoryNewsThreeData from "../../../Comps/CategoryNewsOneData/CategoryNewsTwoData";

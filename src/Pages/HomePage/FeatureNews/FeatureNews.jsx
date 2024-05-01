@@ -4,6 +4,7 @@ import "./FeatureNews.css";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import BanglaTimeAgo from "../../../Comps/BanglaTime/BanglaTimeDiffrence";
+import SanitizedParagraph from "../../../Comps/SanitizedParagraph";
 
 const FeatureNews = () => {
   const [spotlightNews, setSpotlightNews] = useState([]);
@@ -66,9 +67,7 @@ const FeatureNews = () => {
                       {data.news_title.split(" ").slice(0, 10).join(" ")}
                     </h5>
                     <p className="card-text text-muted" style={{ height: "70px" }}>
-                      {/* {data?.news_short_brief?.length > 70 ? `${data.news_short_brief.slice(0, 70)}...` : data?.news_short_brief} */}
-
-                      {data.news_short_brief.split(" ").slice(0, 10).join(" ")}
+                      <SanitizedParagraph htmlContent={data.news_short_brief.split(" ").slice(0, 10).join(" ")}/>
                     </p>
                   </div>
                   <img
@@ -77,6 +76,10 @@ const FeatureNews = () => {
                     alt="Card Image"
                     loading="lazy"
                     style={{ height: "200px" }}
+                    onError={(e) => {
+                      e.target.src =
+                        "https://ajkal.us/image/settings/placeholder.jpg";
+                    }}
                   />
                 </div>
               </Link>

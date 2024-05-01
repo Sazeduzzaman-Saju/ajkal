@@ -67,6 +67,7 @@ function Header() {
 
   const [addvertisement, setAddvertisement] = useState([]);
   const addUrl = "https://backoffice.ajkal.us/ad/all";
+
   useEffect(() => {
     axios
       .get(addUrl)
@@ -87,7 +88,7 @@ function Header() {
         console.error("Error fetching data:", error);
       });
   }, []);
-
+  console.log(addvertisement, "add url");
   return (
     <>
       <div className="container-fluid main-menu">
@@ -101,23 +102,23 @@ function Header() {
               <div className="top-bar d-flex justify-content-center">
                 <ul className="mb-0">
                   <li className="">
-                    <NavLink to={"/login"} className="">
+                    <NavLink to={"/login"} className="navlinks-top">
                       বিজ্ঞাপন
                     </NavLink>
                   </li>
                   <li className="">
-                    <NavLink to={"/epaper"} className="">
+                    <NavLink to={"/epaper"} className="navlinks-top">
                       ই-পেপার
                     </NavLink>
                   </li>
                   <li className="">
-                    <NavLink to={"/search"} className="">
+                    <NavLink to={"/search"} className="navlinks-top">
                       আর্কাইভ
                     </NavLink>
                   </li>
                   <li className="">
-                    <NavLink to={"/ad-cost"} className="">
-                    বিজ্ঞাপনের মূল্য
+                    <NavLink to={"/ad-cost"} className="navlinks-top">
+                      বিজ্ঞাপনের মূল্য
                     </NavLink>
                   </li>
                 </ul>
@@ -184,17 +185,23 @@ function Header() {
             <div className="container">
               <div className="row top-bar-area">
                 <div className="col-lg-12 px-0">
-                  {addvertisement.map((data) =>
-                    // Check if data "ad_category_id" is equal to "2" and status is equal to "1"
-                    data.ad_category_id === "2" && data.status === "1" ? (
-                      <Link to={data.ad_link} key={data.id}>
-                        <img
-                          className="img-fluid top-add"
-                          src={`https://ajkal.us/images/${data.ad_banner}`}
-                          alt=""
-                        />
-                      </Link>
-                    ) : null
+                  {addvertisement.map(
+                    (data) =>
+                      // Check if data.status is "1" and data.ad_position is "HeaderTop"
+                      data.status === 1 &&
+                      data.ad_position === "HeaderTop" && (
+                        <Link to={data.ad_link} key={data.id} target="_blank">
+                          <img
+                            className="img-fluid w-100"
+                            src={`https://ajkal.us/img/ad/${data.ad_banner}`}
+                            alt={`https://ajkal.us/img/ad/${data.ad_banner}`}
+                            onError={(e) => {
+                              e.target.src =
+                                "https://ajkal.us/image/settings/placeholder.jpg";
+                            }}
+                          />
+                        </Link>
+                      )
                   )}
                 </div>
               </div>

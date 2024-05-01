@@ -43,20 +43,24 @@ const Footer = () => {
   return (
     <>
       <div
-        className="container-fluid p-2"
+        className="container-fluid"
         style={{ backgroundColor: "var(--main)" }}
       >
         <div className="container">
           <div className="row">
-            <div className="col-lg-12">
-              <Link className="" to="/">
-                <img
-                  src="https://ajkal.us/image/settings/logo_red.jpg"
-                  className="img-fluid"
-                  alt=""
-                  width={250}
-                />
-              </Link>
+            <div className="col-lg-12 ps-0">
+              <div
+                style={{ width: "18%", background: "#fff", padding: "10px" }}
+              >
+                <Link className="" to="/">
+                  <img
+                    src="https://ajkal.us/image/settings/logo_red.jpg"
+                    className="img-fluid"
+                    alt=""
+                    width={250}
+                  />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -64,7 +68,7 @@ const Footer = () => {
       <div
         className="container-fluid p-2 pb-3"
         style={{
-          backgroundColor: 'black',
+          backgroundColor: "black",
           // // backgroundImage: 'url(https://ajkal.us/image/settings/dark-bg.jpg)',
           // backgroundImage: 'url(https://ajkal.us/image/settings/bg-2.jpg)',
           // // backgroundImage: 'url(https://ajkal.us/image/settings/bg-3.jpg)',
@@ -76,7 +80,7 @@ const Footer = () => {
       >
         <div className="container">
           <div className="row">
-            <div className="col-lg-10">
+            <div className="col-lg-10 ps-0">
               <NewsCategory categories={categoriesData} />
               {/* Info */}
               <ul
@@ -143,7 +147,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="row align-items-center">
-            <div className="col-lg-10">
+            <div className="col-lg-10 ps-0">
               <div>
                 <div className="">
                   <p className="fs-3 text-white mb-0">
@@ -198,16 +202,17 @@ const Footer = () => {
         <div className="container-fluid">
           <div className="container">
             <div className="row ">
-              <div className="col-lg-12">
-                <div className="d-flex justify-content-between align-items-center p-2">
-                  <p className="text-start mb-0" style={{color: '#fff'}}>
+              <div className="col-lg-12 ps-0">
+                <div className="d-flex justify-content-between align-items-center p-2 ps-0">
+                  <p className="text-start mb-0" style={{ color: "#fff" }}>
                     এই ওয়েবসাইটের কোনো লেখা, ছবি, অডিও, ভিডিও অনুমতি ছাড়া
                     ব্যবহার বেআইনি।
                   </p>
                   <p className="text-white text-end mb-0">
                     Developed With Loved By
                     <Link
-                      className="ps-2" style={{color: 'orange'}}
+                      className="ps-2"
+                      style={{ color: "orange" }}
                       to={"https://galaxymediaus.com/"}
                       target="_blank"
                     >

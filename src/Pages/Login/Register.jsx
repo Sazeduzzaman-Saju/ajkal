@@ -49,6 +49,10 @@ const Register = () => {
               className="img-fluid"
               src="https://ajkal.us/image/settings/Sign-up-rafiki.png"
               alt=""
+              onError={(e) => {
+                e.target.src =
+                  "https://ajkal.us/image/settings/placeholder.jpg";
+              }}
             />
           </div>
         </div>

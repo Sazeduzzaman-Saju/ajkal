@@ -28,10 +28,10 @@
   color: white !important;
   font-size: 21px !important;
   border: 0;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+ box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 0px;
 }
 .share-btn:hover {
-  background-color: var(--secondary) !important;
+  background-color: var(--main) !important;
   margin-right: 5px;
   padding: 0px 10px 5px !important;
   margin-left: 6px;
@@ -40,5 +40,5 @@
   color: white !important;
   font-size: 21px !important;
   border: 0;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+ box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 0px;
 }

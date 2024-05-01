@@ -5,32 +5,59 @@ import NewsSectionThree from "../../../Comps/NewsSectionThree/NewsSectionThree";
 import PostHeader from "../../../Comps/PostHeader/PostHeader";
 import axios from "axios";
 import NewsSectionFour from "../../../Comps/NewsSectionFour/NewsSectionFour";
+import { Link } from "react-router-dom";
 
 const CategoryWiseNews = () => {
   const [bangladeshNews, setBangladeshNews] = useState([]);
-  const [probashNews, setProbashNews] = useState([]);
+  const [binodon, setBinodon] = useState([]);
   const [khelarNews, setKhelarNews] = useState([]);
   const [dhormo, setDhormo] = useState([]);
 
-  const url = "https://backoffice.ajkal.us/category-news/2";
-  const urlProbas = "https://backoffice.ajkal.us/category-news/5";
-  const urlKhela = "https://backoffice.ajkal.us/category-news/4";
-  const dhormoData = "https://backoffice.ajkal.us/category-news/10";
+  const url = "https://backoffice.ajkal.us/category-news/5";
+  const urlBinodon = "https://backoffice.ajkal.us/category-news/7";
+  const urlKhela = "https://backoffice.ajkal.us/category-news/6";
+  const dhormoData = "https://backoffice.ajkal.us/category-news/8";
+  const [addvertisement, setAddvertisement] = useState([]);
+  const addUrl = "https://backoffice.ajkal.us/ad/all";
+
+  useEffect(() => {
+    axios
+      .get(addUrl)
+      .then((response) => {
+        // Check if the response contains an array
+        if (Array.isArray(response.data)) {
+          setAddvertisement(response.data);
+        } else if (Array.isArray(response.data.data)) {
+          setAddvertisement(response.data.data);
+        } else {
+          console.error(
+            "Invalid data structure in API response:",
+            response.data
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+  console.log(addvertisement, "add url");
 
   useEffect(() => {
     axios
       .get(url)
       .then((response) => {
+        let slicedData = [];
         if (Array.isArray(response.data)) {
-          setBangladeshNews(response.data);
+          slicedData = response.data;
         } else if (Array.isArray(response.data.data)) {
-          setBangladeshNews(response.data.data);
+          slicedData = response.data.data;
         } else {
           console.error(
             "Invalid data structure in API response:",
             response.data
           );
         }
+        setBangladeshNews(slicedData);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -39,12 +66,12 @@ const CategoryWiseNews = () => {
 
   useEffect(() => {
     axios
-      .get(urlProbas)
+      .get(urlBinodon)
       .then((response) => {
         if (Array.isArray(response.data)) {
-          setProbashNews(response.data.slice(0, 6));
+          setBinodon(response.data.slice(0, 8));
         } else if (Array.isArray(response.data.data)) {
-          setProbashNews(response.data.data.slice(0, 6));
+          setBinodon(response.data.data.slice(0, 8));
         } else {
           console.error(
             "Invalid data structure in API response:",
@@ -56,7 +83,7 @@ const CategoryWiseNews = () => {
         console.error("Error fetching data:", error);
       });
   }, []);
-
+  console.log("khelarNews", khelarNews);
   useEffect(() => {
     axios
       .get(urlKhela)
@@ -76,7 +103,7 @@ const CategoryWiseNews = () => {
         console.error("Error fetching data:", error);
       });
   }, []);
-
+  console.log("Binodon", binodon);
   useEffect(() => {
     axios
       .get(dhormoData)
@@ -112,20 +139,32 @@ const CategoryWiseNews = () => {
       </div>
       {/* add */}
       <div>
-        <img
-          className="img-fluid"
-          src="https://ajkal.us/image/settings/Image-11.jpg"
-          alt=""
-        />
+        {/* সারা বাংলা advertisement */}
+        {addvertisement.map(
+          (data) =>
+            // Check if data.status is "1" and data.ad_position is "HeaderTop"
+            data.status === 1 &&
+            data.ad_position === "BelowNewsCategory2" && (
+              <Link to={data.ad_link} key={data.id} target="_blank">
+                <img
+                  className="img-fluid w-100"
+                  src={`https://ajkal.us/img/ad/${data.ad_banner}`}
+                  alt={`https://ajkal.us/img/ad/${data.ad_banner}`}
+                  onError={(e) => {
+                    e.target.src =
+                      "https://ajkal.us/image/settings/placeholder.jpg";
+                  }}
+                />
+              </Link>
+            )
+        )}
       </div>
       {/* Second Style */}
       <div className="pt-2">
         <PostHeader
-          title={
-            probashNews.length > 0 ? probashNews[0].category_name_bangla : ""
-          }
+          title={binodon.length > 0 ? binodon[0].category_name_bangla : ""}
         />
-        <NewsSectionTwo probashNews={probashNews} />
+        <NewsSectionTwo binodon={binodon} />
       </div>
       {/* Third Style */}
       <div className="">

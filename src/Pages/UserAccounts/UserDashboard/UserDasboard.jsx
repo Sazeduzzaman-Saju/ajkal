@@ -33,6 +33,7 @@ const UserDashboard = () => {
           }
         );
         setUserNewsData(response.data.data);
+        console.log(response.data.data)
         setLoading(false);
       } catch (error) {
         setError(error);
@@ -186,11 +187,13 @@ const UserDashboard = () => {
                     <thead>
                       <tr className="user-th">
                         <th>Sl</th>
+                        <th>News Image</th>
+                        {/* <th>Thumb Image</th> */}
                         <th>Post Image</th>
                         <th>Post Title</th>
                         <th>Category</th>
                         <th>Post Date</th>
-                        <th>Post Status</th>
+                        {/* <th>Post Status</th> */}
                         {/* <th>Action</th> */}
                       </tr>
                     </thead>
@@ -199,8 +202,14 @@ const UserDashboard = () => {
                         userNewsData.map((item, index) => (
                           <tr className="text-center" key={index}>
                             <td>{index + 1}</td>
+                            <td>
+                              <img width={50} className="img-fluid" src={`https://ajkal.us/img/news/${item.title_img}`} alt="" />
+                              {/* <img src={item.news_img} alt="" /> */}
+                            </td>
+                            {/* <td>
+                              <img width={50} className="img-fluid" src={`https://ajkal.us/img/news/${item.thumbnail_img}`} alt="" />
+                            </td> */}
                             <td>{item.news_title}</td>
-                            <td>{item.title_img}</td>
                             <td>{item.category_name}</td>
                             <td>{item.news_time}</td>
                             <td>

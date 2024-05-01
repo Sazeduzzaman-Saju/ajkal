@@ -60,6 +60,10 @@ const SearchData = ({ archive }) => {
                             className="img-fluid w-100 rounded"
                             src={`https://ajkal.us/images/${data.title_img}`}
                             alt=""
+                            onError={(e) => {
+                              e.target.src =
+                                "https://ajkal.us/image/settings/placeholder.jpg";
+                            }}
                           />
                         </LazyLoad>
                       </div>

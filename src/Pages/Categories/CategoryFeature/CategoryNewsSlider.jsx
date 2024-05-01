@@ -1,44 +1,79 @@
-import React from "react";
-import Skeleton from "react-loading-skeleton";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
-const CategoryNewsSlider = ({ singleNews, loading }) => {
+const CategoryNewsSlider = () => {
+  const singleNews = useLoaderData();
+  console.log(singleNews.data, "category data"); // Log the data structure to verify
+
+  const hasFeaturedItems = singleNews.data.some(
+    (newsItem) => newsItem.is_featured === 1
+  );
+
   return (
     <div>
-      {loading ? (
-        // Render skeleton loading placeholders
-        <div>
-          <Skeleton height={200} />
-          <Skeleton height={20} width={200} style={{ marginTop: "10px" }} />
-        </div>
+      {hasFeaturedItems ? (
+        singleNews.data.map((newsItem, index) => (
+          <div key={index}>
+            {newsItem.is_featured === 1 && (
+              <p>
+                <Link
+                  to={`/${newsItem.category_name_bangla}/${newsItem.id}`}
+                  className="shadow-sm"
+                  key={newsItem.id}
+                >
+                  <div className="card rounded-0 border-0">
+                    <div className="card-body p-0 ">
+                      <div>
+                        <img
+                          className="img-fluid w-100 category-slider-img shadow-sm"
+                          src={`https://ajkal.us/images/${newsItem.title_img}`}
+                          alt=""
+                          onError={(e) => {
+                            e.target.src =
+                              "https://ajkal.us/image/settings/placeholder.jpg";
+                          }}
+                        />
+                      </div>
+                      <div
+                        className="p-2 feature-text-area"
+                        style={{ backgroundColor: "var(--main)" }}
+                      >
+                        <h4 className="pt-1 mb-1 text-white">
+                          {newsItem.news_title.slice(0, 50)}
+                        </h4>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </p>
+            )}
+          </div>
+        ))
       ) : (
-        // Render actual data
-        singleNews.map((data) =>
-          data.is_featured === "1" ? (
-            <Link to={`/${data.category_name_bangla}/${data.id}`} className="shadow-sm" key={data.id}>
-              <div className="card rounded-0 border-0">
-                <div className="card-header p-0"></div>
-                <div className="card-body p-0">
-                  <div>
-                    <img
-                      className="img-fluid w-100 category-slider-img"
-                      src={`https://ajkal.us/images/${data.title_img}`}
-                      alt=""
-                    />
-                  </div>
-                  <div
-                    className="p-2 feature-text-area"
-                    style={{ backgroundColor: "var(--main)" }}
-                  >
-                    <h4 className="pt-1 mb-1 text-white">
-                      {data.news_title.slice(0, 50)}
-                    </h4>
-                  </div>
-                </div>
+        <Link to={"/"} className="shadow-sm">
+          <div className="card rounded-0 border-0">
+            <div className="card-body p-0">
+              <div>
+                <img
+                  className="img-fluid w-100 category-slider-img"
+                  src={`https://ajkal.us/image/settings/placeholder.jpg`}
+                  alt=""
+                  onError={(e) => {
+                    e.target.src =
+                      "https://ajkal.us/image/settings/placeholder.jpg";
+                  }}
+                />
               </div>
-            </Link>
-          ) : null
-        )
+              <div
+                className="p-2 feature-text-area"
+                style={{ backgroundColor: "var(--main)" }}
+              >
+                <h4 className="pt-1 mb-1 text-white">
+                  এই ক্যাটেগরিতে কোন ফিচার নিউজ নেই।
+                </h4>
+              </div>
+            </div>
+          </div>
+        </Link>
       )}
     </div>
   );

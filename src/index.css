@@ -25,6 +25,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.bangla-time{
+  font-size: 20px;
+  font-family: "SolaimanLipi", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 code {
   font-family: "SolaimanLipi", sans-serif;
 }
@@ -97,4 +103,13 @@ h6 {
   display: flex;
   height: 3px;
   margin-bottom: 29px;
+}
+@media screen and (min-width: 1368px) {
+  /* CSS styles for viewport width 1368px and above */
+  .navbar-nav .navlinks{
+    font-size: 15px;
+  }
+  .navlinks-top{
+    font-size: 13px;
+  }
 }

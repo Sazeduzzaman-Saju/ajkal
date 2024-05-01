@@ -165,6 +165,10 @@ const Search = () => {
                       src={`https://ajkal.us/images/${filteredData.ad_banner}`}
                       alt="advertisement"
                       loading="lazy"
+                      onError={(e) => {
+                        e.target.src =
+                          "https://ajkal.us/image/settings/placeholder.jpg";
+                      }}
                     />
                   ))
               )}

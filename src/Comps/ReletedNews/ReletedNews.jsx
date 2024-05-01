@@ -70,27 +70,44 @@ const RelatedNews = ({ singleNewsDetails }) => {
                   src={`https://ajkal.us/images/${news.title_img}`}
                   alt={news.news_title}
                   style={{ height: "250px", objectFit: "cover" }}
+                  onError={(e) => {
+                    e.target.src =
+                      "https://ajkal.us/image/settings/placeholder.jpg";
+                  }}
                 />
               </div>
               <div className="post-content">
                 <div className="category">{news.category_name_bangla}</div>
-                <h1 className="title">{news.news_title.split(' ').slice(0, 7).join(' ')}</h1>
+                <h1 className="title">
+                  {news.news_title.split(" ").slice(0, 7).join(" ")}
+                </h1>
                 <h2 className="sub-title mb-0 pb-0">
-                  {news.news_short_brief.split(' ').slice(0, 8).join(' ')} ..
+                  <SanitizedParagraph
+                    htmlContent={news.news_short_brief
+                      .split(" ")
+                      .slice(0, 8)
+                      .join(" ")}
+                  ></SanitizedParagraph>
                   <span className="text-primary"></span>
                 </h2>
                 <p
                   className={`description ${
                     hoveredCard === news.id ? "visible" : ""
                   }`}
-                  >
-                  
-                  <SanitizedParagraph htmlContent={news.news_detail.split(' ').slice(0, 15).join(' ')} />
+                >
+                  {news.news_detail && ( // Add a conditional check
+                    <SanitizedParagraph
+                      htmlContent={news.news_detail
+                        .split(" ")
+                        .slice(0, 15)
+                        .join(" ")}
+                    />
+                  )}
                 </p>
                 <div className="post-meta mt-1">
                   <span className="timestamp">
                     <i className="fa fa-clock-o"></i>
-                    {news.timestamp}
+                    {news?.timestamp}
                   </span>
                 </div>
               </div>

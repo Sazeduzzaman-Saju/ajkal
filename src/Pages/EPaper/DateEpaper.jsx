@@ -109,6 +109,10 @@ function DateEpaper() {
                     alt={`https://ajkal.us/img/epaper/${url.epaper_image}`}
                     onClick={handleShow}
                     type="button"
+                    onError={(e) => {
+                      e.target.src =
+                        "https://ajkal.us/image/settings/placeholder.jpg";
+                    }}
                   />
                 </div>
               ))}
@@ -136,7 +140,7 @@ function DateEpaper() {
           <div className="col-lg-9 text-center ">
             <div className="no-data-epaper">
               <a className="navbar-brand" href="/">
-                <img src="https://ajkal.us/image/settings/logo_red.png" alt />
+                <img src="https://ajkal.us/image/settings/logo_red.png" alt  />
               </a>
               <h5 className="text-center mt-3">
                 এই{" "}

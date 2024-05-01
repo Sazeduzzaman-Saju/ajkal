@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { Triangle } from "react-loader-spinner";
+// import { Triangle } from "react-loader-spinner";
 
 const UserNewsPost = () => {
   //   Fetch The Category Data
@@ -71,9 +71,9 @@ const UserNewsPost = () => {
 
       // Convert selected images to base64
       const newsImageFile = data.news_image[0];
-      const thumbnailImageFile = data.thumbnail_image[0];
+      const thumbImageFile = data.thumbnail_image[0];
       const newsImageBase64 = await convertToBase64(newsImageFile);
-      const thumbnailImageBase64 = await convertToBase64(thumbnailImageFile);
+      const thumbImageBase64 = await convertToBase64(thumbImageFile);
 
       // console.log('News Image Base64:', newsImageBase64);
       // console.log('Thumbnail Image Base64:', thumbnailImageBase64);
@@ -82,9 +82,9 @@ const UserNewsPost = () => {
       const formData = {
         ...data,
         news_image: newsImageBase64,
-        thumbnail_image: thumbnailImageBase64,
+        thumbnail_image: thumbImageBase64,
       };
-
+      console.log(formData);
       const response = await fetch(
         "https://backoffice.ajkal.us/post/add-news",
         {
@@ -114,14 +114,13 @@ const UserNewsPost = () => {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
-        // console.log('File converted to Base64:', reader.result);
+        console.log("File converted to Base64:", reader.result);
         resolve(reader.result);
       };
       reader.onerror = (error) => reject(error);
     });
   };
 
-  
   return (
     <form onSubmit={handleSubmit(handlePost)} encType="multipart/form-data">
       <div className="row pt-4">
@@ -240,6 +239,28 @@ const UserNewsPost = () => {
             defaultValue={full_name} // Use defaultValue instead of value
             {...register("news_author", { required: false })}
             aria-invalid={errors.news_author ? "true" : "false"}
+          />
+        </div>
+        <div className="col-lg-4 mb-3">
+          <label htmlFor="">Is Feature</label>
+          <input
+            className="w-100 form-control"
+            type="text"
+            readOnly
+            defaultValue={0} // Use defaultValue instead of value
+            {...register("is_featured", { required: false })}
+            aria-invalid={errors.is_featured ? "true" : "false"}
+          />
+        </div>
+        <div className="col-lg-4 mb-3">
+          <label htmlFor="">Status</label>
+          <input
+            className="w-100 form-control"
+            type="text"
+            readOnly
+            defaultValue={0} // Use defaultValue instead of value
+            {...register("status", { required: false })}
+            aria-invalid={errors.status ? "true" : "false"}
           />
         </div>
         {/* Title */}

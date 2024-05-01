@@ -1,0 +1,10 @@
+.footer-top-news{
+    height: 180px !important;
+    width: 100%;
+    background-size: cover;
+    object-fit: cover;
+}
+.news-author-box{
+    border-left: 2px solid #165588;
+    padding: 15px 0px 0 20px;
+}

@@ -1,17 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import BanglaTimeAgo from "../../../Comps/BanglaTime/BanglaTimeDiffrence";
 import Skeleton from "react-loading-skeleton";
 import CategoryNewsSlider from "./CategoryNewsSlider";
+import SanitizedParagraph from "../../../Comps/SanitizedParagraph";
+import axios from "axios";
 
 const CategoryFeature = ({ singleNews }) => {
-
+  const [addvertisement, setAddvertisement] = useState([]);
+  const addUrl = "https://backoffice.ajkal.us/ad/all";
+console.log(singleNews)
+  useEffect(() => {
+    axios
+      .get(addUrl)
+      .then((response) => {
+        // Check if the response contains an array
+        if (Array.isArray(response.data)) {
+          setAddvertisement(response.data);
+        } else if (Array.isArray(response.data.data)) {
+          setAddvertisement(response.data.data);
+        } else {
+          console.error(
+            "Invalid data structure in API response:",
+            response.data
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+  console.log(addvertisement, "add url");
   return (
     <div className="col-lg-8">
       <div className="row gx-3">
         <div className="col-sm-8 mb-3">
-          <CategoryNewsSlider singleNews={singleNews} />
+        <CategoryNewsSlider singleNews={singleNews} />
         </div>
         {!singleNews.length ? ( // Render skeleton loading placeholders if singleNews is empty
           <div className="col-sm-4">
@@ -19,25 +44,34 @@ const CategoryFeature = ({ singleNews }) => {
           </div>
         ) : (
           // Render actual data if singleNews is not empty and loading is false
-          singleNews.slice(0,4).map((data) => (
+          singleNews.slice(0, 4).map((data) => (
             <div className="col-sm-4" key={data.id}>
               <Link to={`/${data.category_name_bangla}/${data.id}`}>
                 <div className="card rounded-0 border-0 shadow-sm ">
-                  <div className="card-header p-0"></div>
+                  <div className="card-header p-0 border-0"></div>
                   <div className="card-body p-0">
                     <div>
                       <img
                         className="card-img-top"
                         src={`https://ajkal.us/images/${data.title_img}`}
                         alt=""
+                        onError={(e) => {
+                          e.target.src =
+                            "https://ajkal.us/image/settings/placeholder.jpg";
+                        }}
                       />
                     </div>
                     <div className="p-2">
                       <h5 className="pt-2 main_color">
-                        {data.news_title.split(' ').slice(0, 8).join(' ')}
+                        {data.news_title.split(" ").slice(0, 8).join(" ")}
                       </h5>
                       <p className="">
-                        {data.news_short_brief.split(' ').slice(0, 10).join(' ')}...
+                        <SanitizedParagraph
+                          htmlContent={data.news_short_brief
+                            .split(" ")
+                            .slice(0, 10)
+                            .join(" ")}
+                        ></SanitizedParagraph>
                       </p>
                       <p
                         className="text-muted mb-1"
@@ -59,12 +93,25 @@ const CategoryFeature = ({ singleNews }) => {
         )}
       </div>
       <div className="row">
-        <div className="d-flex justify-content-center py-3 pt-5">
-          <img
-            className="img-fluid"
-            src="https://www.adgully.com/banners/ezgif_com_gif_maker__1__183907.gif"
-            alt=""
-          />
+        <div className="col-lg-12 py-4">
+          {addvertisement.map(
+            (data) =>
+              // Check if data.status is "1" and data.ad_position is "HeaderTop"
+              data.status === 1 &&
+              data.ad_position === "BelowNewsCategory2" && (
+                <Link to={data.ad_link} key={data.id} target="_blank">
+                  <img
+                    className="img-fluid w-100"
+                    src={`https://ajkal.us/img/ad/${data.ad_banner}`}
+                    alt={`https://ajkal.us/img/ad/${data.ad_banner}`}
+                    onError={(e) => {
+                      e.target.src =
+                        "https://ajkal.us/image/settings/placeholder.jpg";
+                    }}
+                  />
+                </Link>
+              )
+          )}
         </div>
       </div>
     </div>

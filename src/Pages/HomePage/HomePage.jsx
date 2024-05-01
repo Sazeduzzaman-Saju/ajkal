@@ -36,6 +36,27 @@ const HomePage = () => {
       });
   }, []);
 
+  const renderAdvertisement = (adPosition) => {
+    return addvertisement.map((data) => {
+      if (data.status === 1 && data.ad_position === adPosition) {
+        return (
+          <Link to={data.ad_link} key={data.id} target="_blank">
+            <img
+              className="img-fluid w-100"
+              alt={data}
+              loading="lazy"
+              src={`https://ajkal.us/img/ad/${data.ad_banner}`}
+              onError={(e) => {
+                e.target.src =
+                  "https://ajkal.us/image/settings/placeholder.jpg";
+              }}
+            />
+          </Link>
+        );
+      }
+      return null; // Return null if conditions are not met
+    });
+  };
   return (
     <>
       <PageTitle title="সাপ্তাহিক আজকাল || Saptahik Ajkal" description="Text" />
@@ -64,18 +85,24 @@ const HomePage = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="image-container">
-                {addvertisement.map((data) =>
-                  // Check if data "ad_category_id" is equal to "2" and status is equal to "1"
-                  data.ad_category_id === "4" && data.status === "1" ? (
-                    <Link to={data.ad_link} key={data.id}>
-                      <img
-                        className="w-100 zoom-image img-fluid "
-                        src={`https://ajkal.us/images/${data.ad_banner}`}
-                        alt={"advertisement"}
-                        loading="lazy"
-                      />
-                    </Link>
-                  ) : null
+                {addvertisement.map(
+                  (data) =>
+                    // Check if data.status is "1" and data.ad_position is "HeaderTop"
+                    data.status === 1 &&
+                    data.ad_position === "BelowNewsCategoryFull" && (
+                      <Link to={data.ad_link} key={data.id} target="_blank">
+                        <img
+                          className="img-fluid w-100"
+                          alt={data}
+                          loading="lazy"
+                          src={`https://ajkal.us/img/ad/${data.ad_banner}`}
+                          onError={(e) => {
+                            e.target.src =
+                              "https://ajkal.us/image/settings/placeholder.jpg";
+                          }}
+                        />
+                      </Link>
+                    )
                 )}
               </div>
             </div>
@@ -107,48 +134,11 @@ const HomePage = () => {
                   height={365}
                 />
               </div>
-              {/* Add Banner Start */}
-              {addvertisement.map((data) =>
-                // Check if data "ad_category_id" is equal to "2" and status is equal to "1"
-                data.ad_category_id === "3" && data.status === "1" ? (
-                  <div className="mb-2" key={data.id}>
-                    <Link to={data.ad_link} >
-                      <img
-                        className="img-fluid side-add"
-                        src={`https://ajkal.us/images/${data.ad_banner}`}
-                        alt=""
-                      />
-                    </Link>
-                  </div>
-                ) : null
-              )}
-
-              {/* Add Banner End */}
-              <div className="">
-                <div>
-                  <div id="fb-root" />
-                  <div
-                    className="fb-page"
-                    data-href="https://www.facebook.com/weeklyajkal/"
-                    data-tabs="timeline"
-                    data-width
-                    data-height={400}
-                    data-small-header="false"
-                    data-adapt-container-width="true"
-                    data-hide-cover="false"
-                    data-show-facepile="true"
-                  >
-                    <blockquote
-                      cite="https://www.facebook.com/weeklyajkal/"
-                      className="fb-xfbml-parse-ignore"
-                    >
-                      <a href="https://www.facebook.com/weeklyajkal/">
-                        Weekly Ajkal
-                      </a>
-                    </blockquote>
-                  </div>
-                </div>
-              </div>
+              {/*home page sidebar youtube down Add Banner Start */}
+              <div className="mt-3">{renderAdvertisement("SideBar1")}</div>
+              <div className="mt-3">{renderAdvertisement("Sidebar3")}</div>
+              <div className="mt-3">{renderAdvertisement("Sidebar2")}</div>
+              {/*home page sidebar youtube down Add Banner End */}
             </div>
           </div>
         </div>
@@ -166,20 +156,26 @@ const HomePage = () => {
             <div className="col-lg-12">
               <CategoryNewsOne></CategoryNewsOne>
               <div>
-                {addvertisement.map((data) =>
-                  // Check if data "ad_category_id" is equal to "2" and status is equal to "1"
-                  data.ad_category_id === "5" && data.status === "1" ? (
-                    <div className="mb-2" key={data.id}>
-                      <Link to={data.ad_link}>
-                        <img
-                          className="img-fluid w-100 mt-4"
-                          src={`https://ajkal.us/images/${data.ad_banner}`}
-                          alt=""
-                        />
-                      </Link>
-                    </div>
-                  ) : null
-                )}
+                <div>
+                  {addvertisement.map(
+                    (data) =>
+                      // Check if data.status is "1" and data.ad_position is "HeaderTop"
+                      data.status === 1 &&
+                      data.ad_position === "HeaderTop" && (
+                        <Link to={data.ad_link} key={data.id} target="_blank">
+                          <img
+                            className="img-fluid w-100"
+                            src={`https://ajkal.us/img/ad/${data.ad_banner}`}
+                            alt={`https://ajkal.us/img/ad/${data.ad_banner}`}
+                            onError={(e) => {
+                              e.target.src =
+                                "https://ajkal.us/image/settings/placeholder.jpg";
+                            }}
+                          />
+                        </Link>
+                      )
+                  )}
+                </div>
               </div>
             </div>
           </div>

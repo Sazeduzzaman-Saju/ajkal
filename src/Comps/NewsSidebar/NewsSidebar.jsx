@@ -59,6 +59,10 @@ const NewsSidebar = () => {
                       style={{ height: "70px", objectFit: "cover" }}
                       src={`https://ajkal.us/images/${data.title_img}`}
                       alt=""
+                      onError={(e) => {
+                        e.target.src =
+                          "https://ajkal.us/image/settings/placeholder.jpg";
+                      }}
                     />
                   </div>
                   <div className="pothito-content w-75 ps-4">

@@ -11,6 +11,7 @@ import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 import { Link } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Skeleton from "react-loading-skeleton";
+import SanitizedParagraph from "../../../Comps/SanitizedParagraph";
 
 export default function Banner() {
   const [bannerData, setBannerData] = useState([]);
@@ -86,6 +87,10 @@ export default function Banner() {
                   effect="blur"
                   loading="lazy"
                   src={`https://ajkal.us/images/${slide.title_img}`}
+                  onError={(e) => {
+                    e.target.src =
+                      "https://ajkal.us/image/settings/placeholder-banner.jpg";
+                  }}
                 />
                 <div className="overlay">
                   <Link
@@ -97,10 +102,20 @@ export default function Banner() {
                         {slide.news_title || <Skeleton count={3} />}
                       </h1>
                       <h2 className="mb-0 pt-2 banner-description">
-                        {slide.news_short_brief.slice(0, 97)}
+                        <SanitizedParagraph
+                          htmlContent={slide.news_short_brief
+                            .split(" ")
+                            .slice(0, 15)
+                            .join(" ")}
+                        ></SanitizedParagraph>
                       </h2>
-                      <p className="w-50 pt-5 bannger-description">
-                        {slide.news_detail.slice(3, 150)}
+                      <p style={{ fontSize: "14px", width: "50%" }}>
+                        <SanitizedParagraph
+                          htmlContent={slide.news_detail
+                            .split(" ")
+                            .slice(15, 40)
+                            .join(" ")}
+                        ></SanitizedParagraph>
                       </p>
                     </div>
                   </Link>

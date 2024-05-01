@@ -50,7 +50,7 @@ const Login = () => {
         throw new Error("Failed to fetch user data");
       }
   
-      const userData = await userResponse.json();
+      // const userData = await userResponse.json();
       // console.log(userData)
       // Do something with the user data, such as storing it in localStorage or displaying it
   
@@ -163,6 +163,10 @@ const Login = () => {
                   className="login-sidebanner"
                   src="https://allbanglanewspaper.net/widget/image_slider/images/2.jpg"
                   alt=""
+                  onError={(e) => {
+                    e.target.src =
+                      "https://ajkal.us/image/settings/placeholder.jpg";
+                  }}
                 />
                 <div className="image-overlay-login">
                   <div className="p-5">

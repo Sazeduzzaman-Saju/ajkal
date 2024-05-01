@@ -3,7 +3,7 @@ import "./SorboshesKhobor.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
-import BanglaTimeAgo from "../../../Comps/BanglaTime/BanglaTimeDiffrence";
+// import BanglaTimeAgo from "../../../Comps/BanglaTime/BanglaTimeDiffrence";
 import PostHeader from "../../../Comps/PostHeader/PostHeader";
 
 const SorboshesKhobor = () => {
@@ -13,6 +13,32 @@ const SorboshesKhobor = () => {
 
   const url = "https://backoffice.ajkal.us/viewed-news";
   const urlsorboshes = "https://backoffice.ajkal.us/latest-news";
+
+  const [addvertisement, setAddvertisement] = useState([]);
+  const addUrl = "https://backoffice.ajkal.us/ad/all";
+
+  useEffect(() => {
+    axios
+      .get(addUrl)
+      .then((response) => {
+        // Check if the response contains an array
+        if (Array.isArray(response.data)) {
+          setAddvertisement(response.data);
+        } else if (Array.isArray(response.data.data)) {
+          setAddvertisement(response.data.data);
+        } else {
+          console.error(
+            "Invalid data structure in API response:",
+            response.data
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+  console.log(addvertisement, "add url");
+
 
   useEffect(() => {
     axios
@@ -41,9 +67,9 @@ const SorboshesKhobor = () => {
       .get(url)
       .then((response) => {
         if (Array.isArray(response.data)) {
-          setSorboshesPothitoData(response.data);
+          setSorboshesPothitoData(response.data.slice(0,7));
         } else if (Array.isArray(response.data.data)) {
-          setSorboshesPothitoData(response.data.data);
+          setSorboshesPothitoData(response.data.data.slice(0,7));
         } else {
           console.error(
             "Invalid data structure in API response:",
@@ -77,14 +103,18 @@ const SorboshesKhobor = () => {
                 <div className="col-lg-4" key={index}>
                   <Link to={`/${data.category_name_bangla}/${data.id}`}>
                     <div
-                      className="card rounded-1 border-0 shadow-sm mb-4 sorboshes_khobor"
-                      style={{ height: "18rem" }}
+                      className="card rounded-1 border-0 shadow-sm mb-4 sorboshes_khobor "
+                      style={{ height: "20rem" }}
                     >
                       <div className="card-body p-0 card-body-2">
                         <img
-                          className="img-fluid rounded-1"
+                          className="img-fluid rounded-1 footer-top-news"
                           src={`https://ajkal.us/images/${data.title_img}`}
                           alt=""
+                          onError={(e) => {
+                            e.target.src =
+                              "https://ajkal.us/image/settings/placeholder.jpg";
+                          }}
                         />
                       </div>
                       <div className="card-body card-body-1 w-lg-auto w-100">
@@ -119,6 +149,10 @@ const SorboshesKhobor = () => {
                             style={{ height: "70px", objectFit: "cover" }}
                             src={`https://ajkal.us/images/${data.title_img}`}
                             alt=""
+                            onError={(e) => {
+                              e.target.src =
+                                "https://ajkal.us/image/settings/placeholder.jpg";
+                            }}
                           />
                         </div>
                         <div className="pothito-content w-75 ps-4">

@@ -1,4 +1,5 @@
 import React from 'react';
+import { GiClockwork } from "react-icons/gi";
 
 const BanglaDateTime = ({ dateTime }) => {
   const formatDateToBangla = (dateString) => {
@@ -50,7 +51,7 @@ const BanglaDateTime = ({ dateTime }) => {
   // Format the provided date and time to Bangla
   const banglaDateTime = formatDateToBangla(dateTime);
 
-  return <span className='fw-bold '>{banglaDateTime.slice(0,24)}</span>;
+  return <span className='bangla-time'>{banglaDateTime.slice(0,24)} <GiClockwork className='pe-2 main_color' fontSize={35}/></span>;
 };
 
 export default BanglaDateTime;

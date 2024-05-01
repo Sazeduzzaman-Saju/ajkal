@@ -11,6 +11,10 @@ return (
                   className="img-fluid"
                   src={`https://ajkal.us/img/epaper/${url.epaper_image}`}
                   alt={`https://ajkal.us/img/epaper/${url.epaper_image}`}
+                  onError={(e) => {
+                    e.target.src =
+                      "https://ajkal.us/image/settings/placeholder.jpg";
+                  }}
                 />
               </div>
             ))}
