@@ -27,18 +27,18 @@ const Register = () => {
           body: JSON.stringify(data),
         }
       );
-  
+
       if (!response.ok) {
         throw new Error("Failed to create user");
       }
       toast.success("User created successfully");
       // After successful registration, navigate to the user dashboard
-      navigate("/user"); 
+      navigate("/user");
     } catch (error) {
       toast.error("Failed to create user:", error.message);
       // Handle error here
     }
-  }; 
+  };
 
   return (
     <div className="container">
@@ -59,15 +59,15 @@ const Register = () => {
         <div className="col-lg-6 ">
           {/* <form noValidate validated={validated} onSubmit={handleSubmit}> */}
           <div className="card border-0 login-form bg-transparent ">
-            <div className="card-body py-5 form-area ">
+            <div className="card-body py-5 form-area-register ">
               <div>
                 <div className="text-center py-2">
                   <h3 className="text-muted mb-0">রেজিস্টার করুন !</h3>
                   <p className="text-muted mb-0">
-                    সাপ্তাহিক আজকাল এর ফেম্যালি তে আপনাকে স্বাগতম।
+                    সাপ্তাহিক আজকালে আপনাকে স্বাগতম।
                   </p>
                 </div>
-                <div className="row py-2">
+                {/* <div className="row py-2">
                   <div className="col-lg-6 offset-lg-3 mx-auto">
                     <div className="d-flex pb-2">
                       <div className="pe-2">
@@ -84,8 +84,8 @@ const Register = () => {
                     <p className="text-center bg-light devider-text">Or</p>
                     <p className="devider"></p>
                   </div>
-                </div>
-                <div className="row">
+                </div> */}
+                <div className="row pt-4">
                   <div className="col-lg-10 offset-1 mx-auto">
                     {/* Form Start */}
                     <form

@@ -86,7 +86,7 @@ export default function Banner() {
                   alt={slide.news_title}
                   effect="blur"
                   loading="lazy"
-                  src={`https://ajkal.us/images/${slide.title_img}`}
+                  src={`https://ajkal.us/img/news/${slide.title_img}`}
                   onError={(e) => {
                     e.target.src =
                       "https://ajkal.us/image/settings/placeholder-banner.jpg";

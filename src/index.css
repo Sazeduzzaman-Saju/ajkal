@@ -104,7 +104,7 @@ h6 {
   height: 3px;
   margin-bottom: 29px;
 }
-@media screen and (min-width: 1368px) {
+@media screen and (max-width: 1368px) {
   /* CSS styles for viewport width 1368px and above */
   .navbar-nav .navlinks{
     font-size: 15px;

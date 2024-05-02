@@ -48,7 +48,7 @@ const HomePage = () => {
               src={`https://ajkal.us/img/ad/${data.ad_banner}`}
               onError={(e) => {
                 e.target.src =
-                  "https://ajkal.us/image/settings/placeholder.jpg";
+                  "https://ajkal.us/image/settings/ad-placeholder-sidebar.jpg";
               }}
             />
           </Link>
@@ -85,25 +85,26 @@ const HomePage = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="image-container">
-                {addvertisement.map(
-                  (data) =>
-                    // Check if data.status is "1" and data.ad_position is "HeaderTop"
-                    data.status === 1 &&
-                    data.ad_position === "BelowNewsCategoryFull" && (
-                      <Link to={data.ad_link} key={data.id} target="_blank">
-                        <img
-                          className="img-fluid w-100"
-                          alt={data}
-                          loading="lazy"
-                          src={`https://ajkal.us/img/ad/${data.ad_banner}`}
-                          onError={(e) => {
-                            e.target.src =
-                              "https://ajkal.us/image/settings/placeholder.jpg";
-                          }}
-                        />
-                      </Link>
-                    )
-                )}
+              {addvertisement.map((data) => {
+  if (data.status === 1 && data.ad_position === "BelowNewsCategoryFull") {
+    return (
+      <a href={data.ad_link} key={data.id} target="_blank" rel="noopener noreferrer">
+        <img
+          className="img-fluid w-100"
+          alt={`Advertisement ${data.id}`}
+          loading="lazy"
+          src={`https://ajkal.us/img/ad/${data.ad_banner}`}
+          onError={(e) => {
+            e.target.src = "https://ajkal.us/image/settings/ad-placeholder.jpg";
+          }}
+        />
+      </a>
+    );
+  } else {
+    return null; // Don't render anything if conditions are not met
+  }
+})}
+
               </div>
             </div>
           </div>

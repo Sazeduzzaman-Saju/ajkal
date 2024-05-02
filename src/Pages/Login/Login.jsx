@@ -72,10 +72,10 @@ const Login = () => {
                 <div className="text-center py-2">
                   <h3 className="text-muted mb-0">লগিন করুন !</h3>
                   <p className="text-muted mb-0">
-                    সাপ্তাহিক আজকাল এর ফেম্যালি তে আপনাকে স্বাগতম।
+                    সাপ্তাহিক আজকালে আপনাকে স্বাগতম।
                   </p>
                 </div>
-                <div className="row py-2">
+                {/* <div className="row py-2">
                   <div className="col-lg-6 offset-lg-3 mx-auto">
                     <div className="d-flex pb-2">
                       <div className="pe-2">
@@ -92,8 +92,8 @@ const Login = () => {
                     <p className="text-center bg-light devider-text">Or</p>
                     <p className="devider"></p>
                   </div>
-                </div>
-                <div className="row">
+                </div> */}
+                <div className="row mt-5">
                   <div className="col-lg-10 offset-1 mx-auto">
                     {/* Form Start */}
                     <form
@@ -138,7 +138,7 @@ const Login = () => {
                           )}
                         </div>
                         <div className="col-lg-12">
-                        <p className="text-muted text-center pt-5">আপনি কী ! নতুন আপনার একাউন্ট নেই <br /> তাহলে--<Link to={"/register"}> রেজিস্টার করুন !</Link></p>
+                        <p className="text-muted text-center pt-5">আপনি কী নতুন, আপনার একাউন্ট নেই <br /> তাহলে--<Link to={"/register"}> রেজিস্টার করুন !</Link></p>
                         </div>
                       </div>
                       <input

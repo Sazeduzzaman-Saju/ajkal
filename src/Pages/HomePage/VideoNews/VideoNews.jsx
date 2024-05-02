@@ -11,7 +11,7 @@ const VideoNews = () => {
   const [videoNews, setVideoNews] = useState([]);
   const [videoNewsAll, setVideoNewsAll] = useState([]);
   const [loading, setLoading] = useState(true);
-  const url = "https://backoffice.ajkal.us/category-news/18";
+  const url = "https://backoffice.ajkal.us/category-news/20";
 
   useEffect(() => {
     axios

@@ -197,7 +197,7 @@ function Header() {
                             alt={`https://ajkal.us/img/ad/${data.ad_banner}`}
                             onError={(e) => {
                               e.target.src =
-                                "https://ajkal.us/image/settings/placeholder.jpg";
+                                "https://ajkal.us/image/settings/ad-placeholder.jpg";
                             }}
                           />
                         </Link>

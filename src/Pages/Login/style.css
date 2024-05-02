@@ -124,6 +124,14 @@
 .form-area {
   position: relative;
   z-index: 4;
+  height: 630px;
+  max-height: 100%;
+}
+.form-area-register{
+  position: relative;
+  z-index: 4;
+  height: 695px;
+  max-height: 100%;
 }
 .login-logo {
   border-radius: 3px;
@@ -133,11 +141,11 @@
   color: var(--white);
   border-radius: 0;
 }
-.login-sidebanner{
+.login-sidebanner {
   width: 650px;
   height: 629px;
 }
-.image-overlay-login{
+.image-overlay-login {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -152,6 +160,6 @@
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   transform: translate(-50%, -104%);
 }
-.sidebar-login{
+.sidebar-login {
   height: 0;
 }
