@@ -7,8 +7,6 @@ const CategoryNewsOneData = () => {
   const [rajniti, setRajniti] = useState([]);
   const [loadingBangladesh, setLoadingBangladesh] = useState(true);
   const url = "https://backoffice.ajkal.us/category-news/12";
-  console.log(rajniti, "rajniti");
-
   useEffect(() => {
     axios
       .get(url)

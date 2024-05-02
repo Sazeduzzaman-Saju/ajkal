@@ -88,7 +88,6 @@ function Header() {
         console.error("Error fetching data:", error);
       });
   }, []);
-  console.log(addvertisement, "add url");
   return (
     <>
       <div className="container-fluid main-menu">

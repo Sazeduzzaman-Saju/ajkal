@@ -10,7 +10,6 @@ import axios from "axios";
 const CategoryFeature = ({ singleNews }) => {
   const [addvertisement, setAddvertisement] = useState([]);
   const addUrl = "https://backoffice.ajkal.us/ad/all";
-console.log(singleNews)
   useEffect(() => {
     axios
       .get(addUrl)
@@ -31,7 +30,6 @@ console.log(singleNews)
         console.error("Error fetching data:", error);
       });
   }, []);
-  console.log(addvertisement, "add url");
   return (
     <div className="col-lg-8">
       <div className="row gx-3">

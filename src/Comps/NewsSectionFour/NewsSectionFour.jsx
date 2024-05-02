@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import PropTypes from "prop-types";
+import axios from "axios";
 
 const NewsSectionThree = ({ dhormo, loading }) => {
   const [slicedNews, setSlicedNews] = useState([]);
@@ -18,7 +19,29 @@ const NewsSectionThree = ({ dhormo, loading }) => {
   const hasFeaturedItems = slicedNewsAll.some(
     (newsItem) => newsItem.is_featured === 1
   );
-  console.log(hasFeaturedItems, "asdasdas");
+const [addvertisementDhormo, setAdvertisementDhormo] = useState([]);
+  const addUrl = "https://backoffice.ajkal.us/ad/all";
+
+  useEffect(() => {
+    axios
+      .get(addUrl)
+      .then((response) => {
+        // Check if the response contains an array
+        if (Array.isArray(response.data)) {
+          setAdvertisementDhormo(response.data);
+        } else if (Array.isArray(response.data.data)) {
+          setAdvertisementDhormo(response.data.data);
+        } else {
+          console.error(
+            "Invalid data structure in API response:",
+            response.data
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
   return (
     <div>
       <div className="row align-items-center ">
@@ -95,6 +118,28 @@ const NewsSectionThree = ({ dhormo, loading }) => {
           )}
         </div>
       </div>
+      <div className="row">
+        <div className="col-lg-12">
+          {addvertisementDhormo.map(
+            (data) =>
+              // Check if data.status is "1" and data.ad_position is "HeaderTop"
+              data.status === 1 &&
+              data.ad_position === "BelowNewsCategory2" && (
+                <Link to={data.ad_link} key={data.id} target="_blank">
+                  <img
+                    className="img-fluid w-100"
+                    src={`https://ajkal.us/img/ad/${data.ad_banner}`}
+                    alt={`https://ajkal.us/img/ad/${data.ad_banner}`}
+                    onError={(e) => {
+                      e.target.src =
+                        "https://ajkal.us/image/settings/placeholder.jpg";
+                    }}
+                  />
+                </Link>
+              )
+          )}
+        </div>
+      </div>
     </div>
   );
 };
@@ -102,7 +147,6 @@ const NewsSectionThree = ({ dhormo, loading }) => {
 // Prop types validation
 NewsSectionThree.propTypes = {
   dhormo: PropTypes.array.isRequired,
-  loading: PropTypes.bool.isRequired,
 };
 
 export default NewsSectionThree;

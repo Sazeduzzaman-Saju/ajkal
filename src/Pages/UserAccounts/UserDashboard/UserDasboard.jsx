@@ -33,7 +33,6 @@ const UserDashboard = () => {
           }
         );
         setUserNewsData(response.data.data);
-        console.log(response.data.data)
         setLoading(false);
       } catch (error) {
         setError(error);
@@ -73,7 +72,6 @@ const UserDashboard = () => {
 
     fetchAddData();
   }, []);
-  // console.log(userAddData);
   const [userData, setUserData] = useState(null);
   useEffect(() => {
     const fetchUserData = async () => {

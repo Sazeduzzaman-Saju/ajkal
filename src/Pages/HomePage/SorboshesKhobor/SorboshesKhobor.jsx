@@ -37,7 +37,6 @@ const SorboshesKhobor = () => {
         console.error("Error fetching data:", error);
       });
   }, []);
-  console.log(addvertisement, "add url");
 
 
   useEffect(() => {

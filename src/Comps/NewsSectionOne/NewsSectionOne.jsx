@@ -22,7 +22,6 @@ const NewsSectionOne = ({ bangladeshNews }) => {
   const hasFeaturedItems = slicedNewsAll.some(
     (newsItem) => newsItem.is_featured === 1
   );
-  console.log(hasFeaturedItems, "asdasdas");
   return (
     <div>
       <div className="row mb-4 align-items-center">
@@ -123,15 +122,5 @@ const NewsSectionOne = ({ bangladeshNews }) => {
   );
 };
 
-NewsSectionOne.propTypes = {
-  bangladeshNews: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      imageLink: PropTypes.string.isRequired,
-      titles: PropTypes.string.isRequired,
-      // Add any other properties and their types as needed
-    })
-  ).isRequired,
-};
 
 export default NewsSectionOne;

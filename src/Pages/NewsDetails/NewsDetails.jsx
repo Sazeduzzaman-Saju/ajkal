@@ -24,7 +24,6 @@ import toast from "react-hot-toast";
 const NewsDetails = () => {
   const singleNews = useLoaderData();
   const singleNewsDetails = singleNews.data;
-  console.log("asdasdasd", singleNewsDetails);
   const [fontSize, setFontSize] = useState(16); // Initial font size
 
   const increaseFontSize = () => {

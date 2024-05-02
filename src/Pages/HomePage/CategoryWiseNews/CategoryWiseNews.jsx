@@ -40,7 +40,6 @@ const CategoryWiseNews = () => {
         console.error("Error fetching data:", error);
       });
   }, []);
-  console.log(addvertisement, "add url");
 
   useEffect(() => {
     axios
@@ -83,7 +82,7 @@ const CategoryWiseNews = () => {
         console.error("Error fetching data:", error);
       });
   }, []);
-  console.log("khelarNews", khelarNews);
+
   useEffect(() => {
     axios
       .get(urlKhela)
@@ -103,7 +102,7 @@ const CategoryWiseNews = () => {
         console.error("Error fetching data:", error);
       });
   }, []);
-  console.log("Binodon", binodon);
+
   useEffect(() => {
     axios
       .get(dhormoData)
@@ -125,63 +124,66 @@ const CategoryWiseNews = () => {
   }, []);
 
   return (
-    <div>
-      {/* First Style */}
+    <>
       <div>
-        <PostHeader
-          title={
-            bangladeshNews.length > 0
-              ? bangladeshNews[0].category_name_bangla
-              : ""
-          }
-        />
-        <NewsSectionOne bangladeshNews={bangladeshNews} />
+        {/* First Style */}
+        <div>
+          <PostHeader
+            title={
+              bangladeshNews.length > 0 &&
+              bangladeshNews[0].category_name_bangla
+                ? bangladeshNews[0].category_name_bangla
+                : ""
+            }
+          />
+          <NewsSectionOne bangladeshNews={bangladeshNews.map(news => ({...news, id: String(news.id)}))} />
+        </div>
+        {/* add */}
+        <div>
+          {/* sara bangla category advertisement */}
+          {addvertisement.map(
+            (data) =>
+              // Check if data.status is "1" and data.ad_position is "HeaderTop"
+              data.status === 1 &&
+              data.ad_position === "BelowNewsCategory2" && (
+                <Link to={data.ad_link} key={data.id} target="_blank">
+                  <img
+                    className="img-fluid w-100"
+                    src={`https://ajkal.us/img/ad/${data.ad_banner}`}
+                    alt={`https://ajkal.us/img/ad/${data.ad_banner}`}
+                    onError={(e) => {
+                      e.target.src =
+                        "https://ajkal.us/image/settings/placeholder.jpg";
+                    }}
+                  />
+                </Link>
+              )
+          )}
+        </div>
+        {/* Second Style */}
+        <div className="pt-2">
+          <PostHeader
+            title={binodon.length > 0 ? binodon[0].category_name_bangla : ""}
+          />
+          <NewsSectionTwo binodon={binodon} />
+        </div>
+        {/* Third Style */}
+        <div className="">
+          <PostHeader
+            title={
+              khelarNews.length > 0 ? khelarNews[0].category_name_bangla : ""
+            }
+          />
+          <NewsSectionThree khelarNews={khelarNews.map(news => ({...news, id: String(news.id)}))} />
+        </div>
+        <div className="">
+          <PostHeader
+            title={dhormo.length > 0 ? dhormo[0].category_name_bangla : ""}
+          />
+          <NewsSectionFour dhormo={dhormo.map(news => ({...news, id: String(news.id)}))} />
+        </div>
       </div>
-      {/* add */}
-      <div>
-        {/* সারা বাংলা advertisement */}
-        {addvertisement.map(
-          (data) =>
-            // Check if data.status is "1" and data.ad_position is "HeaderTop"
-            data.status === 1 &&
-            data.ad_position === "BelowNewsCategory2" && (
-              <Link to={data.ad_link} key={data.id} target="_blank">
-                <img
-                  className="img-fluid w-100"
-                  src={`https://ajkal.us/img/ad/${data.ad_banner}`}
-                  alt={`https://ajkal.us/img/ad/${data.ad_banner}`}
-                  onError={(e) => {
-                    e.target.src =
-                      "https://ajkal.us/image/settings/placeholder.jpg";
-                  }}
-                />
-              </Link>
-            )
-        )}
-      </div>
-      {/* Second Style */}
-      <div className="pt-2">
-        <PostHeader
-          title={binodon.length > 0 ? binodon[0].category_name_bangla : ""}
-        />
-        <NewsSectionTwo binodon={binodon} />
-      </div>
-      {/* Third Style */}
-      <div className="">
-        <PostHeader
-          title={
-            khelarNews.length > 0 ? khelarNews[0].category_name_bangla : ""
-          }
-        />
-        <NewsSectionThree khelarNews={khelarNews} />
-      </div>
-      <div className="">
-        <PostHeader
-          title={dhormo.length > 0 ? dhormo[0].category_name_bangla : ""}
-        />
-        <NewsSectionFour dhormo={dhormo} />
-      </div>
-    </div>
+    </>
   );
 };
 

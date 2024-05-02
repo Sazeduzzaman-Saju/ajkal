@@ -8,7 +8,9 @@ export default function SearchForm() {
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+
+  
+  // const onSubmit = (data) => console.log(data);
 
   const [categoriesData, setCategoriesData] = useState([]);
   const url = "https://backoffice.ajkal.us/news-category";

@@ -7,8 +7,6 @@ const CategoryNewsOneData = () => {
   const [comunity, setComunity] = useState([]);
   const [loadingBangladesh, setLoadingBangladesh] = useState(true);
   const url = "https://backoffice.ajkal.us/category-news/13";
-  console.log(comunity, "comunity");
-
   useEffect(() => {
     axios
       .get(url)
@@ -42,7 +40,6 @@ const CategoryNewsOneData = () => {
   const hasFeaturedItems = slicedNewsAll.some(
     (newsItem) => newsItem.is_featured === 1
   );
-  console.log(slicedNewsAll, 'slicedNewsAll')
   return (
     <div className="col-lg-4">
       {/* Feature News */}

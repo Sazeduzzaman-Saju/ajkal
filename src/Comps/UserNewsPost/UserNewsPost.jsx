@@ -74,17 +74,12 @@ const UserNewsPost = () => {
       const thumbImageFile = data.thumbnail_image[0];
       const newsImageBase64 = await convertToBase64(newsImageFile);
       const thumbImageBase64 = await convertToBase64(thumbImageFile);
-
-      // console.log('News Image Base64:', newsImageBase64);
-      // console.log('Thumbnail Image Base64:', thumbnailImageBase64);
-
       // Include base64 data in the form data
       const formData = {
         ...data,
         news_image: newsImageBase64,
         thumbnail_image: thumbImageBase64,
       };
-      console.log(formData);
       const response = await fetch(
         "https://backoffice.ajkal.us/post/add-news",
         {
@@ -114,7 +109,6 @@ const UserNewsPost = () => {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
-        console.log("File converted to Base64:", reader.result);
         resolve(reader.result);
       };
       reader.onerror = (error) => reject(error);

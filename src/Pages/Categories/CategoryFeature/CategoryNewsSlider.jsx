@@ -2,7 +2,6 @@ import { Link, useLoaderData } from "react-router-dom";
 
 const CategoryNewsSlider = () => {
   const singleNews = useLoaderData();
-  console.log(singleNews.data, "category data"); // Log the data structure to verify
 
   const hasFeaturedItems = singleNews.data.some(
     (newsItem) => newsItem.is_featured === 1

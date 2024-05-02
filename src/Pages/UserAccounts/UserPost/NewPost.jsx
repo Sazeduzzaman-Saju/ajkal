@@ -66,7 +66,6 @@ export default function NewPost() {
   } = useForm();
 
   const handleSignUp = async (data) => {
-    console.log(data);
     try {
       const accessToken = localStorage.getItem("accessToken");
       const response = await fetch(

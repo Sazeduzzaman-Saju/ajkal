@@ -28,6 +28,7 @@ import EPaper from '../Pages/EPaper/EPaper';
 import { useEffect } from 'react';
 import DateEpaper from '../Pages/EPaper/DateEpaper';
 import AdCost from '../Pages/AdCost/AdCost';
+import AdRatePrint from '../Pages/HomePage/AdRatePrint/AdRatePrint';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -115,6 +116,10 @@ const router = createBrowserRouter([
       {
         path: '/epaper-archive',
         element: <DateEpaper />,
+      },
+      {
+        path: '/ad-rate-print',
+        element: <AdRatePrint></AdRatePrint>,
       },
     ],
   },

@@ -86,7 +86,7 @@ const Categories = () => {
             <div className="col-lg-4">
               <NewsSidebar />
               <div className="d-flex flex-column  justify-content-center align-items-center pt-3 ">
-                {/*home page sidebar youtube down Add Banner Start */}
+                {/*Category page sidebar youtube down Add Banner Start */}
                 {/* <div className="mt-3">{renderAdvertisement("SideBar1")}</div> */}
                 {/* <div className="mt-3">{renderAdvertisement("Sidebar3")}</div> */}
                 <div className="mt-3">{renderAdvertisement("Sidebar2")}</div>

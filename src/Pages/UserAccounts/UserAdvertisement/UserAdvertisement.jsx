@@ -57,7 +57,6 @@ const UserAdvertisement = () => {
     return <p>Error: {error.message}</p>;
   }
 
-  // console.log(userNewsData);
   return (
     <>
       <div className="container">
