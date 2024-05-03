@@ -16,6 +16,9 @@ const CategoryWiseNews = () => {
   const [dhormo, setDhormo] = useState([]);
   const [ScienceData, setScienceData] = useState([]);
 
+  // State for managing the loading state
+  const [loading, setLoading] = useState(true);
+
   // URLs for fetching news data of different categories
   const url = "https://backoffice.ajkal.us/category-news/5";
   const urlBinodon = "https://backoffice.ajkal.us/category-news/7";
@@ -23,8 +26,7 @@ const CategoryWiseNews = () => {
   const dhormoData = "https://backoffice.ajkal.us/category-news/8";
   const scienceData = "https://backoffice.ajkal.us/category-news/16";
 
-  // State for storing advertisement data
-  const [addvertisement, setAddvertisement] = useState([]);
+  const [advertisementKhela, setAdvertisementKhela] = useState([]);
   const addUrl = "https://backoffice.ajkal.us/ad/all";
 
   // Fetch advertisement data on component mount
@@ -33,9 +35,9 @@ const CategoryWiseNews = () => {
       .get(addUrl)
       .then((response) => {
         if (Array.isArray(response.data)) {
-          setAddvertisement(response.data);
+          setAdvertisementKhela(response.data);
         } else if (Array.isArray(response.data.data)) {
-          setAddvertisement(response.data.data);
+          setAdvertisementKhela(response.data.data);
         } else {
           console.error(
             "Invalid data structure in API response:",
@@ -50,6 +52,7 @@ const CategoryWiseNews = () => {
 
   // Fetch news data for Sara Bangla category
   useEffect(() => {
+    setLoading(true); // Set loading state to true before fetching data
     axios
       .get(url)
       .then((response) => {
@@ -65,14 +68,17 @@ const CategoryWiseNews = () => {
           );
         }
         setSaraBanglaNews(slicedData);
+        setLoading(false); // Set loading state to false after data is fetched
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
+        setLoading(false); // Set loading state to false if there's an error
       });
   }, []);
 
   // Fetch news data for Binodon category
   useEffect(() => {
+    setLoading(true); // Set loading state to true before fetching data
     axios
       .get(urlBinodon)
       .then((response) => {
@@ -86,14 +92,17 @@ const CategoryWiseNews = () => {
             response.data
           );
         }
+        setLoading(false); // Set loading state to false after data is fetched
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
+        setLoading(false); // Set loading state to false if there's an error
       });
   }, []);
 
   // Fetch news data for Khelar category
   useEffect(() => {
+    setLoading(true); // Set loading state to true before fetching data
     axios
       .get(urlKhela)
       .then((response) => {
@@ -107,14 +116,17 @@ const CategoryWiseNews = () => {
             response.data
           );
         }
+        setLoading(false); // Set loading state to false after data is fetched
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
+        setLoading(false); // Set loading state to false if there's an error
       });
   }, []);
 
   // Fetch news data for Dhormo category
   useEffect(() => {
+    setLoading(true); // Set loading state to true before fetching data
     axios
       .get(dhormoData)
       .then((response) => {
@@ -128,14 +140,17 @@ const CategoryWiseNews = () => {
             response.data
           );
         }
+        setLoading(false); // Set loading state to false after data is fetched
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
+        setLoading(false); // Set loading state to false if there's an error
       });
   }, []);
 
   // Fetch news data for scienceData category
   useEffect(() => {
+    setLoading(true); // Set loading state to true before fetching data
     axios
       .get(scienceData)
       .then((response) => {
@@ -149,9 +164,11 @@ const CategoryWiseNews = () => {
             response.data
           );
         }
+        setLoading(false); // Set loading state to false after data is fetched
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
+        setLoading(false); // Set loading state to false if there's an error
       });
   }, []);
 
@@ -178,7 +195,7 @@ const CategoryWiseNews = () => {
 
         {/* Render advertisement for Sara Bangla category */}
         <div>
-          {addvertisement.map(
+          {advertisementKhela.map(
             (data) =>
               data.status === 1 &&
               data.ad_position === "BelowNewsCategory2" && (
@@ -215,6 +232,7 @@ const CategoryWiseNews = () => {
               ...news,
               id: String(news.id),
             }))}
+            loading={loading} // Pass loading prop to NewsSectionThree
           />
         </div>
 
@@ -223,6 +241,7 @@ const CategoryWiseNews = () => {
             title={dhormo.length > 0 ? dhormo[0].category_name_bangla : ""}
           />
           <NewsSectionFour
+            loading={loading} // Pass loading prop to NewsSectionFive
             dhormo={dhormo.map((news) => ({ ...news, id: String(news.id) }))}
           />
         </div>
@@ -233,6 +252,7 @@ const CategoryWiseNews = () => {
             }
           />
           <NewsSectionFive
+            loading={loading} // Pass loading prop to NewsSectionFive
             ScienceData={ScienceData.map((news) => ({
               ...news,
               id: String(news.id),

@@ -39,7 +39,15 @@ const CategoryFeature = ({ singleNews }) => {
         </div>
         {!singleNews.length ? ( // Render skeleton loading placeholders if singleNews is empty
           <div className="col-sm-4">
-            <Skeleton height={200} count={3} />
+            <div className="card border-0 shadow-sm mb-3">
+              <Skeleton height={200} />
+              <div className="card-footer news-info-box">
+                <div className="news-hover-box">
+                  <Skeleton width={100} />
+                  <Skeleton width={200} />
+                </div>
+              </div>
+            </div>
           </div>
         ) : (
           // Render actual data if singleNews is not empty and loading is false
@@ -64,14 +72,14 @@ const CategoryFeature = ({ singleNews }) => {
                       <h5 className="pt-2 main_color">
                         {data.news_title.split(" ").slice(0, 8).join(" ")}
                       </h5>
-                      <p className="">
+                      <div className="">
                         <SanitizedParagraph
                           htmlContent={data.news_short_brief
                             .split(" ")
                             .slice(0, 10)
                             .join(" ")}
                         ></SanitizedParagraph>
-                      </p>
+                      </div>
                       <p
                         className="text-muted mb-1"
                         style={{ fontSize: "12px" }}

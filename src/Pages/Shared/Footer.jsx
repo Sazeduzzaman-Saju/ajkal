@@ -178,18 +178,18 @@ const Footer = () => {
                 অনুসরণ করুন
               </h5>
               <div className="footer-social text-lg-start text-center pt-4">
-                <a href="https://www.facebook.com/weeklyajkal" className="ms-0">
+                <Link to="https://www.facebook.com/weeklyajkal" className="ms-0">
                   <FaFacebookF />
-                </a>
-                <a href="#" className="">
+                </Link>
+                <Link to="#" className="">
                   <FaTwitter />
-                </a>
-                <a href="#" className="">
+                </Link>
+                <Link to="#" className="">
                   <FaYoutube />
-                </a>
-                <a href="#" className="">
+                </Link>
+                <Link to="#" className="">
                   <AiFillInstagram />
-                </a>
+                </Link>
               </div>
             </div>
           </div>

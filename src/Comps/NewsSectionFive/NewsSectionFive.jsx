@@ -6,7 +6,7 @@ import axios from "axios";
 import LazyImageShortNews from "../LazyImage/LazyImageShortNews";
 import SanitizedParagraph from "../SanitizedParagraph";
 
-const NewsSectionFive = ({ ScienceData, loading }) => {
+const NewsSectionFive = ({ ScienceData, loading}) => {
   // State for storing sliced news data
   const [slicedNews, setSlicedNews] = useState([]);
   const [slicedNewsAll, setSlicedNewsAll] = useState([]);

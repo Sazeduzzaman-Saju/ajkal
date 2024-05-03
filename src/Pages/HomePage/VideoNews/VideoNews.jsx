@@ -201,14 +201,14 @@ const VideoNews = () => {
                             <h5 className="mb-1 main-color pe-2">
                               {data.news_title}
                             </h5>
-                            <p className="mb-0">
+                            <div className="mb-0">
                               <SanitizedParagraph
                                 htmlContent={data.news_short_brief
                                   .split(" ")
                                   .slice(0, 5)
                                   .join(" ")}
                               />
-                            </p>
+                            </div>
                           </div>
                         </div>
                       </div>

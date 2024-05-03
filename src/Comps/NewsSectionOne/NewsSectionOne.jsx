@@ -73,7 +73,7 @@ const NewsSectionOne = ({ saraBanglaNews }) => {
             slicedNewsAll.map((newsItem, index) => (
               <div key={index}>
                 {newsItem.is_featured === 1 && (
-                  <p key={index}>
+                  <div key={index}>
                     {/* {newsItem.is_featured} */}
                     <Link
                       to={`/${newsItem.category_name_bangla}/${newsItem.id}`} // assuming newsItem.id is already a string
@@ -99,7 +99,7 @@ const NewsSectionOne = ({ saraBanglaNews }) => {
                                 htmlContent={newsItem.news_title}
                               />
                             </h5>
-                            <p>
+                            <div>
                               <SanitizedParagraph
                                 htmlContent={newsItem.news_short_brief
                                   .split(" ")
@@ -107,12 +107,12 @@ const NewsSectionOne = ({ saraBanglaNews }) => {
                                   .join(" ")}
                               />
                               <span className="text-danger"> আরও পড়ুন...</span>
-                            </p>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </Link>
-                  </p>
+                  </div>
                 )}
               </div>
             ))}

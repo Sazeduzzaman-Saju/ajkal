@@ -5,12 +5,17 @@ import Header from "../Pages/Shared/Header";
 import { Triangle } from "react-loader-spinner";
 
 const MainLayout = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
-    setLoading(false); // Set loading to false immediately
+    // Simulate loading completion (replace with your actual loading logic)
+    const loadingComplete = true; // Replace this with your actual loading completion check
+
+    if (loadingComplete) {
+      setLoading(false); // Set loading to false if loading is complete
+    }
   }, []);
+
   return (
     <>
       {loading ? (
@@ -32,9 +37,9 @@ const MainLayout = () => {
         </div>
       ) : (
         <>
-          <Header></Header>
-          <Outlet></Outlet>
-          <Footer></Footer>
+          <Header />
+          <Outlet />
+          <Footer />
         </>
       )}
     </>

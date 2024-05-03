@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import Footer from "../Pages/Shared/Footer";
 import Header from "../Pages/Shared/Header";
 import { FaRegUser } from "react-icons/fa6";
@@ -53,21 +53,19 @@ const UserLayout = () => {
             <div className="user-accounts-sidebar">
               <ul className="user-nav navbar-nav pt-3">
                 <li className="nav-item">
-                  <NavLink
-                    to={"/user"}
-                    className="user-dashboard-nav nav-link"
-                  >
+                  <Link to={"/user"} className="user-dashboard-nav nav-link">
                     <div className="d-flex align-items-center ">
                       <span style={{ color: "var(--main)" }}>
                         <MdOutlineSpaceDashboard className="pe-2 fs-2" />
                       </span>{" "}
                       <span className="pt-1">Dashboard</span>
                     </div>
-                  </NavLink>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <NavLink
+                  <Link
                     to={"/user/my-profile"}
+                    activeClassName="active"
                     className="user-dashboard-nav nav-link"
                   >
                     <div className="d-flex align-items-center ">
@@ -76,11 +74,12 @@ const UserLayout = () => {
                       </span>{" "}
                       <span className="pt-1 ps-1">My Profile</span>
                     </div>
-                  </NavLink>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <NavLink
+                  <Link
                     to={"/user/my-post"}
+                    activeClassName="active"
                     className="user-dashboard-nav nav-link"
                   >
                     <div className="d-flex align-items-center ">
@@ -89,11 +88,12 @@ const UserLayout = () => {
                       </span>{" "}
                       <span className="pt-1">Post News</span>
                     </div>
-                  </NavLink>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <NavLink
+                  <Link
                     to={"/user/my-advertisement"}
+                    activeClassName="active"
                     className="user-dashboard-nav nav-link"
                   >
                     <div className="d-flex align-items-center ">
@@ -102,7 +102,7 @@ const UserLayout = () => {
                       </span>{" "}
                       <span className="pt-1">Advertisement</span>
                     </div>
-                  </NavLink>
+                  </Link>
                 </li>
                 <li className="nav-item">
                   {/* Call handleLogout function when Logout link is clicked */}

@@ -14,7 +14,7 @@ const CategoryNewsSlider = () => {
         singleNews.data.map((newsItem, index) => (
           <div key={index}>
             {newsItem.is_featured === 1 && (
-              <p>
+              <div>
                 <Link
                   to={`/${newsItem.category_name_bangla}/${newsItem.id}`}
                   className="shadow-sm"
@@ -44,7 +44,7 @@ const CategoryNewsSlider = () => {
                     </div>
                   </div>
                 </Link>
-              </p>
+              </div>
             )}
           </div>
         ))

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
 import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
@@ -24,24 +24,23 @@ function Header() {
 
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
-    
+
     if (!accessToken) {
       return; // If access token is not found, do nothing
     }
-  
+
     // Set timeout to remove accessToken and navigate to home page after 3600 seconds
     const timeout = setTimeout(() => {
       localStorage.removeItem("accessToken");
       navigate("/");
     }, 3600 * 1000);
-  
+
     // Store timeout reference in state for cleanup
     setAccessTokenTimeout(timeout);
-  
+
     // Cleanup function to clear timeout on component unmount
     return () => clearTimeout(timeout);
   }, [navigate]);
-  
 
   useEffect(() => {
     axios
@@ -102,24 +101,24 @@ function Header() {
               <div className="top-bar d-flex justify-content-center">
                 <ul className="mb-0">
                   <li className="">
-                    <NavLink to={"/login"} className="navlinks-top">
+                    <Link to={"/login"} className="navlinks-top">
                       বিজ্ঞাপন
-                    </NavLink>
+                    </Link>
                   </li>
                   <li className="">
-                    <NavLink to={"/epaper"} className="navlinks-top">
+                    <Link to={"/epaper"} className="navlinks-top">
                       ই-পেপার
-                    </NavLink>
+                    </Link>
                   </li>
                   <li className="">
-                    <NavLink to={"/search"} className="navlinks-top">
+                    <Link to={"/search"} className="navlinks-top">
                       আর্কাইভ
-                    </NavLink>
+                    </Link>
                   </li>
                   <li className="">
-                    <NavLink to={"/ad-cost"} className="navlinks-top">
+                    <Link to={"/ad-cost"} className="navlinks-top">
                       বিজ্ঞাপনের মূল্য
-                    </NavLink>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -128,26 +127,26 @@ function Header() {
               <div className="top-bar p-2 d-flex justify-content-end align-items-center pt-1">
                 <div>
                   <div className="social">
-                    <NavLink href="#" className="">
+                    <Link href="#" className="">
                       <FaFacebookF />
-                    </NavLink>
-                    <NavLink href="#" className="">
+                    </Link>
+                    <Link href="#" className="">
                       <FaTwitter />
-                    </NavLink>
-                    <NavLink href="#" className="">
+                    </Link>
+                    <Link href="#" className="">
                       <FaYoutube />
-                    </NavLink>
-                    <NavLink href="#" className="">
+                    </Link>
+                    <Link href="#" className="">
                       <AiFillInstagram />
-                    </NavLink>
+                    </Link>
                     {accessTokenTimeout ? (
-                      <NavLink to="/user" className="">
+                      <Link to="/user" className="">
                         <FaHome />
-                      </NavLink>
+                      </Link>
                     ) : (
-                      <NavLink to="/login" className="">
+                      <Link to="/login" className="">
                         <FaUser />
-                      </NavLink>
+                      </Link>
                     )}
                   </div>
                 </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import PageTitle from "../../Comps/PageTitle/PageTitle";
 import "./Terms";
+import { Link } from "react-router-dom";
 
 const Terms = () => {
   return (
@@ -92,9 +93,9 @@ const Terms = () => {
               <p>
                 This Agreement shall begin on the date hereof. Our Terms and
                 Conditions were created with the help of the{" "}
-                <a href="https://www.termsandconditionsgenerator.com/">
+                <Link to="https://www.termsandconditionsgenerator.com/">
                   Free Terms and Conditions Generator
-                </a>
+                </Link>
                 .
               </p>
 

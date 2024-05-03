@@ -95,8 +95,8 @@ const HomePage = () => {
                     data.ad_position === "BelowNewsCategoryFull"
                   ) {
                     return (
-                      <a
-                        href={data.ad_link}
+                      <Link
+                        to={data.ad_link}
                         key={data.id}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -111,7 +111,7 @@ const HomePage = () => {
                               "https://ajkal.us/image/settings/ad-placeholder.jpg";
                           }}
                         />
-                      </a>
+                      </Link>
                     );
                   } else {
                     return null; // Don't render anything if conditions are not met
@@ -174,7 +174,7 @@ const HomePage = () => {
                         </Link>
                       </div>
                       <div className="mx-4 mb-2">
-                        <a href="">
+                        <Link to="">
                           <div className="d-flex align-items-center">
                             <div className="sidebar_menu_icons py-3 px-3 text-center">
                               <MdOutlineOnlinePrediction size={25} />
@@ -183,7 +183,7 @@ const HomePage = () => {
                               <span className="ps-3">অনলাইন সংস্করণ</span>
                             </div>
                           </div>
-                        </a>
+                        </Link>
                       </div>
                       <div className="mx-4 mb-2">
                         <Link to={'/contact'}>

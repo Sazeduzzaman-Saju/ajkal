@@ -50,7 +50,7 @@ const CategoryNewsOneData = () => {
           slicedNewsAll.map((data, index) => (
             <div key={index}>
               {data.is_featured === 1 && (
-                <p key={index}>
+                <div key={index}>
                   {/* {newsItem.is_featured} */}
                   <Link
                     to={`/${data.category_name_bangla}/${data.id}`}
@@ -85,7 +85,7 @@ const CategoryNewsOneData = () => {
                       </div>
                     </div>
                   </Link>
-                </p>
+                </div>
               )}
             </div>
           ))}
@@ -129,22 +129,22 @@ const CategoryNewsOneData = () => {
                           </div>
                           <div className="col-lg-8">
                             <div>
-                              <h6 className="main_color pe-2 fw-bolder">
+                              <div className="main_color pe-2 fw-bolder">
                                 <SanitizedParagraph
                                   htmlContent={data.news_title
                                     .split(" ")
                                     .slice(0, 5)
                                     .join(" ")}
                                 />
-                              </h6>
-                              <p className="text-muted mb-0">
+                              </div>
+                              <div className="text-muted mb-0">
                                 <SanitizedParagraph
                                   htmlContent={data.news_short_brief
                                     .split(" ")
                                     .slice(0, 4)
                                     .join(" ")}
                                 />
-                              </p>
+                              </div>
                             </div>
                           </div>
                         </div>

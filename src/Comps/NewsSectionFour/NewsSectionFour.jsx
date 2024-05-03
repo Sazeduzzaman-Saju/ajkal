@@ -115,22 +115,22 @@ const NewsSectionThree = ({ dhormo, loading }) => {
                         </div>
                         <div className="col-lg-8">
                           <div className="">
-                            <h5 className="mb-1 main-color pe-2">
+                            <div className="mb-1 main-color pe-2">
                               <SanitizedParagraph
                                 htmlContent={data.news_title
                                   .split(" ")
                                   .slice(0, 5)
                                   .join(" ")}
                               />
-                            </h5>
-                            <p className="mb-0">
+                            </div>
+                            <div className="mb-0">
                               <SanitizedParagraph
                                 htmlContent={data.news_short_brief
                                   .split(" ")
                                   .slice(3, 10)
                                   .join(" ")}
                               />
-                            </p>
+                            </div>
                           </div>
                         </div>
                       </div>

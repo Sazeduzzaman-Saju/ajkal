@@ -145,11 +145,11 @@ const NewsDetails = () => {
               {singleNewsDetails.category_name_bangla}
             </h5>
             <h1 className="main_color">{singleNewsDetails.news_title}</h1>
-            <p className="pt-3" style={{ fontSize: `${fontSize}px` }}>
+            <div className="pt-3" style={{ fontSize: `${fontSize}px` }}>
               <SanitizedParagraph
                 htmlContent={singleNewsDetails.news_short_brief}
               />
-            </p>
+            </div>
             <div className="mt-4">
               {/* Condition to check if singleNewsDetails.video_url is empty */}
               {singleNewsDetails.video_url ? (
@@ -193,14 +193,12 @@ const NewsDetails = () => {
                   <div className="social-author">
                     <SocialShareButtons
                       title={singleNewsDetails.news_title}
-                      type="article"
-                      image={`https://ajkal.us/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
-                      url={`https://ajkal.us/news/${singleNewsDetails.id}`} // Replace with actual page URL
-                      card={`https://ajkal.us/images/${singleNewsDetails.title_img}`}
+                      image={`https://ajkal.us/images/${singleNewsDetails.title_img}`}
+                      url={`https://ajkal.us/news/${singleNewsDetails.id}`}
                       description={singleNewsDetails.news_detail}
-                      increaseFontSize={increaseFontSize}
-                      decreaseFontSize={decreaseFontSize}
-                      resetFontSize={resetFontSize}
+                      onIncreaseFontSize={increaseFontSize}
+                      onDecreaseFontSize={decreaseFontSize}
+                      onResetFontSize={resetFontSize}
                     />
                   </div>
                 </div>
@@ -225,11 +223,11 @@ const NewsDetails = () => {
                 )}
               </div>
 
-              <p style={{ fontSize: `${fontSize}px` }}>
+              <div style={{ fontSize: `${fontSize}px` }}>
                 <SanitizedParagraph
                   htmlContent={singleNewsDetails.news_detail}
                 ></SanitizedParagraph>
-              </p>
+              </div>
             </div>
             <div>
               <div className="row py-4 px-3">
@@ -366,34 +364,6 @@ const NewsDetails = () => {
                   )
               )}
             </div>
-
-            {/* Add Banner End */}
-            <div className="">
-              <div>
-                <div id="fb-root" />
-                <div
-                  className="fb-page"
-                  data-href="https://www.facebook.com/weeklyajkal/"
-                  data-tabs="timeline"
-                  data-width
-                  data-height={400}
-                  data-small-header="false"
-                  data-adapt-container-width="true"
-                  data-hide-cover="false"
-                  data-show-facepile="true"
-                >
-                  <blockquote
-                    cite="https://www.facebook.com/weeklyajkal/"
-                    className="fb-xfbml-parse-ignore"
-                  >
-                    <a href="https://www.facebook.com/weeklyajkal/">
-                      Weekly Ajkal
-                    </a>
-                  </blockquote>
-                </div>
-              </div>
-            </div>
-            {/* Addvertisement Area End */}
           </div>
         </div>
         <div className="pt-5">

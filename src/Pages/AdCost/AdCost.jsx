@@ -3,8 +3,8 @@ import PageHelmet from "../../Comps/PageHelmet/PageHelmet";
 import { FaPaperPlane } from "react-icons/fa";
 import { IoDiamond } from "react-icons/io5";
 import { FaRocket } from "react-icons/fa";
-import { CiCircleCheck } from "react-icons/ci";
 import "./AdCost.css";
+import { Link } from "react-router-dom";
 const AdCost = () => {
   return (
     <div className="container">
@@ -22,7 +22,9 @@ const AdCost = () => {
             <section className="pricing-section">
               <div className="container">
                 <div className="sec-title text-center">
-                  <span className="title">এক নজরে দেখে নিন। সকল বিজ্ঞাপন এর মূল্য</span>
+                  <span className="title">
+                    এক নজরে দেখে নিন। সকল বিজ্ঞাপন এর মূল্য
+                  </span>
                   <h2>বিজ্ঞাপনের মূল্য</h2>
                 </div>
                 <div className="outer-box">
@@ -51,12 +53,12 @@ const AdCost = () => {
                           <li className="false">Free Contacts</li>
                         </ul>
                         <div className="btn-box">
-                          <a
-                            href="https://codepen.io/anupkumar92"
+                          <Link
+                            to="https://codepen.io/anupkumar92"
                             className="theme-btn"
                           >
                             BUY plan
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -68,7 +70,11 @@ const AdCost = () => {
                       <div className="inner-box">
                         <div className="icon-box">
                           <div className="icon-outer">
-                            <IoDiamond size={50} color="gray" className="mt-4" />
+                            <IoDiamond
+                              size={50}
+                              color="gray"
+                              className="mt-4"
+                            />
                           </div>
                         </div>
                         <div className="price-box">
@@ -83,12 +89,12 @@ const AdCost = () => {
                           <li className="false">Free Contacts</li>
                         </ul>
                         <div className="btn-box">
-                          <a
-                            href="https://codepen.io/anupkumar92"
+                          <Link
+                            to="https://codepen.io/anupkumar92"
                             className="theme-btn"
                           >
                             BUY plan
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -115,12 +121,12 @@ const AdCost = () => {
                           <li className="true">Free Contacts</li>
                         </ul>
                         <div className="btn-box">
-                          <a
-                            href="https://codepen.io/anupkumar92"
+                          <Link
+                            to="https://codepen.io/anupkumar92"
                             className="theme-btn"
                           >
                             BUY plan
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>

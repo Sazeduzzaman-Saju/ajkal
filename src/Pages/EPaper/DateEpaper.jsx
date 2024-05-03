@@ -116,24 +116,6 @@ function DateEpaper() {
                   />
                 </div>
               ))}
-              {/* Modal */}
-              {/* {epaperData.map((url, index) => (
-                  <Modal show={show} onHide={handleClose} key={index}>
-                    <Modal.Header closeButton>
-                      <Modal.Title>Modal heading</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                      Woohoo, you are reading this text in a modal!
-                    </Modal.Body>
-                    <Modal.Footer>
-                      <Button variant="secondary" onClick={handleClose}>
-                        Close
-                      </Button>
-                    </Modal.Footer>
-                  </Modal>
-                <div key={index}>
-                </div>
-              ))} */}
             </Slider>
           </div>
         ) : (

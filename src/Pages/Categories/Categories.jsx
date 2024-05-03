@@ -82,19 +82,19 @@ const Categories = () => {
               </div>
             </div>
           </div>
-          <hr />
+          <hr className="my-0" />
           <div className="row">
             <div className="col-lg-8">
               <InfiniteCategory singleNews={singleNews} />
             </div>
             <div className="col-lg-4">
-              <div className="mt-5">
+              <div className="">
                 <PostHeader title="বিজ্ঞাপন কর্নার" />
               </div>
               <div style={{ display: "flex", justifyContent: "center" }}>
                 <FacebookEmbed
-                  url="https://www.facebook.com/photo/?fbid=979852766901979"
-                  width={418}
+                  url="https://www.facebook.com/andrewismusic/posts/451971596293956"
+                  width={550}
                 />
               </div>
               <div

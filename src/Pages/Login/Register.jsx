@@ -239,7 +239,7 @@ const Register = () => {
                               htmlFor="flexCheckChecked"
                             >
                               আমাদের সকল শর্ত আপনি মেনে নিয়েছেন । অথবা শর্ত গুলো
-                              পরতে<a href="/">এখানে ক্লিক করুন।</a>
+                              পরতে<Link href="/">এখানে ক্লিক করুন।</Link>
                             </label>
                           </div>
 
@@ -252,7 +252,7 @@ const Register = () => {
                       </div>
                       <p className="text-muted text-center pt-5">
                         আপনার আক্যাউন্ট আগে থেকেই করা আছে ? তাহলে
-                        <a href="/login"> লগিন করুন !</a>
+                        <Link to="/login"> লগিন করুন !</Link>
                       </p>
                       <input
                         type="submit"

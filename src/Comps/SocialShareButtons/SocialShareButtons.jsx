@@ -16,9 +16,9 @@ const SocialShareButtons = ({
   image,
   url,
   description,
-  increaseFontSize,
-  decreaseFontSize,
-  resetFontSize,
+  onIncreaseFontSize,
+  onDecreaseFontSize,
+  onResetFontSize,
 }) => {
   return (
     <div className="d-flex">
@@ -62,13 +62,13 @@ const SocialShareButtons = ({
           </div>
         </div>
       </div>
-      <button className="share-btn text-black" onClick={increaseFontSize}>
+      <button className="share-btn text-black" onClick={onIncreaseFontSize}>
         <MdOutlineTextIncrease></MdOutlineTextIncrease>
       </button>
-      <button className="share-btn text-black" onClick={decreaseFontSize}>
+      <button className="share-btn text-black" onClick={onDecreaseFontSize}>
         <MdOutlineTextDecrease></MdOutlineTextDecrease>
       </button>
-      <button className="share-btn text-black" onClick={resetFontSize}>
+      <button className="share-btn text-black" onClick={onResetFontSize}>
         <FaFont></FaFont>
       </button>
       <ReactToPrint

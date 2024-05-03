@@ -66,7 +66,7 @@ const FeatureNews = () => {
                     <h5 className="main-color" style={{ height: "50px" }}>
                       {data.news_title.split(" ").slice(0, 10).join(" ")}
                     </h5>
-                    <p
+                    <div
                       className="card-text text-muted"
                       style={{ height: "70px" }}
                     >
@@ -76,7 +76,7 @@ const FeatureNews = () => {
                           .slice(0, 10)
                           .join(" ")}
                       />
-                    </p>
+                    </div>
                   </div>
                   {/* Pass the image URL directly to the LazyImage component */}
                   <LazyImageNews

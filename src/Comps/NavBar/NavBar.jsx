@@ -38,8 +38,6 @@ const NavBar = () => {
   return (
     <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
-        {/* Render "অন্যান্য +" only when main category links are present */}
-        {/* Main category links */}
         {navLinks.map((link) => (
           <li
             key={link.id}
@@ -50,6 +48,7 @@ const NavBar = () => {
             <NavLink
               to={`/categories/${link.id}`}
               className="nav-link navlinks"
+              activeClassName="active"
               onClick={() => handleLinkClick(link.text)}
             >
               {link.name_bangla}
