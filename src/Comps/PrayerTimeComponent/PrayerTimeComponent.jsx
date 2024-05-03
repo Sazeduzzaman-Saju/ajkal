@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import LazyImageShortNews from "../LazyImage/LazyImageShortNews";
 
 const PrayerTimeComponent = () => {
   const [prayerTimes, setPrayerTimes] = useState({
@@ -71,11 +72,14 @@ const PrayerTimeComponent = () => {
       </div>
       <div className="row gx-0">
         <div className="col-lg-6">
-          <img
-            className="img-fluid w-100"
-            style={{ height: "248px" }}
-            src="https://www.jugantor.com/web-assets/img/prayertimebg3.png"
-            alt=""
+          <LazyImageShortNews
+            src={`https://www.jugantor.com/web-assets/img/prayertimebg3.png`}
+            alt="epaper link"
+            className="img-fluid w-100 rounded-0"
+            errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+            width="100%"
+            height="248px"
+            style={{ objectFit: "cover" }}
           />
         </div>
         <div className="col-lg-6">
@@ -120,15 +124,27 @@ const PrayerTimeComponent = () => {
       </div>
       <div className="row">
         <div className="col-lg-12">
-          <div className="border shadow-sm" style={{height: '300px', overflow: 'hidden'}}>
-          <h3 className="text-center pt-3">
-            আজকাল <span className="epaper_text">ই</span> পেপার
-          </h3>
+          <div
+            className="border shadow-sm"
+            style={{ height: "425px", overflow: "hidden" }}
+          >
+            <h3 className="text-center pt-3">
+              আজকাল <span className="epaper_text">ই</span> পেপার
+            </h3>
             <Link to={"/epaper"} className="">
               <img
                 className="img-fluid"
                 src="https://ajkal.us/img/epaper/17139742637427437.jpg"
                 alt=""
+              />
+              <LazyImageShortNews
+                src={`https://www.jugantor.com/web-assets/img/prayertimebg3.png`}
+                alt="epaper link"
+                className="img-fluid w-100 rounded-0"
+                errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                width="100%"
+                height="248px"
+                style={{ objectFit: "cover" }}
               />
             </Link>
           </div>

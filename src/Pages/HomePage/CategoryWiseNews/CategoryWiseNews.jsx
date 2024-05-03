@@ -6,25 +6,32 @@ import PostHeader from "../../../Comps/PostHeader/PostHeader";
 import axios from "axios";
 import NewsSectionFour from "../../../Comps/NewsSectionFour/NewsSectionFour";
 import { Link } from "react-router-dom";
+import NewsSectionFive from "../../../Comps/NewsSectionFive/NewsSectionFive";
 
 const CategoryWiseNews = () => {
-  const [bangladeshNews, setBangladeshNews] = useState([]);
+  // State for storing news data of different categories
+  const [saraBanglaNews, setSaraBanglaNews] = useState([]);
   const [binodon, setBinodon] = useState([]);
   const [khelarNews, setKhelarNews] = useState([]);
   const [dhormo, setDhormo] = useState([]);
+  const [ScienceData, setScienceData] = useState([]);
 
+  // URLs for fetching news data of different categories
   const url = "https://backoffice.ajkal.us/category-news/5";
   const urlBinodon = "https://backoffice.ajkal.us/category-news/7";
   const urlKhela = "https://backoffice.ajkal.us/category-news/6";
   const dhormoData = "https://backoffice.ajkal.us/category-news/8";
+  const scienceData = "https://backoffice.ajkal.us/category-news/16";
+
+  // State for storing advertisement data
   const [addvertisement, setAddvertisement] = useState([]);
   const addUrl = "https://backoffice.ajkal.us/ad/all";
 
+  // Fetch advertisement data on component mount
   useEffect(() => {
     axios
       .get(addUrl)
       .then((response) => {
-        // Check if the response contains an array
         if (Array.isArray(response.data)) {
           setAddvertisement(response.data);
         } else if (Array.isArray(response.data.data)) {
@@ -41,6 +48,7 @@ const CategoryWiseNews = () => {
       });
   }, []);
 
+  // Fetch news data for Sara Bangla category
   useEffect(() => {
     axios
       .get(url)
@@ -56,13 +64,14 @@ const CategoryWiseNews = () => {
             response.data
           );
         }
-        setBangladeshNews(slicedData);
+        setSaraBanglaNews(slicedData);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
   }, []);
 
+  // Fetch news data for Binodon category
   useEffect(() => {
     axios
       .get(urlBinodon)
@@ -83,6 +92,7 @@ const CategoryWiseNews = () => {
       });
   }, []);
 
+  // Fetch news data for Khelar category
   useEffect(() => {
     axios
       .get(urlKhela)
@@ -103,6 +113,7 @@ const CategoryWiseNews = () => {
       });
   }, []);
 
+  // Fetch news data for Dhormo category
   useEffect(() => {
     axios
       .get(dhormoData)
@@ -123,27 +134,52 @@ const CategoryWiseNews = () => {
       });
   }, []);
 
+  // Fetch news data for scienceData category
+  useEffect(() => {
+    axios
+      .get(scienceData)
+      .then((response) => {
+        if (Array.isArray(response.data)) {
+          setScienceData(response.data.slice(0, 4));
+        } else if (Array.isArray(response.data.data)) {
+          setScienceData(response.data.data.slice(0, 4));
+        } else {
+          console.error(
+            "Invalid data structure in API response:",
+            response.data
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
   return (
     <>
       <div>
-        {/* First Style */}
+        {/* Render news sections for different categories */}
         <div>
           <PostHeader
             title={
-              bangladeshNews.length > 0 &&
-              bangladeshNews[0].category_name_bangla
-                ? bangladeshNews[0].category_name_bangla
+              saraBanglaNews.length > 0 &&
+              saraBanglaNews[0].category_name_bangla
+                ? saraBanglaNews[0].category_name_bangla
                 : ""
             }
           />
-          <NewsSectionOne bangladeshNews={bangladeshNews.map(news => ({...news, id: String(news.id)}))} />
+          <NewsSectionOne
+            saraBanglaNews={saraBanglaNews.map((news) => ({
+              ...news,
+              id: String(news.id),
+            }))}
+          />
         </div>
-        {/* add */}
+
+        {/* Render advertisement for Sara Bangla category */}
         <div>
-          {/* sara bangla category advertisement */}
           {addvertisement.map(
             (data) =>
-              // Check if data.status is "1" and data.ad_position is "HeaderTop"
               data.status === 1 &&
               data.ad_position === "BelowNewsCategory2" && (
                 <Link to={data.ad_link} key={data.id} target="_blank">
@@ -160,27 +196,48 @@ const CategoryWiseNews = () => {
               )
           )}
         </div>
-        {/* Second Style */}
+
         <div className="pt-2">
           <PostHeader
             title={binodon.length > 0 ? binodon[0].category_name_bangla : ""}
           />
           <NewsSectionTwo binodon={binodon} />
         </div>
-        {/* Third Style */}
+
         <div className="">
           <PostHeader
             title={
               khelarNews.length > 0 ? khelarNews[0].category_name_bangla : ""
             }
           />
-          <NewsSectionThree khelarNews={khelarNews.map(news => ({...news, id: String(news.id)}))} />
+          <NewsSectionThree
+            khelarNews={khelarNews.map((news) => ({
+              ...news,
+              id: String(news.id),
+            }))}
+          />
         </div>
+
         <div className="">
           <PostHeader
             title={dhormo.length > 0 ? dhormo[0].category_name_bangla : ""}
           />
-          <NewsSectionFour dhormo={dhormo.map(news => ({...news, id: String(news.id)}))} />
+          <NewsSectionFour
+            dhormo={dhormo.map((news) => ({ ...news, id: String(news.id) }))}
+          />
+        </div>
+        <div className="">
+          <PostHeader
+            title={
+              ScienceData.length > 0 ? ScienceData[0].category_name_bangla : ""
+            }
+          />
+          <NewsSectionFive
+            ScienceData={ScienceData.map((news) => ({
+              ...news,
+              id: String(news.id),
+            }))}
+          />
         </div>
       </div>
     </>

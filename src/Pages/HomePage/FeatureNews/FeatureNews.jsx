@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import BanglaTimeAgo from "../../../Comps/BanglaTime/BanglaTimeDiffrence";
 import SanitizedParagraph from "../../../Comps/SanitizedParagraph";
+import LazyImageNews from "../../../Comps/LazyImage/LazyImageNews";
 
 const FeatureNews = () => {
   const [spotlightNews, setSpotlightNews] = useState([]);
@@ -16,7 +17,6 @@ const FeatureNews = () => {
     axios
       .get(url)
       .then((response) => {
-        // Check if the response contains an array
         if (Array.isArray(response.data)) {
           setSpotlightNews(response.data);
         } else if (Array.isArray(response.data.data)) {
@@ -51,7 +51,7 @@ const FeatureNews = () => {
             </div>
           ))
         : spotlightNews.map((data, index) => (
-            <div className="col-lg-3" key={index}> 
+            <div className="col-lg-3" key={index}>
               <Link to={`/${data.category_name_bangla}/${data.id}`}>
                 <div className="card rounded-1 border-0 shadow-sm feature-cards">
                   <div className="card-body">
@@ -66,20 +66,24 @@ const FeatureNews = () => {
                     <h5 className="main-color" style={{ height: "50px" }}>
                       {data.news_title.split(" ").slice(0, 10).join(" ")}
                     </h5>
-                    <p className="card-text text-muted" style={{ height: "70px" }}>
-                      <SanitizedParagraph htmlContent={data.news_short_brief.split(" ").slice(0, 10).join(" ")}/>
+                    <p
+                      className="card-text text-muted"
+                      style={{ height: "70px" }}
+                    >
+                      <SanitizedParagraph
+                        htmlContent={data.news_short_brief
+                          .split(" ")
+                          .slice(0, 10)
+                          .join(" ")}
+                      />
                     </p>
                   </div>
-                  <img
+                  {/* Pass the image URL directly to the LazyImage component */}
+                  <LazyImageNews
                     src={`https://ajkal.us/images/${data.title_img}`}
-                    className="card-img-top rounded-0"
                     alt="Card Image"
-                    loading="lazy"
-                    style={{ height: "200px" }}
-                    onError={(e) => {
-                      e.target.src =
-                        "https://ajkal.us/image/settings/placeholder.jpg";
-                    }}
+                    className="card-img-top rounded-0 custom-class" // You can add additional classes if needed
+                    errorSrc="https://ajkal.us/image/settings/placeholder.jpg" // Pass the path of the error image
                   />
                 </div>
               </Link>

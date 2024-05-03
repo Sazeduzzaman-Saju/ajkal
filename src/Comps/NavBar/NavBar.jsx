@@ -6,16 +6,6 @@ const NavBar = () => {
   const [activeLink, setActiveLink] = useState("");
   const [navLinks, setNavLinks] = useState([]);
   const [extraNav, setExtraNav] = useState([]);
-  const [showNavLink, setShowNavLink] = useState(false);
-
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setShowNavLink(true);
-    }, 3000); // Timeout duration: 3 seconds
-
-    // Clear the timeout when the component unmounts or when the dependency array changes
-    return () => clearTimeout(timeoutId);
-  }, []); // Empty dependency array to ensure useEffect runs only once
 
   const handleLinkClick = (link) => {
     setActiveLink(link);
@@ -48,6 +38,8 @@ const NavBar = () => {
   return (
     <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
+        {/* Render "অন্যান্য +" only when main category links are present */}
+        {/* Main category links */}
         {navLinks.map((link) => (
           <li
             key={link.id}
@@ -62,24 +54,22 @@ const NavBar = () => {
             >
               {link.name_bangla}
             </NavLink>
-        </li>
+          </li>
         ))}
-        {navLinks.length > 0 && ( // Render "অন্যান্য +" only when navLinks has items
+        {navLinks.length > 0 && (
           <li className="nav-item menu-specing ">
             <div className="dropdown main-menu">
-              {showNavLink && (
-                <button
-                  className="border-0 bg-transparent pt-2 text-white"
-                  type="button"
-                  id="dropdownMenuButton1"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  style={{ fontSize: "18px", textDecoration: "none" }}
-                  to="/your-link-here"
-                >
-                  অন্যান্য +
-                </button>
-              )}
+              <button
+                className="border-0 bg-transparent pt-2 text-white"
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                style={{ fontSize: "18px", textDecoration: "none" }}
+                to="/your-link-here"
+              >
+                অন্যান্য +
+              </button>
               <ul
                 className="dropdown-menu"
                 style={{ borderBottom: "none" }}

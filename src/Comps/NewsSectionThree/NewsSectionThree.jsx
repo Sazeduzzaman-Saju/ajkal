@@ -3,17 +3,20 @@ import "./style.css";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import axios from "axios";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import LazyImageShortNews from "../LazyImage/LazyImageShortNews";
+import SanitizedParagraph from "../SanitizedParagraph";
 
 const NewsSectionThree = ({ khelarNews, loading }) => {
-  const [addvertisementKhela, setAdvertisementKhela] = useState([]);
+  // State for storing advertisement data
+  const [advertisementKhela, setAdvertisementKhela] = useState([]);
   const addUrl = "https://backoffice.ajkal.us/ad/all";
 
+  // Fetch advertisement data on component mount
   useEffect(() => {
     axios
       .get(addUrl)
       .then((response) => {
-        // Check if the response contains an array
         if (Array.isArray(response.data)) {
           setAdvertisementKhela(response.data);
         } else if (Array.isArray(response.data.data)) {
@@ -29,112 +32,130 @@ const NewsSectionThree = ({ khelarNews, loading }) => {
         console.error("Error fetching data:", error);
       });
   }, []);
+
   return (
-    <div>
-      <div className="row align-items-center ">
-        {/* <p>{khelarNews}</p> */}
-        <div className="col-lg-6">
-          {loading ? (
-            // Render skeleton loading placeholders
-            <>
-              <Skeleton height={100} width={100} count={3} />
-            </>
-          ) : (
-            // Render actual data
-            khelarNews.slice(0, 5).map((data) => (
-              <Link
-                to={`/${data.category_name_bangla}/${data.id}`}
-                className="text-muted"
-                key={data.id}
-              >
-                <div className="d-flex align-items-center mb-3 row">
-                  <div className="col-lg-3">
-                    <img
-                      className="img-fluid rounded-2"
-                      width={90}
-                      src={`https://ajkal.us/images/${data.title_img}`}
-                      alt=""
-                      onError={(e) => {
-                        e.target.src =
-                          "https://ajkal.us/image/settings/placeholder.jpg";
-                      }}
-                    />
-                  </div>
-                  <div className="col-lg-9">
-                    <h6 className="mb-0 text-muted fw-semibold ">
-                      {data.news_title}
-                    </h6>
-                  </div>
-                </div>
-              </Link>
-            ))
-          )}
-        </div>
-        <div className="col-lg-6">
-          {loading ? (
-            // Render skeleton loading placeholders
-            <>
-              <Skeleton height={200} count={3} />
-            </>
-          ) : (
-            // Render actual data
-            khelarNews.map((data, index) =>
-              data.is_featured === 1 ? (
-                <div key={index}>
-                  <Link to={`/${data.category_name_bangla}/${data.id}`}>
-                    <div className="card border-0">
-                      <div className="card-body p-0">
-                        <img
-                          className="img-fluid"
-                          height={235}
-                          style={{ objectFit: "cover", height: "250px" }}
-                          src={`https://ajkal.us/images/${data.title_img}`}
-                          alt=""
-                          onError={(e) => {
-                            e.target.src =
-                              "https://ajkal.us/image/settings/placeholder.jpg";
-                          }}
-                        />
-                        <h5
-                          className="m-0 p-0 py-3 text-center text-white"
-                          style={{ backgroundColor: "var(--main)" }}
-                        >
-                          {data.news_title &&
-                            data.news_title.split(" ").slice(0, 7).join(" ")}
-                        </h5>
-                      </div>
+    <div className="row">
+      {/* Left column for regular news items */}
+      <div className="col-lg-6">
+        {loading ? (
+          // Render skeleton loading placeholders
+          <Skeleton height={100} width={100} count={3} />
+        ) : (
+          // Render actual data
+          khelarNews.slice(0, 5).map((data) => (
+            <Link
+              to={`/${data.category_name_bangla}/${data.id}`}
+              className="text-muted"
+              key={data.id}
+            >
+              <div className="card border-0 shadow-sm mb-3">
+                <div className="card-body p-0">
+                  <div className="row align-items-center">
+                    {/* Image column */}
+                    <div className="col-lg-4">
+                      <LazyImageShortNews
+                        src={`https://ajkal.us/images/${data.title_img}`}
+                        alt={data.news_title}
+                        className="rounded-1"
+                        errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                        width="250px"
+                        height="75px"
+                      />
                     </div>
-                  </Link>
+                    {/* Content column */}
+                    <div className="col-lg-8 ps-0">
+                      <h6 className="mb-0 main-color fw-bolder">
+                        <SanitizedParagraph
+                          htmlContent={data.news_title
+                            .split(" ")
+                            .slice(0, 5)
+                            .join(" ")}
+                        />
+                      </h6>
+                      <SanitizedParagraph
+                        className="mb-0"
+                        htmlContent={data.news_short_brief
+                          .split(" ")
+                          .slice(1, 10)
+                          .join(" ")}
+                      />
+                    </div>
+                  </div>
                 </div>
-              ) : null
-            )
-          )}
-        </div>
-        <div className="col-lg-12 pt-3">
-          {addvertisementKhela.map(
-            (data) =>
-              // Check if data.status is "1" and data.ad_position is "HeaderTop"
-              data.status === 1 &&
-              data.ad_position === "BelowNewsCategory2" && (
-                <Link to={data.ad_link} key={data.id} target="_blank">
-                  <img
-                    className="img-fluid w-100"
-                    src={`https://ajkal.us/img/ad/${data.ad_banner}`}
-                    alt={`https://ajkal.us/img/ad/${data.ad_banner}`}
-                    onError={(e) => {
-                      e.target.src =
-                        "https://ajkal.us/image/settings/placeholder.jpg";
-                    }}
-                  />
+              </div>
+            </Link>
+          ))
+        )}
+      </div>
+
+      {/* Right column for featured news items */}
+      <div className="col-lg-6 ps-1">
+        {loading ? (
+          // Render skeleton loading placeholders
+          <Skeleton height={200} count={3} />
+        ) : (
+          // Render actual data
+          khelarNews.map((data, index) =>
+            data.is_featured === 1 ? (
+              <div key={index}>
+                <Link to={`/${data.category_name_bangla}/${data.id}`}>
+                  <div className="card border-0 shadow-sm ">
+                    <div className="card-body p-0">
+                      {/* Featured news image */}
+                      <LazyImageShortNews
+                        src={`https://ajkal.us/images/${data.title_img}`}
+                        alt={data.news_title}
+                        className="rounded-top-1 rounded-bottom-0"
+                        errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                        width="auto"
+                        height="385px"
+                        style={{ objectFit: "cover" }}
+                      />
+                      {/* Featured news title */}
+                      <h5
+                        className="m-0 p-0 py-3 text-center text-white rounded-bottom-1"
+                        style={{ backgroundColor: "var(--main)" }}
+                      >
+                        {data.news_title &&
+                          data.news_title.split(" ").slice(0, 5).join(" ")}
+                      </h5>
+                    </div>
+                  </div>
                 </Link>
-              )
-          )}
-        </div>
+              </div>
+            ) : null
+          )
+        )}
+      </div>
+
+      {/* Advertisement section */}
+      <div className="col-lg-12 pt-3">
+        {advertisementKhela.map(
+          (data) =>
+            data.status === 1 &&
+            data.ad_position === "BelowNewsCategory2" && (
+              <Link to={data.ad_link} key={data.id} target="_blank">
+                <img
+                  className="img-fluid w-100"
+                  src={`https://ajkal.us/img/ad/${data.ad_banner}`}
+                  alt={`https://ajkal.us/img/ad/${data.ad_banner}`}
+                  onError={(e) => {
+                    e.target.src =
+                      "https://ajkal.us/image/settings/placeholder.jpg";
+                  }}
+                />
+              </Link>
+            )
+        )}
       </div>
     </div>
   );
 };
+
+// Prop types validation
 NewsSectionThree.propTypes = {
-  khelarNews: PropTypes.array.isRequired, // Assuming khelarNews is still required
+  khelarNews: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
+
 export default NewsSectionThree;

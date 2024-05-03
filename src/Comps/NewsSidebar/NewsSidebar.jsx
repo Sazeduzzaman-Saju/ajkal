@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
+import LazyImageNews from "../LazyImage/LazyImageNews";
 
 const NewsSidebar = () => {
   const [sorboshesData, setSorboshesData] = useState([]);
@@ -40,7 +41,7 @@ const NewsSidebar = () => {
             "linear-gradient(45deg, rgb(22, 85, 136) 0%, rgb(237, 30, 43) 51%, rgb(22, 85, 136) 100%)",
         }}
       >
-        <p className="text-white ps-3 p-2">সর্বাধিক পঠিত </p>{" "}
+        <h4 className="text-white ps-3 p-2">সর্বাধিক পঠিত </h4>{" "}
       </div>
       {loading ? ( // Render skeleton loading cards if data is still loading
         <>
@@ -54,15 +55,12 @@ const NewsSidebar = () => {
               <div className="card mb-3 border-0 shadow-sm rounded-2">
                 <div className="card-body p-0 d-flex align-items-center">
                   <div className="pothito-img w-25 h-100 ">
-                    <img
-                      className="img-fluid rounded-1"
-                      style={{ height: "70px", objectFit: "cover" }}
+                    <LazyImageNews
                       src={`https://ajkal.us/images/${data.title_img}`}
                       alt=""
-                      onError={(e) => {
-                        e.target.src =
-                          "https://ajkal.us/image/settings/placeholder.jpg";
-                      }}
+                      className="img-fluid rounded-1"
+                      errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                      style={{ height: "70px", objectFit: "cover" }}
                     />
                   </div>
                   <div className="pothito-content w-75 ps-4">

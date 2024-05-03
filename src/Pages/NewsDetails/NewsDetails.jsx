@@ -20,6 +20,8 @@ import {
 } from "react-share";
 import { FaFacebook, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import toast from "react-hot-toast";
+import FacebookComments from "../../Comps/FacebookComments/FacebookComments";
+import LazyImageShortNews from "../../Comps/LazyImage/LazyImageShortNews";
 
 const NewsDetails = () => {
   const singleNews = useLoaderData();
@@ -60,13 +62,13 @@ const NewsDetails = () => {
         console.error("Error fetching data:", error);
       });
   }, []);
-  // Copy News Url 
+  // Copy News Url
   const url = `https://ajkal.us/${singleNewsDetails.category_name_bangla}/${singleNewsDetails.id}`;
 
   const copyUrlToClipboard = () => {
     // Create a temporary input element
-    const input = document.createElement('input');
-    input.setAttribute('value', url);
+    const input = document.createElement("input");
+    input.setAttribute("value", url);
     document.body.appendChild(input);
 
     // Select the input value
@@ -74,14 +76,32 @@ const NewsDetails = () => {
     input.setSelectionRange(0, 99999); // For mobile devices
 
     // Copy the selected text
-    document.execCommand('copy');
+    document.execCommand("copy");
 
     // Remove the temporary input
     document.body.removeChild(input);
 
     // Optionally, provide feedback to the user
-    toast.success('News URL copied : ' + url);
-};
+    toast.success("News URL copied : " + url);
+  };
+  const links = [
+    { label: "বাংলাদেশ", url: "#" },
+    { label: "বিরোধী ", url: "#" },
+    { label: "সংবাদ", url: "#" },
+    { label: "নির্দেশনা ", url: "#" },
+    { label: "নেতা", url: "#" },
+    { label: "যুক্তরাষ্ট্র", url: "#" },
+    { label: "নিউইয়র্ক", url: "#" },
+    { label: "সারা বিশ্ব", url: "#" },
+    { label: "বিনোদন", url: "#" },
+    { label: "কারাগার", url: "#" },
+    { label: "প্রবাস", url: "#" },
+    { label: "লাইফস্টাইল", url: "#" },
+    { label: "খেলা", url: "#" },
+    { label: "সারা বাংলা", url: "#" },
+    { label: "সাপ্তাহিক", url: "#" },
+    // Add more link objects as needed
+  ];
   return (
     <>
       <PageHelmet
@@ -91,11 +111,20 @@ const NewsDetails = () => {
         url={window.location.href} // Replace with actual page URL
         card={`https://ajkal.us/images/${singleNewsDetails.title_img}`}
         description={singleNewsDetails.news_detail} // Replace with appropriate description field from singleNewsDetails
-      />
+      >
+        {/* Additional Meta Tags */}
+        <meta name="okeywords" content="news, article, updates" />
+        <meta name="author" content="Your Name" />
+        {/* Add more meta tags as needed */}
+      </PageHelmet>
+
       <div className="container">
-        <div className="row py-4">
-          <div className="col-lg-12">
-            <div style={{ borderBottom: "1px solid var(--main)" }}>
+        <div className="row">
+          <div className="col-lg-12 ps-0">
+            <div
+              className="d-flex justify-content-between  align-items-center py-3"
+              style={{ borderBottom: "1px solid var(--main)" }}
+            >
               <h5 className="text-muted">
                 <span> প্রচ্ছদ </span> <IoMdArrowDropright />
                 <Link
@@ -106,18 +135,15 @@ const NewsDetails = () => {
                 </Link>{" "}
                 <IoMdArrowDropright /> {singleNewsDetails.news_title}
               </h5>
-            </div>
-            <div className="d-flex justify-content-between  align-items-center pt-3">
-              <h5 className="fw-bold" style={{ color: "#ee2026" }}>
-                {singleNewsDetails.category_name_bangla}
-              </h5>
-              {/* <h5>{singleNewsDetails.news_time}</h5> */}
               <BanglaDateTime dateTime={singleNewsDetails.news_time} />
             </div>
           </div>
         </div>
         <div className="row">
-          <div className="col-lg-8" id="printThis">
+          <div className="col-lg-8 ps-0" id="printThis">
+            <h5 className="fw-bold py-4 mb-0" style={{ color: "#ee2026" }}>
+              {singleNewsDetails.category_name_bangla}
+            </h5>
             <h1 className="main_color">{singleNewsDetails.news_title}</h1>
             <p className="pt-3" style={{ fontSize: `${fontSize}px` }}>
               <SanitizedParagraph
@@ -148,7 +174,9 @@ const NewsDetails = () => {
                   }}
                 />
               )}
-              <p className="pt-2" style={{ fontSize: `${fontSize}px` }}>{singleNewsDetails.news_title} | ফাইল ছবি</p>
+              <p className="pt-2" style={{ fontSize: `${fontSize}px` }}>
+                {singleNewsDetails.news_title} | ফাইল ছবি
+              </p>
               {/* Author */}
               <div className="d-flex justify-content-between  align-items-center py-5">
                 <div className="news-author-box">
@@ -163,7 +191,7 @@ const NewsDetails = () => {
                 </div>
                 <div>
                   <div className="social-author">
-                    {/* <SocialShareButtons
+                    <SocialShareButtons
                       title={singleNewsDetails.news_title}
                       type="article"
                       image={`https://ajkal.us/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
@@ -173,42 +201,24 @@ const NewsDetails = () => {
                       increaseFontSize={increaseFontSize}
                       decreaseFontSize={decreaseFontSize}
                       resetFontSize={resetFontSize}
-                    /> */}
-                    <SocialShareButtons
-        title={singleNewsDetails.news_title}
-        type="article"
-        image={`https://ajkal.us/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
-        url={`https://ajkal.us/news/${singleNewsDetails.id}`} // Replace with actual page URL
-        card={`https://ajkal.us/images/${singleNewsDetails.title_img}`}
-        description={singleNewsDetails.news_detail}
-        increaseFontSize={increaseFontSize}
-        decreaseFontSize={decreaseFontSize}
-        resetFontSize={resetFontSize}
-      />
+                    />
                   </div>
                 </div>
               </div>
               {/* News Details */}
-              {/* <p>{singleNewsDetails.news_detail.slice(0, 250)}</p> */}
-              {/* <p
-                style={{ fontSize: `${fontSize}px`, textAlign: "justify" }}
-                dangerouslySetInnerHTML={{
-                  __html: slicedText,
-                }}
-              /> */}
               <div className="pb-4 py-3">
                 {addvertisement.map((data) =>
                   // Check if data "ad_category_id" is equal to "2" and status is equal to "1"
                   data.ad_category_id === "4" && data.status === "1" ? (
                     <Link to={data.ad_link} key={data.id}>
-                      <img
+                      <LazyImageShortNews
+                        src={`https://ajkal.us/images/${data.title_img}`}
+                        alt={data.news_title}
                         className="img-fluid"
-                        src={`https://ajkal.us/images/${data.ad_banner}`}
-                        alt=""
-                        onError={(e) => {
-                          e.target.src =
-                            "https://ajkal.us/image/settings/placeholder.jpg";
-                        }}
+                        errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                        width="100%"
+                        height="auto"
+                        style={{ objectFit: "cover" }}
                       />
                     </Link>
                   ) : null
@@ -222,54 +232,91 @@ const NewsDetails = () => {
               </p>
             </div>
             <div>
-              <div className="row">
-                <div className="col-lg-3">
-                  <h5 className="secondary-color pt-5 pb-2 border-bottom border-2" >
-                    নিউজ টি শেয়ার করুন।
-                  </h5>
+              <div className="row py-4 px-3">
+                <div className="col-lg-12 pb-3 ps-0">
+                  <div className="d-flex align-items-center justify-content-between">
+                    <h5 className="secondary-color mb-0 ">
+                      সংবাদ টি শেয়ার করুন।
+                    </h5>
+                    <div className="social-share-buttons">
+                      <FacebookShareButton
+                        title={singleNewsDetails.news_title}
+                        type="article"
+                        image={`https://ajkal.us/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
+                        url={`https://ajkal.us/${singleNewsDetails.category_name_bangla}/${singleNewsDetails.id}`} // Replace with actual page URL
+                        card={`https://ajkal.us/images/${singleNewsDetails.title_img}`}
+                        description={singleNewsDetails.news_detail}
+                        increaseFontSize={increaseFontSize}
+                        decreaseFontSize={decreaseFontSize}
+                        resetFontSize={resetFontSize}
+                      >
+                        <FaFacebook />
+                      </FacebookShareButton>
+                      <TwitterShareButton
+                        title={singleNewsDetails.news_title}
+                        type="article"
+                        image={`https://ajkal.us/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
+                        url={`https://ajkal.us/${singleNewsDetails.category_name_bangla}/${singleNewsDetails.id}`} // Replace with actual page URL
+                        card={`https://ajkal.us/images/${singleNewsDetails.title_img}`}
+                        description={singleNewsDetails.news_detail}
+                        increaseFontSize={increaseFontSize}
+                        decreaseFontSize={decreaseFontSize}
+                        resetFontSize={resetFontSize}
+                      >
+                        <FaTwitter />
+                      </TwitterShareButton>
+                      <WhatsappShareButton
+                        title={singleNewsDetails.news_title}
+                        type="article"
+                        image={`https://ajkal.us/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
+                        url={`https://ajkal.us/${singleNewsDetails.category_name_bangla}/${singleNewsDetails.id}`} // Replace with actual page URL
+                        card={`https://ajkal.us/images/${singleNewsDetails.title_img}`}
+                        description={singleNewsDetails.news_detail}
+                        increaseFontSize={increaseFontSize}
+                        decreaseFontSize={decreaseFontSize}
+                        resetFontSize={resetFontSize}
+                      >
+                        <FaWhatsapp />
+                      </WhatsappShareButton>
+                      <button
+                        type="button"
+                        title={`${singleNewsDetails.news_title}.লিঙ্ক কপি করুন `}
+                        className="react-share__ShareButton border-0"
+                        onClick={copyUrlToClipboard}
+                      >
+                        <FaCopy />
+                      </button>
+                    </div>
+                  </div>
                 </div>
+                {/* News Details Tags */}
+                <div className="col-lg-12 px-0">
+                  <div>
+                    {links.map((link, index) => (
+                      <Link
+                        to="#"
+                        className="pe-3 mb-2 d-inline-block"
+                        key={index}
+                      >
+                        <span
+                          tabIndex={0}
+                          className="v-chip v-chip--clickable theme--light v-size--default tags-button"
+                        >
+                          <span className="v-chip__content">
+                            <span>{link.label}</span>
+                          </span>
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+                {/* News Details Tags end*/}
               </div>
-              <div className="social-share-buttons">
-                <FacebookShareButton
-                  title={singleNewsDetails.news_title}
-                  type="article"
-                  image={`https://ajkal.us/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
-                  url={`https://ajkal.us/${singleNewsDetails.category_name_bangla}/${singleNewsDetails.id}`} // Replace with actual page URL
-                  card={`https://ajkal.us/images/${singleNewsDetails.title_img}`}
-                  description={singleNewsDetails.news_detail}
-                  increaseFontSize={increaseFontSize}
-                  decreaseFontSize={decreaseFontSize}
-                  resetFontSize={resetFontSize}
-                >
-                  <FaFacebook />
-                </FacebookShareButton>
-                <TwitterShareButton
-                  title={singleNewsDetails.news_title}
-                  type="article"
-                  image={`https://ajkal.us/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
-                  url={`https://ajkal.us/${singleNewsDetails.category_name_bangla}/${singleNewsDetails.id}`} // Replace with actual page URL
-                  card={`https://ajkal.us/images/${singleNewsDetails.title_img}`}
-                  description={singleNewsDetails.news_detail}
-                  increaseFontSize={increaseFontSize}
-                  decreaseFontSize={decreaseFontSize}
-                  resetFontSize={resetFontSize}
-                >
-                  <FaTwitter />
-                </TwitterShareButton>
-                <WhatsappShareButton
-                  title={singleNewsDetails.news_title}
-                  type="article"
-                  image={`https://ajkal.us/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
-                  url={`https://ajkal.us/${singleNewsDetails.category_name_bangla}/${singleNewsDetails.id}`} // Replace with actual page URL
-                  card={`https://ajkal.us/images/${singleNewsDetails.title_img}`}
-                  description={singleNewsDetails.news_detail}
-                  increaseFontSize={increaseFontSize}
-                  decreaseFontSize={decreaseFontSize}
-                  resetFontSize={resetFontSize}
-                >
-                  <FaWhatsapp />
-                </WhatsappShareButton>
-                <button type="button" title={`${singleNewsDetails.news_title}.লিঙ্ক কপি করুন `} className="react-share__ShareButton border-0" onClick={copyUrlToClipboard}><FaCopy/></button>
+
+              <div className="">
+                <FacebookComments
+                  url={`https://ajkal.us/news/${singleNewsDetails.id}`}
+                />
               </div>
             </div>
           </div>
@@ -299,24 +346,26 @@ const NewsDetails = () => {
               />
             </div>
             {/* Add Banner Start */}
-            {addvertisement.map((data) =>
-              // Check if data "ad_category_id" is equal to "2" and status is equal to "1"
-              data.ad_category_id === "3" && data.status === "1" ? (
-                <div className="mb-2" key={data.id}>
-                  <Link to={data.ad_link}>
-                    <img
-                      className="img-fluid side-add"
-                      src={`https://ajkal.us/images/${data.ad_banner}`}
-                      alt=""
-                      onError={(e) => {
-                        e.target.src =
-                          "https://ajkal.us/image/settings/placeholder.jpg";
-                      }}
-                    />
-                  </Link>
-                </div>
-              ) : null
-            )}
+            {/* Advertisement */}
+            <div className="pt-3">
+              {addvertisement.map(
+                (data) =>
+                  data.status === 1 &&
+                  data.ad_position === "Sidebar3" && (
+                    <Link to={data.ad_link} key={data.id} target="_blank">
+                      <img
+                        className="img-fluid w-100"
+                        src={`https://ajkal.us/img/ad/${data.ad_banner}`}
+                        alt={`https://ajkal.us/img/ad/${data.ad_banner}`}
+                        onError={(e) => {
+                          e.target.src =
+                            "https://ajkal.us/image/settings/placeholder.jpg";
+                        }}
+                      />
+                    </Link>
+                  )
+              )}
+            </div>
 
             {/* Add Banner End */}
             <div className="">
@@ -348,19 +397,6 @@ const NewsDetails = () => {
           </div>
         </div>
         <div className="pt-5">
-          <div style={{ borderBottom: "1px solid var(--main)" }}>
-            <h5 className="text-muted">
-              <Link
-                to={`/categories/${singleNewsDetails.category_id}`}
-                className="text-muted"
-              >
-                <span className="fw-bold">
-                  {singleNewsDetails.category_name_bangla}
-                </span>{" "}
-                {singleNewsDetails.video_url ? "পরবর্তী +" : "নিয়ে আরও পড়ুন"}
-              </Link>
-            </h5>
-          </div>
           <ReletedNews
             singleNewsDetails={singleNewsDetails.category_id}
           ></ReletedNews>

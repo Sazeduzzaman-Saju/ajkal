@@ -19,8 +19,8 @@
   color: #fff;
   text-align: center;
   padding: 3px 10px 3px;
-  top: 280px;
-  right: 20px;
+  top: 50%;
+  left: 50%;
   z-index: 1;
   font-size: 30px;
   border-radius: 100%;
@@ -29,15 +29,18 @@
 }
 
 .video-side {
-  position: relative;
+  position: absolute;
   background: var(--main);
   color: #fff;
   text-align: center;
-  padding: 3px 10px 5px;
-  top: 0;
-  right: -100px;
+  padding: 5px;
+  width: 50px;
+  height: 50px;
+  right: 0;
+  left: 11.5%;
   z-index: 1;
-  font-size: 20px;
+  margin-top: 2rem;
+  font-size: 24px;
   border-radius: 100%;
   box-shadow: rgb(230, 8, 8) 0px 8px 30px;
   animation: ring-blink 2s infinite;

@@ -1,4 +1,5 @@
 import { Link, useLoaderData } from "react-router-dom";
+import LazyImageShortNews from "../../../Comps/LazyImage/LazyImageShortNews";
 
 const CategoryNewsSlider = () => {
   const singleNews = useLoaderData();
@@ -22,18 +23,18 @@ const CategoryNewsSlider = () => {
                   <div className="card rounded-0 border-0">
                     <div className="card-body p-0 ">
                       <div>
-                        <img
-                          className="img-fluid w-100 category-slider-img shadow-sm"
+                        <LazyImageShortNews
                           src={`https://ajkal.us/images/${newsItem.title_img}`}
-                          alt=""
-                          onError={(e) => {
-                            e.target.src =
-                              "https://ajkal.us/image/settings/placeholder.jpg";
-                          }}
+                          alt={newsItem.news_title}
+                          className="img-fluid w-100 category-slider-img shadow-sm rounded-bottom-0 rounded-top-2"
+                          errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                          width="100%"
+                          height="auto"
+                          style={{ objectFit: "cover" }}
                         />
                       </div>
                       <div
-                        className="p-2 feature-text-area"
+                        className="p-2 feature-text-area rounded-bottom-2 rounded-top-0"
                         style={{ backgroundColor: "var(--main)" }}
                       >
                         <h4 className="pt-1 mb-1 text-white">

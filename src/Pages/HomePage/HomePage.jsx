@@ -207,7 +207,7 @@ const HomePage = () => {
         </div>
         {/* Category Post Show Style One */}
         <div className="container">
-          <div className="row mb-5">
+          <div className="row mb-4">
             <div className="col-lg-12">
               <VideoNews />
             </div>
@@ -245,7 +245,7 @@ const HomePage = () => {
         </div>
         {/* Category Post Show Style One */}
         <div className="container">
-          <div className="row mb-5">
+          <div className="row mb-4">
             <div className="col-lg-12">
               <CategoryNewsTwo></CategoryNewsTwo>
             </div>

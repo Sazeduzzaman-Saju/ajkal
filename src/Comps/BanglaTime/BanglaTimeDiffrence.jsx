@@ -8,7 +8,7 @@ const BanglaTimeDifference = ({ days }) => {
 
   const banglaDays = convertToBanglaNumerals(days);
   const suffix = 'দিন আগে';
-
+  
   return (
     <span>{banglaDays} {suffix}</span>
   );

@@ -24,23 +24,24 @@ function Header() {
 
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
+    
     if (!accessToken) {
-      // navigate("/login"); // Navigate to login if access token is not found
-      return;
+      return; // If access token is not found, do nothing
     }
-
-    // Set timeout to navigate to login page after 3600 seconds
+  
+    // Set timeout to remove accessToken and navigate to home page after 3600 seconds
     const timeout = setTimeout(() => {
       localStorage.removeItem("accessToken");
       navigate("/");
     }, 3600 * 1000);
-
+  
     // Store timeout reference in state for cleanup
     setAccessTokenTimeout(timeout);
-
+  
     // Cleanup function to clear timeout on component unmount
     return () => clearTimeout(timeout);
-  }, []);
+  }, [navigate]);
+  
 
   useEffect(() => {
     axios

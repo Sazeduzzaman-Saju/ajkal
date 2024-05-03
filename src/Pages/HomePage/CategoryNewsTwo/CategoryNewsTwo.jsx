@@ -3,9 +3,10 @@ import "./CategoryNewsTwo.css";
 import PostHeader from "../../../Comps/PostHeader/PostHeader";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import './CategoryNewsTwo.css'
+import "./CategoryNewsTwo.css";
 import Skeleton from "react-loading-skeleton";
 import SanitizedParagraph from "../../../Comps/SanitizedParagraph";
+import LazyImageShortNews from "../../../Comps/LazyImage/LazyImageShortNews";
 
 const CategoryNewsTwo = () => {
   // Define dynamic data within the component
@@ -63,18 +64,18 @@ const CategoryNewsTwo = () => {
                 <Link to={`/${news.category_name_bangla}/${news.id}`}>
                   <div
                     className="card border-0 shadow-sm mb-4"
-                    style={{ height: "20rem" }}
+                    style={{ height: "21rem" }}
                   >
                     <div className="card-body p-0">
                       <div>
-                        <img
-                          className="img-fluid rounded-1 border-0 footer-top-news"
-                          src={`https://ajkal.us/images/${news.title_img}`}
-                          alt=""
-                          onError={(e) => {
-                            e.target.src =
-                              "https://ajkal.us/image/settings/placeholder.jpg";
-                          }}
+                        <LazyImageShortNews
+                          src={`https://ajkal.us/images/${news?.title_img}`}
+                          alt={news?.news_title}
+                          className="rounded-top-1 rounded-bottom-0"
+                          errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                          width="100%"
+                          height="200px"
+                          style={{ objectFit: "cover" }}
                         />
                       </div>
                       <div className="px-2 py-3">
@@ -82,7 +83,12 @@ const CategoryNewsTwo = () => {
                           {news.news_title}
                         </h5>
                         <p className="mb-0">
-                          <SanitizedParagraph htmlContent={news.news_short_brief.split(" ").slice(0, 7).join(" ")}/>
+                          <SanitizedParagraph
+                            htmlContent={news.news_short_brief
+                              .split(" ")
+                              .slice(0, 7)
+                              .join(" ")}
+                          />
                         </p>
                       </div>
                     </div>

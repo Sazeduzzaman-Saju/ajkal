@@ -5,6 +5,7 @@ import axios from "axios";
 import Skeleton from "react-loading-skeleton";
 // import BanglaTimeAgo from "../../../Comps/BanglaTime/BanglaTimeDiffrence";
 import PostHeader from "../../../Comps/PostHeader/PostHeader";
+import LazyImageNews from "../../../Comps/LazyImage/LazyImageNews";
 
 const SorboshesKhobor = () => {
   const [sorboshesPothitoData, setSorboshesPothitoData] = useState([]);
@@ -38,7 +39,6 @@ const SorboshesKhobor = () => {
       });
   }, []);
 
-
   useEffect(() => {
     axios
       .get(urlsorboshes)
@@ -66,9 +66,9 @@ const SorboshesKhobor = () => {
       .get(url)
       .then((response) => {
         if (Array.isArray(response.data)) {
-          setSorboshesPothitoData(response.data.slice(0,7));
+          setSorboshesPothitoData(response.data.slice(0, 7));
         } else if (Array.isArray(response.data.data)) {
-          setSorboshesPothitoData(response.data.data.slice(0,7));
+          setSorboshesPothitoData(response.data.data.slice(0, 7));
         } else {
           console.error(
             "Invalid data structure in API response:",
@@ -106,14 +106,11 @@ const SorboshesKhobor = () => {
                       style={{ height: "20rem" }}
                     >
                       <div className="card-body p-0 card-body-2">
-                        <img
-                          className="img-fluid rounded-1 footer-top-news"
-                          src={`https://ajkal.us/images/${data.title_img}`}
-                          alt=""
-                          onError={(e) => {
-                            e.target.src =
-                              "https://ajkal.us/image/settings/placeholder.jpg";
-                          }}
+                        <LazyImageNews
+                          src={`https://ajkal.us/img/news/${data.title_img}`}
+                          alt={data.news_title}
+                          className="card-img-top rounded-0 custom-class" // You can add additional classes if needed
+                          errorSrc="https://ajkal.us/image/settings/placeholder.jpg" // Pass the path of the error image
                         />
                       </div>
                       <div className="card-body card-body-1 w-lg-auto w-100">
@@ -160,7 +157,10 @@ const SorboshesKhobor = () => {
                               {data.category_name_bangla}
                             </h5>
                             <p className="m-0 text-muted">
-                              {data.news_title.split(" ").slice(0, 30).join(" ")}
+                              {data.news_title
+                                .split(" ")
+                                .slice(0, 30)
+                                .join(" ")}
                               <span className="text-primary">...</span>
                             </p>
                           </div>

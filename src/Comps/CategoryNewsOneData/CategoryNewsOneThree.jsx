@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
+import LazyImageShortNews from "../LazyImage/LazyImageShortNews";
+import SanitizedParagraph from "../SanitizedParagraph";
 
 const CategoryNewsOneData = () => {
   const [comunity, setComunity] = useState([]);
@@ -62,24 +64,19 @@ const CategoryNewsOneData = () => {
                     </div>
                     <div className="card ctn_one">
                       <div className="card-body p-0">
-                        <img
+                        <LazyImageShortNews
+                          src={`https://ajkal.us/images/${data?.title_img}`}
+                          alt={data?.news_title}
                           className="img-fluid bottom-there-cat"
-                          // height={310}
-                          // style={{ objectFit: "fit" }}
-                          src={`https://ajkal.us/images/${data.title_img}`}
-                          alt=""
-                          onError={(e) => {
-                            e.target.src =
-                              "https://ajkal.us/image/settings/placeholder.jpg";
-                          }}
+                          errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                          width="100%"
+                          height="auto"
+                          style={{ objectFit: "cover" }}
                         />
                       </div>
                       <div className="card-footer news-info-box">
                         <div className="news-hover-box">
                           <Link to={`/${data.category_name_bangla}/${data.id}`}>
-                            <p className="mb-0 text-white">
-                              {data.category_name_bangla}
-                            </p>
                             <h5 className="mb-0 text-white">
                               {data.news_title.split(" ").slice(0, 7).join(" ")}
                             </h5>
@@ -109,29 +106,57 @@ const CategoryNewsOneData = () => {
               </div>
             ))
           : // Render actual regular news once data is loaded
-            comunity.map((data) => (
-              <div className="card border-0 shadow-sm mb-3" key={data.id}>
-                <Link to={`/${data.category_name_bangla}/${data.id}`}>
-                  <div className="card-body ctnone_regular-news d-flex p-0 align-items-center ">
-                    <div>
-                      <img
-                        className="rounded-1"
-                        width={150}
-                        src={`https://ajkal.us/images/${data.title_img}`}
-                        alt=""
-                        onError={(e) => {
-                          e.target.src =
-                            "https://ajkal.us/image/settings/placeholder.jpg";
-                        }}
-                      />
-                    </div>
-                    <div>
-                      <h6 className="ps-3 main_color">{data.news_title}</h6>
-                    </div>
+            comunity.map((data) => {
+              // Check if the news is not featured
+              if (data.is_featured !== 1) {
+                return (
+                  <div className="card border-0 shadow-sm mb-3" key={data.id}>
+                    <Link to={`/${data.category_name_bangla}/${data.id}`}>
+                      <div className="card-body ctnone_regular-news d-flex p-0 align-items-center ">
+                        <div className="row align-items-center ">
+                          <div className="col-lg-4">
+                            <div>
+                              <LazyImageShortNews
+                                src={`https://ajkal.us/images/${data?.title_img}`}
+                                alt={data?.news_title}
+                                className="rounded-top-1 rounded-bottom-0"
+                                errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                                width="200px"
+                                height="90px"
+                                style={{ objectFit: "cover" }}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-8">
+                            <div>
+                              <h6 className="main_color pe-2 fw-bolder">
+                                {/* {data.news_title} */}
+                                <SanitizedParagraph
+                                  htmlContent={data.news_title
+                                    .split(" ")
+                                    .slice(0, 4)
+                                    .join(" ")}
+                                />
+                              </h6>
+                              <p className="text-muted mb-0">
+                                <SanitizedParagraph
+                                  htmlContent={data.news_short_brief
+                                    .split(" ")
+                                    .slice(0, 4)
+                                    .join(" ")}
+                                />
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
                   </div>
-                </Link>
-              </div>
-            ))}
+                );
+              }
+              // Return null if the news is featured
+              return null;
+            })}
       </div>
     </div>
   );

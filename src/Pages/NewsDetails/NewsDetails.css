@@ -4,7 +4,7 @@
   border-radius: 50%;
   height: 0.625rem;
   width: 1.25rem;
-    padding: 10px 13px 10px;
+  padding: 10px 13px 10px;
   font-size: 18px;
   text-align: center;
   color: var(--white);
@@ -17,7 +17,7 @@
   border-radius: 50%;
   height: 0.625rem;
   width: 1.25rem;
-    padding: 10px 13px 10px;
+  padding: 10px 13px 10px;
   font-size: 18px;
   text-align: center;
   color: var(--secondary);
@@ -28,6 +28,46 @@
   transform: scale(1.05); /* Adjust the scale value for a smaller zoom effect */
   transition: transform 0.5s ease-in-out;
 }
+
+.v-chip-group .v-chip {
+  margin: 4px 8px 4px 0;
+}
+.v-chip.v-size--default {
+  border-radius: 16px;
+  font-size: 14px;
+  height: 32px;
+}
+.v-chip {
+  align-items: center;
+  cursor: default;
+  display: inline-flex;
+  line-height: 20px;
+  max-width: 100%;
+  outline: none;
+  overflow: hidden;
+  padding: 0 12px;
+  position: relative;
+  text-decoration: none;
+  transition-duration: 0.28s;
+  transition-property: box-shadow, opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.tags-button {
+  background-color: rgb(255, 245, 244);
+  border-color: rgb(255, 245, 244);
+  color: rgb(240, 65, 48);
+  caret-color: rgb(240, 65, 48);
+  transition: background-color 0.3s, color 0.3s; /* Add transition to background-color and color */
+}
+
+.tags-button:hover {
+  background-color: var(--secondary);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
 @media print {
   /* Add margins */
   #printThis {

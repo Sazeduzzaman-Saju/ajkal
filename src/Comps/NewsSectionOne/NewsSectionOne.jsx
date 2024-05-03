@@ -4,20 +4,22 @@ import "./NewsSectionOne.css";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import SanitizedParagraph from "../SanitizedParagraph";
+import LazyImageNews from "../LazyImage/LazyImageNews";
+import LazyImageShortNews from "../LazyImage/LazyImageShortNews";
 
-const NewsSectionOne = ({ bangladeshNews }) => {
+const NewsSectionOne = ({ saraBanglaNews }) => {
   const [loading, setLoading] = useState(true);
   const [slicedNews, setSlicedNews] = useState([]);
   const [slicedNewsAll, setSlicedNewsAll] = useState([]);
 
   useEffect(() => {
-    if (bangladeshNews && bangladeshNews.length > 0) {
+    if (saraBanglaNews && saraBanglaNews.length > 0) {
       setLoading(false);
       // Slice the first 5 items
-      setSlicedNews(bangladeshNews.slice(0, 8));
-      setSlicedNewsAll(bangladeshNews);
+      setSlicedNews(saraBanglaNews.slice(0, 10));
+      setSlicedNewsAll(saraBanglaNews);
     }
-  }, [bangladeshNews]);
+  }, [saraBanglaNews]);
 
   const hasFeaturedItems = slicedNewsAll.some(
     (newsItem) => newsItem.is_featured === 1
@@ -44,15 +46,13 @@ const NewsSectionOne = ({ bangladeshNews }) => {
                     <div className="card border-0 shadow-sm mb-3">
                       <div className="card-body p-0">
                         <div className="d-flex align-items-center image-container">
-                          <img
-                            className="rouned-2 news-ft-section-imge zoom-image"
+                          <LazyImageShortNews
                             src={`https://ajkal.us/images/${data.title_img}`}
-                            width={80}
-                            alt=""
-                            onError={(e) => {
-                              e.target.src =
-                                "https://ajkal.us/image/settings/placeholder.jpg";
-                            }}
+                            alt={data.news_title}
+                            className="rounded-1"
+                            errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                            width="150px"
+                            height="auto"
                           />
                           <div className="ps-2 p-2">
                             <h6 className="mb-0 main-color">
@@ -121,6 +121,5 @@ const NewsSectionOne = ({ bangladeshNews }) => {
     </div>
   );
 };
-
 
 export default NewsSectionOne;

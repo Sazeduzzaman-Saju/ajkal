@@ -7,13 +7,13 @@
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 .news-info-box {
-  margin-top: -50px;
+  margin-top: -40px;
   background: linear-gradient(45deg, var(--secondary), var(--main));
   color: white !important;
   border-radius: 3px !important;
   border: none !important;
 }
-.ctn_one{
+.ctn_one {
   margin-bottom: 30px;
 }
 .ctn_one img {
@@ -23,6 +23,6 @@
   background-repeat: no-repeat;
   object-fit: cover;
 }
-
-.ctnone_regular-news {
+.news-hover-box {
+  padding: 10px;
 }

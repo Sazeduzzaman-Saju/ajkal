@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
-import LazyLoad from "react-lazyload";
-import axios from "axios";
 import BanglaDateTime from "../../Comps/BanglaTime/BanglaTime";
 
 const SearchData = ({ archive }) => {

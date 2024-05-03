@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -9,53 +9,35 @@ import "react-loading-skeleton/dist/skeleton.css";
 import "./Banner.css";
 import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 import { Link } from "react-router-dom";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import Skeleton from "react-loading-skeleton";
 import SanitizedParagraph from "../../../Comps/SanitizedParagraph";
+import LazyImageBanner from "../../../Comps/LazyImage/LazyImageBanner";
 
 export default function Banner() {
   const [bannerData, setBannerData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const progressCircle = useRef(null);
-  const progressContent = useRef(null);
-
-  const onAutoplayTimeLeft = (s, time, progress) => {
-    progressCircle.current.style.setProperty("--progress", 1 - progress);
-    progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
-  };
 
   const url = "https://backoffice.ajkal.us/breaking-news";
+
   useEffect(() => {
-    const fetchData = () => {
-      axios
-        .get(url)
-        .then((response) => {
-          if (Array.isArray(response.data)) {
-            setBannerData(response.data.slice(0, 10));
-          } else if (Array.isArray(response.data.data)) {
-            setBannerData(response.data.data.slice(0, 12));
-          } else {
-            console.error(
-              "Invalid data structure in API response:",
-              response.data
-            );
-          }
-          setLoading(false); // Set loading to false when data is fetched
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-          setLoading(false); // Set loading to false on error
-        });
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(url);
+        if (Array.isArray(response.data)) {
+          setBannerData(response.data.slice(0, 10));
+        } else if (Array.isArray(response.data.data)) {
+          setBannerData(response.data.data.slice(0, 12));
+        } else {
+          console.error("Invalid data structure in API response:", response.data);
+        }
+        setLoading(false); // Set loading to false when data is fetched
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setLoading(false); // Set loading to false on error
+      }
     };
 
-    // Fetch data after a delay of 2000 milliseconds (2 seconds)
-    const delay = 2000;
-    const timer = setTimeout(() => {
-      fetchData();
-    }, delay);
-
-    // Clean up the timer to avoid memory leaks
-    return () => clearTimeout(timer);
+    fetchData();
   }, []);
 
   return (
@@ -76,21 +58,16 @@ export default function Banner() {
           navigation={false}
           effect="fade" // Add fade effect for transition
           modules={[Autoplay, Pagination, EffectFade]}
-          onAutoplayTimeLeft={onAutoplayTimeLeft}
           className="mySwiper"
         >
           {bannerData.map((slide, index) => (
             <SwiperSlide key={index}>
               <div className="showcase">
-                <LazyLoadImage
-                  alt={slide.news_title}
-                  effect="blur"
-                  loading="lazy"
+                <LazyImageBanner
                   src={`https://ajkal.us/img/news/${slide.title_img}`}
-                  onError={(e) => {
-                    e.target.src =
-                      "https://ajkal.us/image/settings/placeholder-banner.jpg";
-                  }}
+                  alt={slide.news_title}
+                  className="rounded-0 custom-class" // You can add additional classes if needed
+                  errorSrc="https://ajkal.us/image/settings/placeholder-banner.jpg" // Pass the path of the error image
                 />
                 <div className="overlay">
                   <Link
@@ -123,12 +100,6 @@ export default function Banner() {
               </div>
             </SwiperSlide>
           ))}
-          <div className="autoplay-progress text-white" slot="container-end">
-            <svg viewBox="0 0 60 60" ref={progressCircle} stroke="#ffffff">
-              <circle cx="24" cy="24" r="30"></circle>
-            </svg>
-            <span ref={progressContent}></span>
-          </div>
         </Swiper>
       )}
     </>

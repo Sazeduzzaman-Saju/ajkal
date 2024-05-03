@@ -6,6 +6,7 @@ import Skeleton from "react-loading-skeleton";
 import CategoryNewsSlider from "./CategoryNewsSlider";
 import SanitizedParagraph from "../../../Comps/SanitizedParagraph";
 import axios from "axios";
+import LazyImageShortNews from "../../../Comps/LazyImage/LazyImageShortNews";
 
 const CategoryFeature = ({ singleNews }) => {
   const [addvertisement, setAddvertisement] = useState([]);
@@ -34,7 +35,7 @@ const CategoryFeature = ({ singleNews }) => {
     <div className="col-lg-8">
       <div className="row gx-3">
         <div className="col-sm-8 mb-3">
-        <CategoryNewsSlider singleNews={singleNews} />
+          <CategoryNewsSlider singleNews={singleNews} />
         </div>
         {!singleNews.length ? ( // Render skeleton loading placeholders if singleNews is empty
           <div className="col-sm-4">
@@ -47,16 +48,16 @@ const CategoryFeature = ({ singleNews }) => {
               <Link to={`/${data.category_name_bangla}/${data.id}`}>
                 <div className="card rounded-0 border-0 shadow-sm ">
                   <div className="card-header p-0 border-0"></div>
-                  <div className="card-body p-0">
+                  <div className="card-body p-0" style={{ height: "375px" }}>
                     <div>
-                      <img
-                        className="card-img-top"
+                      <LazyImageShortNews
                         src={`https://ajkal.us/images/${data.title_img}`}
-                        alt=""
-                        onError={(e) => {
-                          e.target.src =
-                            "https://ajkal.us/image/settings/placeholder.jpg";
-                        }}
+                        alt={data.news_title}
+                        className="card-img-top"
+                        errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                        width="100%"
+                        height="auto"
+                        style={{ objectFit: "cover" }}
                       />
                     </div>
                     <div className="p-2">

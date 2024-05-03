@@ -42,12 +42,14 @@ const UserDashboard = () => {
 
     fetchUserData();
 
-    const timeout = setTimeout(() => {
-      navigate("/login"); // Navigate to login after 3600 seconds
+    const accessTokenTimeout = setTimeout(() => {
+      localStorage.removeItem("accessToken"); // Remove accessToken after 1 hour
+      navigate("/login"); // Navigate to login after accessToken is removed
     }, 3600 * 1000);
 
-    return () => clearTimeout(timeout); // Clear timeout on component unmount
-  }, []);
+    // Cleanup function to clear accessToken timeout on component unmount
+    return () => clearTimeout(accessTokenTimeout);
+  }, [navigate]);
 
   useEffect(() => {
     const fetchAddData = async () => {
@@ -85,7 +87,7 @@ const UserDashboard = () => {
               Authorization: `Bearer ${accessToken}`,
             },
           }
-      );
+        );
         setUserData(response.data);
         setLoading(false);
       } catch (error) {
@@ -127,7 +129,9 @@ const UserDashboard = () => {
     <div className="container">
       <div className="row mx-auto">
         <div className="col-lg-12">
-          <h3 className="text-center pt-5">Hello, {fullName} আপনার ড্যাশবোর্ড</h3>
+          <h3 className="text-center pt-5">
+            Hello, {fullName} আপনার ড্যাশবোর্ড
+          </h3>
         </div>
       </div>
       <div className="row">
@@ -201,7 +205,12 @@ const UserDashboard = () => {
                           <tr className="text-center" key={index}>
                             <td>{index + 1}</td>
                             <td>
-                              <img width={50} className="img-fluid" src={`https://ajkal.us/img/news/${item.title_img}`} alt="" />
+                              <img
+                                width={50}
+                                className="img-fluid"
+                                src={`https://ajkal.us/img/news/${item.title_img}`}
+                                alt=""
+                              />
                               {/* <img src={item.news_img} alt="" /> */}
                             </td>
                             {/* <td>

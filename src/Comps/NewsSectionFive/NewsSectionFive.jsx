@@ -6,11 +6,11 @@ import axios from "axios";
 import LazyImageShortNews from "../LazyImage/LazyImageShortNews";
 import SanitizedParagraph from "../SanitizedParagraph";
 
-const NewsSectionThree = ({ dhormo, loading }) => {
+const NewsSectionFive = ({ ScienceData, loading }) => {
   // State for storing sliced news data
   const [slicedNews, setSlicedNews] = useState([]);
   const [slicedNewsAll, setSlicedNewsAll] = useState([]);
-  const [addvertisementdhormo, setAdvertisementdhormo] = useState([]);
+  const [addvertisementScienceData, setAdvertisementScienceData] = useState([]);
   const addUrl = "https://backoffice.ajkal.us/ad/all";
 
   // Fetch advertisement data on component mount
@@ -19,9 +19,9 @@ const NewsSectionThree = ({ dhormo, loading }) => {
       .get(addUrl)
       .then((response) => {
         if (Array.isArray(response.data)) {
-          setAdvertisementdhormo(response.data);
+          setAdvertisementScienceData(response.data);
         } else if (Array.isArray(response.data.data)) {
-          setAdvertisementdhormo(response.data.data);
+          setAdvertisementScienceData(response.data.data);
         } else {
           console.error(
             "Invalid data structure in API response:",
@@ -36,11 +36,11 @@ const NewsSectionThree = ({ dhormo, loading }) => {
 
   // Slice the news data
   useEffect(() => {
-    if (dhormo && dhormo.length > 0) {
-      setSlicedNews(dhormo);
-      setSlicedNewsAll(dhormo);
+    if (ScienceData && ScienceData.length > 0) {
+      setSlicedNews(ScienceData);
+      setSlicedNewsAll(ScienceData);
     }
-  }, [dhormo]);
+  }, [ScienceData]);
 
   // Check if there are featured news items
   const hasFeaturedItems = slicedNewsAll.some(
@@ -67,15 +67,20 @@ const NewsSectionThree = ({ dhormo, loading }) => {
                           alt={newsItem.news_title}
                           className="rounded-top-1 rounded-bottom-0"
                           errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
-                          width="auto"
-                          height="370px"
+                          width="100%"
+                          height="275px"
                           style={{ objectFit: "cover" }}
                         />
                         <h5
-                          className="m-0 p-0 py-3 text-center text-white"
+                          className="m-0 p-0 py-3 text-center text-white rounded-bottom-2"
                           style={{ backgroundColor: "var(--main)" }}
                         >
-                          {newsItem.news_title}
+                          <SanitizedParagraph
+                            htmlContent={newsItem.news_title
+                              .split(" ")
+                              .slice(0, 5)
+                              .join(" ")}
+                          />
                         </h5>
                       </div>
                     </div>
@@ -92,46 +97,43 @@ const NewsSectionThree = ({ dhormo, loading }) => {
             <Skeleton height={100} width={100} count={3} />
           ) : (
             // Render actual data
-            slicedNews.slice(0, 4).map((data) => (
+            slicedNews.slice(0, 5).map((data) => (
               <Link
                 to={`/${data.category_name_bangla}/${data.id}`}
                 className="text-muted"
                 key={data.id}
               >
                 <div className="d-flex align-items-center mb-3">
-                  <div className="card shadow-sm border-0">
-                    <div className="carb-body p-0">
+                  <div className="card border-0 shadow-sm">
+                    <div className="card-body p-0">
                       <div className="row align-items-center ">
                         <div className="col-lg-4">
                           <LazyImageShortNews
                             src={`https://ajkal.us/images/${data.title_img}`}
                             alt={data.news_title}
-                            className="rounded-2 img-fluid "
+                            className="rounded-2"
                             errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
                             width="200px"
-                            height="95px"
+                            height="70px"
                             style={{ objectFit: "cover" }}
                           />
                         </div>
                         <div className="col-lg-8">
-                          <div className="">
-                            <h5 className="mb-1 main-color pe-2">
-                              <SanitizedParagraph
-                                htmlContent={data.news_title
+                          <h6 className="mb-0 main-color fw-semibold">
+                            {data &&
+                              data.news_title.split(" ").slice(0, 5).join(" ")}
+                          </h6>
+                          <p className="mb-0 text-muted">
+                            <SanitizedParagraph
+                              htmlContent={
+                                data &&
+                                data.news_short_brief
                                   .split(" ")
                                   .slice(0, 5)
-                                  .join(" ")}
-                              />
-                            </h5>
-                            <p className="mb-0">
-                              <SanitizedParagraph
-                                htmlContent={data.news_short_brief
-                                  .split(" ")
-                                  .slice(3, 10)
-                                  .join(" ")}
-                              />
-                            </p>
-                          </div>
+                                  .join(" ")
+                              }
+                            />
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -142,11 +144,10 @@ const NewsSectionThree = ({ dhormo, loading }) => {
           )}
         </div>
       </div>
-
       {/* Render advertisement */}
       <div className="row">
         <div className="col-lg-12">
-          {addvertisementdhormo.map(
+          {addvertisementScienceData.map(
             (data) =>
               data.status === 1 &&
               data.ad_position === "BelowNewsCategory2" && (
@@ -170,9 +171,9 @@ const NewsSectionThree = ({ dhormo, loading }) => {
 };
 
 // Prop types validation
-NewsSectionThree.propTypes = {
-  dhormo: PropTypes.array.isRequired,
+NewsSectionFive.propTypes = {
+  ScienceData: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired,
 };
 
-export default NewsSectionThree;
+export default NewsSectionFive;

@@ -9,9 +9,7 @@ const MainLayout = () => {
 
   useEffect(() => {
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+    setLoading(false); // Set loading to false immediately
   }, []);
   return (
     <>

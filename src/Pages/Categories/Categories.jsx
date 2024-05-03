@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Categories.css";
-import { Link, useLocation, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import CategoryFeature from "./CategoryFeature/CategoryFeature";
 import NewsSidebar from "../../Comps/NewsSidebar/NewsSidebar";
 import PageHelmet from "../../Comps/PageHelmet/PageHelmet";
@@ -9,13 +9,13 @@ import CommonLoader from "../../Comps/CommonLoader/CommonLoader";
 import PostHeader from "../../Comps/PostHeader/PostHeader";
 import { FacebookEmbed, YouTubeEmbed } from "react-social-media-embed";
 import axios from "axios";
-import SanitizedParagraph from "../../Comps/SanitizedParagraph";
+import LazyImageShortNews from "../../Comps/LazyImage/LazyImageShortNews";
+import InfiniteCategory from "./CategoryFeature/InfiniteCategory";
 
 const Categories = () => {
   const [addvertisement, setAddvertisement] = useState([]);
-  const [showMoreCount, setShowMoreCount] = useState(5); // Initial count
   const singleNews = useLoaderData();
-  const location = useLocation();
+
   // Fetch advertisement data
   useEffect(() => {
     const addUrl = "https://backoffice.ajkal.us/ad/all";
@@ -38,29 +38,19 @@ const Categories = () => {
       });
   }, []);
 
-  // Reset showMoreCount when location (pathname) changes
-  useEffect(() => {
-    setShowMoreCount(5); // Reset count to initial value
-  }, [location.pathname]);
-
-  // Handle "Load More" button click
-  const handleShowMore = () => {
-    setShowMoreCount((prevCount) => prevCount + 5); // Increment count by 5
-  };
   const renderAdvertisement = (adPosition) => {
     return addvertisement.map((data) => {
       if (data.status === 1 && data.ad_position === adPosition) {
         return (
           <Link to={data.ad_link} key={data.id} target="_blank">
-            <img
-              className="w-100"
-              alt={data}
-              loading="lazy"
+            <LazyImageShortNews
               src={`https://ajkal.us/img/ad/${data.ad_banner}`}
-              onError={(e) => {
-                e.target.src =
-                  "https://ajkal.us/image/settings/placeholder.jpg";
-              }}
+              alt={data}
+              className="img-fluid w-100 rounded-0"
+              errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+              width="100%"
+              height="auto"
+              style={{ objectFit: "cover" }}
             />
           </Link>
         );
@@ -68,7 +58,9 @@ const Categories = () => {
       return null; // Return null if conditions are not met
     });
   };
+
   const title = `${singleNews.data[0].category_name_bangla} ক্যাটেগরি,  আজকাল পত্রিকা।`;
+
   return singleNews ? (
     <div className="container">
       <PageHelmet
@@ -86,9 +78,6 @@ const Categories = () => {
             <div className="col-lg-4">
               <NewsSidebar />
               <div className="d-flex flex-column  justify-content-center align-items-center pt-3 ">
-                {/*Category page sidebar youtube down Add Banner Start */}
-                {/* <div className="mt-3">{renderAdvertisement("SideBar1")}</div> */}
-                {/* <div className="mt-3">{renderAdvertisement("Sidebar3")}</div> */}
                 <div className="mt-3">{renderAdvertisement("Sidebar2")}</div>
               </div>
             </div>
@@ -96,63 +85,8 @@ const Categories = () => {
           <hr />
           <div className="row">
             <div className="col-lg-8">
-              {singleNews &&
-                singleNews.data.slice(0, showMoreCount).map((data) => (
-                  <Link
-                    to={`/${data.category_name_bangla}/${data.id}`}
-                    key={data.id}
-                  >
-                    <div className="row align-items-center py-3">
-                      <div className="col-sm-7">
-                        <div>
-                          <h4 className="main_color">{data.news_title}</h4>
-
-                          <p className="text-muted">
-                            {data.news_detail && ( // Add a conditional check
-                              <SanitizedParagraph
-                                htmlContent={data.news_detail
-                                  .split(" ")
-                                  .slice(0, 15)
-                                  .join(" ")}
-                              />
-                            )}
-                          </p>
-
-                          <p className="text-danger">আরও পড়ুন...</p>
-                        </div>
-                      </div>
-                      <div className="col-sm-5">
-                        <div>
-                          <img
-                            src={`https://ajkal.us/images/${data.title_img}`}
-                            className="img-fluid rounded-1"
-                            alt="{data.news_title}"
-                            onError={(e) => {
-                              e.target.src =
-                                "https://ajkal.us/image/settings/placeholder.jpg";
-                            }}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              {showMoreCount < (singleNews?.data?.length || 0) && (
-                <div className="row pt-3">
-                  <div className="col-lg-12 pt-3 pb-5">
-                    <div className="d-flex justify-content-lg-start justify-content-center align-items-center ">
-                      <button
-                        className="submit-btn-one rounded-pill px-5"
-                        onClick={handleShowMore}
-                      >
-                        আরও দেখুন
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              )}
+              <InfiniteCategory singleNews={singleNews} />
             </div>
-
             <div className="col-lg-4">
               <div className="mt-5">
                 <PostHeader title="বিজ্ঞাপন কর্নার" />
@@ -173,7 +107,6 @@ const Categories = () => {
                   height={365}
                 />
               </div>
-              {/* Add Banner Start */}
               <div className="mt-3">{renderAdvertisement("SideBar1")}</div>
             </div>
           </div>
