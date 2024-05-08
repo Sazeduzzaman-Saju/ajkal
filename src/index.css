@@ -1,12 +1,13 @@
 /* Font Style Linked */
 @import url("https://fonts.maateen.me/solaiman-lipi/font.css");
+/* Jost Font For English */
 @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
-.policy-text {
-  font-family: "Jost", sans-serif;
-}
-.english-font {
-  font-family: "Jost", sans-serif !important;
-}
+/* Hind Siliguri Bangla Font */
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri&display=swap');
+/* Rajon Bangla Font */
+@import url('https://fonts.googleapis.com/css2?family=Rajon&display=swap');
+/* Surjo Bangla Font */
+@import url('https://fonts.googleapis.com/css2?family=Shurjo:wght@700&display=swap');
 
 /* Root Style */
 :root {
@@ -63,7 +64,12 @@ h6 {
   font-family: "SolaimanLipi", sans-serif;
   color: inherit;
 }
-
+.policy-text {
+  font-family: "Jost", sans-serif;
+}
+.english-font {
+  font-family: "Jost", sans-serif !important;
+}
 .secondary-color {
   color: var(--secondary);
 }
@@ -130,6 +136,12 @@ h6 {
 .epaper_text{
   text-align: center;
   color: var(--secondary);
+}
+.dropdown-item.active, .dropdown-item:active {
+  color: var(--bs-dropdown-link-active-color);
+  text-decoration: none;
+  background-color: #165588 !important;
+  padding-right: 24px !important;
 }
 @media screen and (max-width: 1368px) {
   /* CSS styles for viewport width 1368px and above */

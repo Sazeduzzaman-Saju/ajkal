@@ -13,6 +13,7 @@ const PrayerTimeComponent = () => {
     Sunset: null,
   });
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Function to convert a numeric string to Bangla numerals
   const toBanglaNumerals = (numericString) => {
@@ -36,7 +37,7 @@ const PrayerTimeComponent = () => {
     const fetchPrayerTimes = async () => {
       try {
         const response = await fetch(
-          "http://api.aladhan.com/v1/timingsByCity?city=DHAKA&country=BANGLADESH&method=1"
+          "https://api.aladhan.com/v1/timingsByCity?city=New%20York&country=USA&method=1"
         );
         if (!response.ok) {
           throw new Error("Failed to fetch prayer times");
@@ -48,9 +49,11 @@ const PrayerTimeComponent = () => {
           prayerTimesInBangla[key] = toBanglaNumerals(value);
         }
         setPrayerTimes(prayerTimesInBangla);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching prayer times:", error);
         setError("Failed to fetch prayer times");
+        setIsLoading(false);
       }
     };
 
@@ -64,6 +67,10 @@ const PrayerTimeComponent = () => {
     // Cleanup interval to prevent memory leaks
     return () => clearInterval(interval);
   }, []);
+
+  if (error) {
+    return null; // Don't render the component if there's an error
+  }
 
   return (
     <div>
@@ -83,8 +90,8 @@ const PrayerTimeComponent = () => {
           />
         </div>
         <div className="col-lg-6">
-          {error ? (
-            <p>ত্রুটি: {error}</p>
+          {isLoading ? (
+            <p>Loading...</p>
           ) : (
             <ul className="ps-0">
               <li className="main-bg text-white mb-1 p-1 d-flex justify-content-between px-3">
@@ -101,9 +108,7 @@ const PrayerTimeComponent = () => {
               </li>
               <li className="bg-light mb-1 p-1 d-flex justify-content-between px-3">
                 <span>মাগরিব:</span>{" "}
-                <span className="text-black fw-bold">
-                  {prayerTimes.Maghrib}
-                </span>
+                <span className="text-black fw-bold">{prayerTimes.Maghrib}</span>
               </li>
               <li className="main-bg text-white mb-1 p-1 d-flex justify-content-between px-3">
                 <span>ইশা:</span>{" "}
@@ -111,12 +116,11 @@ const PrayerTimeComponent = () => {
               </li>
               <li className="bg-light mb-1 p-1 d-flex justify-content-between px-3">
                 <span>সূর্যাস্ত : </span>
-                <span className="text-black fw-bold">
-                  {prayerTimes.Sunrise}
-                </span>
+                <span className="text-black fw-bold">{prayerTimes.Sunrise}</span>
               </li>
               <li className="main-bg text-white mb-1 p-1 d-flex justify-content-between px-3">
-                <span>সূর্যোদয়:</span> <span>{prayerTimes.Sunset}</span>
+                <span>সূর্যোদয়:</span>{" "}
+                <span>{prayerTimes.Sunset}</span>
               </li>
             </ul>
           )}

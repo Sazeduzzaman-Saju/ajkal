@@ -78,7 +78,7 @@ export default function Banner() {
                       <h1 className="mb-0 fw-bold banner_title">
                         {slide.news_title || <Skeleton count={3} />}
                       </h1>
-                      <div className="mb-0 pt-2 banner-description">
+                      <div className="mb-0 pt-2 banner-description fs-3">
                         <SanitizedParagraph
                           htmlContent={slide.news_short_brief
                             .split(" ")
@@ -86,11 +86,11 @@ export default function Banner() {
                             .join(" ")}
                         ></SanitizedParagraph>
                       </div>
-                      <div style={{ fontSize: "14px", width: "50%" }}>
+                      <div className="pt-2" style={{ fontSize: "16px", width: "50%" }}>
                         <SanitizedParagraph
                           htmlContent={slide.news_detail
                             .split(" ")
-                            .slice(15, 40)
+                            .slice(15, 38)
                             .join(" ")}
                         ></SanitizedParagraph>
                       </div>

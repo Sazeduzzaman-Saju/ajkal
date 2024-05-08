@@ -53,7 +53,7 @@ const LazyImageNews = ({ src, alt, className, errorSrc }) => {
           className={`error-image ${className} card-img-top`}
           style={{
             filter: "blur(10px)",
-            transition: "filter 0.3s ease-in-out",
+            transition: "filter 0.1s ease-in-out",
             opacity: 1
           }}
         />
@@ -66,7 +66,7 @@ const LazyImageNews = ({ src, alt, className, errorSrc }) => {
           className={`lazy-image ${className} card-img-top`}
           style={{
             filter: isLoaded ? "none" : "blur(10px)",
-            transition: "filter 0.3s ease-in-out",
+            transition: "filter 0.1s ease-in-out",
             opacity: isLoaded ? 1 : 0
           }}
         />

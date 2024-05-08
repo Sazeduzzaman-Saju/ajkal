@@ -16,7 +16,7 @@ const CategoryNewsSlider = () => {
             {newsItem.is_featured === 1 && (
               <div>
                 <Link
-                  to={`/${newsItem.category_name_bangla}/${newsItem.id}`}
+                  to={`/${newsItem.category_name}/${newsItem.id}`}
                   className="shadow-sm"
                   key={newsItem.id}
                 >

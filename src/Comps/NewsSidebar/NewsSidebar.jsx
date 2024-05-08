@@ -51,7 +51,7 @@ const NewsSidebar = () => {
         // Render actual data if loading is false
         sorboshesData.map((data, index) => (
           <div className="col-lg-12 " key={index}>
-            <Link to={`/${data.category_name_bangla}/${data.id}`}>
+            <Link to={`/${data.category_name}/${data.id}`}>
               <div className="card mb-3 border-0 shadow-sm rounded-2">
                 <div className="card-body p-0 d-flex align-items-center">
                   <div className="pothito-img w-25 h-100 ">

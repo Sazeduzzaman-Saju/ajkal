@@ -39,6 +39,11 @@ const Categories = () => {
   }, []);
 
   const renderAdvertisement = (adPosition) => {
+    // Check if addvertisement is initialized
+    if (!addvertisement) {
+      return null; // or any other appropriate handling
+    }
+
     return addvertisement.map((data) => {
       if (data.status === 1 && data.ad_position === adPosition) {
         return (
@@ -59,17 +64,25 @@ const Categories = () => {
     });
   };
 
-  const title = `${singleNews.data[0].category_name_bangla} ক্যাটেগরি,  আজকাল পত্রিকা।`;
+  // const title = `${singleNews.data[0].category_name_bangla} ক্যাটেগরি,  আজকাল পত্রিকা।`;
 
   return singleNews ? (
     <div className="container">
       <PageHelmet
-        title={title}
+        title={
+          singleNews && singleNews.data && singleNews.data.length > 0
+            ? `${singleNews.data[0].category_name_bangla} ক্যাটেগরি,  আজকাল পত্রিকা।`
+            : "Default Title"
+        }
         type="article"
-        image="https://ajkal.us/image/settings/logo_red.png" // Replace with actual image URL
-        url={window.location.href} // Replace with actual page URL
+        image="https://ajkal.us/image/settings/logo_red.png"
+        url={window.location.href}
         card="https://ajkal.us/image/settings/logo_red.png"
-        description={singleNews.news_detail} // Replace with appropriate description field from singleNewsDetails
+        description={
+          singleNews && singleNews.news_detail
+            ? singleNews.news_detail
+            : "Default Description"
+        }
       />
       {singleNews.data.length > 0 ? (
         <>

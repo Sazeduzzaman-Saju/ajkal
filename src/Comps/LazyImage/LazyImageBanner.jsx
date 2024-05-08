@@ -46,7 +46,7 @@ const LazyImageBanner = ({ src, alt, className, errorSrc }) => {
       }`}
       style={{
         filter: `blur(${!isLoaded && !error ? "10px" : "0"})`, // Apply blur effect if image is not loaded and not an error
-        transition: "filter 0.3s ease-in-out", // Add transition inline
+        transition: "filter 0.1s ease-in-out", // Add transition inline
         opacity: isLoaded || error || !isVisible ? 1 : 0, // Hide image if not loaded, error occurred, or not visible
       }}
       onLoad={handleImageLoad}

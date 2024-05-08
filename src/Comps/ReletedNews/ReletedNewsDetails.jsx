@@ -33,13 +33,12 @@ const RelatedNewsDetails = ({ newsItem, links }) => {
     setFontSize(16); // Reset font size to initial value
   };
 
-  const url = `https://ajkal.us/${newsItem.category_name_bangla}/${newsItem.id}`;
-  console.log(url, "url");
+  const url = `https://ajkal.us/${newsItem.category_name}/${newsItem.id}`;
   const copyUrlToClipboard = () => {
     navigator.clipboard
       .writeText(url)
       .then(() => {
-        toast("URL copied to clipboard:", url);
+        toast.success("URL copied to clipboard:", url);
       })
       .catch((error) => {
         toast.error("Failed to copy URL: ", error);
@@ -89,8 +88,10 @@ const RelatedNewsDetails = ({ newsItem, links }) => {
       return null; // Return null if conditions are not met
     });
   };
+
   return (
     <>
+      {/* Main Releted News Start */}
       <div className="col-lg-8 ps-0" id="printThis">
         <h5 className="fw-bold py-4 mb-0" style={{ color: "#ee2026" }}>
           {newsItem.category_name_bangla}
@@ -167,9 +168,9 @@ const RelatedNewsDetails = ({ newsItem, links }) => {
                   url={`https://ajkal.us/${newsItem.category_name_bangla}/${newsItem.id}`} // Replace with actual page URL
                   card={`https://ajkal.us/images/${newsItem.title_img}`}
                   description={newsItem.news_detail}
-                  increaseFontSize={increaseFontSize}
-                  decreaseFontSize={decreaseFontSize}
-                  resetFontSize={resetFontSize}
+                  increasefontsize={increaseFontSize}
+                  decreasefontsize={decreaseFontSize}
+                  resetfontsize={resetFontSize}
                 >
                   <FaFacebook />
                 </FacebookShareButton>
@@ -180,9 +181,9 @@ const RelatedNewsDetails = ({ newsItem, links }) => {
                   url={`https://ajkal.us/${newsItem.category_name_bangla}/${newsItem.id}`} // Replace with actual page URL
                   card={`https://ajkal.us/images/${newsItem.title_img}`}
                   description={newsItem.news_detail}
-                  increaseFontSize={increaseFontSize}
-                  decreaseFontSize={decreaseFontSize}
-                  resetFontSize={resetFontSize}
+                  increasefontsize={increaseFontSize}
+                  decreasefontsize={decreaseFontSize}
+                  resetfontsize={resetFontSize}
                 >
                   <FaTwitter />
                 </TwitterShareButton>
@@ -193,9 +194,9 @@ const RelatedNewsDetails = ({ newsItem, links }) => {
                   url={`https://ajkal.us/${newsItem.category_name_bangla}/${newsItem.id}`} // Replace with actual page URL
                   card={`https://ajkal.us/images/${newsItem.title_img}`}
                   description={newsItem.news_detail}
-                  increaseFontSize={increaseFontSize}
-                  decreaseFontSize={decreaseFontSize}
-                  resetFontSize={resetFontSize}
+                  increasefontsize={increaseFontSize}
+                  decreasefontsize={decreaseFontSize}
+                  resetfontsize={resetFontSize}
                 >
                   <FaWhatsapp />
                 </WhatsappShareButton>
@@ -233,6 +234,7 @@ const RelatedNewsDetails = ({ newsItem, links }) => {
           <FacebookComments url={`https://ajkal.us/news/${newsItem.id}`} />
         </div>
       </div>
+      {/* Main Releted News End */}
       <div className="col-lg-4">
         <NewsSidebar />
         <div className="">
@@ -263,8 +265,8 @@ const RelatedNewsDetails = ({ newsItem, links }) => {
 };
 
 RelatedNewsDetails.propTypes = {
-  newsItem: PropTypes.object.isRequired, // Example type, adjust as needed
-  copyUrlToClipboard: PropTypes.func.isRequired,
+  newsItem: PropTypes.object.isRequired,
+  links: PropTypes.array.isRequired,
 };
 
 export default RelatedNewsDetails;

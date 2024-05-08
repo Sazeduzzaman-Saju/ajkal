@@ -57,7 +57,7 @@ const NewsSectionThree = ({ dhormo, loading }) => {
               <div key={index}>
                 {newsItem.is_featured === 1 && (
                   <Link
-                    to={`/${newsItem.category_name_bangla}/${newsItem.id}`}
+                    to={`/${newsItem.category_name}/${newsItem.id}`}
                     key={newsItem.id}
                   >
                     <div className="card border-0">
@@ -94,7 +94,7 @@ const NewsSectionThree = ({ dhormo, loading }) => {
             // Render actual data
             slicedNews.slice(0, 4).map((data) => (
               <Link
-                to={`/${data.category_name_bangla}/${data.id}`}
+                to={`/${data.category_name}/${data.id}`}
                 className="text-muted"
                 key={data.id}
               >
@@ -115,7 +115,7 @@ const NewsSectionThree = ({ dhormo, loading }) => {
                         </div>
                         <div className="col-lg-8">
                           <div className="">
-                            <div className="mb-1 main-color pe-2">
+                            <div className="mb-1 main-color pe-2 fw-bolder">
                               <SanitizedParagraph
                                 htmlContent={data.news_title
                                   .split(" ")
@@ -123,7 +123,7 @@ const NewsSectionThree = ({ dhormo, loading }) => {
                                   .join(" ")}
                               />
                             </div>
-                            <div className="mb-0">
+                            <div className="mb-0 text-muted">
                               <SanitizedParagraph
                                 htmlContent={data.news_short_brief
                                   .split(" ")

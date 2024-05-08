@@ -65,7 +65,7 @@ const UserLayout = () => {
                 <li className="nav-item">
                   <Link
                     to={"/user/my-profile"}
-                    activeClassName="active"
+                    activeclassname="active"
                     className="user-dashboard-nav nav-link"
                   >
                     <div className="d-flex align-items-center ">
@@ -79,7 +79,7 @@ const UserLayout = () => {
                 <li className="nav-item">
                   <Link
                     to={"/user/my-post"}
-                    activeClassName="active"
+                    activeclassname="active"
                     className="user-dashboard-nav nav-link"
                   >
                     <div className="d-flex align-items-center ">
@@ -93,7 +93,7 @@ const UserLayout = () => {
                 <li className="nav-item">
                   <Link
                     to={"/user/my-advertisement"}
-                    activeClassName="active"
+                    activeclassname="active"
                     className="user-dashboard-nav nav-link"
                   >
                     <div className="d-flex align-items-center ">

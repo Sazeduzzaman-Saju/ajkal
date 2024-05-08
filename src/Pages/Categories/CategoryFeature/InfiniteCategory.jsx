@@ -12,6 +12,9 @@ const InfiniteScrollComponent = ({ singleNews }) => {
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
 
+  const [loadedItemsCount, setLoadedItemsCount] = useState(0);
+  const [loadingMore, setLoadingMore] = useState(false);
+
   useEffect(() => {
     fetchData();
   }, [singleNews.data]);
@@ -23,10 +26,12 @@ const InfiniteScrollComponent = ({ singleNews }) => {
       if (Array.isArray(response.data)) {
         setItems(response.data.slice(0, 5));
         setHasMore(response.data.length > 5);
-      } else if (Array.isArray(response.data.data)) {
+      } 
+      else if (Array.isArray(response.data.data)) {
         setItems(response.data.data.slice(0, 5));
         setHasMore(response.data.data.length > 5);
-      } else {
+      }
+      else {
         console.error("Invalid data structure in API response:", response.data);
         setHasMore(false);
       }
@@ -36,8 +41,7 @@ const InfiniteScrollComponent = ({ singleNews }) => {
     }
     setLoading(false);
   };
-  const [loadedItemsCount, setLoadedItemsCount] = useState(0);
-  const [loadingMore, setLoadingMore] = useState(false);
+
 
   const fetchMoreData = async () => {
     if (!hasMore || loadingMore) return;
@@ -79,6 +83,9 @@ const InfiniteScrollComponent = ({ singleNews }) => {
     setLoadingMore(false);
   };
 
+
+
+
   return (
     <div>
       <h3 className="mb-0 p-3 ps-0 secondary-color ">ক্যাটেগরি নিউজ</h3>
@@ -87,28 +94,7 @@ const InfiniteScrollComponent = ({ singleNews }) => {
         dataLength={items.length}
         next={fetchMoreData}
         hasMore={hasMore}
-        loader={
-          hasMore ? (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                minHeight: "100px",
-              }}
-            >
-              <Triangle
-                height={80}
-                width={80}
-                color={"#4fa94d"}
-                ariaLabel={"circles-loading"}
-                wrapperStyle={{}}
-                wrapperClass=""
-                visible={true}
-              />
-            </div>
-          ) : null
-        }
+        loader={''}
         endMessage={
           <p style={{ textAlign: "center" }}>
             <b>Yay! You have seen it all</b>
@@ -134,7 +120,7 @@ const InfiniteScrollComponent = ({ singleNews }) => {
             items.map((item, index) => (
               <div key={index} style={{ height: "auto", overflow: "hidden" }}>
                 <Link
-                  to={`/${item.category_name_bangla}/${item.id}`}
+                  to={`/${item.category_name}/${item.id}`}
                   key={item.id}
                 >
                   <div className="row align-items-center py-3">

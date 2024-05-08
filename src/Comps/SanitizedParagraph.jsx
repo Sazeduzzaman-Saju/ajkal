@@ -3,7 +3,11 @@ import DOMPurify from "dompurify";
 
 const SanitizedParagraph = ({ htmlContent }) => {
   const sanitizedHtml = DOMPurify.sanitize(htmlContent);
-  return <div dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />;
+  return (
+    <>
+      {sanitizedHtml && <span dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />}
+    </>
+  );
 };
 
 export default SanitizedParagraph;

@@ -61,7 +61,7 @@ const LazyImageShortNews = ({ src, alt, className, errorSrc, width, height }) =>
             objectFit: "cover",
             borderRadius: "0.25rem",
             filter: "blur(10px)",
-            transition: "filter 0.3s ease-in-out",
+            transition: "filter 0.1s ease-in-out",
             opacity: 1,
           }}
         />
@@ -78,7 +78,7 @@ const LazyImageShortNews = ({ src, alt, className, errorSrc, width, height }) =>
             objectFit: "cover",
             borderRadius: "0.25rem",
             filter: isLoaded ? "none" : "blur(10px)",
-            transition: "filter 0.3s ease-in-out",
+            transition: "filter 0.1s ease-in-out",
             opacity: isLoaded ? 1 : 0,
           }}
         />
