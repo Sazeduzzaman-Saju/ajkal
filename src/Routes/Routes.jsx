@@ -65,7 +65,7 @@ const router = createBrowserRouter([
         loader: ({ params }) => fetch(`https://backoffice.ajkal.us/news-detail/${params.id}`)
       },
       {
-        path: '/categories/:id',
+        path: '/ct/:categoryName/:id', // Use a dynamic segment for category name
         element: <Categories />,
         loader: ({ params }) => fetch(`https://backoffice.ajkal.us/category-news/${params.id}`)
       },

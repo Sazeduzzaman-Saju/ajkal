@@ -40,23 +40,25 @@ const NewsSectionOne = ({ saraBanglaNews }) => {
               slicedNews.map((data) => (
                 <div className="col-lg-6" key={data.id}>
                   <Link
-                    to={`/${data.category_name_bangla}/${data.id}`}
+                    to={`/${data.category_name}/${data.id}`}
                     className="text-muted"
                   >
                     <div className="card border-0 shadow-sm mb-3">
                       <div className="card-body p-0">
-                        <div className="d-flex align-items-center image-container">
-                          <LazyImageShortNews
-                            src={`https://ajkal.us/images/${data.title_img}`}
-                            alt={data.news_title}
-                            className="rounded-1"
-                            errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
-                            width="150px"
-                            height="auto"
-                          />
-                          <div className="ps-2 p-2">
+                        <div className="row gx-2 align-items-center">
+                          <div className="col-lg-5">
+                            <LazyImageShortNews
+                              src={`https://ajkal.us/images/${data.title_img}`}
+                              alt={data.news_title}
+                              className="rounded-1"
+                              errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                              width="100%"
+                              height="80px"
+                            />
+                          </div>
+                          <div className="col-lg-7">
                             <h6 className="mb-0 main-color">
-                              {data.news_title.slice(0, 32)}...
+                              {data.news_title.split(" ").slice(0, 6).join(" ")}
                             </h6>
                           </div>
                         </div>
@@ -76,24 +78,21 @@ const NewsSectionOne = ({ saraBanglaNews }) => {
                   <div key={index}>
                     {/* {newsItem.is_featured} */}
                     <Link
-                      to={`/${newsItem.category_name_bangla}/${newsItem.id}`} // assuming newsItem.id is already a string
+                      to={`/${newsItem.category_name}/${newsItem.id}`} // assuming newsItem.id is already a string
                       className="text-muted"
                       key={`${newsItem.id}`} // Convert key to string using string interpolation
                     >
                       <div className="card border-0 shadow-sm mb-2">
                         <div className="card-body p-0 image-container">
-                          <img
-                            className="img-fluid rouned-2 "
+                          <LazyImageShortNews
+                            style={{ borderRadius: "5px" }}
                             src={`https://ajkal.us/images/${newsItem.title_img}`}
                             alt={newsItem.news_title}
-                            style={{ borderRadius: "5px" }}
-                            onError={(e) => {
-                              e.target.src =
-                                "https://ajkal.us/image/settings/placeholder.jpg";
-                            }}
+                            className="img-fluid rouned-2 "
+                            errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
                           />
                           <div className="ps-2 p-2">
-                            <h5 className="mb-0 main-color py-3">
+                            <h5 className="mb-0 main-color py-3 ">
                               <SanitizedParagraph
                                 className="mb-0"
                                 htmlContent={newsItem.news_title}
@@ -103,7 +102,7 @@ const NewsSectionOne = ({ saraBanglaNews }) => {
                               <SanitizedParagraph
                                 htmlContent={newsItem.news_short_brief
                                   .split(" ")
-                                  .slice(0, 15)
+                                  .slice(0, 40)
                                   .join(" ")}
                               />
                               <span className="text-danger"> আরও পড়ুন...</span>

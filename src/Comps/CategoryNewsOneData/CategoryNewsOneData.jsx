@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
+import { Link } from "react-router-dom";
 import LazyImageShortNews from "../LazyImage/LazyImageShortNews";
 import SanitizedParagraph from "../SanitizedParagraph";
 
@@ -9,6 +9,7 @@ const CategoryNewsOneData = () => {
   const [rajniti, setRajniti] = useState([]);
   const [loadingBangladesh, setLoadingBangladesh] = useState(true);
   const url = "https://backoffice.ajkal.us/category-news/12";
+
   useEffect(() => {
     axios
       .get(url)
@@ -42,6 +43,7 @@ const CategoryNewsOneData = () => {
   const hasFeaturedItems = slicedNewsAll.some(
     (newsItem) => newsItem.is_featured === 1
   );
+
   return (
     <div className="col-lg-4">
       {/* Feature News */}
@@ -51,9 +53,8 @@ const CategoryNewsOneData = () => {
             <div key={index}>
               {data.is_featured === 1 && (
                 <div key={index}>
-                  {/* {newsItem.is_featured} */}
                   <Link
-                    to={`/${data.category_name_bangla}/${data.id}`}
+                    to={`/${data.category_name}/${data.id}`}
                     className="text-muted"
                     key={data.id}
                   >
@@ -109,7 +110,10 @@ const CategoryNewsOneData = () => {
               if (data.is_featured !== 1) {
                 return (
                   <div className="card border-0 shadow-sm mb-3" key={data.id}>
-                    <Link to={`/${data.category_name_bangla}/${data.id}`}>
+                    <Link
+                      to={`/${data.category_name}/${data.id}`}
+                      className="text-decoration-none"
+                    >
                       <div className="card-body ctnone_regular-news d-flex p-0 align-items-center ">
                         <div className="row align-items-center ">
                           <div className="col-lg-4">

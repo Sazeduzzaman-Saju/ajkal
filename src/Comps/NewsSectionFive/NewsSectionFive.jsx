@@ -57,7 +57,7 @@ const NewsSectionFive = ({ ScienceData, loading}) => {
               <div key={index}>
                 {newsItem.is_featured === 1 && (
                   <Link
-                    to={`/${newsItem.category_name_bangla}/${newsItem.id}`}
+                    to={`/${newsItem.category_name}/${newsItem.id}`}
                     key={newsItem.id}
                   >
                     <div className="card border-0">
@@ -99,7 +99,7 @@ const NewsSectionFive = ({ ScienceData, loading}) => {
             // Render actual data
             slicedNews.slice(0, 5).map((data) => (
               <Link
-                to={`/${data.category_name_bangla}/${data.id}`}
+                to={`/${data.category_name}/${data.id}`}
                 className="text-muted"
                 key={data.id}
               >
@@ -123,7 +123,7 @@ const NewsSectionFive = ({ ScienceData, loading}) => {
                             {data &&
                               data.news_title.split(" ").slice(0, 5).join(" ")}
                           </h6>
-                          <p className="mb-0 text-muted">
+                          <div className="mb-0 text-muted">
                             <SanitizedParagraph
                               htmlContent={
                                 data &&
@@ -133,7 +133,7 @@ const NewsSectionFive = ({ ScienceData, loading}) => {
                                   .join(" ")
                               }
                             />
-                          </p>
+                          </div>
                         </div>
                       </div>
                     </div>

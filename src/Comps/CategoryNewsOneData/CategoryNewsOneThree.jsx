@@ -52,7 +52,7 @@ const CategoryNewsOneData = () => {
               {data.is_featured === 1 && (
                 <div key={index}>
                   <Link
-                    to={`/${data.category_name_bangla}/${data.id}`}
+                    to={`/${data.category_name}/${data.id}`}
                     className="text-muted"
                     key={data.id}
                   >
@@ -108,7 +108,7 @@ const CategoryNewsOneData = () => {
               if (data.is_featured !== 1) {
                 return (
                   <div className="card border-0 shadow-sm mb-3" key={data.id}>
-                    <Link to={`/${data.category_name_bangla}/${data.id}`}>
+                    <Link to={`/${data.category_name}/${data.id}`}>
                       <div className="card-body ctnone_regular-news d-flex p-0 align-items-center ">
                         <div className="row align-items-center ">
                           <div className="col-lg-4">

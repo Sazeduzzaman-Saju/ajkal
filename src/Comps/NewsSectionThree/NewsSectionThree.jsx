@@ -44,7 +44,7 @@ const NewsSectionThree = ({ khelarNews, loading }) => {
           // Render actual data
           khelarNews.slice(0, 5).map((data) => (
             <Link
-              to={`/${data.category_name_bangla}/${data.id}`}
+              to={`/${data.category_name}/${data.id}`}
               className="text-muted"
               key={data.id}
             >
@@ -72,13 +72,15 @@ const NewsSectionThree = ({ khelarNews, loading }) => {
                             .join(" ")}
                         />
                       </h6>
+                      <span className="text-muted">
                       <SanitizedParagraph
-                        className="mb-0"
+                        className="mb-0 text-muted"
                         htmlContent={data.news_short_brief
                           .split(" ")
                           .slice(1, 10)
                           .join(" ")}
                       />
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -98,7 +100,7 @@ const NewsSectionThree = ({ khelarNews, loading }) => {
           khelarNews.map((data, index) =>
             data.is_featured === 1 ? (
               <div key={index}>
-                <Link to={`/${data.category_name_bangla}/${data.id}`}>
+                <Link to={`/${data.category_name}/${data.id}`}>
                   <div className="card border-0 shadow-sm ">
                     <div className="card-body p-0">
                       {/* Featured news image */}

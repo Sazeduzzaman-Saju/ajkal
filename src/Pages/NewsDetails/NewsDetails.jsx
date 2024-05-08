@@ -4,42 +4,24 @@ import { Link, useLoaderData } from "react-router-dom";
 import ReletedNews from "../../Comps/ReletedNews/ReletedNews";
 import NewsSidebar from "../../Comps/NewsSidebar/NewsSidebar";
 import BanglaDateTime from "../../Comps/BanglaTime/BanglaTime";
-import BanglaTime from "../../Comps/BanglaTime/BanglaDynamicTIme";
-import SocialShareButtons from "../../Comps/SocialShareButtons/SocialShareButtons";
-import { FaCopy } from "react-icons/fa";
 import PageHelmet from "../../Comps/PageHelmet/PageHelmet";
 import axios from "axios";
 import { IoMdArrowDropright } from "react-icons/io";
 import PostHeader from "../../Comps/PostHeader/PostHeader";
 import { FacebookEmbed, YouTubeEmbed } from "react-social-media-embed";
-import SanitizedParagraph from "../../Comps/SanitizedParagraph";
-import {
-  FacebookShareButton,
-  TwitterShareButton,
-  WhatsappShareButton,
-} from "react-share";
-import { FaFacebook, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import toast from "react-hot-toast";
+<<<<<<< HEAD
 import FacebookComments from "../../Comps/FacebookComments/FacebookComments";
 import LazyImageShortNews from "../../Comps/LazyImage/LazyImageShortNews";
 import VideoPlayer from "../../Comps/VideoPlayer/VideoPlayer";
+=======
+import NewsDetailsContent from "./NewsDetailsContent";
+>>>>>>> e619897d37fb43f9fa43be9647797e35f6708a5c
 
 const NewsDetails = () => {
   const singleNews = useLoaderData();
   const singleNewsDetails = singleNews.data;
-  const [fontSize, setFontSize] = useState(16); // Initial font size
 
-  const increaseFontSize = () => {
-    setFontSize((prevSize) => prevSize + 2);
-  };
-
-  const decreaseFontSize = () => {
-    setFontSize((prevSize) => prevSize - 2);
-  };
-
-  const resetFontSize = () => {
-    setFontSize(16); // Reset font size to initial value
-  };
 
   const [addvertisement, setAddvertisement] = useState([]);
   const addUrl = "https://backoffice.ajkal.us/ad/all";
@@ -64,27 +46,7 @@ const NewsDetails = () => {
       });
   }, []);
   // Copy News Url
-  const url = `https://ajkal.us/${singleNewsDetails.category_name_bangla}/${singleNewsDetails.id}`;
 
-  const copyUrlToClipboard = () => {
-    // Create a temporary input element
-    const input = document.createElement("input");
-    input.setAttribute("value", url);
-    document.body.appendChild(input);
-
-    // Select the input value
-    input.select();
-    input.setSelectionRange(0, 99999); // For mobile devices
-
-    // Copy the selected text
-    document.execCommand("copy");
-
-    // Remove the temporary input
-    document.body.removeChild(input);
-
-    // Optionally, provide feedback to the user
-    toast.success("News URL copied : " + url);
-  };
   const links = [
     { label: "বাংলাদেশ", url: "#" },
     { label: "বিরোধী ", url: "#" },
@@ -106,12 +68,12 @@ const NewsDetails = () => {
   return (
     <>
       <PageHelmet
-        title={singleNewsDetails.news_title}
+        title={singleNewsDetails?.news_title}
         type="article"
-        image={`https://ajkal.us/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
+        image={`https://ajkal.us/images/${singleNewsDetails?.title_img}`} // Replace with actual image URL
         url={window.location.href} // Replace with actual page URL
-        card={`https://ajkal.us/images/${singleNewsDetails.title_img}`}
-        description={singleNewsDetails.news_detail} // Replace with appropriate description field from singleNewsDetails
+        card={`https://ajkal.us/images/${singleNewsDetails?.title_img}`}
+        description={singleNewsDetails?.news_detail} // Replace with appropriate description field from singleNewsDetails
       >
         {/* Additional Meta Tags */}
         <meta name="okeywords" content="news, article, updates" />
@@ -130,17 +92,18 @@ const NewsDetails = () => {
                 <span> প্রচ্ছদ </span> <IoMdArrowDropright />
                 <Link
                   className="text-muted"
-                  to={`/categories/${singleNewsDetails.category_id}`}
+                  to={`/ct/${singleNewsDetails.category_name}/${singleNewsDetails?.category_id}`}
                 >
-                  {singleNewsDetails.category_name_bangla}
+                  {singleNewsDetails?.category_name_bangla}
                 </Link>{" "}
-                <IoMdArrowDropright /> {singleNewsDetails.news_title}
+                <IoMdArrowDropright /> {singleNewsDetails?.news_title}
               </h5>
-              <BanglaDateTime dateTime={singleNewsDetails.news_time} />
+              <BanglaDateTime dateTime={singleNewsDetails?.news_time} />
             </div>
           </div>
         </div>
         <div className="row">
+<<<<<<< HEAD
           <div className="col-lg-8 ps-0" id="printThis">
             <h5 className="fw-bold py-4 mb-0" style={{ color: "#ee2026" }}>
               {singleNewsDetails.category_name_bangla}
@@ -313,6 +276,13 @@ const NewsDetails = () => {
               </div>
             </div>
           </div>
+=======
+          <NewsDetailsContent
+            singleNewsDetails={singleNewsDetails}
+            addvertisement={addvertisement}
+            links={links}
+          />
+>>>>>>> e619897d37fb43f9fa43be9647797e35f6708a5c
           <div className="col-lg-4">
             <div>
               {/* News Sidebar */}
@@ -363,7 +333,8 @@ const NewsDetails = () => {
         </div>
         <div className="pt-5">
           <ReletedNews
-            singleNewsDetails={singleNewsDetails.category_id}
+            singleNewsDetails={singleNewsDetails?.category_id}
+            links={links}
           ></ReletedNews>
         </div>
       </div>

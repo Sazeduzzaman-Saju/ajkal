@@ -38,11 +38,11 @@ const NewsSectionTwo = ({ binodon }) => {
             title_img,
             news_title,
             news_short_brief,
-            category_name_bangla,
+            category_name,
           }) => (
             <div className="col-lg-3" key={id}>
               <Link
-                to={`/${category_name_bangla}/${id}`}
+                to={`/${category_name}/${id}`}
                 className="text-muted"
               >
                 <div className="card border-0 shadow-sm mb-3">
@@ -61,23 +61,23 @@ const NewsSectionTwo = ({ binodon }) => {
                   />
                   <div className="card-body" style={{ height: "9rem" }}>
                     <div
-                      className="mb-0 main-color"
-                      style={{ fontSize: "20px" }}
+                      className="mb-0 main-color fw-bolder"
+                      style={{ fontSize: "16px" }}
                     >
                       <SanitizedParagraph
                         className="mb-0"
                         style={{ marginBottom: "0px" }}
                         htmlContent={news_title
                           .split(" ")
-                          .slice(0, 5)
+                          .slice(0, 6)
                           .join(" ")}
                       />
                     </div>
-                    <div className="m-0 pt-1">
+                    <div className="m-0 pt-1 text-muted">
                       <SanitizedParagraph
                         htmlContent={news_short_brief
                           .split(" ")
-                          .slice(0, 5)
+                          .slice(0, 7)
                           .join(" ")}
                       />
                     </div>

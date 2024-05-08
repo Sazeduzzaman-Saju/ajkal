@@ -100,10 +100,10 @@ const SorboshesKhobor = () => {
             <div className="row mt-1">
               {sorboshesData.map((data, index) => (
                 <div className="col-lg-4" key={index}>
-                  <Link to={`/${data.category_name_bangla}/${data.id}`}>
+                  <Link to={`/${data.category_name}/${data.id}`}>
                     <div
                       className="card rounded-1 border-0 shadow-sm mb-4 sorboshes_khobor "
-                      style={{ height: "20rem" }}
+                      style={{ height: "17rem" }}
                     >
                       <div className="card-body p-0 card-body-2">
                         <LazyImageNews
@@ -118,7 +118,6 @@ const SorboshesKhobor = () => {
                           <p className="secondary-color fw-bold mb-0">
                             {data.category_name_bangla}
                           </p>
-                          <p className="text-muted mb-1"></p>
                           <h5 className="main-color">{data.news_title}</h5>
                         </div>
                       </div>
@@ -136,7 +135,7 @@ const SorboshesKhobor = () => {
             <div className="row">
               {sorboshesPothitoData.map((data, index) => (
                 <div className="col-lg-12 mt-2" key={index}>
-                  <Link to={`/${data.category_name_bangla}/${data.id}`}>
+                  <Link to={`/${data.category_name}/${data.id}`}>
                     <div className="card mb-1 border-0 shadow-sm rounded-2">
                       <div className="card-body p-0 d-flex align-items-center">
                         <div className="pothito-img w-25 h-100 ">
@@ -153,14 +152,11 @@ const SorboshesKhobor = () => {
                         </div>
                         <div className="pothito-content w-75 ps-4">
                           <div>
-                            <h5 className="main-color">
+                            <h5 className="main-color mb-0">
                               {data.category_name_bangla}
                             </h5>
                             <p className="m-0 text-muted">
-                              {data.news_title
-                                .split(" ")
-                                .slice(0, 30)
-                                .join(" ")}
+                              {data.news_title}
                               <span className="text-primary">...</span>
                             </p>
                           </div>

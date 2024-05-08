@@ -53,7 +53,7 @@ const CategoryFeature = ({ singleNews }) => {
           // Render actual data if singleNews is not empty and loading is false
           singleNews.slice(0, 4).map((data) => (
             <div className="col-sm-4" key={data.id}>
-              <Link to={`/${data.category_name_bangla}/${data.id}`}>
+              <Link to={`/${data.category_name}/${data.id}`}>
                 <div className="card rounded-0 border-0 shadow-sm ">
                   <div className="card-header p-0 border-0"></div>
                   <div className="card-body p-0" style={{ height: "375px" }}>

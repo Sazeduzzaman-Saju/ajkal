@@ -108,7 +108,7 @@ const VideoNews = () => {
                   if (data && data.is_featured === 1) {
                     return (
                       <Link
-                        to={`/${data.category_name_bangla}/${data.id}`}
+                        to={`/${data.category_name}/${data.id}`}
                         key={data.id}
                         className="text-muted"
                       >
@@ -170,7 +170,7 @@ const VideoNews = () => {
             // Render other videos
             videoNews.map((data) => (
               <Link
-                to={`/${data.category_name_bangla}/${data.id}`}
+                to={`/${data.category_name}/${data.id}`}
                 key={data.id}
                 className="text-muted"
               >
@@ -197,8 +197,13 @@ const VideoNews = () => {
                           </div>
                         </div>
                         <div className="col-lg-8">
+<<<<<<< HEAD
                           <div>
                             <h5 className="mb-1 main-color pe-2">
+=======
+                          <div className="">
+                            <h5 className="mb-1 main-color pe-2 fw-bolder">
+>>>>>>> e619897d37fb43f9fa43be9647797e35f6708a5c
                               {data.news_title}
                             </h5>
                             <div className="mb-0">

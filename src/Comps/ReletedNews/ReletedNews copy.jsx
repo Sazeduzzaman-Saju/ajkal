@@ -7,7 +7,6 @@ import BanglaTimeAgo from "../BanglaTime/BanglaTimeDiffrence";
 import SanitizedParagraph from "../SanitizedParagraph";
 
 const RelatedNews = ({ singleNewsDetails }) => {
-  console.log(singleNewsDetails, 'singleNewsDetails')
   const [reletedNews, setReletedNews] = useState([]);
   const url = `https://backoffice.ajkal.us/category-news/${singleNewsDetails}`;
 

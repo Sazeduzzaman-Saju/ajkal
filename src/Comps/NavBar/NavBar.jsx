@@ -1,15 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
+import { Dropdown, Button } from "react-bootstrap";
 
 const NavBar = () => {
   const [activeLink, setActiveLink] = useState("");
   const [navLinks, setNavLinks] = useState([]);
   const [extraNav, setExtraNav] = useState([]);
+  const dropdownRef = useRef(null);
 
   const handleLinkClick = (link) => {
     setActiveLink(link);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setActiveLink(""); // Reset active link when clicking outside
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const url = "https://backoffice.ajkal.us/news-category";
   useEffect(() => {
@@ -17,10 +32,12 @@ const NavBar = () => {
       .get(url)
       .then((response) => {
         if (Array.isArray(response.data)) {
-          setNavLinks(response.data.slice(0, 10));
+          const navLinksData = response.data.slice(0, 10);
+          setNavLinks(navLinksData);
           setExtraNav(response.data.slice(10));
         } else if (Array.isArray(response.data.data)) {
-          setNavLinks(response.data.data.slice(0, 10));
+          const navLinksData = response.data.data.slice(0, 10);
+          setNavLinks(navLinksData);
           setExtraNav(response.data.data.slice(10));
         } else {
           console.error(
@@ -46,7 +63,7 @@ const NavBar = () => {
             }`}
           >
             <NavLink
-              to={`/categories/${link.id}`}
+              to={`/ct/${link.name}/${link.id}`}
               className="nav-link navlinks"
               activeclassname="active"
               onClick={() => handleLinkClick(link.text)}
@@ -57,37 +74,37 @@ const NavBar = () => {
         ))}
         {navLinks.length > 0 && (
           <li className="nav-item menu-specing ">
-            <div className="dropdown main-menu">
-              <button
+            <Dropdown ref={dropdownRef}>
+              <Dropdown.Toggle
+                variant="transparent"
                 className="border-0 bg-transparent pt-2 text-white"
-                type="button"
-                id="dropdownMenuButton1"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                style={{ fontSize: "18px", textDecoration: "none" }}
-                to="/your-link-here"
               >
                 অন্যান্য +
-              </button>
-              <ul
-                className="dropdown-menu"
-                style={{ borderBottom: "none" }}
-                aria-labelledby="dropdownMenuButton1"
-              >
+              </Dropdown.Toggle>
+              <Dropdown.Menu className="mt-0 pt-0">
                 {extraNav.map((item, index) => (
+<<<<<<< HEAD
                   <li key={index}>
                     <NavLink
                       className="dropdown-item"
                       to={`/categories/${item.id}`}
                       activeclassname="active"
+=======
+                  <Dropdown.Item key={index} className="mt-0 p-0">
+                    <Button
+                      as={NavLink}
+                      to={`/ct/${item.name}/${item.id}`}
+                      activeclassname="active"
+                      className="dropdown-item px-4"
+>>>>>>> e619897d37fb43f9fa43be9647797e35f6708a5c
                       onClick={() => handleLinkClick(item.name)}
                     >
                       {item.name_bangla}
-                    </NavLink>
-                  </li>
+                    </Button>
+                  </Dropdown.Item>
                 ))}
-              </ul>
-            </div>
+              </Dropdown.Menu>
+            </Dropdown>
           </li>
         )}
       </ul>

@@ -65,7 +65,7 @@ const RelatedNews = ({ singleNewsDetails }) => {
                 <span> প্রচ্ছদ </span> <IoMdArrowDropright />
                 <Link
                   className="text-muted"
-                  to={`/categories/${newsItem.category_id}`}
+                  to={`/ct/${newsItem.category_name}/${newsItem.category_id}`}
                 >
                   {newsItem.category_name_bangla}
                 </Link>{" "}
