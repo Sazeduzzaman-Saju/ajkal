@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import BanglaDateTime from "../../Comps/BanglaTime/BanglaTime";
+import LazyImageShortNews from "../../Comps/LazyImage/LazyImageShortNews";
 
 const SearchData = ({ archive }) => {
   const [loading, setLoading] = useState(true);
@@ -53,17 +54,13 @@ const SearchData = ({ archive }) => {
                         </div>
                       </div>
                       <div className="col-lg-4">
-                        <LazyLoad height={120} once>
-                          <img
-                            className="img-fluid w-100 rounded"
-                            src={`https://ajkal.us/images/${data.title_img}`}
-                            alt=""
-                            onError={(e) => {
-                              e.target.src =
-                                "https://ajkal.us/image/settings/placeholder.jpg";
-                            }}
-                          />
-                        </LazyLoad>
+                        <LazyImageShortNews
+                          src={`https://ajkal.us/images/${data.title_img}`}
+                          alt={data.news_title}
+                          className="img-fluid w-100 rounded"
+                          errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                          style={{ objectFit: "cover" }}
+                        />
                       </div>
                     </div>
                   </div>

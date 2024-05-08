@@ -114,7 +114,7 @@ const NewsSectionThree = ({ dhormo, loading }) => {
                           />
                         </div>
                         <div className="col-lg-8">
-                          <div className="">
+                          <div>
                             <div className="mb-1 main-color pe-2">
                               <SanitizedParagraph
                                 htmlContent={data.news_title

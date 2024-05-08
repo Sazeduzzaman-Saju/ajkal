@@ -34,7 +34,7 @@ const UserAdvertisement = () => {
 
   if (loading) {
     return (
-      <div className="">
+      <div>
         <div
           className="d-flex justify-content-center align-items-center"
           style={{ height: "100vh" }}

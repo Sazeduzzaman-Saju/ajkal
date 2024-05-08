@@ -7,6 +7,7 @@ import { AiFillInstagram } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import NewsCategory from "../../Comps/NewsCategory/NewsCategory";
 import axios from "axios";
+import LazyImageShortNews from "../../Comps/LazyImage/LazyImageShortNews";
 
 const Footer = () => {
   const [categoriesData, setCategoriesData] = useState([]);
@@ -52,12 +53,15 @@ const Footer = () => {
               <div
                 style={{ width: "18%", background: "#fff", padding: "10px" }}
               >
-                <Link className="" to="/">
-                  <img
+                <Link to="/">
+                  <LazyImageShortNews
                     src="https://ajkal.us/image/settings/logo_red.jpg"
-                    className="img-fluid"
-                    alt=""
-                    width={250}
+                    alt="logo"
+                    className="rounded-top-1 rounded-bottom-0"
+                    errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                    width="250px"
+                    height="auto"
+                    style={{ objectFit: "cover" }}
                   />
                 </Link>
               </div>
@@ -69,13 +73,6 @@ const Footer = () => {
         className="container-fluid p-2 pb-3"
         style={{
           backgroundColor: "black",
-          // // backgroundImage: 'url(https://ajkal.us/image/settings/dark-bg.jpg)',
-          // backgroundImage: 'url(https://ajkal.us/image/settings/bg-2.jpg)',
-          // // backgroundImage: 'url(https://ajkal.us/image/settings/bg-3.jpg)',
-          // backgroundRepeat: 'no-repeat',
-          // backgroundSize: 'cover',
-          // backgroundPosition: 'center center',
-          // width: '100%'
         }}
       >
         <div className="container">
@@ -126,20 +123,20 @@ const Footer = () => {
               </div>
               <div>
                 <div className="pb-3">
-                  <Link to={"#"}>
+                  <Link to={"/"}>
                     <img
                       className="mb-1"
                       width={180}
                       src="https://ajkal.us/image/settings/play.png"
-                      alt=""
+                      alt="Play Store"
                     />
                   </Link>
-                  <Link to={"#"}>
+                  <Link to={"/"}>
                     <img
                       className="mb-1"
                       width={180}
                       src="https://ajkal.us/image/settings/applestore.png"
-                      alt=""
+                      alt="Apple Store"
                     />
                   </Link>
                 </div>
@@ -149,12 +146,12 @@ const Footer = () => {
           <div className="row align-items-center">
             <div className="col-lg-10 ps-0">
               <div>
-                <div className="">
+                <div>
                   <p className="fs-3 text-white mb-0">
                     <strong>সম্পাদক ও প্রকাশক : </strong>
                     <span className="pe-3">শাহ্‌ নেওয়াজ ,</span>
                     <strong>প্রধান সম্পাদক : </strong>
-                    <span className="">মনজুর আহমেদ</span>
+                    <span>মনজুর আহমেদ</span>
                   </p>
                 </div>
                 <div className="text-lg-start text-center ">
@@ -178,16 +175,19 @@ const Footer = () => {
                 অনুসরণ করুন
               </h5>
               <div className="footer-social text-lg-start text-center pt-4">
-                <Link to="https://www.facebook.com/weeklyajkal" className="ms-0">
+                <Link
+                  to="https://www.facebook.com/weeklyajkal"
+                  className="ms-0"
+                >
                   <FaFacebookF />
                 </Link>
-                <Link to="#" className="">
+                <Link to={'/'}>
                   <FaTwitter />
                 </Link>
-                <Link to="#" className="">
+                <Link to={'/'}>
                   <FaYoutube />
                 </Link>
-                <Link to="#" className="">
+                <Link to={'/'}>
                   <AiFillInstagram />
                 </Link>
               </div>

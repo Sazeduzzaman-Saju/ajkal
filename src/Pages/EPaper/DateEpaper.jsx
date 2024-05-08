@@ -81,7 +81,7 @@ function DateEpaper() {
               </div>
             </div>
           </div>
-          <div className="">
+          <div>
             <div className="mt-2">
               <PostHeader title="ফিচারস" />
             </div>
@@ -121,9 +121,9 @@ function DateEpaper() {
         ) : (
           <div className="col-lg-9 text-center ">
             <div className="no-data-epaper">
-              <a className="navbar-brand" href="/">
+              <Link className="navbar-brand" to="/">
                 <img src="https://ajkal.us/image/settings/logo_red.png" alt  />
-              </a>
+              </Link>
               <h5 className="text-center mt-3">
                 এই{" "}
                 <span className="text-danger">

@@ -35,7 +35,6 @@ const NewsSidebar = () => {
   return (
     <>
       <div
-        className=""
         style={{
           backgroundImage:
             "linear-gradient(45deg, rgb(22, 85, 136) 0%, rgb(237, 30, 43) 51%, rgb(22, 85, 136) 100%)",
@@ -57,7 +56,7 @@ const NewsSidebar = () => {
                   <div className="pothito-img w-25 h-100 ">
                     <LazyImageNews
                       src={`https://ajkal.us/images/${data.title_img}`}
-                      alt=""
+                      alt={data.news_title}
                       className="img-fluid rounded-1"
                       errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
                       style={{ height: "70px", objectFit: "cover" }}

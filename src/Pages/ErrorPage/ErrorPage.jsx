@@ -9,7 +9,7 @@ const ErrorPage = () => {
         <div className="error">
           <div className="error-title">ত্রুটি </div>
           <div className="error-number">
-            ৪<span className="">০</span>৪
+            ৪<span  >০</span>৪
           </div>
           <div className="error-description">
             "দুঃখিত, আপনি যে পৃষ্ঠাটি দেখতে চাচ্ছেন তা অস্তিত্ব নেই। পাওয়া

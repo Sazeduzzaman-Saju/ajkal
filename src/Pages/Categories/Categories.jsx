@@ -88,7 +88,7 @@ const Categories = () => {
               <InfiniteCategory singleNews={singleNews} />
             </div>
             <div className="col-lg-4">
-              <div className="">
+              <div>
                 <PostHeader title="বিজ্ঞাপন কর্নার" />
               </div>
               <div style={{ display: "flex", justifyContent: "center" }}>
@@ -118,7 +118,7 @@ const Categories = () => {
       )}
     </div>
   ) : (
-    <div className="">
+    <div>
       <CommonLoader></CommonLoader>
     </div>
   );

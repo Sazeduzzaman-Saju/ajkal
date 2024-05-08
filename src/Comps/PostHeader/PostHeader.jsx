@@ -16,7 +16,7 @@ const PostHeader = ({ title }) => {
           className="pe-2"
           width={40}
           src="https://ajkal.us/image/settings/Asset-2.png"
-          alt=""
+          alt="https://ajkal.us/image/settings/Asset-2.png"
           onError={(e) => {
             e.target.src = "https://ajkal.us/image/settings/placeholder.jpg";
           }}

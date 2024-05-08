@@ -97,7 +97,7 @@ const Login = () => {
                     {/* Form Start */}
                     <form
                       onSubmit={handleSubmit(handleSignUp)}
-                      className=""
+                       
                     >
                       <div className="row">
                         <div className="col-lg-12">

@@ -48,7 +48,7 @@ const NavBar = () => {
             <NavLink
               to={`/categories/${link.id}`}
               className="nav-link navlinks"
-              activeClassName="active"
+              activeclassname="active"
               onClick={() => handleLinkClick(link.text)}
             >
               {link.name_bangla}
@@ -79,7 +79,7 @@ const NavBar = () => {
                     <NavLink
                       className="dropdown-item"
                       to={`/categories/${item.id}`}
-                      activeClassName="active"
+                      activeclassname="active"
                       onClick={() => handleLinkClick(item.name)}
                     >
                       {item.name_bangla}

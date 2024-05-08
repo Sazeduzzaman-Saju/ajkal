@@ -72,7 +72,7 @@ const CategoryFeature = ({ singleNews }) => {
                       <h5 className="pt-2 main_color">
                         {data.news_title.split(" ").slice(0, 8).join(" ")}
                       </h5>
-                      <div className="">
+                      <div>
                         <SanitizedParagraph
                           htmlContent={data.news_short_brief
                             .split(" ")

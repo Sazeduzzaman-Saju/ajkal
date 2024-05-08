@@ -48,7 +48,7 @@ const NewsSectionTwo = ({ binodon }) => {
                 <div className="card border-0 shadow-sm mb-3">
                   <LazyImageNews
                     src={`https://ajkal.us/images/${title_img}`}
-                    alt=""
+                    alt={news_title}
                     className="rounded-1"
                     errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
                     style={{

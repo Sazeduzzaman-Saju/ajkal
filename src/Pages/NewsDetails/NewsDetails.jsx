@@ -22,6 +22,7 @@ import { FaFacebook, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import toast from "react-hot-toast";
 import FacebookComments from "../../Comps/FacebookComments/FacebookComments";
 import LazyImageShortNews from "../../Comps/LazyImage/LazyImageShortNews";
+import VideoPlayer from "../../Comps/VideoPlayer/VideoPlayer";
 
 const NewsDetails = () => {
   const singleNews = useLoaderData();
@@ -153,25 +154,19 @@ const NewsDetails = () => {
             <div className="mt-4">
               {/* Condition to check if singleNewsDetails.video_url is empty */}
               {singleNewsDetails.video_url ? (
-                <iframe
+                <VideoPlayer
+                  videoUrl={singleNewsDetails.video_url}
                   width="100%"
-                  height="500"
                   style={{ borderRadius: "5px" }}
-                  src={`https://www.youtube.com/embed/${singleNewsDetails.video_url}`}
-                  title="YouTube video player"
-                  frameBorder={0}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                ></iframe>
+                  height="500px"
+                />
               ) : (
-                <img
+                <LazyImageShortNews
                   src={`https://ajkal.us/images/${singleNewsDetails.title_img}`}
+                  alt={singleNewsDetails.news_title}
                   className="rounded-2 img-fluid w-100"
-                  alt=""
-                  onError={(e) => {
-                    e.target.src =
-                      "https://ajkal.us/image/settings/placeholder.jpg";
-                  }}
+                  errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                  style={{ objectFit: "cover" }}
                 />
               )}
               <p className="pt-2" style={{ fontSize: `${fontSize}px` }}>
@@ -311,7 +306,7 @@ const NewsDetails = () => {
                 {/* News Details Tags end*/}
               </div>
 
-              <div className="">
+              <div>
                 <FacebookComments
                   url={`https://ajkal.us/news/${singleNewsDetails.id}`}
                 />

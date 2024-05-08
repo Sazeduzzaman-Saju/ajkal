@@ -221,7 +221,7 @@ const CategoryWiseNews = () => {
           <NewsSectionTwo binodon={binodon} />
         </div>
 
-        <div className="">
+        <div>
           <PostHeader
             title={
               khelarNews.length > 0 ? khelarNews[0].category_name_bangla : ""
@@ -236,7 +236,7 @@ const CategoryWiseNews = () => {
           />
         </div>
 
-        <div className="">
+        <div>
           <PostHeader
             title={dhormo.length > 0 ? dhormo[0].category_name_bangla : ""}
           />
@@ -245,7 +245,7 @@ const CategoryWiseNews = () => {
             dhormo={dhormo.map((news) => ({ ...news, id: String(news.id) }))}
           />
         </div>
-        <div className="">
+        <div>
           <PostHeader
             title={
               ScienceData.length > 0 ? ScienceData[0].category_name_bangla : ""

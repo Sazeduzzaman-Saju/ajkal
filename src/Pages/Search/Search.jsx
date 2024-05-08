@@ -97,7 +97,7 @@ const Search = () => {
         <div className="row py-5">
           <div className="col-lg-12">
             <div
-              className=""
+               
               style={{ borderBottom: "2px solid var(--secondary)" }}
             >
               <h5 className="text-muted fw-bold">অনুসন্ধান করুন আর্কাইভ এ।</h5>

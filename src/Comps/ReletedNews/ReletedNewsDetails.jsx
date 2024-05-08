@@ -17,6 +17,7 @@ import { FacebookEmbed, YouTubeEmbed } from "react-social-media-embed";
 import PostHeader from "../PostHeader/PostHeader";
 import LazyImageShortNews from "../LazyImage/LazyImageShortNews";
 import axios from "axios";
+import VideoPlayer from "../VideoPlayer/VideoPlayer";
 
 const RelatedNewsDetails = ({ newsItem, links }) => {
   const [fontSize, setFontSize] = useState(16); // Initial font size
@@ -102,21 +103,16 @@ const RelatedNewsDetails = ({ newsItem, links }) => {
         <div className="mt-4">
           {/* Condition to check if newsItem.video_url is empty */}
           {newsItem.video_url ? (
-            <iframe
+            <VideoPlayer
+              videoUrl={newsItem.video_url}
               width="100%"
-              height="500"
-              style={{ borderRadius: "5px" }}
-              src={`https://www.youtube.com/embed/${newsItem.video_url}`}
-              title="YouTube video player"
-              frameBorder={0}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            ></iframe>
+              height="500px"
+            />
           ) : (
             <img
               src={`https://ajkal.us/images/${newsItem.title_img}`}
               className="rounded-2 img-fluid w-100"
-              alt=""
+              alt={newsItem.news_title}
               onError={(e) => {
                 e.target.src =
                   "https://ajkal.us/image/settings/placeholder.jpg";
@@ -229,13 +225,13 @@ const RelatedNewsDetails = ({ newsItem, links }) => {
           </div>
           {/* News Details Tags end*/}
         </div>
-        <div className="">
+        <div>
           <FacebookComments url={`https://ajkal.us/news/${newsItem.id}`} />
         </div>
       </div>
       <div className="col-lg-4">
         <NewsSidebar />
-        <div className="">
+        <div>
           <PostHeader title="বিজ্ঞাপন কর্নার" />
         </div>
         <div style={{ display: "flex", justifyContent: "center" }}>

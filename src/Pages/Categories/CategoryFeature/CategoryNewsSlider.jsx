@@ -56,7 +56,7 @@ const CategoryNewsSlider = () => {
                 <img
                   className="img-fluid w-100 category-slider-img"
                   src={`https://ajkal.us/image/settings/placeholder.jpg`}
-                  alt=""
+                  alt="https://ajkal.us/image/settings/placeholder.jpg"
                   onError={(e) => {
                     e.target.src =
                       "https://ajkal.us/image/settings/placeholder.jpg";

@@ -197,7 +197,7 @@ const VideoNews = () => {
                           </div>
                         </div>
                         <div className="col-lg-8">
-                          <div className="">
+                          <div>
                             <h5 className="mb-1 main-color pe-2">
                               {data.news_title}
                             </h5>

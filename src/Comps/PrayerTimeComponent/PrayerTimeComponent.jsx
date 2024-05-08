@@ -131,11 +131,11 @@ const PrayerTimeComponent = () => {
             <h3 className="text-center pt-3">
               আজকাল <span className="epaper_text">ই</span> পেপার
             </h3>
-            <Link to={"/epaper"} className="">
+            <Link to={"/epaper"}>
               <img
                 className="img-fluid"
                 src="https://ajkal.us/img/epaper/17139742637427437.jpg"
-                alt=""
+                alt="Prayer Time"
               />
               <LazyImageShortNews
                 src={`https://www.jugantor.com/web-assets/img/prayertimebg3.png`}
