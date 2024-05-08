@@ -59,10 +59,10 @@ const CategoryFeature = ({ singleNews }) => {
                   <div className="card-body p-0" style={{ height: "375px" }}>
                     <div>
                       <LazyImageShortNews
-                        src={`https://ajkal.us/images/${data.title_img}`}
+                        src={`https://ajkal.us/img/news/${data.title_img}`}
                         alt={data.news_title}
                         className="card-img-top"
-                        errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                        errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
                         width="100%"
                         height="auto"
                         style={{ objectFit: "cover" }}
@@ -113,7 +113,7 @@ const CategoryFeature = ({ singleNews }) => {
                     alt={`https://ajkal.us/img/ad/${data.ad_banner}`}
                     onError={(e) => {
                       e.target.src =
-                        "https://ajkal.us/image/settings/placeholder.jpg";
+                        "https://ajkal.us/img/settings/placeholder.jpg";
                     }}
                   />
                 </Link>

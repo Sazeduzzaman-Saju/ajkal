@@ -78,7 +78,7 @@ const RelatedNewsDetails = ({ newsItem, links }) => {
               src={`https://ajkal.us/img/ad/${data.ad_banner}`}
               alt={data}
               className="img-fluid w-100 rounded-0"
-              errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+              errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
               width="100%"
               height="auto"
               style={{ objectFit: "cover" }}
@@ -111,12 +111,12 @@ const RelatedNewsDetails = ({ newsItem, links }) => {
             />
           ) : (
             <img
-              src={`https://ajkal.us/images/${newsItem.title_img}`}
+              src={`https://ajkal.us/img/news/${newsItem.title_img}`}
               className="rounded-2 img-fluid w-100"
               alt={newsItem.news_title}
               onError={(e) => {
                 e.target.src =
-                  "https://ajkal.us/image/settings/placeholder.jpg";
+                  "https://ajkal.us/img/settings/placeholder.jpg";
               }}
             />
           )}
@@ -135,7 +135,7 @@ const RelatedNewsDetails = ({ newsItem, links }) => {
               <div className="social-author">
                 <SocialShareButtons
                   title={newsItem.news_title}
-                  image={`https://ajkal.us/images/${newsItem.title_img}`}
+                  image={`https://ajkal.us/img/news/${newsItem.title_img}`}
                   url={`https://ajkal.us/news/${newsItem.id}`}
                   description={newsItem.news_detail}
                   onIncreaseFontSize={increaseFontSize}
@@ -160,9 +160,9 @@ const RelatedNewsDetails = ({ newsItem, links }) => {
                 <FacebookShareButton
                   title={newsItem.news_title}
                   type="article"
-                  image={`https://ajkal.us/images/${newsItem.title_img}`} // Replace with actual image URL
+                  image={`https://ajkal.us/img/news/${newsItem.title_img}`} // Replace with actual image URL
                   url={`https://ajkal.us/${newsItem.category_name_bangla}/${newsItem.id}`} // Replace with actual page URL
-                  card={`https://ajkal.us/images/${newsItem.title_img}`}
+                  card={`https://ajkal.us/img/news/${newsItem.title_img}`}
                   description={newsItem.news_detail}
                   increasefontsize={increaseFontSize}
                   decreasefontsize={decreaseFontSize}
@@ -173,9 +173,9 @@ const RelatedNewsDetails = ({ newsItem, links }) => {
                 <TwitterShareButton
                   title={newsItem.news_title}
                   type="article"
-                  image={`https://ajkal.us/images/${newsItem.title_img}`} // Replace with actual image URL
+                  image={`https://ajkal.us/img/news/${newsItem.title_img}`} // Replace with actual image URL
                   url={`https://ajkal.us/${newsItem.category_name_bangla}/${newsItem.id}`} // Replace with actual page URL
-                  card={`https://ajkal.us/images/${newsItem.title_img}`}
+                  card={`https://ajkal.us/img/news/${newsItem.title_img}`}
                   description={newsItem.news_detail}
                   increasefontsize={increaseFontSize}
                   decreasefontsize={decreaseFontSize}
@@ -186,9 +186,9 @@ const RelatedNewsDetails = ({ newsItem, links }) => {
                 <WhatsappShareButton
                   title={newsItem.news_title}
                   type="article"
-                  image={`https://ajkal.us/images/${newsItem.title_img}`} // Replace with actual image URL
+                  image={`https://ajkal.us/img/news/${newsItem.title_img}`} // Replace with actual image URL
                   url={`https://ajkal.us/${newsItem.category_name_bangla}/${newsItem.id}`} // Replace with actual page URL
-                  card={`https://ajkal.us/images/${newsItem.title_img}`}
+                  card={`https://ajkal.us/img/news/${newsItem.title_img}`}
                   description={newsItem.news_detail}
                   increasefontsize={increaseFontSize}
                   decreasefontsize={decreaseFontSize}

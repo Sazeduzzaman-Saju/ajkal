@@ -52,7 +52,7 @@ const Categories = () => {
               src={`https://ajkal.us/img/ad/${data.ad_banner}`}
               alt={data}
               className="img-fluid w-100 rounded-0"
-              errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+              errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
               width="100%"
               height="auto"
               style={{ objectFit: "cover" }}
@@ -75,9 +75,9 @@ const Categories = () => {
             : "Default Title"
         }
         type="article"
-        image="https://ajkal.us/image/settings/logo_red.png"
+        image="https://ajkal.us/img/settings/logo_red.png"
         url={window.location.href}
-        card="https://ajkal.us/image/settings/logo_red.png"
+        card="https://ajkal.us/img/settings/logo_red.png"
         description={
           singleNews && singleNews.news_detail
             ? singleNews.news_detail

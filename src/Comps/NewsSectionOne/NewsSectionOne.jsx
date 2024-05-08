@@ -48,10 +48,10 @@ const NewsSectionOne = ({ saraBanglaNews }) => {
                         <div className="row gx-2 align-items-center">
                           <div className="col-lg-5">
                             <LazyImageShortNews
-                              src={`https://ajkal.us/images/${data.title_img}`}
+                              src={`https://ajkal.us/img/news/${data.title_img}`}
                               alt={data.news_title}
                               className="rounded-1"
-                              errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                              errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
                               width="100%"
                               height="80px"
                             />
@@ -86,10 +86,10 @@ const NewsSectionOne = ({ saraBanglaNews }) => {
                         <div className="card-body p-0 image-container">
                           <LazyImageShortNews
                             style={{ borderRadius: "5px" }}
-                            src={`https://ajkal.us/images/${newsItem.title_img}`}
+                            src={`https://ajkal.us/img/news/${newsItem.title_img}`}
                             alt={newsItem.news_title}
                             className="img-fluid rouned-2 "
-                            errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                            errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
                           />
                           <div className="ps-2 p-2">
                             <h5 className="mb-0 main-color py-3 ">

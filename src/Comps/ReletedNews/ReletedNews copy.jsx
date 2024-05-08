@@ -67,12 +67,12 @@ const RelatedNews = ({ singleNewsDetails }) => {
                   )}
                 </div>
                 <img
-                  src={`https://ajkal.us/images/${news.title_img}`}
+                  src={`https://ajkal.us/img/news/${news.title_img}`}
                   alt={news.news_title}
                   style={{ height: "250px", objectFit: "cover" }}
                   onError={(e) => {
                     e.target.src =
-                      "https://ajkal.us/image/settings/placeholder.jpg";
+                      "https://ajkal.us/img/settings/placeholder.jpg";
                   }}
                 />
               </div>

@@ -66,10 +66,10 @@ const CategoryNewsOneData = () => {
                     <div className="card ctn_one">
                       <div className="card-body p-0">
                         <LazyImageShortNews
-                          src={`https://ajkal.us/images/${data?.title_img}`}
+                          src={`https://ajkal.us/img/news/${data?.title_img}`}
                           alt={data?.news_title}
                           className="rounded-top-1 rounded-bottom-0"
-                          errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                          errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
                           width="100%"
                           height="auto"
                           style={{ objectFit: "cover" }}
@@ -119,10 +119,10 @@ const CategoryNewsOneData = () => {
                           <div className="col-lg-4">
                             <div>
                               <LazyImageShortNews
-                                src={`https://ajkal.us/images/${data?.title_img}`}
+                                src={`https://ajkal.us/img/news/${data?.title_img}`}
                                 alt={data?.news_title}
                                 className="rounded-top-1 rounded-bottom-0"
-                                errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                                errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
                                 width="200px"
                                 height="90px"
                                 style={{ objectFit: "cover" }}

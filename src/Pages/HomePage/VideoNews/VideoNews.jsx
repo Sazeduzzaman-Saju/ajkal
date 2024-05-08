@@ -118,10 +118,10 @@ const VideoNews = () => {
                               <PiAirplayFill /> {/* Assuming this is an icon */}
                             </div>
                             <LazyImageShortNews
-                              src={`https://ajkal.us/images/${data?.title_img}`}
+                              src={`https://ajkal.us/img/news/${data?.title_img}`}
                               alt={data?.news_title}
                               className="rounded-top-1 rounded-bottom-0"
-                              errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                              errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
                               width="100%"
                               height="415px"
                               style={{ objectFit: "cover" }}
@@ -185,10 +185,10 @@ const VideoNews = () => {
                             </div>
                             <div className="rounded-1">
                               <LazyImageShortNews
-                                src={`https://ajkal.us/images/${data?.title_img}`}
+                                src={`https://ajkal.us/img/news/${data?.title_img}`}
                                 alt={data?.news_title}
                                 className="rounded-top-1 rounded-bottom-0"
-                                errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                                errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
                                 width="300px"
                                 height="auto"
                                 style={{ objectFit: "cover" }}
@@ -197,13 +197,8 @@ const VideoNews = () => {
                           </div>
                         </div>
                         <div className="col-lg-8">
-<<<<<<< HEAD
-                          <div>
-                            <h5 className="mb-1 main-color pe-2">
-=======
                           <div className="">
                             <h5 className="mb-1 main-color pe-2 fw-bolder">
->>>>>>> e619897d37fb43f9fa43be9647797e35f6708a5c
                               {data.news_title}
                             </h5>
                             <div className="mb-0">
@@ -246,7 +241,7 @@ const VideoNews = () => {
                     alt={`https://ajkal.us/img/ad/${data.ad_banner}`}
                     onError={(e) => {
                       e.target.src =
-                        "https://ajkal.us/image/settings/placeholder.jpg";
+                        "https://ajkal.us/img/settings/placeholder.jpg";
                     }}
                   />
                 </Link>

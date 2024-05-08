@@ -161,12 +161,12 @@ const Search = () => {
                     <img
                       key={filteredData.id}
                       className="w-100 zoom-image img-fluid mb-2"
-                      src={`https://ajkal.us/images/${filteredData.ad_banner}`}
+                      src={`https://ajkal.us/img/news/${filteredData.ad_banner}`}
                       alt="advertisement"
                       loading="lazy"
                       onError={(e) => {
                         e.target.src =
-                          "https://ajkal.us/image/settings/placeholder.jpg";
+                          "https://ajkal.us/img/settings/placeholder.jpg";
                       }}
                     />
                   ))

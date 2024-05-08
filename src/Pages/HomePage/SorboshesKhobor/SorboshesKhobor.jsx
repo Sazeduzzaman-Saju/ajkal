@@ -110,7 +110,7 @@ const SorboshesKhobor = () => {
                           src={`https://ajkal.us/img/news/${data.title_img}`}
                           alt={data.news_title}
                           className="card-img-top rounded-0 custom-class" // You can add additional classes if needed
-                          errorSrc="https://ajkal.us/image/settings/placeholder.jpg" // Pass the path of the error image
+                          errorSrc="https://ajkal.us/img/settings/placeholder.jpg" // Pass the path of the error image
                         />
                       </div>
                       <div className="card-body card-body-1 w-lg-auto w-100">
@@ -142,11 +142,11 @@ const SorboshesKhobor = () => {
                           <img
                             className="img-fluid rounded-1"
                             style={{ height: "70px", objectFit: "cover" }}
-                            src={`https://ajkal.us/images/${data.title_img}`}
+                            src={`https://ajkal.us/img/news/${data.title_img}`}
                             alt=""
                             onError={(e) => {
                               e.target.src =
-                                "https://ajkal.us/image/settings/placeholder.jpg";
+                                "https://ajkal.us/img/settings/placeholder.jpg";
                             }}
                           />
                         </div>

@@ -55,10 +55,10 @@ const Footer = () => {
               >
                 <Link to="/">
                   <LazyImageShortNews
-                    src="https://ajkal.us/image/settings/logo_red.jpg"
+                    src="https://ajkal.us/img/settings/logo_red.jpg"
                     alt="logo"
                     className="rounded-top-1 rounded-bottom-0"
-                    errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                    errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
                     width="250px"
                     height="auto"
                     style={{ objectFit: "cover" }}
@@ -127,7 +127,7 @@ const Footer = () => {
                     <img
                       className="mb-1"
                       width={180}
-                      src="https://ajkal.us/image/settings/play.png"
+                      src="https://ajkal.us/img/settings/play.png"
                       alt="Play Store"
                     />
                   </Link>
@@ -135,7 +135,7 @@ const Footer = () => {
                     <img
                       className="mb-1"
                       width={180}
-                      src="https://ajkal.us/image/settings/applestore.png"
+                      src="https://ajkal.us/img/settings/applestore.png"
                       alt="Apple Store"
                     />
                   </Link>

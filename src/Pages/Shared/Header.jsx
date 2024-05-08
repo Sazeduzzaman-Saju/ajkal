@@ -175,7 +175,7 @@ function Header() {
 
           <div>
             <Link className="navbar-brand" to="/">
-              <img src="https://ajkal.us/image/settings/logo_red.png" alt="" />
+              <img src="https://ajkal.us/img/settings/logo_red.png" alt="" />
             </Link>
           </div>
 
@@ -196,7 +196,7 @@ function Header() {
                             alt={`https://ajkal.us/img/ad/${data.ad_banner}`}
                             onError={(e) => {
                               e.target.src =
-                                "https://ajkal.us/image/settings/ad-placeholder.jpg";
+                                "https://ajkal.us/img/settings/ad-placeholder.jpg";
                             }}
                           />
                         </Link>

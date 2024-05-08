@@ -83,20 +83,12 @@ const NavBar = () => {
               </Dropdown.Toggle>
               <Dropdown.Menu className="mt-0 pt-0">
                 {extraNav.map((item, index) => (
-<<<<<<< HEAD
-                  <li key={index}>
-                    <NavLink
-                      className="dropdown-item"
-                      to={`/categories/${item.id}`}
-                      activeclassname="active"
-=======
                   <Dropdown.Item key={index} className="mt-0 p-0">
                     <Button
                       as={NavLink}
                       to={`/ct/${item.name}/${item.id}`}
                       activeclassname="active"
                       className="dropdown-item px-4"
->>>>>>> e619897d37fb43f9fa43be9647797e35f6708a5c
                       onClick={() => handleLinkClick(item.name)}
                     >
                       {item.name_bangla}

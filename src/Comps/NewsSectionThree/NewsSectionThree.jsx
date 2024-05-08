@@ -54,10 +54,10 @@ const NewsSectionThree = ({ khelarNews, loading }) => {
                     {/* Image column */}
                     <div className="col-lg-4">
                       <LazyImageShortNews
-                        src={`https://ajkal.us/images/${data.title_img}`}
+                        src={`https://ajkal.us/img/news/${data.title_img}`}
                         alt={data.news_title}
                         className="rounded-1"
-                        errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                        errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
                         width="250px"
                         height="75px"
                       />
@@ -105,10 +105,10 @@ const NewsSectionThree = ({ khelarNews, loading }) => {
                     <div className="card-body p-0">
                       {/* Featured news image */}
                       <LazyImageShortNews
-                        src={`https://ajkal.us/images/${data.title_img}`}
+                        src={`https://ajkal.us/img/news/${data.title_img}`}
                         alt={data.news_title}
                         className="rounded-top-1 rounded-bottom-0"
-                        errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                        errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
                         width="auto"
                         height="385px"
                         style={{ objectFit: "cover" }}
@@ -143,7 +143,7 @@ const NewsSectionThree = ({ khelarNews, loading }) => {
                   alt={`https://ajkal.us/img/ad/${data.ad_banner}`}
                   onError={(e) => {
                     e.target.src =
-                      "https://ajkal.us/image/settings/placeholder.jpg";
+                      "https://ajkal.us/img/settings/placeholder.jpg";
                   }}
                 />
               </Link>

@@ -143,10 +143,10 @@ const InfiniteScrollComponent = ({ singleNews }) => {
                     <div className="col-sm-5">
                       <div>
                         <LazyImageShortNews
-                          src={`https://ajkal.us/images/${item.title_img}`}
+                          src={`https://ajkal.us/img/news/${item.title_img}`}
                           alt={item.news_title}
                           className="img-fluid w-100 rounded-0"
-                          errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                          errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
                           width="100%"
                           height="248px"
                           style={{ objectFit: "cover" }}

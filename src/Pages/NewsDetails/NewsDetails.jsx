@@ -9,14 +9,7 @@ import axios from "axios";
 import { IoMdArrowDropright } from "react-icons/io";
 import PostHeader from "../../Comps/PostHeader/PostHeader";
 import { FacebookEmbed, YouTubeEmbed } from "react-social-media-embed";
-import toast from "react-hot-toast";
-<<<<<<< HEAD
-import FacebookComments from "../../Comps/FacebookComments/FacebookComments";
-import LazyImageShortNews from "../../Comps/LazyImage/LazyImageShortNews";
-import VideoPlayer from "../../Comps/VideoPlayer/VideoPlayer";
-=======
 import NewsDetailsContent from "./NewsDetailsContent";
->>>>>>> e619897d37fb43f9fa43be9647797e35f6708a5c
 
 const NewsDetails = () => {
   const singleNews = useLoaderData();
@@ -70,9 +63,9 @@ const NewsDetails = () => {
       <PageHelmet
         title={singleNewsDetails?.news_title}
         type="article"
-        image={`https://ajkal.us/images/${singleNewsDetails?.title_img}`} // Replace with actual image URL
+        image={`https://ajkal.us/img/news/${singleNewsDetails?.title_img}`} // Replace with actual image URL
         url={window.location.href} // Replace with actual page URL
-        card={`https://ajkal.us/images/${singleNewsDetails?.title_img}`}
+        card={`https://ajkal.us/img/news/${singleNewsDetails?.title_img}`}
         description={singleNewsDetails?.news_detail} // Replace with appropriate description field from singleNewsDetails
       >
         {/* Additional Meta Tags */}
@@ -103,186 +96,11 @@ const NewsDetails = () => {
           </div>
         </div>
         <div className="row">
-<<<<<<< HEAD
-          <div className="col-lg-8 ps-0" id="printThis">
-            <h5 className="fw-bold py-4 mb-0" style={{ color: "#ee2026" }}>
-              {singleNewsDetails.category_name_bangla}
-            </h5>
-            <h1 className="main_color">{singleNewsDetails.news_title}</h1>
-            <div className="pt-3" style={{ fontSize: `${fontSize}px` }}>
-              <SanitizedParagraph
-                htmlContent={singleNewsDetails.news_short_brief}
-              />
-            </div>
-            <div className="mt-4">
-              {/* Condition to check if singleNewsDetails.video_url is empty */}
-              {singleNewsDetails.video_url ? (
-                <VideoPlayer
-                  videoUrl={singleNewsDetails.video_url}
-                  width="100%"
-                  style={{ borderRadius: "5px" }}
-                  height="500px"
-                />
-              ) : (
-                <LazyImageShortNews
-                  src={`https://ajkal.us/images/${singleNewsDetails.title_img}`}
-                  alt={singleNewsDetails.news_title}
-                  className="rounded-2 img-fluid w-100"
-                  errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
-                  style={{ objectFit: "cover" }}
-                />
-              )}
-              <p className="pt-2" style={{ fontSize: `${fontSize}px` }}>
-                {singleNewsDetails.news_title} | ফাইল ছবি
-              </p>
-              {/* Author */}
-              <div className="d-flex justify-content-between  align-items-center py-5">
-                <div className="news-author-box">
-                  <h4 className="main-color">
-                    {singleNewsDetails.news_author}
-                  </h4>
-                  <p>
-                    <BanglaTime
-                      time={singleNewsDetails.news_time.slice(10)}
-                    ></BanglaTime>
-                  </p>
-                </div>
-                <div>
-                  <div className="social-author">
-                    <SocialShareButtons
-                      title={singleNewsDetails.news_title}
-                      image={`https://ajkal.us/images/${singleNewsDetails.title_img}`}
-                      url={`https://ajkal.us/news/${singleNewsDetails.id}`}
-                      description={singleNewsDetails.news_detail}
-                      onIncreaseFontSize={increaseFontSize}
-                      onDecreaseFontSize={decreaseFontSize}
-                      onResetFontSize={resetFontSize}
-                    />
-                  </div>
-                </div>
-              </div>
-              {/* News Details */}
-              <div className="pb-4 py-3">
-                {addvertisement.map((data) =>
-                  // Check if data "ad_category_id" is equal to "2" and status is equal to "1"
-                  data.ad_category_id === "4" && data.status === "1" ? (
-                    <Link to={data.ad_link} key={data.id}>
-                      <LazyImageShortNews
-                        src={`https://ajkal.us/images/${data.title_img}`}
-                        alt={data.news_title}
-                        className="img-fluid"
-                        errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
-                        width="100%"
-                        height="auto"
-                        style={{ objectFit: "cover" }}
-                      />
-                    </Link>
-                  ) : null
-                )}
-              </div>
-
-              <div style={{ fontSize: `${fontSize}px` }}>
-                <SanitizedParagraph
-                  htmlContent={singleNewsDetails.news_detail}
-                ></SanitizedParagraph>
-              </div>
-            </div>
-            <div>
-              <div className="row py-4 px-3">
-                <div className="col-lg-12 pb-3 ps-0">
-                  <div className="d-flex align-items-center justify-content-between">
-                    <h5 className="secondary-color mb-0 ">
-                      সংবাদ টি শেয়ার করুন।
-                    </h5>
-                    <div className="social-share-buttons">
-                      <FacebookShareButton
-                        title={singleNewsDetails.news_title}
-                        type="article"
-                        image={`https://ajkal.us/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
-                        url={`https://ajkal.us/${singleNewsDetails.category_name_bangla}/${singleNewsDetails.id}`} // Replace with actual page URL
-                        card={`https://ajkal.us/images/${singleNewsDetails.title_img}`}
-                        description={singleNewsDetails.news_detail}
-                        increaseFontSize={increaseFontSize}
-                        decreaseFontSize={decreaseFontSize}
-                        resetFontSize={resetFontSize}
-                      >
-                        <FaFacebook />
-                      </FacebookShareButton>
-                      <TwitterShareButton
-                        title={singleNewsDetails.news_title}
-                        type="article"
-                        image={`https://ajkal.us/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
-                        url={`https://ajkal.us/${singleNewsDetails.category_name_bangla}/${singleNewsDetails.id}`} // Replace with actual page URL
-                        card={`https://ajkal.us/images/${singleNewsDetails.title_img}`}
-                        description={singleNewsDetails.news_detail}
-                        increaseFontSize={increaseFontSize}
-                        decreaseFontSize={decreaseFontSize}
-                        resetFontSize={resetFontSize}
-                      >
-                        <FaTwitter />
-                      </TwitterShareButton>
-                      <WhatsappShareButton
-                        title={singleNewsDetails.news_title}
-                        type="article"
-                        image={`https://ajkal.us/images/${singleNewsDetails.title_img}`} // Replace with actual image URL
-                        url={`https://ajkal.us/${singleNewsDetails.category_name_bangla}/${singleNewsDetails.id}`} // Replace with actual page URL
-                        card={`https://ajkal.us/images/${singleNewsDetails.title_img}`}
-                        description={singleNewsDetails.news_detail}
-                        increaseFontSize={increaseFontSize}
-                        decreaseFontSize={decreaseFontSize}
-                        resetFontSize={resetFontSize}
-                      >
-                        <FaWhatsapp />
-                      </WhatsappShareButton>
-                      <button
-                        type="button"
-                        title={`${singleNewsDetails.news_title}.লিঙ্ক কপি করুন `}
-                        className="react-share__ShareButton border-0"
-                        onClick={copyUrlToClipboard}
-                      >
-                        <FaCopy />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                {/* News Details Tags */}
-                <div className="col-lg-12 px-0">
-                  <div>
-                    {links.map((link, index) => (
-                      <Link
-                        to="#"
-                        className="pe-3 mb-2 d-inline-block"
-                        key={index}
-                      >
-                        <span
-                          tabIndex={0}
-                          className="v-chip v-chip--clickable theme--light v-size--default tags-button"
-                        >
-                          <span className="v-chip__content">
-                            <span>{link.label}</span>
-                          </span>
-                        </span>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-                {/* News Details Tags end*/}
-              </div>
-
-              <div>
-                <FacebookComments
-                  url={`https://ajkal.us/news/${singleNewsDetails.id}`}
-                />
-              </div>
-            </div>
-          </div>
-=======
           <NewsDetailsContent
             singleNewsDetails={singleNewsDetails}
             addvertisement={addvertisement}
             links={links}
           />
->>>>>>> e619897d37fb43f9fa43be9647797e35f6708a5c
           <div className="col-lg-4">
             <div>
               {/* News Sidebar */}
@@ -322,7 +140,7 @@ const NewsDetails = () => {
                         alt={`https://ajkal.us/img/ad/${data.ad_banner}`}
                         onError={(e) => {
                           e.target.src =
-                            "https://ajkal.us/image/settings/placeholder.jpg";
+                            "https://ajkal.us/img/settings/placeholder.jpg";
                         }}
                       />
                     </Link>

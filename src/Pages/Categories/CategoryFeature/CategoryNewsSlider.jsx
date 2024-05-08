@@ -24,10 +24,10 @@ const CategoryNewsSlider = () => {
                     <div className="card-body p-0 ">
                       <div>
                         <LazyImageShortNews
-                          src={`https://ajkal.us/images/${newsItem.title_img}`}
+                          src={`https://ajkal.us/img/news/${newsItem.title_img}`}
                           alt={newsItem.news_title}
                           className="img-fluid w-100 category-slider-img shadow-sm rounded-bottom-0 rounded-top-2"
-                          errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                          errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
                           width="100%"
                           height="auto"
                           style={{ objectFit: "cover" }}
@@ -55,11 +55,11 @@ const CategoryNewsSlider = () => {
               <div>
                 <img
                   className="img-fluid w-100 category-slider-img"
-                  src={`https://ajkal.us/image/settings/placeholder.jpg`}
-                  alt="https://ajkal.us/image/settings/placeholder.jpg"
+                  src={`https://ajkal.us/img/settings/placeholder.jpg`}
+                  alt="https://ajkal.us/img/settings/placeholder.jpg"
                   onError={(e) => {
                     e.target.src =
-                      "https://ajkal.us/image/settings/placeholder.jpg";
+                      "https://ajkal.us/img/settings/placeholder.jpg";
                   }}
                 />
               </div>

@@ -80,10 +80,10 @@ const FeatureNews = () => {
                   </div>
                   {/* Pass the image URL directly to the LazyImage component */}
                   <LazyImageNews
-                    src={`https://ajkal.us/images/${data.title_img}`}
+                    src={`https://ajkal.us/img/news/${data.title_img}`}
                     alt="Card Image"
                     className="card-img-top rounded-0 custom-class" // You can add additional classes if needed
-                    errorSrc="https://ajkal.us/image/settings/placeholder.jpg" // Pass the path of the error image
+                    errorSrc="https://ajkal.us/img/settings/placeholder.jpg" // Pass the path of the error image
                   />
                 </div>
               </Link>

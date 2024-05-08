@@ -67,7 +67,7 @@ export default function Banner() {
                   src={`https://ajkal.us/img/news/${slide.title_img}`}
                   alt={slide.news_title}
                   className="rounded-0 custom-class" // You can add additional classes if needed
-                  errorSrc="https://ajkal.us/image/settings/placeholder-banner.jpg" // Pass the path of the error image
+                  errorSrc="https://ajkal.us/img/settings/placeholder-banner.jpg" // Pass the path of the error image
                 />
                 <div className="overlay">
                   <Link

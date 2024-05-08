@@ -159,7 +159,7 @@ const UserAdvertisement = () => {
                                             alt={item.ad_banner}
                                             onError={(e) => {
                                               e.target.src =
-                                                "https://ajkal.us/image/settings/placeholder.jpg";
+                                                "https://ajkal.us/img/settings/placeholder.jpg";
                                             }}
                                           />
                                         </div>

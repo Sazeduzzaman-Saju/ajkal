@@ -14,7 +14,7 @@ const NoData = () => {
           alt="https://static.vecteezy.com/system/resources/thumbnails/007/872/974/small/file-not-found-illustration-with-confused-people-holding-big-magnifier-search-no-result-data-not-found-concept-can-be-used-for-website-landing-page-animation-etc-vector.jpg"
           onError={(e) => {
             e.target.src =
-              "https://ajkal.us/image/settings/placeholder.jpg";
+              "https://ajkal.us/img/settings/placeholder.jpg";
           }}
         />
         <p>No Data Available On This Category</p>

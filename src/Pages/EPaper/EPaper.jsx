@@ -122,7 +122,7 @@ function EPaper() {
                     src={`https://ajkal.us/img/epaper/${item.epaper_image}`}
                     alt={item.epaper_image}
                     className="img-fluid "
-                    errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                    errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
                     style={{ objectFit: "cover" }}
                   />
                 </div>
@@ -150,7 +150,7 @@ function EPaper() {
                     src={`https://ajkal.us/img/epaper/${item.epaper_image}`}
                     alt={item.epaper_image}
                     className="img-fluid "
-                    errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                    errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
                     style={{ objectFit: "cover" }}
                   />
                   <p className="text-center mb-0">{item.name}</p>

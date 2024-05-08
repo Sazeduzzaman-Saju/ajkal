@@ -74,12 +74,12 @@ const NewsDetailsContent = ({ singleNewsDetails, links, addvertisement }) => {
             ></iframe>
           ) : (
             <img
-              src={`https://ajkal.us/images/${singleNewsDetails?.title_img}`}
+              src={`https://ajkal.us/img/news/${singleNewsDetails?.title_img}`}
               className="rounded-2 img-fluid w-100"
               alt=""
               onError={(e) => {
                 e.target.src =
-                  "https://ajkal.us/image/settings/placeholder.jpg";
+                  "https://ajkal.us/img/settings/placeholder.jpg";
               }}
             />
           )}
@@ -100,7 +100,7 @@ const NewsDetailsContent = ({ singleNewsDetails, links, addvertisement }) => {
               <div className="social-author">
                 <SocialShareButtons
                   title={singleNewsDetails?.news_title}
-                  image={`https://ajkal.us/images/${singleNewsDetails?.title_img}`}
+                  image={`https://ajkal.us/img/news/${singleNewsDetails?.title_img}`}
                   url={`https://ajkal.us/news/${singleNewsDetails?.id}`}
                   description={singleNewsDetails?.news_detail}
                   increasefontsize={increaseFontSize}
@@ -118,10 +118,10 @@ const NewsDetailsContent = ({ singleNewsDetails, links, addvertisement }) => {
               data.ad_category_id === "4" && data.status === "1" ? (
                 <Link to={data.ad_link} key={data.id}>
                   <LazyImageShortNews
-                    src={`https://ajkal.us/images/${data.title_img}`}
+                    src={`https://ajkal.us/img/news/${data.title_img}`}
                     alt={data.news_title}
                     className="img-fluid"
-                    errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                    errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
                     width="100%"
                     height="auto"
                     style={{ objectFit: "cover" }}
@@ -146,9 +146,9 @@ const NewsDetailsContent = ({ singleNewsDetails, links, addvertisement }) => {
                   <FacebookShareButton
                     title={singleNewsDetails?.news_title}
                     type="article"
-                    image={`https://ajkal.us/images/${singleNewsDetails?.title_img}`} // Replace with actual image URL
+                    image={`https://ajkal.us/img/news/${singleNewsDetails?.title_img}`} // Replace with actual image URL
                     url={`https://ajkal.us/${singleNewsDetails?.category_name_bangla}/${singleNewsDetails?.id}`} // Replace with actual page URL
-                    card={`https://ajkal.us/images/${singleNewsDetails?.title_img}`}
+                    card={`https://ajkal.us/img/news/${singleNewsDetails?.title_img}`}
                     description={singleNewsDetails?.news_detail}
                     increasefontsize={increaseFontSize}
                     decreasefontsize={decreaseFontSize}
@@ -159,9 +159,9 @@ const NewsDetailsContent = ({ singleNewsDetails, links, addvertisement }) => {
                   <TwitterShareButton
                     title={singleNewsDetails?.news_title}
                     type="article"
-                    image={`https://ajkal.us/images/${singleNewsDetails?.title_img}`} // Replace with actual image URL
+                    image={`https://ajkal.us/img/news/${singleNewsDetails?.title_img}`} // Replace with actual image URL
                     url={`https://ajkal.us/${singleNewsDetails?.category_name_bangla}/${singleNewsDetails?.id}`} // Replace with actual page URL
-                    card={`https://ajkal.us/images/${singleNewsDetails?.title_img}`}
+                    card={`https://ajkal.us/img/news/${singleNewsDetails?.title_img}`}
                     description={singleNewsDetails?.news_detail}
                     increasefontsize={increaseFontSize}
                     decreasefontsize={decreaseFontSize}
@@ -172,9 +172,9 @@ const NewsDetailsContent = ({ singleNewsDetails, links, addvertisement }) => {
                   <WhatsappShareButton
                     title={singleNewsDetails?.news_title}
                     type="article"
-                    image={`https://ajkal.us/images/${singleNewsDetails?.title_img}`} // Replace with actual image URL
+                    image={`https://ajkal.us/img/news/${singleNewsDetails?.title_img}`} // Replace with actual image URL
                     url={`https://ajkal.us/${singleNewsDetails?.category_name_bangla}/${singleNewsDetails?.id}`} // Replace with actual page URL
-                    card={`https://ajkal.us/images/${singleNewsDetails?.title_img}`}
+                    card={`https://ajkal.us/img/news/${singleNewsDetails?.title_img}`}
                     description={singleNewsDetails?.news_detail}
                     increasefontsize={increaseFontSize}
                     decreasefontsize={decreaseFontSize}

@@ -47,10 +47,10 @@ const NewsSectionTwo = ({ binodon }) => {
               >
                 <div className="card border-0 shadow-sm mb-3">
                   <LazyImageNews
-                    src={`https://ajkal.us/images/${title_img}`}
+                    src={`https://ajkal.us/img/news/${title_img}`}
                     alt={news_title}
                     className="rounded-1"
-                    errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                    errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
                     style={{
                       width: "50px",
                       height: "50px",
@@ -101,7 +101,7 @@ const NewsSectionTwo = ({ binodon }) => {
                     alt={`https://ajkal.us/img/ad/${data.ad_banner}`}
                     onError={(e) => {
                       e.target.src =
-                        "https://ajkal.us/image/settings/placeholder.jpg";
+                        "https://ajkal.us/img/settings/placeholder.jpg";
                     }}
                   />
                 </Link>

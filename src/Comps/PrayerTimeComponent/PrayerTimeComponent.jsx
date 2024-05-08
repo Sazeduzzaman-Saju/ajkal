@@ -83,7 +83,7 @@ const PrayerTimeComponent = () => {
             src={`https://www.jugantor.com/web-assets/img/prayertimebg3.png`}
             alt="epaper link"
             className="img-fluid w-100 rounded-0"
-            errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+            errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
             width="100%"
             height="248px"
             style={{ objectFit: "cover" }}
@@ -145,7 +145,7 @@ const PrayerTimeComponent = () => {
                 src={`https://www.jugantor.com/web-assets/img/prayertimebg3.png`}
                 alt="epaper link"
                 className="img-fluid w-100 rounded-0"
-                errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
                 width="100%"
                 height="248px"
                 style={{ objectFit: "cover" }}

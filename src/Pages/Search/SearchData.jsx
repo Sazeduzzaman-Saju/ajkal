@@ -55,10 +55,10 @@ const SearchData = ({ archive }) => {
                       </div>
                       <div className="col-lg-4">
                         <LazyImageShortNews
-                          src={`https://ajkal.us/images/${data.title_img}`}
+                          src={`https://ajkal.us/img/news/${data.title_img}`}
                           alt={data.news_title}
                           className="img-fluid w-100 rounded"
-                          errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                          errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
                           style={{ objectFit: "cover" }}
                         />
                       </div>

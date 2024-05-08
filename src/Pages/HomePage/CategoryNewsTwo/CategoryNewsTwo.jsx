@@ -69,10 +69,10 @@ const CategoryNewsTwo = () => {
                     <div className="card-body p-0">
                       <div>
                         <LazyImageShortNews
-                          src={`https://ajkal.us/images/${news?.title_img}`}
+                          src={`https://ajkal.us/img/news/${news?.title_img}`}
                           alt={news?.news_title}
                           className="rounded-top-1 rounded-bottom-0"
-                          errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                          errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
                           width="100%"
                           height="200px"
                           style={{ objectFit: "cover" }}
