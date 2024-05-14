@@ -9,7 +9,7 @@ import RelatedNewsDetails from "./ReletedNewsDetails";
 const RelatedNews = ({ singleNewsDetails }) => {
   const [relatedNews, setRelatedNews] = useState([]);
   const urlData = `https://backoffice.ajkal.us/category-news/${singleNewsDetails}`;
-
+  console.log(singleNewsDetails, "singleNewsDetails");
   useEffect(() => {
     axios
       .get(urlData)

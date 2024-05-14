@@ -11,12 +11,27 @@
 }
 @media screen and (max-width: 575.98px) {
   .feature-cards {
-    margin: 0px 35px;
+    margin: 0px 0px;
     margin-bottom: 15px;
+    width: 100%;
+  }
+  .feature-cards h5 {
+    text-align: justify;
+    margin-bottom: 20px;
+  }
+  .feature-cards p {
+    text-align: justify;
+    margin-bottom: 30px;
   }
   .sorboshes-news-image {
     width: 390px !important;
     height: 100% !important;
     border-radius: 5px;
-}
+  }
+  .feature-top-section {
+    position: relative;
+    margin-top: -25px;
+    background-color: transparent;
+    z-index: 5;
+  }
 }

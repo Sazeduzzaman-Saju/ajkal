@@ -78,7 +78,7 @@ const NewsDetails = () => {
         <div className="row">
           <div className="col-lg-12 ps-0">
             <div
-              className="d-flex justify-content-between  align-items-center py-3"
+              className="d-flex justify-content-between  align-items-center py-3 breadcrumb-box"
               style={{ borderBottom: "1px solid var(--main)" }}
             >
               <h5 className="text-muted">

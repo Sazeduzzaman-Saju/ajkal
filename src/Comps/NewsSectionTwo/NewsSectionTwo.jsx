@@ -45,7 +45,7 @@ const NewsSectionTwo = ({ binodon }) => {
                 to={`/${category_name}/${id}`}
                 className="text-muted"
               >
-                <div className="card border-0 shadow-sm mb-3">
+                <div className="card border-0 shadow-sm mb-3 binodon-body">
                   <LazyImageNews
                     src={`https://ajkal.us/img/news/${title_img}`}
                     alt={news_title}
@@ -59,7 +59,7 @@ const NewsSectionTwo = ({ binodon }) => {
                       overflow: "hidden",
                     }}
                   />
-                  <div className="card-body" style={{ height: "9rem" }}>
+                  <div className="card-body">
                     <div
                       className="mb-0 main-color fw-bolder"
                       style={{ fontSize: "16px" }}

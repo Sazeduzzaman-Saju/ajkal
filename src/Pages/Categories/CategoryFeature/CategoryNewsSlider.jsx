@@ -35,7 +35,7 @@ const CategoryNewsSlider = () => {
                       </div>
                       <div
                         className="p-2 feature-text-area rounded-bottom-2 rounded-top-0"
-                        style={{ backgroundColor: "var(--main)" }}
+                        style={{ backgroundImage: 'linear-gradient(45deg, rgb(22, 85, 136) 0%, rgb(237, 30, 43) 51%, rgb(22, 85, 136) 100%)' }}
                       >
                         <h4 className="pt-1 mb-1 text-white">
                           {newsItem.news_title.slice(0, 50)}

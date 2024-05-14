@@ -71,7 +71,7 @@ export default function Banner() {
                 />
                 <div className="overlay">
                   <Link
-                    to={`/${slide.category_name_bangla}/${slide.id}`}
+                    to={`/${slide.category_name}/${slide.id}`}
                     className="text-white"
                   >
                     <div className="container">
@@ -86,7 +86,7 @@ export default function Banner() {
                             .join(" ")}
                         ></SanitizedParagraph>
                       </div>
-                      <div className="pt-2" style={{ fontSize: "16px", width: "50%" }}>
+                      <div className="pt-2 banner-description-full" style={{ fontSize: "16px", width: "50%" }}>
                         <SanitizedParagraph
                           htmlContent={slide.news_detail
                             .split(" ")

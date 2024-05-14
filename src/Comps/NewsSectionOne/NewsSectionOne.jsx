@@ -43,7 +43,7 @@ const NewsSectionOne = ({ saraBanglaNews }) => {
                     to={`/${data.category_name}/${data.id}`}
                     className="text-muted"
                   >
-                    <div className="card border-0 shadow-sm mb-3">
+                    <div className="card border-0 shadow-sm mb-3 sara-bangla-cat">
                       <div className="card-body p-0">
                         <div className="row gx-2 align-items-center">
                           <div className="col-lg-5">

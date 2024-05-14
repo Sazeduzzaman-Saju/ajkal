@@ -10,6 +10,9 @@ import { FaCopy, FaFacebook, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import FacebookComments from "../../Comps/FacebookComments/FacebookComments";
 import { useState } from "react";
+import toast from "react-hot-toast";
+import PropTypes from "prop-types";
+import LazyImageShortNews from "../../Comps/LazyImage/LazyImageShortNews";
 
 const NewsDetailsContent = ({ singleNewsDetails, links, addvertisement }) => {
   const [fontSize, setFontSize] = useState(16); // Initial font size
@@ -78,8 +81,7 @@ const NewsDetailsContent = ({ singleNewsDetails, links, addvertisement }) => {
               className="rounded-2 img-fluid w-100"
               alt=""
               onError={(e) => {
-                e.target.src =
-                  "https://ajkal.us/img/settings/placeholder.jpg";
+                e.target.src = "https://ajkal.us/img/settings/placeholder.jpg";
               }}
             />
           )}
@@ -87,7 +89,7 @@ const NewsDetailsContent = ({ singleNewsDetails, links, addvertisement }) => {
             {singleNewsDetails?.news_title} | ফাইল ছবি
           </p>
           {/* Author */}
-          <div className="d-flex justify-content-between  align-items-center py-5">
+          <div className="d-flex justify-content-between  align-items-center py-5 deatails-share">
             <div className="news-author-box">
               <h4 className="main-color">{singleNewsDetails?.news_author}</h4>
               <p>
@@ -103,9 +105,9 @@ const NewsDetailsContent = ({ singleNewsDetails, links, addvertisement }) => {
                   image={`https://ajkal.us/img/news/${singleNewsDetails?.title_img}`}
                   url={`https://ajkal.us/news/${singleNewsDetails?.id}`}
                   description={singleNewsDetails?.news_detail}
-                  increasefontsize={increaseFontSize}
-                  decreasefontsize={decreaseFontSize}
-                  resetfontsize={resetFontSize}
+                  increaseFontSize={increaseFontSize}
+                  decreaseFontSize={decreaseFontSize}
+                  resetFontSize={resetFontSize}
                   copyUrlToClipboard={copyUrlToClipboard}
                 />
               </div>
@@ -143,53 +145,46 @@ const NewsDetailsContent = ({ singleNewsDetails, links, addvertisement }) => {
               <div className="d-flex align-items-center justify-content-between">
                 <h5 className="secondary-color mb-0 ">সংবাদ টি শেয়ার করুন।</h5>
                 <div className="social-share-buttons">
-                  <FacebookShareButton
-                    title={singleNewsDetails?.news_title}
-                    type="article"
-                    image={`https://ajkal.us/img/news/${singleNewsDetails?.title_img}`} // Replace with actual image URL
-                    url={`https://ajkal.us/${singleNewsDetails?.category_name_bangla}/${singleNewsDetails?.id}`} // Replace with actual page URL
-                    card={`https://ajkal.us/img/news/${singleNewsDetails?.title_img}`}
-                    description={singleNewsDetails?.news_detail}
-                    increasefontsize={increaseFontSize}
-                    decreasefontsize={decreaseFontSize}
-                    resetfontsize={resetFontSize}
-                  >
-                    <FaFacebook />
-                  </FacebookShareButton>
-                  <TwitterShareButton
-                    title={singleNewsDetails?.news_title}
-                    type="article"
-                    image={`https://ajkal.us/img/news/${singleNewsDetails?.title_img}`} // Replace with actual image URL
-                    url={`https://ajkal.us/${singleNewsDetails?.category_name_bangla}/${singleNewsDetails?.id}`} // Replace with actual page URL
-                    card={`https://ajkal.us/img/news/${singleNewsDetails?.title_img}`}
-                    description={singleNewsDetails?.news_detail}
-                    increasefontsize={increaseFontSize}
-                    decreasefontsize={decreaseFontSize}
-                    resetfontsize={resetFontSize}
-                  >
-                    <FaTwitter />
-                  </TwitterShareButton>
-                  <WhatsappShareButton
-                    title={singleNewsDetails?.news_title}
-                    type="article"
-                    image={`https://ajkal.us/img/news/${singleNewsDetails?.title_img}`} // Replace with actual image URL
-                    url={`https://ajkal.us/${singleNewsDetails?.category_name_bangla}/${singleNewsDetails?.id}`} // Replace with actual page URL
-                    card={`https://ajkal.us/img/news/${singleNewsDetails?.title_img}`}
-                    description={singleNewsDetails?.news_detail}
-                    increasefontsize={increaseFontSize}
-                    decreasefontsize={decreaseFontSize}
-                    resetfontsize={resetFontSize}
-                  >
-                    <FaWhatsapp />
-                  </WhatsappShareButton>
-                  <button
-                    type="button"
-                    title={`${singleNewsDetails?.news_title}.লিঙ্ক কপি করুন `}
-                    className="react-share__ShareButton border-0"
-                    onClick={copyUrlToClipboard}
-                  >
-                    <FaCopy />
-                  </button>
+                  <div>
+                    <FacebookShareButton
+                      title={singleNewsDetails?.news_title}
+                      type="article"
+                      image={`https://ajkal.us/img/news/${singleNewsDetails?.title_img}`} // Replace with actual image URL
+                      url={`https://ajkal.us/${singleNewsDetails?.category_name_bangla}/${singleNewsDetails?.id}`} // Replace with actual page URL
+                      card={`https://ajkal.us/img/news/${singleNewsDetails?.title_img}`}
+                      description={singleNewsDetails?.news_detail}
+                    >
+                      <FaFacebook />
+                    </FacebookShareButton>
+                    <TwitterShareButton
+                      title={singleNewsDetails?.news_title}
+                      type="article"
+                      image={`https://ajkal.us/img/news/${singleNewsDetails?.title_img}`} // Replace with actual image URL
+                      url={`https://ajkal.us/${singleNewsDetails?.category_name_bangla}/${singleNewsDetails?.id}`} // Replace with actual page URL
+                      card={`https://ajkal.us/img/news/${singleNewsDetails?.title_img}`}
+                      description={singleNewsDetails?.news_detail}
+                    >
+                      <FaTwitter />
+                    </TwitterShareButton>
+                    <WhatsappShareButton
+                      title={singleNewsDetails?.news_title}
+                      type="article"
+                      image={`https://ajkal.us/img/news/${singleNewsDetails?.title_img}`} // Replace with actual image URL
+                      url={`https://ajkal.us/${singleNewsDetails?.category_name_bangla}/${singleNewsDetails?.id}`} // Replace with actual page URL
+                      card={`https://ajkal.us/img/news/${singleNewsDetails?.title_img}`}
+                      description={singleNewsDetails?.news_detail}
+                    >
+                      <FaWhatsapp />
+                    </WhatsappShareButton>
+                    <button
+                      type="button"
+                      title={`${singleNewsDetails?.news_title}.লিঙ্ক কপি করুন `}
+                      className="react-share__ShareButton border-0"
+                      onClick={copyUrlToClipboard}
+                    >
+                      <FaCopy />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -222,6 +217,13 @@ const NewsDetailsContent = ({ singleNewsDetails, links, addvertisement }) => {
       </div>
     </>
   );
+};
+NewsDetailsContent.propTypes = {
+  singleNewsDetails: PropTypes.shape({
+    // Include all the props of singleNewsDetails here
+    category_name_bangla: PropTypes.string.isRequired,
+    // Other props of singleNewsDetails
+  }).isRequired,
 };
 
 export default NewsDetailsContent;

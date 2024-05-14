@@ -4,7 +4,6 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import LazyImageShortNews from "../../../Comps/LazyImage/LazyImageShortNews";
 import { Link } from "react-router-dom";
 import SanitizedParagraph from "../../../Comps/SanitizedParagraph";
-import { Triangle } from "react-loader-spinner";
 import Skeleton from "react-loading-skeleton";
 
 const InfiniteScrollComponent = ({ singleNews }) => {
@@ -18,6 +17,7 @@ const InfiniteScrollComponent = ({ singleNews }) => {
   useEffect(() => {
     fetchData();
   }, [singleNews.data]);
+  
   const fetchData = async () => {
     setLoading(true);
     try {

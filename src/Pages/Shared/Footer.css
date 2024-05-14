@@ -65,7 +65,24 @@
     display: flex;
     justify-content: center;
   }
-  .main_author{
+  .main_author {
     text-align: center;
+  }
+  .footer-logo-box{
+    width: 100% !important;
+    background: rgb(255, 255, 255) !important;
+    padding: 8px 24px 11px 16px !important;
+    margin: -12px !important;
+}
+  }
+}
+
+@media screen and (max-width: 575.98px) {
+  .play-app-icons {
+    display: flex;
+  }
+  .border-devider {
+    position: relative;
+    left: 38%;
   }
 }

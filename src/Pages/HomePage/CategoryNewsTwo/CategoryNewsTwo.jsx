@@ -63,7 +63,7 @@ const CategoryNewsTwo = () => {
               <div className="col-lg-3" key={index}>
                 <Link to={`/${news.category_name}/${news.id}`}>
                   <div
-                    className="card border-0 shadow-sm mb-4"
+                    className="card border-0 shadow-sm mb-4 newyork-cat"
                     style={{ height: "21rem" }}
                   >
                     <div className="card-body p-0">

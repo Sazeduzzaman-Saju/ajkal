@@ -1,5 +1,35 @@
-.post-boxs-small{
-    width: 88px;
-    height: 55px !important;
-    border-radius: 6px;
+.post-boxs-small {
+  width: 88px;
+  height: 55px !important;
+  border-radius: 6px;
+}
+.khela-feature-box {
+  background: linear-gradient(45deg, var(--secondary), var(--main));
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.post-header-title {
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 575.98px) {
+  .post-header-title {
+    text-align: center;
+    padding-left: 0;
+  }
+  .khelar-news img {
+    width: 100% !important;
+    height: 200px !important;
+    padding-bottom: 10px;
+  }
+
+  .khelar-news span {
+    margin-left: 20px;
+  }
+  .binodon-body {
+    height: 7rem;
+  }
+  .binodon-body img {
+    height: 200px;
+  }
 }

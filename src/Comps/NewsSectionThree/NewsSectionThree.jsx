@@ -50,7 +50,7 @@ const NewsSectionThree = ({ khelarNews, loading }) => {
             >
               <div className="card border-0 shadow-sm mb-3">
                 <div className="card-body p-0">
-                  <div className="row align-items-center">
+                  <div className="row align-items-center khelar-news">
                     {/* Image column */}
                     <div className="col-lg-4">
                       <LazyImageShortNews
@@ -63,8 +63,8 @@ const NewsSectionThree = ({ khelarNews, loading }) => {
                       />
                     </div>
                     {/* Content column */}
-                    <div className="col-lg-8 ps-0">
-                      <h6 className="mb-0 main-color fw-bolder">
+                    <div className="col-lg-8 ps-1 ps-lg-0 pb-4 pb-lg-0 ">
+                      <h6 className="mb-0 main-color fw-bolder py-2 py-lg-0">
                         <SanitizedParagraph
                           htmlContent={data.news_title
                             .split(" ")
@@ -72,15 +72,15 @@ const NewsSectionThree = ({ khelarNews, loading }) => {
                             .join(" ")}
                         />
                       </h6>
-                      <span className="text-muted">
-                      <SanitizedParagraph
-                        className="mb-0 text-muted"
-                        htmlContent={data.news_short_brief
-                          .split(" ")
-                          .slice(1, 10)
-                          .join(" ")}
-                      />
-                      </span>
+                      <div className="ps-4">
+                        <SanitizedParagraph
+                          className="mb-0 text-muted"
+                          htmlContent={data.news_short_brief
+                            .split(" ")
+                            .slice(0, 10)
+                            .join(" ")}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -115,7 +115,7 @@ const NewsSectionThree = ({ khelarNews, loading }) => {
                       />
                       {/* Featured news title */}
                       <h5
-                        className="m-0 p-0 py-3 text-center text-white rounded-bottom-1"
+                        className="m-0 p-0 py-3 text-center text-white rounded-bottom-1 khela-feature-box"
                         style={{ backgroundColor: "var(--main)" }}
                       >
                         {data.news_title &&

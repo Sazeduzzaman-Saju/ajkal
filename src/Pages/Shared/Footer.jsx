@@ -50,7 +50,7 @@ const Footer = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12 ps-0">
-              <div
+              <div className="footer-logo-box"
                 style={{ width: "18%", background: "#fff", padding: "10px" }}
               >
                 <Link to="/">
@@ -81,33 +81,33 @@ const Footer = () => {
               <NewsCategory categories={categoriesData} />
               {/* Info */}
               <ul
-                className="text-white"
+                className="text-white text-center "
                 style={{ listStyle: "none", paddingLeft: "0" }}
               >
                 <div className="row">
-                  <div className="col-lg-3 d-flex">
-                    <li className="nav-item pe-4">
+                  <div className="col-lg-3 col-6 mt-3 text-center d-flex">
+                    <li className="nav-item pe-lg-4 pe-2">
                       <Link className="nav-link footer-links" to="/contact">
                         যোগাযোগ করুন
                       </Link>
                     </li>
                   </div>
-                  <div className="col-lg-3">
-                    <li className="nav-item pe-4">
+                  <div className="col-lg-3  mt-3 text-center text-lg-start col-6">
+                    <li className="nav-item pe-lg-4 pe-2">
                       <Link className="nav-link footer-links" to="/about">
                         আমাদের সম্পর্কে
                       </Link>
                     </li>
                   </div>
-                  <div className="col-lg-3">
-                    <li className="nav-item pe-4">
+                  <div className="col-lg-3 mt-3 text-center text-lg-start col-6">
+                    <li className="nav-item pe-lg-4 pe-2">
                       <Link className="nav-link footer-links" to="/terms">
                         শর্তাবলী
                       </Link>
                     </li>
                   </div>
-                  <div className="col-lg-3">
-                    <li className="nav-item pe-4">
+                  <div className="col-lg-3 mt-3 text-center text-lg-start col-6">
+                    <li className="nav-item pe-lg-4 pe-2">
                       <Link className="nav-link footer-links" to="/policy">
                         গোপনীয়তা নীতি
                       </Link>
@@ -118,11 +118,11 @@ const Footer = () => {
             </div>
             <div className="col-lg-2">
               <div className="pt-1">
-                <h4 className="ps-0 text-white pt-1">ডাউনলোড করুন।</h4>
+                <h4 className="ps-0 text-white pt-1 text-lg-start text-center">ডাউনলোড করুন।</h4>
                 <span className="border-devider"></span>
               </div>
-              <div>
-                <div className="pb-3">
+              <div className="">
+                <div className="pb-3 play-app-icons">
                   <Link to={"/"}>
                     <img
                       className="mb-1"
@@ -144,7 +144,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="row align-items-center">
-            <div className="col-lg-10 ps-0">
+            <div className="col-lg-10 ps-0 col-12 text-lg-start text-center">
               <div>
                 <div>
                   <p className="fs-3 text-white mb-0">
@@ -164,7 +164,7 @@ const Footer = () => {
                     ইমেইল: <span>ajkalnews@gmail.com</span> সম্পাদক ইমেইল:
                     <span>editor@ajkalusa.com</span>
                   </p>
-                  <p className="text-white text-start mb-0 pt-0">
+                  <p className="text-white text-lg-start text-center mb-0 pt-0">
                     কপিরাইট © ২০২৪ সাপ্তাহিক আজকাল কর্তৃক সর্বসত্ব ® সংরক্ষিত
                   </p>
                 </div>
@@ -181,13 +181,13 @@ const Footer = () => {
                 >
                   <FaFacebookF />
                 </Link>
-                <Link to={'/'}>
+                <Link to={"/"}>
                   <FaTwitter />
                 </Link>
-                <Link to={'/'}>
+                <Link to={"/"}>
                   <FaYoutube />
                 </Link>
-                <Link to={'/'}>
+                <Link to={"/"}>
                   <AiFillInstagram />
                 </Link>
               </div>
@@ -208,8 +208,18 @@ const Footer = () => {
                     এই ওয়েবসাইটের কোনো লেখা, ছবি, অডিও, ভিডিও অনুমতি ছাড়া
                     ব্যবহার বেআইনি।
                   </p>
-                  <p className="text-white text-end mb-0">
+                  <p className="text-white text-end mb-0 d-lg-block d-none">
                     Developed With Loved By
+                    <Link
+                      className="ps-2"
+                      style={{ color: "orange" }}
+                      to={"https://galaxymediaus.com/"}
+                      target="_blank"
+                    >
+                      Galaxy Media
+                    </Link>
+                  </p>
+                  <p className="text-white text-end mb-0 d-lg-none d-block">
                     <Link
                       className="ps-2"
                       style={{ color: "orange" }}

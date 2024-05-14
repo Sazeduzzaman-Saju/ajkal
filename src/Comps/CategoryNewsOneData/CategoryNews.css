@@ -1,0 +1,16 @@
+@media screen and (max-width: 575.98px) {
+  .ctnone_regular-news {
+    height: 250px !important;
+  }
+  .ctnone_regular-news img {
+    width: 100% !important;
+    height: 200px !important;
+    padding-bottom: 10px;
+  }
+  .ctnone_regular-news div span {
+    padding-left: 10px;
+  }
+  .ctnone_regular-news div span p {
+    padding-left: 10px;
+  }
+}

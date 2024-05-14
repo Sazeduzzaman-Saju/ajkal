@@ -1,22 +1,47 @@
 .social-share-buttons button {
   background-color: var(--main) !important;
   margin-right: 5px;
-  padding: 0px 10px 5px !important;
-  margin-left: 6px;
+  padding: 5px 0px 34px !important;
+  margin-left: 0px;
   border-radius: 50%;
-  height: 40px;
+  height: 30px;
+  width: 40px;
   color: white !important;
-  font-size: 21px !important;
+  font-size: 18px !important;
+}
+@media screen and (max-width: 575.98px) {
+  .social-share-buttons button {
+    background-color: var(--main) !important;
+    margin-right: 3px;
+    padding: 0px 7px 5px !important;
+    margin-left: 1px;
+    border-radius: 50%;
+    height: 30px;
+    color: white !important;
+    font-size: 16px !important;
+  }
+  .social-share-buttons {
+    width: 75%;
+    margin-left: 5px;
+  }
+  .play-app-icons {
+    text-align: center;
+  }
+  .border-devider {
+    margin: auto;
+    margin-bottom: 15px !important;
+  }
 }
 .social-share-buttons button:hover {
   background-color: var(--secondary) !important;
   margin-right: 5px;
-  padding: 0px 10px 5px !important;
-  margin-left: 6px;
+  padding: 5px 0px 34px !important;
+  margin-left: 0px;
   border-radius: 50%;
-  height: 40px;
+  height: 30px;
+  width: 40px;
   color: white !important;
-  font-size: 21px !important;
+  font-size: 18px !important;
 }
 .share-btn {
   background-color: var(--white) !important;
@@ -28,7 +53,7 @@
   color: white !important;
   font-size: 21px !important;
   border: 0;
- box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 0px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 0px;
 }
 .share-btn:hover {
   background-color: var(--main) !important;
@@ -40,5 +65,5 @@
   color: white !important;
   font-size: 21px !important;
   border: 0;
- box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 0px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 0px;
 }

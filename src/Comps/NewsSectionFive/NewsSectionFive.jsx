@@ -5,8 +5,9 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import LazyImageShortNews from "../LazyImage/LazyImageShortNews";
 import SanitizedParagraph from "../SanitizedParagraph";
+import "./NewsSectionFive.css";
 
-const NewsSectionFive = ({ ScienceData, loading}) => {
+const NewsSectionFive = ({ ScienceData, loading }) => {
   // State for storing sliced news data
   const [slicedNews, setSlicedNews] = useState([]);
   const [slicedNewsAll, setSlicedNewsAll] = useState([]);
@@ -72,8 +73,7 @@ const NewsSectionFive = ({ ScienceData, loading}) => {
                           style={{ objectFit: "cover" }}
                         />
                         <h5
-                          className="m-0 p-0 py-3 text-center text-white rounded-bottom-2"
-                          style={{ backgroundColor: "var(--main)" }}
+                          className="m-0 p-0 py-3 text-center text-white rounded-bottom-2 science-feature"
                         >
                           <SanitizedParagraph
                             htmlContent={newsItem.news_title
@@ -104,10 +104,10 @@ const NewsSectionFive = ({ ScienceData, loading}) => {
                 key={data.id}
               >
                 <div className="d-flex align-items-center mb-3">
-                  <div className="card border-0 shadow-sm">
+                  <div className="card border-0 shadow-sm science-cat">
                     <div className="card-body p-0">
                       <div className="row align-items-center ">
-                        <div className="col-lg-4">
+                        <div className="col-lg-4 science-cat-image">
                           <LazyImageShortNews
                             src={`https://ajkal.us/img/news/${data.title_img}`}
                             alt={data.news_title}

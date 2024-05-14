@@ -110,21 +110,21 @@ const RelatedNewsDetails = ({ newsItem, links }) => {
               height="500px"
             />
           ) : (
-            <img
+            <LazyImageShortNews
               src={`https://ajkal.us/img/news/${newsItem.title_img}`}
-              className="rounded-2 img-fluid w-100"
               alt={newsItem.news_title}
-              onError={(e) => {
-                e.target.src =
-                  "https://ajkal.us/img/settings/placeholder.jpg";
-              }}
+              className="rounded-2 img-fluid w-100"
+              errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
+              width="100%"
+              height="auto"
+              style={{ objectFit: "cover" }}
             />
           )}
           <p className="pt-2" style={{ fontSize: `${fontSize}px` }}>
             {newsItem.news_title} | ফাইল ছবি
           </p>
           {/* Author */}
-          <div className="d-flex justify-content-between align-items-center py-5">
+          <div className="d-flex justify-content-between align-items-center py-5 news-details-des">
             <div className="news-author-box">
               <h4 className="main-color">{newsItem.news_author}</h4>
               <p>
@@ -138,9 +138,9 @@ const RelatedNewsDetails = ({ newsItem, links }) => {
                   image={`https://ajkal.us/img/news/${newsItem.title_img}`}
                   url={`https://ajkal.us/news/${newsItem.id}`}
                   description={newsItem.news_detail}
-                  onIncreaseFontSize={increaseFontSize}
-                  onDecreaseFontSize={decreaseFontSize}
-                  onResetFontSize={resetFontSize}
+                  increaseFontSize={increaseFontSize}
+                  decreaseFontSize={decreaseFontSize}
+                  resetFontSize={resetFontSize}
                 />
               </div>
             </div>
@@ -164,9 +164,6 @@ const RelatedNewsDetails = ({ newsItem, links }) => {
                   url={`https://ajkal.us/${newsItem.category_name_bangla}/${newsItem.id}`} // Replace with actual page URL
                   card={`https://ajkal.us/img/news/${newsItem.title_img}`}
                   description={newsItem.news_detail}
-                  increasefontsize={increaseFontSize}
-                  decreasefontsize={decreaseFontSize}
-                  resetfontsize={resetFontSize}
                 >
                   <FaFacebook />
                 </FacebookShareButton>
@@ -177,9 +174,6 @@ const RelatedNewsDetails = ({ newsItem, links }) => {
                   url={`https://ajkal.us/${newsItem.category_name_bangla}/${newsItem.id}`} // Replace with actual page URL
                   card={`https://ajkal.us/img/news/${newsItem.title_img}`}
                   description={newsItem.news_detail}
-                  increasefontsize={increaseFontSize}
-                  decreasefontsize={decreaseFontSize}
-                  resetfontsize={resetFontSize}
                 >
                   <FaTwitter />
                 </TwitterShareButton>
@@ -190,9 +184,6 @@ const RelatedNewsDetails = ({ newsItem, links }) => {
                   url={`https://ajkal.us/${newsItem.category_name_bangla}/${newsItem.id}`} // Replace with actual page URL
                   card={`https://ajkal.us/img/news/${newsItem.title_img}`}
                   description={newsItem.news_detail}
-                  increasefontsize={increaseFontSize}
-                  decreasefontsize={decreaseFontSize}
-                  resetfontsize={resetFontSize}
                 >
                   <FaWhatsapp />
                 </WhatsappShareButton>

@@ -177,13 +177,13 @@ const VideoNews = () => {
                 <div className="d-flex align-items-center mb-3">
                   <div className="card border-0 shadow-sm ">
                     <div className="card-body p-0">
-                      <div className="row gx-3 align-items-center ">
+                      <div className="row gx-3 align-items-center video-cat">
                         <div className="col-lg-4">
                           <div>
                             <div className="video-side">
                               <MdPlayCircleFilled />
                             </div>
-                            <div className="rounded-1">
+                            <div className="rounded-1 vide-sidebar-cat">
                               <LazyImageShortNews
                                 src={`https://ajkal.us/img/news/${data?.title_img}`}
                                 alt={data?.news_title}

@@ -72,7 +72,7 @@ const NewsSectionThree = ({ dhormo, loading }) => {
                           style={{ objectFit: "cover" }}
                         />
                         <h5
-                          className="m-0 p-0 py-3 text-center text-white"
+                          className="m-0 p-0 py-3 text-center text-white dhormo-feature"
                           style={{ backgroundColor: "var(--main)" }}
                         >
                           {newsItem.news_title}
@@ -101,7 +101,7 @@ const NewsSectionThree = ({ dhormo, loading }) => {
                 <div className="d-flex align-items-center mb-3">
                   <div className="card shadow-sm border-0">
                     <div className="carb-body p-0">
-                      <div className="row align-items-center ">
+                      <div className="row align-items-center dhormo-cat">
                         <div className="col-lg-4">
                           <LazyImageShortNews
                             src={`https://ajkal.us/img/news/${data.title_img}`}

@@ -8,3 +8,12 @@
     border-left: 2px solid #165588;
     padding: 15px 0px 0 20px;
 }
+@media screen and (max-width: 575.98px) {
+    .newyork-cat img{
+        width: 100% !important;
+        height: 250px !important;
+    }
+    .newyork-cat{
+        height: 24rem !important;
+    }
+}

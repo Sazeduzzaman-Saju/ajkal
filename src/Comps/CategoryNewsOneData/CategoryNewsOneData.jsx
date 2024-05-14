@@ -4,6 +4,8 @@ import Skeleton from "react-loading-skeleton";
 import { Link } from "react-router-dom";
 import LazyImageShortNews from "../LazyImage/LazyImageShortNews";
 import SanitizedParagraph from "../SanitizedParagraph";
+import "./CategoryNews.css";
+
 
 const CategoryNewsOneData = () => {
   const [rajniti, setRajniti] = useState([]);
