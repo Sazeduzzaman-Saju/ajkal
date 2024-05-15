@@ -151,7 +151,7 @@ const NewsDetails = () => {
         </div>
         <div className="pt-5">
           <ReletedNews
-            singleNewsDetails={singleNewsDetails?.category_id}
+            categoryId={singleNewsDetails?.category_id}
             links={links}
           ></ReletedNews>
         </div>

@@ -76,13 +76,14 @@ const NewsDetailsContent = ({ singleNewsDetails, links, addvertisement }) => {
               allowFullScreen
             ></iframe>
           ) : (
-            <img
+            <LazyImageShortNews
               src={`https://ajkal.us/img/news/${singleNewsDetails?.title_img}`}
+              alt={singleNewsDetails.news_title}
               className="rounded-2 img-fluid w-100"
-              alt=""
-              onError={(e) => {
-                e.target.src = "https://ajkal.us/img/settings/placeholder.jpg";
-              }}
+              errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
+              width="100%"
+              height="auto"
+              style={{ objectFit: "cover" }}
             />
           )}
           <p className="pt-2" style={{ fontSize: `${fontSize}px` }}>

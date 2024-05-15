@@ -74,24 +74,7 @@ const Login = () => {
                     সাপ্তাহিক আজকালে আপনাকে স্বাগতম।
                   </p>
                 </div>
-                {/* <div className="row py-2">
-                  <div className="col-lg-6 offset-lg-3 mx-auto">
-                    <div className="d-flex pb-2">
-                      <div className="pe-2">
-                        <Link to={"/"} className="submit-btn-one w-100">
-                          <FaFacebookF /> ফেসবুক
-                        </Link>
-                      </div>
-                      <div>
-                        <Link to={"/"} className="submit-btn-one w-100">
-                          <FaGoogle /> গুগোল
-                        </Link>
-                      </div>
-                    </div>
-                    <p className="text-center bg-light devider-text">Or</p>
-                    <p className="devider"></p>
-                  </div>
-                </div> */}
+                {/* <SocialLogin/> */}
                 <div className="row mt-5">
                   <div className="col-lg-10 offset-1 mx-auto">
                     {/* Form Start */}

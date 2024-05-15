@@ -120,3 +120,124 @@ const RelatedNews = ({ singleNewsDetails }) => {
 };
 
 export default RelatedNews;
+
+
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+import Skeleton from "react-loading-skeleton";
+import RelatedNewsDetails from "./ReletedNewsDetails";
+
+const RelatedNews = ({ singleNewsDetails }) => {
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+
+  const [loadedItemsCount, setLoadedItemsCount] = useState(0);
+  const [loadingMore, setLoadingMore] = useState(false);
+
+  useEffect(() => {
+    fetchData();
+  }, [singleNewsDetails]);
+
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      const apiUrl = `https://backoffice.ajkal.us/category-news/${singleNewsDetails.category_id}`;
+      const response = await axios.get(apiUrl);
+      console.log("Fetched data:", response.data); // Log fetched data
+      if (Array.isArray(response.data)) {
+        setItems(response.data.slice(0, 5));
+        setHasMore(response.data.length > 5);
+      } else if (Array.isArray(response.data.data)) {
+        setItems(response.data.data.slice(0, 5));
+        setHasMore(response.data.data.length > 5);
+      } else {
+        console.error("Invalid data structure in API response:", response.data);
+        setHasMore(false);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setHasMore(false);
+    }
+    setLoading(false);
+  };
+
+  const fetchMoreData = async () => {
+    if (!hasMore || loadingMore) return;
+  
+    setLoadingMore(true);
+  
+    try {
+      const apiUrl = `https://backoffice.ajkal.us/category-news/${singleNewsDetails.category_id}?page=${page}`;
+      const response = await axios.get(apiUrl);
+  
+      if (Array.isArray(response.data) || Array.isArray(response.data.data)) {
+        const responseData = Array.isArray(response.data) ? response.data : response.data.data;
+  
+        if (responseData.length > 0) {
+          const uniqueNextItems = responseData
+            .filter((item) => !items.some((existingItem) => existingItem.id === item.id))
+            .slice(0, 5);
+  
+          setLoadedItemsCount((prevCount) => prevCount + uniqueNextItems.length);
+          setItems((prevItems) => [...prevItems, ...uniqueNextItems]);
+          setHasMore(loadedItemsCount + uniqueNextItems.length < 500);
+        } else {
+          // No more data available
+          setHasMore(false);
+        }
+      } else {
+        console.error("Invalid data structure in API response:", response.data);
+        setHasMore(false);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setHasMore(false);
+    }
+  
+    setLoadingMore(false);
+  };
+
+  return (
+    <div>
+      <h3 className="mb-0 p-3 ps-0 secondary-color ">ক্যাটেগরি নিউজ</h3>
+      <hr className=" mt-0" />
+      <InfiniteScroll
+        dataLength={items.length}
+        next={fetchMoreData}
+        hasMore={hasMore}
+        loader={""}
+        endMessage={
+          <p style={{ textAlign: "center" }}>
+            <b>Yay! You have seen it all</b>
+          </p>
+        }
+      >
+        {loading
+          ? // Skeleton loader for news items
+            Array.from({ length: items.length }, (_, index) => (
+              <div key={index} style={{ height: "auto", overflow: "hidden" }}>
+                <div className="card border-0 shadow-sm mb-3">
+                  <Skeleton height={200} />
+                  <div className="card-footer news-info-box">
+                    <div className="news-hover-box">
+                      <Skeleton width={100} />
+                      <Skeleton width={200} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))
+          : // Render actual news items when not loading
+            items.map((item, index) => (
+              <div key={index} style={{ height: "auto", overflow: "hidden" }}>
+               <RelatedNewsDetails></RelatedNewsDetails>
+              </div>
+            ))}
+      </InfiniteScroll>
+    </div>
+  );
+};
+
+export default RelatedNews;

@@ -93,7 +93,7 @@ const RelatedNewsDetails = ({ newsItem, links }) => {
   return (
     <>
       {/* Main Releted News Start */}
-      <div className="col-lg-8 ps-0" id="printThis">
+      <div className="col-lg-8" id="printThis" style={{ height: "auto", overflow: "hidden" }}>
         <h5 className="fw-bold py-4 mb-0" style={{ color: "#ee2026" }}>
           {newsItem.category_name_bangla}
         </h5>
