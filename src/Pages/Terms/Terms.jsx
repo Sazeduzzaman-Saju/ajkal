@@ -150,7 +150,9 @@ const Terms = () => {
               </p>
 
               <h3>
-                <strong className="policy-text">Hyperlinking to our Content</strong>
+                <strong className="policy-text">
+                  Hyperlinking to our Content
+                </strong>
               </h3>
 
               <p>
@@ -287,7 +289,9 @@ const Terms = () => {
               </p>
 
               <h3>
-                <strong className="policy-text">Removal of links from our website</strong>
+                <strong className="policy-text">
+                  Removal of links from our website
+                </strong>
               </h3>
 
               <p>
@@ -438,7 +442,10 @@ const Terms = () => {
                 নানা প্রতিযোগিতা, অন্যদিকে তেমনি আছে সম্মাননা ও পুরস্কার।
                 <br />
                 <br />
-                <strong className="policy-text">তৃতীয় পক্ষের বিজ্ঞাপন ও লিংক</strong> <br />
+                <strong className="policy-text">
+                  তৃতীয় পক্ষের বিজ্ঞাপন ও লিংক
+                </strong>{" "}
+                <br />
                 সাপ্তাহিক আজকাল এর ওয়েবসাইট ও অ্যাপে তৃতীয় পক্ষের পণ্য ও সেবার
                 বিজ্ঞাপন প্রদর্শনের অনুমতি দেওয়া হতে পারে। এই তৃতীয় পক্ষের
                 ওয়েবসাইটগুলোর গোপনীয়তার নীতি পৃথক হতে পারে। তবে এটি করা বা না
@@ -465,7 +472,10 @@ const Terms = () => {
                 নেটওয়ার্ক কাস্টমাইজ করে নিতে পারেন।
                 <br />
                 <br />
-                <strong className="policy-text">সাপ্তাহিক আজকাল এর যোগাযোগ</strong> <br />
+                <strong className="policy-text">
+                  সাপ্তাহিক আজকাল এর যোগাযোগ
+                </strong>{" "}
+                <br />
                 সময়ে সময়ে সাপ্তাহিক আজকাল এর ব্যবহারকারীদের সঙ্গে ইমেইল, ফোন বা
                 এসএমএসের মাধ্যমে যোগাযোগ করতে পারে। মূলত, বিভিন্ন অনুষ্ঠানে
                 যোগদানের আমন্ত্রণ, তথ্য সংগ্রহ এবং জরিপের জন্য সাপ্তাহিক আজকাল

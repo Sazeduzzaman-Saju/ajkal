@@ -15,10 +15,10 @@ const PostHeader = ({ title }) => {
         <img
           className="pe-2"
           width={40}
-          src="https://ajkal.us/image/settings/Asset-2.png"
-          alt=""
+          src="https://ajkal.us/img/settings/Asset-2.png"
+          alt="https://ajkal.us/img/settings/Asset-2.png"
           onError={(e) => {
-            e.target.src = "https://ajkal.us/image/settings/placeholder.jpg";
+            e.target.src = "https://ajkal.us/img/settings/placeholder.jpg";
           }}
         />
         {title}

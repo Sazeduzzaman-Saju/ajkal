@@ -63,16 +63,16 @@ const NewsSectionThree = ({ dhormo, loading }) => {
                     <div className="card border-0">
                       <div className="card-body p-0">
                         <LazyImageShortNews
-                          src={`https://ajkal.us/images/${newsItem.title_img}`}
+                          src={`https://ajkal.us/img/news/${newsItem.title_img}`}
                           alt={newsItem.news_title}
                           className="rounded-top-1 rounded-bottom-0"
-                          errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                          errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
                           width="auto"
                           height="370px"
                           style={{ objectFit: "cover" }}
                         />
                         <h5
-                          className="m-0 p-0 py-3 text-center text-white"
+                          className="m-0 p-0 py-3 text-center text-white dhormo-feature"
                           style={{ backgroundColor: "var(--main)" }}
                         >
                           {newsItem.news_title}
@@ -101,13 +101,13 @@ const NewsSectionThree = ({ dhormo, loading }) => {
                 <div className="d-flex align-items-center mb-3">
                   <div className="card shadow-sm border-0">
                     <div className="carb-body p-0">
-                      <div className="row align-items-center ">
+                      <div className="row align-items-center dhormo-cat">
                         <div className="col-lg-4">
                           <LazyImageShortNews
-                            src={`https://ajkal.us/images/${data.title_img}`}
+                            src={`https://ajkal.us/img/news/${data.title_img}`}
                             alt={data.news_title}
                             className="rounded-2 img-fluid "
-                            errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                            errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
                             width="200px"
                             height="95px"
                             style={{ objectFit: "cover" }}
@@ -157,7 +157,7 @@ const NewsSectionThree = ({ dhormo, loading }) => {
                     alt={`https://ajkal.us/img/ad/${data.ad_banner}`}
                     onError={(e) => {
                       e.target.src =
-                        "https://ajkal.us/image/settings/placeholder.jpg";
+                        "https://ajkal.us/img/settings/placeholder.jpg";
                     }}
                   />
                 </Link>

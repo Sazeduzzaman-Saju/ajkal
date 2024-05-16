@@ -50,21 +50,21 @@ const NewsSectionThree = ({ khelarNews, loading }) => {
             >
               <div className="card border-0 shadow-sm mb-3">
                 <div className="card-body p-0">
-                  <div className="row align-items-center">
+                  <div className="row align-items-center khelar-news">
                     {/* Image column */}
                     <div className="col-lg-4">
                       <LazyImageShortNews
-                        src={`https://ajkal.us/images/${data.title_img}`}
+                        src={`https://ajkal.us/img/news/${data.title_img}`}
                         alt={data.news_title}
                         className="rounded-1"
-                        errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                        errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
                         width="250px"
                         height="75px"
                       />
                     </div>
                     {/* Content column */}
-                    <div className="col-lg-8 ps-0">
-                      <h6 className="mb-0 main-color fw-bolder">
+                    <div className="col-lg-8 ps-1 ps-lg-0 pb-4 pb-lg-0 ">
+                      <h6 className="mb-0 main-color fw-bolder py-2 py-lg-0">
                         <SanitizedParagraph
                           htmlContent={data.news_title
                             .split(" ")
@@ -72,15 +72,15 @@ const NewsSectionThree = ({ khelarNews, loading }) => {
                             .join(" ")}
                         />
                       </h6>
-                      <span className="text-muted">
-                      <SanitizedParagraph
-                        className="mb-0 text-muted"
-                        htmlContent={data.news_short_brief
-                          .split(" ")
-                          .slice(1, 10)
-                          .join(" ")}
-                      />
-                      </span>
+                      <div className="ps-4">
+                        <SanitizedParagraph
+                          className="mb-0 text-muted"
+                          htmlContent={data.news_short_brief
+                            .split(" ")
+                            .slice(0, 10)
+                            .join(" ")}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -105,17 +105,17 @@ const NewsSectionThree = ({ khelarNews, loading }) => {
                     <div className="card-body p-0">
                       {/* Featured news image */}
                       <LazyImageShortNews
-                        src={`https://ajkal.us/images/${data.title_img}`}
+                        src={`https://ajkal.us/img/news/${data.title_img}`}
                         alt={data.news_title}
                         className="rounded-top-1 rounded-bottom-0"
-                        errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                        errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
                         width="auto"
                         height="385px"
                         style={{ objectFit: "cover" }}
                       />
                       {/* Featured news title */}
                       <h5
-                        className="m-0 p-0 py-3 text-center text-white rounded-bottom-1"
+                        className="m-0 p-0 py-3 text-center text-white rounded-bottom-1 khela-feature-box"
                         style={{ backgroundColor: "var(--main)" }}
                       >
                         {data.news_title &&
@@ -143,7 +143,7 @@ const NewsSectionThree = ({ khelarNews, loading }) => {
                   alt={`https://ajkal.us/img/ad/${data.ad_banner}`}
                   onError={(e) => {
                     e.target.src =
-                      "https://ajkal.us/image/settings/placeholder.jpg";
+                      "https://ajkal.us/img/settings/placeholder.jpg";
                   }}
                 />
               </Link>

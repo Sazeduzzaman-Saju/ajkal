@@ -9,7 +9,6 @@ import axios from "axios";
 import { IoMdArrowDropright } from "react-icons/io";
 import PostHeader from "../../Comps/PostHeader/PostHeader";
 import { FacebookEmbed, YouTubeEmbed } from "react-social-media-embed";
-import toast from "react-hot-toast";
 import NewsDetailsContent from "./NewsDetailsContent";
 
 const NewsDetails = () => {
@@ -64,9 +63,9 @@ const NewsDetails = () => {
       <PageHelmet
         title={singleNewsDetails?.news_title}
         type="article"
-        image={`https://ajkal.us/images/${singleNewsDetails?.title_img}`} // Replace with actual image URL
+        image={`https://ajkal.us/img/news/${singleNewsDetails?.title_img}`} // Replace with actual image URL
         url={window.location.href} // Replace with actual page URL
-        card={`https://ajkal.us/images/${singleNewsDetails?.title_img}`}
+        card={`https://ajkal.us/img/news/${singleNewsDetails?.title_img}`}
         description={singleNewsDetails?.news_detail} // Replace with appropriate description field from singleNewsDetails
       >
         {/* Additional Meta Tags */}
@@ -79,7 +78,7 @@ const NewsDetails = () => {
         <div className="row">
           <div className="col-lg-12 ps-0">
             <div
-              className="d-flex justify-content-between  align-items-center py-3"
+              className="d-flex justify-content-between  align-items-center py-3 breadcrumb-box"
               style={{ borderBottom: "1px solid var(--main)" }}
             >
               <h5 className="text-muted">
@@ -141,7 +140,7 @@ const NewsDetails = () => {
                         alt={`https://ajkal.us/img/ad/${data.ad_banner}`}
                         onError={(e) => {
                           e.target.src =
-                            "https://ajkal.us/image/settings/placeholder.jpg";
+                            "https://ajkal.us/img/settings/placeholder.jpg";
                         }}
                       />
                     </Link>
@@ -152,7 +151,7 @@ const NewsDetails = () => {
         </div>
         <div className="pt-5">
           <ReletedNews
-            singleNewsDetails={singleNewsDetails?.category_id}
+            categoryId={singleNewsDetails?.category_id}
             links={links}
           ></ReletedNews>
         </div>

@@ -10,6 +10,7 @@ import { MdOutlineTextIncrease, MdOutlineTextDecrease } from "react-icons/md";
 import { FaFont } from "react-icons/fa";
 import "./SocialShareButtons.css";
 import ReactToPrint from "react-to-print";
+import PropTypes from "prop-types";
 
 const SocialShareButtons = ({
   title,
@@ -39,7 +40,7 @@ const SocialShareButtons = ({
               url={url}
               hashtag={title}
               description={description}
-              image={image} 
+              image={image}
             >
               <FaFacebook />
             </FacebookShareButton>
@@ -47,7 +48,7 @@ const SocialShareButtons = ({
               url={url}
               hashtag={title}
               description={description}
-              image={image} 
+              image={image}
             >
               <FaTwitter />
             </TwitterShareButton>
@@ -83,4 +84,13 @@ const SocialShareButtons = ({
   );
 };
 
+SocialShareButtons.propTypes = {
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  increaseFontSize: PropTypes.func.isRequired,
+  decreaseFontSize: PropTypes.func.isRequired,
+  resetFontSize: PropTypes.func.isRequired,
+};
 export default SocialShareButtons;

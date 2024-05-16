@@ -118,10 +118,10 @@ const VideoNews = () => {
                               <PiAirplayFill /> {/* Assuming this is an icon */}
                             </div>
                             <LazyImageShortNews
-                              src={`https://ajkal.us/images/${data?.title_img}`}
+                              src={`https://ajkal.us/img/news/${data?.title_img}`}
                               alt={data?.news_title}
                               className="rounded-top-1 rounded-bottom-0"
-                              errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                              errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
                               width="100%"
                               height="415px"
                               style={{ objectFit: "cover" }}
@@ -177,18 +177,18 @@ const VideoNews = () => {
                 <div className="d-flex align-items-center mb-3">
                   <div className="card border-0 shadow-sm ">
                     <div className="card-body p-0">
-                      <div className="row gx-3 align-items-center ">
+                      <div className="row gx-3 align-items-center video-cat">
                         <div className="col-lg-4">
                           <div>
                             <div className="video-side">
                               <MdPlayCircleFilled />
                             </div>
-                            <div className="rounded-1">
+                            <div className="rounded-1 vide-sidebar-cat">
                               <LazyImageShortNews
-                                src={`https://ajkal.us/images/${data?.title_img}`}
+                                src={`https://ajkal.us/img/news/${data?.title_img}`}
                                 alt={data?.news_title}
                                 className="rounded-top-1 rounded-bottom-0"
-                                errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                                errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
                                 width="300px"
                                 height="auto"
                                 style={{ objectFit: "cover" }}
@@ -241,7 +241,7 @@ const VideoNews = () => {
                     alt={`https://ajkal.us/img/ad/${data.ad_banner}`}
                     onError={(e) => {
                       e.target.src =
-                        "https://ajkal.us/image/settings/placeholder.jpg";
+                        "https://ajkal.us/img/settings/placeholder.jpg";
                     }}
                   />
                 </Link>

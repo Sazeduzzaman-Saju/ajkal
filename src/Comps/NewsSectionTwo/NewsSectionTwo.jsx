@@ -45,12 +45,12 @@ const NewsSectionTwo = ({ binodon }) => {
                 to={`/${category_name}/${id}`}
                 className="text-muted"
               >
-                <div className="card border-0 shadow-sm mb-3">
+                <div className="card border-0 shadow-sm mb-3 binodon-body">
                   <LazyImageNews
-                    src={`https://ajkal.us/images/${title_img}`}
-                    alt=""
+                    src={`https://ajkal.us/img/news/${title_img}`}
+                    alt={news_title}
                     className="rounded-1"
-                    errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                    errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
                     style={{
                       width: "50px",
                       height: "50px",
@@ -59,7 +59,7 @@ const NewsSectionTwo = ({ binodon }) => {
                       overflow: "hidden",
                     }}
                   />
-                  <div className="card-body" style={{ height: "9rem" }}>
+                  <div className="card-body">
                     <div
                       className="mb-0 main-color fw-bolder"
                       style={{ fontSize: "16px" }}
@@ -101,7 +101,7 @@ const NewsSectionTwo = ({ binodon }) => {
                     alt={`https://ajkal.us/img/ad/${data.ad_banner}`}
                     onError={(e) => {
                       e.target.src =
-                        "https://ajkal.us/image/settings/placeholder.jpg";
+                        "https://ajkal.us/img/settings/placeholder.jpg";
                     }}
                   />
                 </Link>

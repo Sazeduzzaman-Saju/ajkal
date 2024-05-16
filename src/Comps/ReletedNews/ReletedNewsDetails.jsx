@@ -17,6 +17,7 @@ import { FacebookEmbed, YouTubeEmbed } from "react-social-media-embed";
 import PostHeader from "../PostHeader/PostHeader";
 import LazyImageShortNews from "../LazyImage/LazyImageShortNews";
 import axios from "axios";
+import VideoPlayer from "../VideoPlayer/VideoPlayer";
 
 const RelatedNewsDetails = ({ newsItem, links }) => {
   const [fontSize, setFontSize] = useState(16); // Initial font size
@@ -77,7 +78,7 @@ const RelatedNewsDetails = ({ newsItem, links }) => {
               src={`https://ajkal.us/img/ad/${data.ad_banner}`}
               alt={data}
               className="img-fluid w-100 rounded-0"
-              errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+              errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
               width="100%"
               height="auto"
               style={{ objectFit: "cover" }}
@@ -92,7 +93,7 @@ const RelatedNewsDetails = ({ newsItem, links }) => {
   return (
     <>
       {/* Main Releted News Start */}
-      <div className="col-lg-8 ps-0" id="printThis">
+      <div className="col-lg-8" id="printThis" style={{ height: "auto", overflow: "hidden" }}>
         <h5 className="fw-bold py-4 mb-0" style={{ color: "#ee2026" }}>
           {newsItem.category_name_bangla}
         </h5>
@@ -103,32 +104,27 @@ const RelatedNewsDetails = ({ newsItem, links }) => {
         <div className="mt-4">
           {/* Condition to check if newsItem.video_url is empty */}
           {newsItem.video_url ? (
-            <iframe
+            <VideoPlayer
+              videoUrl={newsItem.video_url}
               width="100%"
-              height="500"
-              style={{ borderRadius: "5px" }}
-              src={`https://www.youtube.com/embed/${newsItem.video_url}`}
-              title="YouTube video player"
-              frameBorder={0}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            ></iframe>
+              height="500px"
+            />
           ) : (
-            <img
-              src={`https://ajkal.us/images/${newsItem.title_img}`}
+            <LazyImageShortNews
+              src={`https://ajkal.us/img/news/${newsItem.title_img}`}
+              alt={newsItem.news_title}
               className="rounded-2 img-fluid w-100"
-              alt=""
-              onError={(e) => {
-                e.target.src =
-                  "https://ajkal.us/image/settings/placeholder.jpg";
-              }}
+              errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
+              width="100%"
+              height="auto"
+              style={{ objectFit: "cover" }}
             />
           )}
           <p className="pt-2" style={{ fontSize: `${fontSize}px` }}>
             {newsItem.news_title} | ফাইল ছবি
           </p>
           {/* Author */}
-          <div className="d-flex justify-content-between align-items-center py-5">
+          <div className="d-flex justify-content-between align-items-center py-5 news-details-des">
             <div className="news-author-box">
               <h4 className="main-color">{newsItem.news_author}</h4>
               <p>
@@ -139,12 +135,12 @@ const RelatedNewsDetails = ({ newsItem, links }) => {
               <div className="social-author">
                 <SocialShareButtons
                   title={newsItem.news_title}
-                  image={`https://ajkal.us/images/${newsItem.title_img}`}
+                  image={`https://ajkal.us/img/news/${newsItem.title_img}`}
                   url={`https://ajkal.us/news/${newsItem.id}`}
                   description={newsItem.news_detail}
-                  onIncreaseFontSize={increaseFontSize}
-                  onDecreaseFontSize={decreaseFontSize}
-                  onResetFontSize={resetFontSize}
+                  increaseFontSize={increaseFontSize}
+                  decreaseFontSize={decreaseFontSize}
+                  resetFontSize={resetFontSize}
                 />
               </div>
             </div>
@@ -164,39 +160,30 @@ const RelatedNewsDetails = ({ newsItem, links }) => {
                 <FacebookShareButton
                   title={newsItem.news_title}
                   type="article"
-                  image={`https://ajkal.us/images/${newsItem.title_img}`} // Replace with actual image URL
+                  image={`https://ajkal.us/img/news/${newsItem.title_img}`} // Replace with actual image URL
                   url={`https://ajkal.us/${newsItem.category_name_bangla}/${newsItem.id}`} // Replace with actual page URL
-                  card={`https://ajkal.us/images/${newsItem.title_img}`}
+                  card={`https://ajkal.us/img/news/${newsItem.title_img}`}
                   description={newsItem.news_detail}
-                  increasefontsize={increaseFontSize}
-                  decreasefontsize={decreaseFontSize}
-                  resetfontsize={resetFontSize}
                 >
                   <FaFacebook />
                 </FacebookShareButton>
                 <TwitterShareButton
                   title={newsItem.news_title}
                   type="article"
-                  image={`https://ajkal.us/images/${newsItem.title_img}`} // Replace with actual image URL
+                  image={`https://ajkal.us/img/news/${newsItem.title_img}`} // Replace with actual image URL
                   url={`https://ajkal.us/${newsItem.category_name_bangla}/${newsItem.id}`} // Replace with actual page URL
-                  card={`https://ajkal.us/images/${newsItem.title_img}`}
+                  card={`https://ajkal.us/img/news/${newsItem.title_img}`}
                   description={newsItem.news_detail}
-                  increasefontsize={increaseFontSize}
-                  decreasefontsize={decreaseFontSize}
-                  resetfontsize={resetFontSize}
                 >
                   <FaTwitter />
                 </TwitterShareButton>
                 <WhatsappShareButton
                   title={newsItem.news_title}
                   type="article"
-                  image={`https://ajkal.us/images/${newsItem.title_img}`} // Replace with actual image URL
+                  image={`https://ajkal.us/img/news/${newsItem.title_img}`} // Replace with actual image URL
                   url={`https://ajkal.us/${newsItem.category_name_bangla}/${newsItem.id}`} // Replace with actual page URL
-                  card={`https://ajkal.us/images/${newsItem.title_img}`}
+                  card={`https://ajkal.us/img/news/${newsItem.title_img}`}
                   description={newsItem.news_detail}
-                  increasefontsize={increaseFontSize}
-                  decreasefontsize={decreaseFontSize}
-                  resetfontsize={resetFontSize}
                 >
                   <FaWhatsapp />
                 </WhatsappShareButton>
@@ -230,14 +217,14 @@ const RelatedNewsDetails = ({ newsItem, links }) => {
           </div>
           {/* News Details Tags end*/}
         </div>
-        <div className="">
+        <div>
           <FacebookComments url={`https://ajkal.us/news/${newsItem.id}`} />
         </div>
       </div>
       {/* Main Releted News End */}
       <div className="col-lg-4">
         <NewsSidebar />
-        <div className="">
+        <div>
           <PostHeader title="বিজ্ঞাপন কর্নার" />
         </div>
         <div style={{ display: "flex", justifyContent: "center" }}>

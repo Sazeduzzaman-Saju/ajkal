@@ -34,7 +34,7 @@ const UserAdvertisement = () => {
 
   if (loading) {
     return (
-      <div className="">
+      <div>
         <div
           className="d-flex justify-content-center align-items-center"
           style={{ height: "100vh" }}
@@ -159,7 +159,7 @@ const UserAdvertisement = () => {
                                             alt={item.ad_banner}
                                             onError={(e) => {
                                               e.target.src =
-                                                "https://ajkal.us/image/settings/placeholder.jpg";
+                                                "https://ajkal.us/img/settings/placeholder.jpg";
                                             }}
                                           />
                                         </div>

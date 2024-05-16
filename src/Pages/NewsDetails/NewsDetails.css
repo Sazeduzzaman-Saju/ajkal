@@ -67,10 +67,28 @@
   color: rgb(255, 255, 255);
   cursor: pointer;
 }
-
 @media print {
   /* Add margins */
   #printThis {
     margin: 30px; /* Adjust the margin size as needed */
+  }
+}
+
+@media screen and (max-width: 575.98px) {
+  .breadcrumb-box{
+    padding-left: 31px;
+    display: none !important;
+  }
+  .breadcrumb-box h5{
+    display: none !important;
+  }
+  #printThis{
+    padding: 25px !important;
+    text-align: justify;
+  }
+  .deatails-share{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
   }
 }

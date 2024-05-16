@@ -8,10 +8,10 @@ const NewsCategory = ({ categories }) => {
       <ul className="px-0 mb-0" style={{ marginLeft: "0", listStyle: "none" }}>
         <div className="row pt-3 px-0">
           <div>
-            <h4 className="ps-0 text-white">ক্যাটাগরিস</h4>
+            <h4 className="ps-0 text-white text-lg-start text-center">ক্যাটাগরিস</h4>
             <span className="border-devider"></span>
           </div>
-          <div className="col-lg-3">
+          <div className="col-lg-3 col-6 text-center text-lg-start">
             {categories.slice(0, 4).map((data) => (
               <li key={data.id}>
                 <Link
@@ -24,7 +24,7 @@ const NewsCategory = ({ categories }) => {
               </li>
             ))}
           </div>
-          <div className="col-lg-3">
+          <div className="col-lg-3 col-6 text-center text-lg-start">
             {categories.slice(4, 8).map((data) => (
               <li key={data.id}>
                 <Link
@@ -37,8 +37,8 @@ const NewsCategory = ({ categories }) => {
               </li>
             ))}
           </div>
-          <div className="col-lg-3">
-            {categories.slice(8,12).map((data) => (
+          <div className="col-lg-3 col-6 text-center text-lg-start mt-3">
+            {categories.slice(8, 12).map((data) => (
               <li key={data.id}>
                 <Link
                   to={`/categories/${data.id}`}
@@ -50,8 +50,8 @@ const NewsCategory = ({ categories }) => {
               </li>
             ))}
           </div>
-          <div className="col-lg-3">
-            {categories.slice(12,16).map((data) => (
+          <div className="col-lg-3 col-6 text-center text-lg-start mt-3">
+            {categories.slice(12, 16).map((data) => (
               <li key={data.id}>
                 <Link
                   to={`/categories/${data.id}`}

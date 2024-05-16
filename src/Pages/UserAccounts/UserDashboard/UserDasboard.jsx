@@ -102,7 +102,7 @@ const UserDashboard = () => {
 
   if (loading) {
     return (
-      <div className="">
+      <div>
         <div
           className="d-flex justify-content-center align-items-center"
           style={{ height: "100vh" }}
@@ -148,7 +148,7 @@ const UserDashboard = () => {
                   </div>
                   <p className="icon-container-amount">
                     {userNewsData !== null ? (
-                      <span className="">{userNewsData.length}</span>
+                      <span  >{userNewsData.length}</span>
                     ) : (
                       <Skeleton height={10}></Skeleton>
                     )}
@@ -167,7 +167,7 @@ const UserDashboard = () => {
                   </div>
                   <p className="icon-container-amount">
                     {userAddData !== null ? (
-                      <span className="">{userAddData.length}</span>
+                      <span  >{userAddData.length}</span>
                     ) : (
                       <Skeleton height={10}></Skeleton>
                     )}
@@ -209,13 +209,9 @@ const UserDashboard = () => {
                                 width={50}
                                 className="img-fluid"
                                 src={`https://ajkal.us/img/news/${item.title_img}`}
-                                alt=""
+                                alt={item.news_title}
                               />
-                              {/* <img src={item.news_img} alt="" /> */}
                             </td>
-                            {/* <td>
-                              <img width={50} className="img-fluid" src={`https://ajkal.us/img/news/${item.thumbnail_img}`} alt="" />
-                            </td> */}
                             <td>{item.news_title}</td>
                             <td>{item.category_name}</td>
                             <td>{item.news_time}</td>

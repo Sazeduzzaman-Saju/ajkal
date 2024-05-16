@@ -1,36 +1,91 @@
-import React, { useEffect, useState } from "react";
-import "./ReletedNews.css";
-import { Link } from "react-router-dom";
-import { IoMdArrowDropright } from "react-icons/io";
 import axios from "axios";
-import BanglaDateTime from "../BanglaTime/BanglaTime";
+import React, { useEffect, useState } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+import Skeleton from "react-loading-skeleton";
 import RelatedNewsDetails from "./ReletedNewsDetails";
+import { Triangle } from "react-loader-spinner";
 
-const RelatedNews = ({ singleNewsDetails }) => {
-  const [relatedNews, setRelatedNews] = useState([]);
-  const urlData = `https://backoffice.ajkal.us/category-news/${singleNewsDetails}`;
+const RelatedNews = ({ categoryId }) => {
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+
+  const [loadingMore, setLoadingMore] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(urlData)
-      .then((response) => {
-        if (Array.isArray(response.data)) {
-          setRelatedNews(response.data.slice(0, 5)); // Remove slice(0, 2) if you expect multiple items
-        } else if (Array.isArray(response.data.data)) {
-          setRelatedNews(response.data.data.slice(0, 5)); // Remove slice(0, 1) if you expect multiple items
-        } else {
-          console.error(
-            "Invalid data structure in API response:",
-            response.data
-          );
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, [urlData]);
+    fetchData();
+  }, [categoryId]);
 
-  // Copy News Url
+  const apiUrl = `https://backoffice.ajkal.us/category-news/${categoryId}`;
+  console.log("Fetched data:", apiUrl);
+
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get(apiUrl);
+      // Log fetched data regardless of its type
+      if (Array.isArray(response.data)) {
+        setItems(response.data.slice(0, 5));
+        setHasMore(response.data.length > 5);
+      } else if (response.data && Array.isArray(response.data.data)) {
+        setItems(response.data.data.slice(0, 5));
+        setHasMore(response.data.data.length > 5);
+      } else {
+        console.error("Invalid data structure in API response:", response.data);
+        setHasMore(false);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setHasMore(false);
+    }
+    setLoading(false);
+  };
+
+  const fetchMoreData = async () => {
+    if (!hasMore || loadingMore) return;
+
+    setLoadingMore(true);
+
+    try {
+      const response = await axios.get(
+        `${apiUrl}?page=${Math.ceil(items.length / 5) + 1}&limit=1`
+      );
+
+      console.log("API Response:", response.data); // Log the response
+
+      if (Array.isArray(response.data) || Array.isArray(response.data.data)) {
+        const responseData = Array.isArray(response.data)
+          ? response.data
+          : response.data.data;
+
+        if (responseData.length > 0) {
+          const uniqueNextItem = responseData.find(
+            (item) => !items.some((existingItem) => existingItem.id === item.id)
+          );
+
+          if (uniqueNextItem) {
+            setItems((prevItems) => [...prevItems, uniqueNextItem]);
+            setHasMore(true); // There might be more items to load
+          } else {
+            // No more unique items available
+            setHasMore(false);
+          }
+        } else {
+          // No more data available
+          setHasMore(false);
+        }
+      } else {
+        console.error("Invalid data structure in API response:", response.data);
+        setHasMore(false);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setHasMore(false);
+    }
+
+    setLoadingMore(false);
+  };
+
   const links = [
     { label: "বাংলাদেশ", url: "#" },
     { label: "বিরোধী ", url: "#" },
@@ -49,35 +104,61 @@ const RelatedNews = ({ singleNewsDetails }) => {
     { label: "সাপ্তাহিক", url: "#" },
     // Add more link objects as needed
   ];
-
-  // Copy News Url
-
   return (
-    <div className="container my-4">
-      {relatedNews.map((newsItem, index) => (
-        <div className="row" key={index}>
-          <div className="col-lg-12 ps-0">
-            <div
-              className="d-flex justify-content-between align-items-center py-3"
-              style={{ borderBottom: "1px solid var(--main)" }}
-            >
-              <h5 className="text-muted">
-                <span> প্রচ্ছদ </span> <IoMdArrowDropright />
-                <Link
-                  className="text-muted"
-                  to={`/ct/${newsItem.category_name}/${newsItem.category_id}`}
-                >
-                  {newsItem.category_name_bangla}
-                </Link>{" "}
-                <IoMdArrowDropright /> {newsItem.news_title}
-              </h5>
-              {/* Assuming BanglaDateTime is another component */}
-              <BanglaDateTime dateTime={newsItem.news_time} />
+    <div>
+      <h3 className="mb-0 p-3 ps-0 secondary-color ">ক্যাটেগরি নিউজ</h3>
+      <hr className=" mt-0" />
+      <InfiniteScroll
+        style={{ height: "auto", overflow: "hidden" }}
+        dataLength={items.length}
+        next={fetchMoreData}
+        hasMore={hasMore}
+        loader={
+          <div style={{ height: "auto", overflow: "hidden" }}>
+            <div className="card border-0 shadow-sm mb-3">
+              <Skeleton height={150} />
+              <Skeleton height={50} />
+              <Skeleton height={50} />
+              <Skeleton height={50} />
+
             </div>
           </div>
-          <RelatedNewsDetails newsItem={newsItem} links={links} />
-        </div>
-      ))}
+        }
+        endMessage={
+          <p style={{ textAlign: "center" }}>
+            <b>Yay! You have seen it all</b>
+          </p>
+        }
+      >
+        {loading
+          ? // Skeleton loader for news items
+            Array.from({ length: items.length }, (_, index) => (
+              <div key={index} style={{ height: "auto", overflow: "hidden" }}>
+                <div className="card border-0 shadow-sm mb-3">
+                  <Skeleton height={200} />
+                  <div className="card-footer news-info-box">
+                    <div className="news-hover-box">
+                      <Skeleton width={100} />
+                      <Skeleton width={200} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))
+          : // Render actual news items when not loading
+            items.map((newsItem, index) => (
+              <div
+                className="row"
+                key={index}
+                style={{ height: "auto", overflow: "hidden" }}
+              >
+                <RelatedNewsDetails
+                  newsItem={newsItem}
+                  links={links}
+                ></RelatedNewsDetails>
+              </div>
+            ))}
+      </InfiniteScroll>
     </div>
   );
 };

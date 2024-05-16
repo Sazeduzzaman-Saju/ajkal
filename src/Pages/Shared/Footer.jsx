@@ -7,6 +7,7 @@ import { AiFillInstagram } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import NewsCategory from "../../Comps/NewsCategory/NewsCategory";
 import axios from "axios";
+import LazyImageShortNews from "../../Comps/LazyImage/LazyImageShortNews";
 
 const Footer = () => {
   const [categoriesData, setCategoriesData] = useState([]);
@@ -49,15 +50,18 @@ const Footer = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12 ps-0">
-              <div
+              <div className="footer-logo-box"
                 style={{ width: "18%", background: "#fff", padding: "10px" }}
               >
-                <Link className="" to="/">
-                  <img
-                    src="https://ajkal.us/image/settings/logo_red.jpg"
-                    className="img-fluid"
-                    alt=""
-                    width={250}
+                <Link to="/">
+                  <LazyImageShortNews
+                    src="https://ajkal.us/img/settings/logo_red.jpg"
+                    alt="logo"
+                    className="rounded-top-1 rounded-bottom-0"
+                    errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
+                    width="250px"
+                    height="auto"
+                    style={{ objectFit: "cover" }}
                   />
                 </Link>
               </div>
@@ -69,13 +73,6 @@ const Footer = () => {
         className="container-fluid p-2 pb-3"
         style={{
           backgroundColor: "black",
-          // // backgroundImage: 'url(https://ajkal.us/image/settings/dark-bg.jpg)',
-          // backgroundImage: 'url(https://ajkal.us/image/settings/bg-2.jpg)',
-          // // backgroundImage: 'url(https://ajkal.us/image/settings/bg-3.jpg)',
-          // backgroundRepeat: 'no-repeat',
-          // backgroundSize: 'cover',
-          // backgroundPosition: 'center center',
-          // width: '100%'
         }}
       >
         <div className="container">
@@ -84,33 +81,33 @@ const Footer = () => {
               <NewsCategory categories={categoriesData} />
               {/* Info */}
               <ul
-                className="text-white"
+                className="text-white text-center "
                 style={{ listStyle: "none", paddingLeft: "0" }}
               >
                 <div className="row">
-                  <div className="col-lg-3 d-flex">
-                    <li className="nav-item pe-4">
+                  <div className="col-lg-3 col-6 mt-3 text-center d-flex">
+                    <li className="nav-item pe-lg-4 pe-2">
                       <Link className="nav-link footer-links" to="/contact">
                         যোগাযোগ করুন
                       </Link>
                     </li>
                   </div>
-                  <div className="col-lg-3">
-                    <li className="nav-item pe-4">
+                  <div className="col-lg-3  mt-3 text-center text-lg-start col-6">
+                    <li className="nav-item pe-lg-4 pe-2">
                       <Link className="nav-link footer-links" to="/about">
                         আমাদের সম্পর্কে
                       </Link>
                     </li>
                   </div>
-                  <div className="col-lg-3">
-                    <li className="nav-item pe-4">
+                  <div className="col-lg-3 mt-3 text-center text-lg-start col-6">
+                    <li className="nav-item pe-lg-4 pe-2">
                       <Link className="nav-link footer-links" to="/terms">
                         শর্তাবলী
                       </Link>
                     </li>
                   </div>
-                  <div className="col-lg-3">
-                    <li className="nav-item pe-4">
+                  <div className="col-lg-3 mt-3 text-center text-lg-start col-6">
+                    <li className="nav-item pe-lg-4 pe-2">
                       <Link className="nav-link footer-links" to="/policy">
                         গোপনীয়তা নীতি
                       </Link>
@@ -121,25 +118,25 @@ const Footer = () => {
             </div>
             <div className="col-lg-2">
               <div className="pt-1">
-                <h4 className="ps-0 text-white pt-1">ডাউনলোড করুন।</h4>
+                <h4 className="ps-0 text-white pt-1 text-lg-start text-center">ডাউনলোড করুন।</h4>
                 <span className="border-devider"></span>
               </div>
-              <div>
-                <div className="pb-3">
-                  <Link to={"#"}>
+              <div className="">
+                <div className="pb-3 play-app-icons">
+                  <Link to={"/"}>
                     <img
                       className="mb-1"
                       width={180}
-                      src="https://ajkal.us/image/settings/play.png"
-                      alt=""
+                      src="https://ajkal.us/img/settings/play.png"
+                      alt="Play Store"
                     />
                   </Link>
-                  <Link to={"#"}>
+                  <Link to={"/"}>
                     <img
                       className="mb-1"
                       width={180}
-                      src="https://ajkal.us/image/settings/applestore.png"
-                      alt=""
+                      src="https://ajkal.us/img/settings/applestore.png"
+                      alt="Apple Store"
                     />
                   </Link>
                 </div>
@@ -147,14 +144,14 @@ const Footer = () => {
             </div>
           </div>
           <div className="row align-items-center">
-            <div className="col-lg-10 ps-0">
+            <div className="col-lg-10 ps-0 col-12 text-lg-start text-center">
               <div>
-                <div className="">
+                <div>
                   <p className="fs-3 text-white mb-0">
                     <strong>সম্পাদক ও প্রকাশক : </strong>
                     <span className="pe-3">শাহ্‌ নেওয়াজ ,</span>
                     <strong>প্রধান সম্পাদক : </strong>
-                    <span className="">মনজুর আহমেদ</span>
+                    <span>মনজুর আহমেদ</span>
                   </p>
                 </div>
                 <div className="text-lg-start text-center ">
@@ -167,7 +164,7 @@ const Footer = () => {
                     ইমেইল: <span>ajkalnews@gmail.com</span> সম্পাদক ইমেইল:
                     <span>editor@ajkalusa.com</span>
                   </p>
-                  <p className="text-white text-start mb-0 pt-0">
+                  <p className="text-white text-lg-start text-center mb-0 pt-0">
                     কপিরাইট © ২০২৪ সাপ্তাহিক আজকাল কর্তৃক সর্বসত্ব ® সংরক্ষিত
                   </p>
                 </div>
@@ -178,16 +175,19 @@ const Footer = () => {
                 অনুসরণ করুন
               </h5>
               <div className="footer-social text-lg-start text-center pt-4">
-                <Link to="https://www.facebook.com/weeklyajkal" className="ms-0">
+                <Link
+                  to="https://www.facebook.com/weeklyajkal"
+                  className="ms-0"
+                >
                   <FaFacebookF />
                 </Link>
-                <Link to="#" className="">
+                <Link to={"/"}>
                   <FaTwitter />
                 </Link>
-                <Link to="#" className="">
+                <Link to={"/"}>
                   <FaYoutube />
                 </Link>
-                <Link to="#" className="">
+                <Link to={"/"}>
                   <AiFillInstagram />
                 </Link>
               </div>
@@ -208,8 +208,18 @@ const Footer = () => {
                     এই ওয়েবসাইটের কোনো লেখা, ছবি, অডিও, ভিডিও অনুমতি ছাড়া
                     ব্যবহার বেআইনি।
                   </p>
-                  <p className="text-white text-end mb-0">
+                  <p className="text-white text-end mb-0 d-lg-block d-none">
                     Developed With Loved By
+                    <Link
+                      className="ps-2"
+                      style={{ color: "orange" }}
+                      to={"https://galaxymediaus.com/"}
+                      target="_blank"
+                    >
+                      Galaxy Media
+                    </Link>
+                  </p>
+                  <p className="text-white text-end mb-0 d-lg-none d-block">
                     <Link
                       className="ps-2"
                       style={{ color: "orange" }}

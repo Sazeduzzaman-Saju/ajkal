@@ -13,7 +13,7 @@ return (
                   alt={`https://ajkal.us/img/epaper/${url.epaper_image}`}
                   onError={(e) => {
                     e.target.src =
-                      "https://ajkal.us/image/settings/placeholder.jpg";
+                      "https://ajkal.us/img/settings/placeholder.jpg";
                   }}
                 />
               </div>

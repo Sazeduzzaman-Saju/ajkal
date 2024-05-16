@@ -67,11 +67,11 @@ export default function Banner() {
                   src={`https://ajkal.us/img/news/${slide.title_img}`}
                   alt={slide.news_title}
                   className="rounded-0 custom-class" // You can add additional classes if needed
-                  errorSrc="https://ajkal.us/image/settings/placeholder-banner.jpg" // Pass the path of the error image
+                  errorSrc="https://ajkal.us/img/settings/placeholder-banner.jpg" // Pass the path of the error image
                 />
                 <div className="overlay">
                   <Link
-                    to={`/${slide.category_name_bangla}/${slide.id}`}
+                    to={`/${slide.category_name}/${slide.id}`}
                     className="text-white"
                   >
                     <div className="container">
@@ -86,7 +86,7 @@ export default function Banner() {
                             .join(" ")}
                         ></SanitizedParagraph>
                       </div>
-                      <div className="pt-2" style={{ fontSize: "16px", width: "50%" }}>
+                      <div className="pt-2 banner-description-full" style={{ fontSize: "16px", width: "50%" }}>
                         <SanitizedParagraph
                           htmlContent={slide.news_detail
                             .split(" ")

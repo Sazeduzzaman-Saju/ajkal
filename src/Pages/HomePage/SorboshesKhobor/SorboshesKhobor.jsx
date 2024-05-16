@@ -6,6 +6,7 @@ import Skeleton from "react-loading-skeleton";
 // import BanglaTimeAgo from "../../../Comps/BanglaTime/BanglaTimeDiffrence";
 import PostHeader from "../../../Comps/PostHeader/PostHeader";
 import LazyImageNews from "../../../Comps/LazyImage/LazyImageNews";
+import LazyImageShortNews from "../../../Comps/LazyImage/LazyImageShortNews";
 
 const SorboshesKhobor = () => {
   const [sorboshesPothitoData, setSorboshesPothitoData] = useState([]);
@@ -66,9 +67,9 @@ const SorboshesKhobor = () => {
       .get(url)
       .then((response) => {
         if (Array.isArray(response.data)) {
-          setSorboshesPothitoData(response.data.slice(0, 7));
+          setSorboshesPothitoData(response.data.slice(0, 5));
         } else if (Array.isArray(response.data.data)) {
-          setSorboshesPothitoData(response.data.data.slice(0, 7));
+          setSorboshesPothitoData(response.data.data.slice(0, 5));
         } else {
           console.error(
             "Invalid data structure in API response:",
@@ -110,7 +111,7 @@ const SorboshesKhobor = () => {
                           src={`https://ajkal.us/img/news/${data.title_img}`}
                           alt={data.news_title}
                           className="card-img-top rounded-0 custom-class" // You can add additional classes if needed
-                          errorSrc="https://ajkal.us/image/settings/placeholder.jpg" // Pass the path of the error image
+                          errorSrc="https://ajkal.us/img/settings/placeholder.jpg" // Pass the path of the error image
                         />
                       </div>
                       <div className="card-body card-body-1 w-lg-auto w-100">
@@ -138,19 +139,17 @@ const SorboshesKhobor = () => {
                   <Link to={`/${data.category_name}/${data.id}`}>
                     <div className="card mb-1 border-0 shadow-sm rounded-2">
                       <div className="card-body p-0 d-flex align-items-center">
-                        <div className="pothito-img w-25 h-100 ">
-                          <img
+                        <div className="pothito-img w-lg-25 w-100 h-lg-100">
+                          <LazyImageShortNews
+                            src={`https://ajkal.us/img/news/${data.title_img}`}
+                            alt={data.news_title}
                             className="img-fluid rounded-1"
-                            style={{ height: "70px", objectFit: "cover" }}
-                            src={`https://ajkal.us/images/${data.title_img}`}
-                            alt=""
-                            onError={(e) => {
-                              e.target.src =
-                                "https://ajkal.us/image/settings/placeholder.jpg";
-                            }}
+                            errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
+                            width="100%"
+                            height="105px"
                           />
                         </div>
-                        <div className="pothito-content w-75 ps-4">
+                        <div className="pothito-content w-lg-75 w-100 ps-lg-4 ps-2">
                           <div>
                             <h5 className="main-color mb-0">
                               {data.category_name_bangla}

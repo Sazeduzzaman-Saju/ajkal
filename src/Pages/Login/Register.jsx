@@ -47,11 +47,11 @@ const Register = () => {
           <div>
             <img
               className="img-fluid"
-              src="https://ajkal.us/image/settings/Sign-up-rafiki.png"
+              src="https://ajkal.us/img/settings/Sign-up-rafiki.png"
               alt=""
               onError={(e) => {
                 e.target.src =
-                  "https://ajkal.us/image/settings/placeholder.jpg";
+                  "https://ajkal.us/img/settings/placeholder.jpg";
               }}
             />
           </div>

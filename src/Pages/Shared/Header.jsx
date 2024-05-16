@@ -100,22 +100,22 @@ function Header() {
             <div className="col-lg-4">
               <div className="top-bar d-flex justify-content-center">
                 <ul className="mb-0">
-                  <li className="">
+                  <li  >
                     <Link to={"/login"} className="navlinks-top">
                       বিজ্ঞাপন
                     </Link>
                   </li>
-                  <li className="">
+                  <li  >
                     <Link to={"/epaper"} className="navlinks-top">
                       ই-পেপার
                     </Link>
                   </li>
-                  <li className="">
+                  <li  >
                     <Link to={"/search"} className="navlinks-top">
                       আর্কাইভ
                     </Link>
                   </li>
-                  <li className="">
+                  <li  >
                     <Link to={"/ad-cost"} className="navlinks-top">
                       বিজ্ঞাপনের মূল্য
                     </Link>
@@ -127,24 +127,24 @@ function Header() {
               <div className="top-bar p-2 d-flex justify-content-end align-items-center pt-1">
                 <div>
                   <div className="social">
-                    <Link href="#" className="">
+                    <Link href="#"  >
                       <FaFacebookF />
                     </Link>
-                    <Link href="#" className="">
+                    <Link href="#"  >
                       <FaTwitter />
                     </Link>
-                    <Link href="#" className="">
+                    <Link href="#"  >
                       <FaYoutube />
                     </Link>
-                    <Link href="#" className="">
+                    <Link href="#"  >
                       <AiFillInstagram />
                     </Link>
                     {accessTokenTimeout ? (
-                      <Link to="/user" className="">
+                      <Link to="/user"  >
                         <FaHome />
                       </Link>
                     ) : (
-                      <Link to="/login" className="">
+                      <Link to="/login"  >
                         <FaUser />
                       </Link>
                     )}
@@ -175,7 +175,7 @@ function Header() {
 
           <div>
             <Link className="navbar-brand" to="/">
-              <img src="https://ajkal.us/image/settings/logo_red.png" alt="" />
+              <img src="https://ajkal.us/img/settings/logo_red.png" alt="" />
             </Link>
           </div>
 
@@ -196,7 +196,7 @@ function Header() {
                             alt={`https://ajkal.us/img/ad/${data.ad_banner}`}
                             onError={(e) => {
                               e.target.src =
-                                "https://ajkal.us/image/settings/ad-placeholder.jpg";
+                                "https://ajkal.us/img/settings/ad-placeholder.jpg";
                             }}
                           />
                         </Link>

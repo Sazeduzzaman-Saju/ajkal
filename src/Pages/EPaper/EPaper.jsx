@@ -6,6 +6,7 @@ import "react-calendar/dist/Calendar.css";
 import { FacebookEmbed } from "react-social-media-embed";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import LazyImageShortNews from "../../Comps/LazyImage/LazyImageShortNews";
 
 function EPaper() {
   const [nav1, setNav1] = useState(null);
@@ -64,7 +65,7 @@ function EPaper() {
               </Link>
             </div>
           </div>
-          <div className="">
+          <div>
             <div className="mt-2">
               <PostHeader title="ফিচারস" />
             </div>
@@ -84,28 +85,28 @@ function EPaper() {
                 <img
                   className="img-fluid "
                   src="https://i.pinimg.com/originals/06/9d/61/069d617dca720be2d65014963515d28e.gif"
-                  alt=""
+                  alt="Advertisement"
                 />
               </div>
               <div className="mb-2">
                 <img
                   className="img-fluid "
                   src="https://i.pinimg.com/originals/6b/09/f8/6b09f8c066f90cc82af0b9f99cb401d5.gif"
-                  alt=""
+                  alt="Advertisement"
                 />
               </div>
               <div className="mb-2">
                 <img
                   className="img-fluid "
                   src="https://vriddle.com/wp-content/uploads/2018/04/JScrew-ice-cream-email-template.gif"
-                  alt=""
+                  alt="Advertisement"
                 />
               </div>
               <div className="mb-2">
                 <img
                   className="img-fluid "
                   src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/cdd8bd99001381.5ee904eb9b5ca.gif"
-                  alt=""
+                  alt="Advertisement"
                 />
               </div>
               {/* Sidebar Advertisement End */}
@@ -117,13 +118,12 @@ function EPaper() {
             <Slider asNavFor={nav2} ref={(slider) => (sliderRef1 = slider)}>
               {epaperData.map((item, index) => (
                 <div key={index}>
-                  <img
-                    className="img-fluid"
+                  <LazyImageShortNews
                     src={`https://ajkal.us/img/epaper/${item.epaper_image}`}
-                    onError={(e) => {
-                      e.target.src =
-                        "https://ajkal.us/image/settings/placeholder.jpg";
-                    }}
+                    alt={item.epaper_image}
+                    className="img-fluid "
+                    errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
+                    style={{ objectFit: "cover" }}
                   />
                 </div>
               ))}
@@ -146,13 +146,12 @@ function EPaper() {
             >
               {epaperData.map((item, index) => (
                 <div key={index}>
-                  <img
-                    className="img-fluid"
+                  <LazyImageShortNews
                     src={`https://ajkal.us/img/epaper/${item.epaper_image}`}
-                    onError={(e) => {
-                      e.target.src =
-                        "https://ajkal.us/image/settings/placeholder.jpg";
-                    }}
+                    alt={item.epaper_image}
+                    className="img-fluid "
+                    errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
+                    style={{ objectFit: "cover" }}
                   />
                   <p className="text-center mb-0">{item.name}</p>
                 </div>

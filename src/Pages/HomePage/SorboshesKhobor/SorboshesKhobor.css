@@ -1,5 +1,15 @@
 @media screen and (max-width: 575.98px) {
   .sorboshes_khobor {
-    height: 22rem !important;
+    height: 17rem !important;
   }
+  .sorboshes_khobor p {
+    padding-bottom: 5px;
+  }
+  .pothito-content{
+    padding-left: 0px !important;
+  }
+  .pothito-img img {
+    height: 95px !important;
+    width: 160px !important;
+}
 }

@@ -9,7 +9,11 @@ export default function SearchForm() {
     handleSubmit,
   } = useForm();
 
-  
+  const onSubmit = (data) => {
+    // Handle form submission here
+    console.log("Form data:", data);
+    // You can add your logic for form submission, like making an API call, etc.
+  };
 
   const [categoriesData, setCategoriesData] = useState([]);
   const url = "https://backoffice.ajkal.us/news-category";

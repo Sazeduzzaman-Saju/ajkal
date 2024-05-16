@@ -24,10 +24,10 @@ const CategoryNewsSlider = () => {
                     <div className="card-body p-0 ">
                       <div>
                         <LazyImageShortNews
-                          src={`https://ajkal.us/images/${newsItem.title_img}`}
+                          src={`https://ajkal.us/img/news/${newsItem.title_img}`}
                           alt={newsItem.news_title}
                           className="img-fluid w-100 category-slider-img shadow-sm rounded-bottom-0 rounded-top-2"
-                          errorSrc="https://ajkal.us/image/settings/placeholder.jpg"
+                          errorSrc="https://ajkal.us/img/settings/placeholder.jpg"
                           width="100%"
                           height="auto"
                           style={{ objectFit: "cover" }}
@@ -35,7 +35,7 @@ const CategoryNewsSlider = () => {
                       </div>
                       <div
                         className="p-2 feature-text-area rounded-bottom-2 rounded-top-0"
-                        style={{ backgroundColor: "var(--main)" }}
+                        style={{ backgroundImage: 'linear-gradient(45deg, rgb(22, 85, 136) 0%, rgb(237, 30, 43) 51%, rgb(22, 85, 136) 100%)' }}
                       >
                         <h4 className="pt-1 mb-1 text-white">
                           {newsItem.news_title.slice(0, 50)}
@@ -55,11 +55,11 @@ const CategoryNewsSlider = () => {
               <div>
                 <img
                   className="img-fluid w-100 category-slider-img"
-                  src={`https://ajkal.us/image/settings/placeholder.jpg`}
-                  alt=""
+                  src={`https://ajkal.us/img/settings/placeholder.jpg`}
+                  alt="https://ajkal.us/img/settings/placeholder.jpg"
                   onError={(e) => {
                     e.target.src =
-                      "https://ajkal.us/image/settings/placeholder.jpg";
+                      "https://ajkal.us/img/settings/placeholder.jpg";
                   }}
                 />
               </div>
