@@ -1,39 +1,51 @@
-import React from 'react';
-import { useGoogleLogin } from 'react-google-login';
-import axios from 'axios';
-
+import React, { useState } from "react";
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
+import { Link } from "react-router-dom";
+import { FaFacebookF, FaGoogle } from "react-icons/fa";
 const SocialLogin = () => {
-    const onSuccess = async (response) => {
-        console.log(response);
-        try {
-            // Post the authorization code to your server
-            const tokens = await axios.post('http://localhost:3001/auth/google', {
-                code: response.code,
-            });
-            console.log(tokens.data); // Assuming the server responds with tokens
-        } catch (error) {
-            console.error('Error exchanging authorization code for tokens:', error);
-        }
-    };
-
-    const onError = (error) => {
-        console.error('Google Login Error:', error);
-    };
-
-    const { signIn } = useGoogleLogin({
-        clientId: 'YOUR_GOOGLE_CLIENT_ID', // Replace with your actual Google client ID
-        onSuccess,
-        onFailure: onError,
-        accessType: 'offline', // Request access token and refresh token
-        responseType: 'code', // Request an authorization code
-        prompt: 'consent', // Prompt user for consent each time they login
-    });
-
-    return (
-        <div>
-            <button onClick={signIn}>Sign in with Google</button>
+  const [userGoogleLoginData, setUserGoogleLoginData] = useState([]);
+  console.log(userGoogleLoginData, "userGoogleLoginData");
+  return (
+    <div>
+      <div className="row py-2">
+        <div className="col-lg-10 offset-lg-1 mx-auto">
+          <div className="d-flex justify-content-center align-items-center pb-2">
+            <div className="pe-2">
+              <GoogleLogin
+                className="submit-btn-one w-100"
+                onSuccess={(credentialResponse) => {
+                  var credentialResponseDecode = jwtDecode(
+                    credentialResponse.credential
+                  );
+                  setUserGoogleLoginData(credentialResponseDecode);
+                }}
+                onError={() => {
+                  console.log("Login Failed");
+                }}
+              />
+            </div>
+            <div className="pe-2">
+              <GoogleLogin
+                className="submit-btn-one w-100"
+                onSuccess={(credentialResponse) => {
+                  var credentialResponseDecode = jwtDecode(
+                    credentialResponse.credential
+                  );
+                  setUserGoogleLoginData(credentialResponseDecode);
+                }}
+                onError={() => {
+                  console.log("Login Failed");
+                }}
+              />
+            </div>
+          </div>
+          <p className="text-center bg-light devider-text">Or</p>
+          <p className="devider"></p>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default SocialLogin;

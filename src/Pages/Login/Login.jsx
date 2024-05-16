@@ -1,9 +1,10 @@
 import React from "react";
 import "./style.css";
-import { FaFacebookF, FaGoogle } from "react-icons/fa";
+// import { FaFacebookF, FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
+import SocialLogin from "../../Comps/SocialLogin/SocialLogin";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -74,7 +75,7 @@ const Login = () => {
                     সাপ্তাহিক আজকালে আপনাকে স্বাগতম।
                   </p>
                 </div>
-                {/* <SocialLogin/> */}
+                <SocialLogin/>
                 <div className="row mt-5">
                   <div className="col-lg-10 offset-1 mx-auto">
                     {/* Form Start */}
