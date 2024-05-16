@@ -26,18 +26,7 @@ const SocialLogin = () => {
               />
             </div>
             <div className="pe-2">
-              <GoogleLogin
-                className="submit-btn-one w-100"
-                onSuccess={(credentialResponse) => {
-                  var credentialResponseDecode = jwtDecode(
-                    credentialResponse.credential
-                  );
-                  setUserGoogleLoginData(credentialResponseDecode);
-                }}
-                onError={() => {
-                  console.log("Login Failed");
-                }}
-              />
+              This is for Facebook Login
             </div>
           </div>
           <p className="text-center bg-light devider-text">Or</p>
